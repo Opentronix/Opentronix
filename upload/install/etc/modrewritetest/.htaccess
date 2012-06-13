@@ -1,0 +1,4 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule test2.txt test3.txt
+</IfModule>

@@ -1,0 +1,166 @@
+
+.inviterttl {
+	background-color:#f2f6fa;
+	padding:20px;
+	margin-top:10px;
+	padding-top:14px;
+	padding-bottom:14px;
+	background-image:url('../imgs/inviterttl.gif');
+	background-repeat:no-repeat;
+	background-position:top left;
+}
+.inviterttl b {
+	font-size:18px;
+	color: #5e8dba;
+	font-weight:normal;
+}
+.inviterttl p {
+	margin:0px;
+	padding:0px;
+	margin-top:3px;
+}
+.reguserlist {
+	border:1px solid #87accf;
+}
+.reguserlist .users {
+	height:400px;
+	overflow:auto;
+}
+.reguserlist .theusers {
+	padding:15px;
+}
+.filterreguserlist {
+	background-color:#e9f0f6;
+	padding:5px;
+	border-bottom:1px solid #c0d6ec;
+}
+.filterreguserlist input {
+	background-color:#fff;
+	border:1px solid #d1dfec;
+	padding:4px;
+	color:#aaa;
+	width:190px;
+	float:left;
+}
+.filterreguserlist input:focus {
+	border:1px solid #87accf;
+	color:#000;
+}
+.filterreguserlist a {
+	float:right;
+	display:block;
+	color:#0055a4;
+	margin:2px;
+	margin-bottom:0px;
+}
+.filterreguserlist a b {
+	float:left;
+	display:block;
+	padding:4px 6px 4px 6px;
+	cursor:pointer;
+}
+.filterreguserlist a.slctd {
+	background-image:url('../imgs/inviterlinks.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+	float:right;
+}
+.filterreguserlist a.slctd b {
+	background-image:url('../imgs/inviterlinks_b.gif');	
+	background-position:top left;
+	background-repeat:no-repeat;
+	cursor:pointer;
+}
+.stepttl {
+	font-size:12px;
+	color: #4a7ba8;
+	margin:5px;
+	padding:0px;
+}
+.stepttl span {
+	font-size:12px;
+	color: #87accf;
+	font-weight:normal;
+}
+.submitreguserlist {
+	background-image:url('../imgs/submitreguserlist.gif');
+	background-color: #f2f6fa;
+	background-repeat:no-repeat;
+	background-position:bottom left;
+	padding:10px;
+}
+.submitreguserlist input {
+	padding:2px 5px 2px 5px;
+	font-weight:bold;
+}
+.browsereguserlist {
+	background-color:#f2f6fa;
+}
+.browsereguserlist a {
+	display:block;
+	float:left;
+	padding:4px 6px 4px 6px;
+	font-weight:bold;
+}
+.browsereguserlist a:hover {
+	background-color:#d7e1eb;
+}
+
+.browsereguserlist a.onn {
+	background-color:#87accf;
+	color:#fff;
+}
+
+/********************/
+.selectableuser {
+	width:270px;
+	height:50px;
+	padding:5px;
+	background-image:url('../imgs/selectableuser.gif');
+	float:left;
+	margin-right:10px;
+	margin-bottom:10px;
+	cursor:pointer;
+}
+.selectableuser:hover {
+	background-image:url('../imgs/selectableuser_hvr.gif');
+}
+.selectableuser.slctd {
+	background-image:url('../imgs/selectableuser_slctd.gif');
+}
+.selectableuser input {
+	float:left;
+}
+.selectableuser img {
+	float:left;
+	margin-left:5px;
+	margin-right:5px;
+	width:50px;
+	height:50px;
+}
+.selectableuser .selectableuserside {
+	float:left;
+	width:180px;
+	color:#999;
+	font-size:11px;
+}
+.selectableuser .selectableuserside b {
+	display:block;
+	font-size:12px;
+	color:#000;
+	margin-bottom:3px;
+	margin-top:2px;
+}
+.selectableuser .selectableuserside strong {
+	font-weight:normal;
+}
+.selectableuser.slctd .selectableuserside {
+	color:#56b956;
+}
+.selectableuser.slctd .selectableuserside b {
+	color:#004c00;
+}
+.selectableuser .selectableuserside b span {
+	color:#562200;
+	background-color: #feffc0;
+}

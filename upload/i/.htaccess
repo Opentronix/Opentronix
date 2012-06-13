@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine Off
+</ifModule>
+
+FileETag INode MTime Size
+
+<ifModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 300 days"
+</ifModule>
+
+<IfModule mod_gzip.c>
+	mod_gzip_on Yes
+	mod_gzip_dechunk Yes
+	mod_gzip_item_include file \.(js|css)$
+	mod_gzip_item_include mime ^text/.*
+</IfModule>
+
+<IfModule !mod_gzip.c>
+	<IfModule mod_deflate.c>
+		<FilesMatch "\.(js|css)$">
+			SetOutputFilter DEFLATE
+		</FilesMatch>
+	</IfModule>
+</IfModule>
+
+AddType text/plain .php .php3 .php4 .php5 .phtml .pl .py .jsp .asp .shtml .sh .cgi .htm .html

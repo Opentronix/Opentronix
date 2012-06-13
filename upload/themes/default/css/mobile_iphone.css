@@ -1,0 +1,1834 @@
+html, body {
+	margin: 0px;
+	padding:0px;
+}
+body{
+	color: #000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	background-color: #ececec;
+	position:relative;
+}
+td{
+	color: #222;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+A {
+	color:#1975e1;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+A:hover {
+	color: #11539e;
+}
+form {
+	margin:0px;
+	padding:0px;
+}
+.klear {
+	clear:both;
+	font-size:0px;
+}
+div {
+  display: inline-block;
+}
+div {
+  display: block;
+  overflow: hidden;
+  width: auto;
+}
+/*************/
+
+label {
+	display:block;
+	height:20px;
+}
+label input {	
+	float:left;
+}
+label span {	
+	padding:1px;
+	float:left;
+}
+/*********************/
+
+#hdr {
+	height: 41px;
+	background-image:url('../imgs/mobile_iphone/hdrbackgr.gif');
+	position:relative;
+	overflow:visible;
+	background-color:#013682;
+}
+#hdr h1 {
+	float:left;
+	color:white;
+	font-size:18px;
+	font-family:Arial;
+	font-weight:normal;
+	padding:10px;
+	margin:0px;
+	text-shadow:1px 1px 0 #002264;
+	padding-bottom:0px;
+}
+#hdr h1 a {
+	color:white;
+	font-size:18px;
+	font-family:Arial;
+	font-weight:normal;
+	text-shadow:1px 1px 0 #002264;
+} 
+
+#choosenet {
+	display:block;
+	float:left;
+	height:30px;
+	width:30px;
+	margin-top:5px;
+	background-image:url('../imgs/mobile_iphone/dropnet.gif');
+}
+#netmenu {
+	position:absolute;
+	top:41px;
+	left:0px;
+	width:100%;
+	background-color:red;
+	z-index:111;
+	background-image:url('../imgs/mobile_iphone/dropmenu_shadow.png');
+	padding-bottom:12px;
+	background-color:transparent;
+	background-repeat:repeat-x;
+	background-position:bottom left;
+}
+#netmenu a {
+	background-image:url('../imgs/mobile_iphone/netmenuitembackgr.gif');
+	border-top:1px solid #246db1;
+	border-bottom:1px solid #002150;
+	background-color:#003682;
+	display:block;
+	padding:6px;
+	color:#fff;
+	font-size:18px;
+	font-family:Arial;
+	font-weight:normal;
+	text-shadow:1px 1px 0 #002264;
+	padding-left:10px;
+
+}
+
+#hdr #menubtn {
+	display:block;
+	float:right;
+	width:43px;
+	height:41px;
+	background-image:url('../imgs/mobile_iphone/menubtn.gif');
+}
+#hdr #menubtn.clicked {
+	background-position:bottom;
+}
+
+#hdr #menubtn {
+	display:block;
+	float:right;
+	width:43px;
+	height:41px;
+	background-image:url('../imgs/mobile_iphone/menubtn.gif');
+}
+#hdr #menubtn.clicked {
+	background-position:bottom;
+}
+#menu {
+	position:absolute;
+	top:41px;
+	right:0px;
+	width:100%;
+	background-image:url('../imgs/mobile_iphone/menushadow.png');
+	background-position:bottom left;
+	background-repeat:repeat-x;
+	padding-bottom:31px;
+}
+#menu2 {
+	background-color: #e3e3e3;
+	border-bottom:1px solid #111;
+	background-image:url('../imgs/mobile_iphone/menugrad.gif');
+	background-position:bottom left;
+	background-repeat:repeat-x;
+}
+#menu3 {
+	background-image:url('../imgs/mobile_iphone/menushine.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+	padding:9px;
+	padding-top:10px;
+}
+#menu a {
+	display:block;
+	float:left;
+	width: 97px;
+	height:72px;
+	margin-left:5px;
+}
+#menu a:focus {
+	background-image:url('../imgs/mobile_iphone/menu_active.png');
+}
+#menu a div {
+	display:block;
+	width: 97px;
+	height:72px;
+}
+#menu a div b {
+	display:block;
+	width: 97px;
+	margin-top: 50px;
+	font-weight:normal;
+	color:black;
+	text-align:center;
+}
+#menu a div {
+	background-repeat:no-repeat;
+}
+#menu a.menuitem_search div {
+	background-image:url('../imgs/mobile_iphone/menuitem_search.png');
+}
+#menu a.menuitem_newpost div {
+	background-image:url('../imgs/mobile_iphone/menuitem_newpost.png');
+}
+#menu a.menuitem_activity div {
+	background-image:url('../imgs/mobile_iphone/menuitem_activity.png');
+}
+#menu a.menuitem_colleagues div {
+	background-image:url('../imgs/mobile_iphone/menuitem_colleagues.png');
+}
+#menu a.menuitem_groups div {
+	background-image:url('../imgs/mobile_iphone/menuitem_groups.png');
+}
+#menu a.menuitem_logout div {
+	background-image:url('../imgs/mobile_iphone/menuitem_logout.png');
+}
+
+#menu a.menuitem_activity {
+	margin-left:0px;
+}
+#menu a.menuitem_logout {
+	margin-left:0px;
+	}
+#blackoverlay, #blackoverlay2 {
+	background-color:black;
+	opacity:0.5;
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:41px;
+	left:0px;
+}
+/*********************/
+
+#postspage {
+	clear:both;
+	border-top:1px solid #eee;
+	background-color:#cbcbcb;
+	overflow:visible;
+}
+
+#dropfilter {
+	background-image:url('../imgs/mobile_iphone/dropfilter.gif');
+	height: 35px;
+	margin-top:3px;
+	position:relative;
+	overflow:visible;
+}
+#fdropper {
+	display:block;
+	background-image:url('../imgs/mobile_iphone/filterdropper.gif');
+	height:34px;
+	background-repeat:no-repeat;
+	background-position:top right;
+	font-size:18px;
+	font-family:Arial;
+	font-weight:normal;
+	text-shadow:1px 1px 0 #000;
+	color:white;
+	font-weight:normal;
+	position:relative;
+}
+#fdropper.dropped {
+	background-position:bottom right;
+}
+#fdropper b {
+	display:block;
+	padding-top:6px;
+	padding-left:8px;
+	font-weight:normal;
+}
+#dropmenu {
+	z-index:100;
+	position:absolute;
+	top:34px;
+	left:0px;
+	width:100%;
+	background-image:url('../imgs/mobile_iphone/dropmenu_shadow.png');
+	padding-bottom:12px;
+	background-color:transparent;
+	background-repeat:repeat-x;
+	background-position:bottom left;
+}
+#dropmenu div {
+	background-image:url('../imgs/mobile_iphone/dropfilteroption.gif');
+	border-top:1px solid #707070;
+	border-bottom:1px solid #1c1c1c;
+	background-color:#444444;
+}
+#dropmenu div span {
+	display:block;
+	padding:5px;
+	padding-left:20px;
+	background-image:url('../imgs/mobile_iphone/dropfilteroption_bulet.gif');
+	background-repeat:no-repeat;
+}
+#dropmenu div a {
+	color:white;
+	font-size:18px;
+	font-family:Arial;
+	font-weight:normal;	
+	color:#ccc;
+	text-shadow:1px 1px 0 #000;
+}
+
+#dropmenu div.current span {
+	background-image:url('../imgs/mobile_iphone/dropfilteroption_bulet_on.gif');
+}
+#dropmenu div.current span a {
+	color:white;
+}
+
+#dropmenu div strong {
+	float:right;
+	display:block;
+	background-image:url('../imgs/mobile_iphone/dropmenu_newitems.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+	margin-top:1px;
+
+}
+#dropmenu div strong small {
+	float:right;
+	display:block;
+	color:white;
+	font-size:12px;
+	background-image:url('../imgs/mobile_iphone/dropmenu_newitems2.gif');
+	background-position:top left;
+	background-repeat:no-repeat;
+	padding:2px 6px 4px 4px;
+	text-shadow:1px 1px 0 #390000;
+}
+
+/************/
+
+#posts {
+	padding:9px;
+	padding-bottom:0px;
+}
+.post {
+	margin-bottom:9px;
+	background-image:url('../imgs/mobile_iphone/avatarbackgr.gif');
+	background-repeat:no-repeat;
+	background-position:top left;
+	position:relative;
+	padding-left:37px;
+}
+.postavatar {
+	position:absolute;
+	top:4px;
+	left:4px;
+}
+.postavatar img{
+	border:0px;
+}
+.posthdr {
+	background-image:url('../imgs/mobile_iphone/posthdrbackgr.gif');
+	height: 33px;
+	border-left:1px solid #b6b6b6;
+	background-color:white;
+}
+.posthdr2 {
+	background-image:url('../imgs/mobile_iphone/posthdrbackgr2.gif');
+	height: 33px;
+	background-repeat:no-repeat;
+	background-position:top right;
+}
+.postauthorname {
+	display:block;
+	float:left;
+	padding:5px;
+	font-size:18px;
+	padding-left:8px;
+}
+.posticons {
+	float:right;
+}
+.posticons a {
+	float:right;
+	display:block;
+	height:33px;
+	width:30px;
+}
+.posticons a.pi_pm {
+	background-image:url('../imgs/mobile_iphone/pi_pm.gif');
+}
+.posticons a.pi_at {
+	background-image:url('../imgs/mobile_iphone/pi_at.gif');
+}
+.postbody { 
+	padding:5px;
+	padding-left:8px;
+	background-color:white;
+	border-left:1px solid #b6b6b6;
+	border-right:1px solid #b6b6b6;	
+	border-bottom:1px solid #f0f0f0;
+	font-size:1em;
+}
+.postbody small {
+	font-size:1em;
+	color:#aaa;
+}
+.postlink { 
+	padding:5px;
+	padding-left:8px;
+	background-color:white;
+	border-left:1px solid #b6b6b6;
+	border-right:1px solid #b6b6b6;	
+	border-bottom:1px solid #f0f0f0;
+	font-size:1em;
+	position:relative;
+}
+.postlink a {
+	white-space:nowrap;
+	display:block;
+	overflow:hidden;
+}
+.postlink b{
+	position:absolute;
+	width:50px;
+	height:100%;
+	top:0px;
+	right:0px;
+	background-image:url('../imgs/mobile_iphone/whiteoverlay.png');
+}
+.postimages { 
+	padding:8px;
+	background-color:white;
+	border-left:1px solid #b6b6b6;
+	border-right:1px solid #b6b6b6;	
+	border-bottom:1px solid #f0f0f0;
+}
+.postimages a {
+	width:60px;
+	height:60px;
+	display:block;
+	float:left;
+	margin-right:8px;
+	position:relative;
+}
+.postimages a span {
+	display:block;
+	float:left;
+	top:20px;
+	left:20px;
+	width:20px;
+	height:20px;
+	position:absolute;
+}
+.postimages a.pa_image span {
+	background-image:url('../imgs/mobile_iphone/att_image.png');
+}
+.postimages a.pa_video span {
+	background-image:url('../imgs/mobile_iphone/att_video.png');
+}
+.postimages a img {
+	border:0px;
+}
+
+.postftr {
+	background-image:url('../imgs/mobile_iphone/postftr.gif');
+	background-position:bottom left;
+	background-repeat:repeat-x;
+	background-color:white;
+}
+.postftr2 {
+	background-image:url('../imgs/mobile_iphone/postftr_left.gif');
+	background-position:bottom left;
+	background-repeat:no-repeat;
+}
+.postftr3 {
+	background-image:url('../imgs/mobile_iphone/postftr_right.gif');
+	background-position:bottom right;
+	background-repeat:no-repeat;
+}
+.addcomment {
+	display:block;
+	float:left;
+	padding:6px;
+	padding-left:8px;
+	padding-bottom:7px;
+	color:#666;
+	font-size:12px;
+}
+.hascomments {
+	display:block;
+	float:left;
+	padding:6px;
+	padding-left:8px;
+	padding-bottom:7px;
+	font-size:12px;
+}
+.hasnewcomments {
+	display:block;
+	float:left;
+	padding:0px;
+	margin:0px;
+}
+.hasnewcomments b {
+	display:block;
+	float:left;
+	padding:6px;
+	padding-left:8px;
+	padding-bottom:7px;
+	font-weight:normal;
+	font-size:12px;
+}
+.hasnewcomments span {
+	display:block;
+	float:left;
+	margin-top:4px;
+	background-image:url('../imgs/mobile_iphone/ncc_right.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+}
+.hasnewcomments span strong {
+	display:block;
+	float:left;
+	padding:2px 6px 3px 6px;
+	font-weight:normal;
+	color:#ff5a00;
+	background-image:url('../imgs/mobile_iphone/ncc_left.gif');
+	background-position:top left;
+	background-repeat:no-repeat;
+}
+
+/***/
+#loadmore {
+	height: 34px;
+	position:relative;
+	padding-left: 37px;
+	margin:9px;
+	margin-top:0px;
+	padding-bottom:9px;
+	margin-bottom:0px;
+}
+#loadmoreloader {
+	position:absolute;
+	top:2px;
+	left:2px;
+	width:32px;
+	height:32px;
+	background-image:url('../imgs/mobile_iphone/postloader.gif');
+	display:none;
+}
+#loadmore a {
+	display:block;
+	background-color: #f4f4f4;
+	background-image: url('../imgs/mobile_iphone/loadmore_backgr.gif');
+	background-repeat:repeat-x;
+}
+#loadmore a b {
+	background-image: url('../imgs/mobile_iphone/loadmore_left.gif');
+	background-repeat:no-repeat;
+	display:block;
+}
+#loadmore a b strong {
+	background-image: url('../imgs/mobile_iphone/loadmore_right.gif');
+	background-repeat:no-repeat;
+	display:block;
+	background-position:top right;
+	font-size:18px;
+	padding:6px;
+	font-weight:normal;
+	padding-left:10px;
+}
+
+/****/
+#ftr {
+	border-top:2px solid #999;
+	padding:10px;
+	color:#888;
+	font-size:13px;
+}
+/*********/
+#profile {
+	background-color: #414141;
+	border-top:1px solid #505050;
+	border-bottom:1px solid #353535;
+	padding:10px;
+	position:relative;
+}
+#profilenav {
+	height:42px;
+	background-image:url('../imgs/mobile_iphone/profilenav.gif');
+	background-color: #454545;
+	background-repeat:repeat-x;
+}
+#profilenav a {
+	display:block;
+	float:left;
+	width:25%;
+	text-align:center;
+	background-image:url('../imgs/mobile_iphone/pnav_right.gif');
+	background-repeat:no-repeat;
+	background-position:top right;
+}
+#profilenav a b {
+	display:block;
+	padding-top:11px;
+	padding-bottom:15px;
+	font-size:15px;
+	font-weight:normal;
+	color:white;
+	text-shadow:1px 1px 0 #000;
+	background-image:url('../imgs/mobile_iphone/pnav_left.gif');
+	background-repeat:no-repeat;
+	background-position:top left;
+}
+#profilenav a.onpnav {	
+	background-image:url('../imgs/mobile_iphone/pnav_on.gif');
+	background-repeat:repeat-x;
+	background-color:#cbcbcb;
+}
+#profilenav a.onpnav b {	
+	background-image:none;
+	color:#000;
+	text-shadow:1px 1px 0 #fff;
+}
+#profile_avatar {
+	background-image:url('../imgs/mobile_iphone/defaultavatar.gif');
+	background-repeat:no-repeat;
+	width: 101px;
+	height:103px;
+	padding-left:1px;
+	float:left;
+	margin-right:10px;
+}
+#profile_text {
+	float:left;
+	position:absolute;
+	top:10px;
+	left:121px;
+}
+#profile_text h1 {
+	color:white;
+	font-weight:normal;
+	margin:0px;
+	padding:0px;
+	font-size:20px;
+	text-shadow:1px 1px 0 #000;
+	white-space:nowrap;
+}
+#profile_text strong {
+	color:#ccc;
+	font-weight:normal;
+	margin:0px;
+	padding:0px;
+	font-size:12px;
+	text-shadow:1px 1px 0 #000;
+}
+
+/************************/
+
+#profileicons {
+	margin-top:10px;
+}
+#profileicons a {
+	display:block;
+	float:left;
+	height: 31px;
+	background-color: #3a3a3a;
+	margin-right:5px;
+}
+#profileicons a.pri_add {
+	background-image:url('../imgs/mobile_iphone/pri_add.gif');
+	width: 31px;
+}
+#profileicons a.pri_rem {
+	background-image:url('../imgs/mobile_iphone/pri_rem.gif');
+	width: 31px;
+}
+#profileicons a.pri_at {
+	background-image:url('../imgs/mobile_iphone/pri_at.gif');
+	width: 30px;
+}
+#profileicons a.pri_pm {
+	background-image:url('../imgs/mobile_iphone/pri_pm.gif');
+	width: 39px;
+}
+#profileicons a.pri_ptg {
+	background-image:url('../imgs/mobile_iphone/pri_ptg.gif');
+	width: 33px;
+}
+
+/********************************/
+
+#listpage {
+	clear:both;
+	background-color:#cbcbcb;
+	overflow:visible;
+	padding:9px;
+}
+#prlist {
+	background-color:white;
+	background-image:url('../imgs/mobile_iphone/pl_left.gif');
+	background-repeat:repeat-y;
+	background-position:top left;
+}
+#prlist2 {
+	background-image:url('../imgs/mobile_iphone/pl_right.gif');
+	background-repeat:repeat-y;
+	background-position:top right;
+}
+#prlist3 {
+	background-image:url('../imgs/mobile_iphone/pl_topright.gif');
+	background-repeat:no-repeat;
+	background-position:top right;
+}
+#prlist4 {
+	background-image:url('../imgs/mobile_iphone/pl_topleft.gif');
+	background-repeat:no-repeat;
+	background-position:top left;
+}
+#prlist5 {
+	background-image:url('../imgs/mobile_iphone/pl_bottomright.gif');
+	background-repeat:no-repeat;
+	background-position:bottom right;
+}
+#prlist6 {
+	background-image:url('../imgs/mobile_iphone/pl_bottomleft.gif');
+	background-repeat:no-repeat;
+	background-position:bottom left;
+}
+#prlist a {
+	display:block;
+	border-bottom:1px solid #f0f0f0;
+	padding:9px;
+	height: 50px;
+	margin-left:1px;
+	margin-right:1px;
+	padding-right:30px;
+	position:relative;
+	overflow:hidden;
+}
+#prlist a img {
+	border:0px;
+	float:left;
+}
+#prlist a div {
+	float:left;
+	margin-left:9px;
+	font-size:12px;
+	color:#999;
+	position:absolute;
+	top:9px;
+	left:60px;
+}
+#prlist a div strong {
+	display:block;
+	font-size:18px;
+	color:#000;
+	font-weight:normal;
+	padding-bottom:5px;
+	white-space:nowrap;
+}
+#prlist a span {
+	background-image:url('../imgs/mobile_iphone/plarrow.png');
+	background-repeat:no-repeat;
+	background-position:top right;
+	width: 40px;
+	height:45px;
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+/*****************************/
+
+#nextback {
+	background-color: #f4f4f4;
+	background-image: url('../imgs/mobile_iphone/loadmore_backgr.gif');
+	background-repeat:repeat-x;
+	margin-top:9px;
+}
+#nextback2 {
+	background-image: url('../imgs/mobile_iphone/loadmore_left.gif');
+	background-repeat:no-repeat;
+	display:block;
+}
+#nextback3 {
+	background-image: url('../imgs/mobile_iphone/loadmore_right.gif');
+	background-repeat:no-repeat;
+	background-position:top right;
+	padding:6px;
+}
+#nextback a {
+	font-size:18px;
+}
+#nextback a.nb_back {
+	float:left;
+	padding-right:10px;
+	padding-left:8px;
+}
+#nextback a.nb_next {
+	float:right;
+	padding-right:10px;
+	padding-left:10px;
+}
+/************/
+#listfilter {
+	position:relative;
+	overflow:visible;
+	margin-bottom:9px;
+}
+#listfilterchosen {
+	display:block;
+	background-color: #f4f4f4;
+	background-image: url('../imgs/mobile_iphone/loadmore_backgr.gif');
+	background-repeat:repeat-x;
+}
+#listfilterchosen b {
+	background-image: url('../imgs/mobile_iphone/loadmore_left.gif');
+	background-repeat:no-repeat;
+	display:block;
+	font-size:16px;
+	-webkit-text-size-adjust: none;
+}
+#listfilterchosen b strong {
+	background-image: url('../imgs/mobile_iphone/listfilterchosen_right.gif');
+	background-repeat:no-repeat;
+	background-position:top right;
+	background-position:top right;
+	padding:8px;
+	padding-top:7px;
+	font-weight:normal;
+	padding-left:10px;
+	display:block;
+	color:black;
+	font-size:12pt;
+}
+#listfilterchosen b strong span {
+	font-size:14px;
+	color:#999;
+}
+#listfilteroptions {
+	background-color:white;
+	background-image:url('../imgs/mobile_iphone/lfo_ftr.gif');
+	background-repeat:repeat-x;
+	background-position:bottom right;
+	position:absolute;
+	top:33px;
+	left:0px;
+	width:100%;
+	margin-right:10px;
+	z-index:100;
+}
+#listfilteroptions2 {	
+	border:1px solid #b6b6b6;
+	border-top:1px solid #e3e3e3;
+}
+#listfilteroptions a {
+	display:block;
+	padding:7px;
+	border-bottom:1px solid #eee;
+	font-size:16px;
+	-webkit-text-size-adjust: none;
+}
+#listfilteroptions a span {
+	color:#999;
+}
+
+#listfilterchosen.dropped b {
+	background-image: url('../imgs/mobile_iphone/listfilterchosen_left_dropped.gif');
+}
+#listfilterchosen.dropped b strong {
+	background-image: url('../imgs/mobile_iphone/listfilterchosen_right_dropped.gif');
+}
+
+/***********************/
+#postpage {	
+	clear:both;
+	border-top:1px solid #eee;
+	background-color:#cbcbcb;
+	overflow:visible;
+	padding:9px;
+}
+#sharewith {
+	height:37px;
+	background-color:#b3b3b3;
+	background-image:url('../imgs/mobile_iphone/swleft.gif');
+	position:relative;
+	padding-left:100px;
+	overflow:visible;
+
+}
+#sharewith b {
+	display:block;
+	float:right;
+	font-size:15px;
+	-webkit-text-size-adjust: none;
+	font-weight:normal;
+	top:9px;
+	left:10px;
+	position:absolute;
+}
+#swdropper {
+	background-image:url('../imgs/mobile_iphone/swd_backgr.gif');
+	display:block;
+	height:37px;
+	position:relative;
+	overflow:hidden;
+}
+#swdropper strong {
+	background-image:url('../imgs/mobile_iphone/swd_left.gif');
+	display:block;
+	height:37px;
+	background-repeat:no-repeat;
+}
+#swdropper strong span {
+	background-image:url('../imgs/mobile_iphone/swd_right.gif');
+	display:block;
+	height:37px;
+	background-repeat:no-repeat;
+	background-position:top right;
+	padding-top:9px;
+	padding-left:10px;
+	font-size:16px;
+	-webkit-text-size-adjust: none;
+	font-weight:normal;
+	white-space:nowrap;
+}
+#swdropper small {
+	position:absolute;
+	top:0px;
+	right:0px;
+	height: 37px;
+	width: 69px;
+	background-image:url('../imgs/mobile_iphone/swd_mask.png');	
+}
+#swdropmenu {
+	position:absolute;
+	top:34px;
+	right:0px;
+	width:100%;
+}
+#swdropmenu2 {
+	background-color:white;
+	border:1px solid #959595;
+	border-top:1px solid #e3e3e3;
+	background-image:url('../imgs/mobile_iphone/lfo_ftr.gif');
+	background-position:bottom left;
+	background-repeat:repeat-x;
+	margin-left:100px;
+	margin-bottom:9px;
+}
+#swdropmenu a {
+	display:block;
+	padding:7px;
+	border-bottom:1px solid #eee;
+	font-size:16px;
+	-webkit-text-size-adjust: none;
+	white-space:nowrap;
+	position:relative;
+	overflow:hidden;
+}
+#swdropmenu a small {
+	position:absolute;
+	top:0px;
+	right:0px;
+	height: 32px;
+	width: 56px;
+	background-image:url('../imgs/mobile_iphone/swd_a_mask.png');	
+}
+#swdropmenu a span {
+	font-size:14px;
+	-webkit-text-size-adjust: none;
+	color:#888;
+
+}
+#swinput {
+	background-image:url('../imgs/mobile_iphone/swinput_backgr.gif');
+	height:37px;
+}
+#swinput2 {
+	background-image:url('../imgs/mobile_iphone/swinput_left.gif');
+	height:37px;
+	background-repeat:no-repeat;
+}
+#swinput3 {
+	background-image:url('../imgs/mobile_iphone/swinput_right.gif');
+	height:37px;
+	background-repeat:no-repeat;
+	background-position:top right;
+	padding-right: 57px;
+	position:relative;
+}
+#swinput input {
+	display:block;
+	background-color:transparent;
+	width:100%;
+	border:0px;
+	margin-top: 4px;
+	margin-left:3px;
+	font-size:18px;
+	-webkit-text-size-adjust: none;
+	-webkit-appearance: none; 
+}
+#swinput a#swinputdropper {
+	position:absolute;
+	top:0px;
+	right:0px;
+	height:37px;
+	width: 37px;
+}
+#txtr {	
+	margin-top:9px;
+	background-color:white;
+	background-image:url('../imgs/mobile_iphone/pta_content.gif');
+	background-repeat:repeat-x;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:1px solid #999999;
+	padding:5px;
+	padding-left:2px;
+}
+#txtr textarea {	
+	display:block;
+	width:99%;
+	font-family:Arial;
+	font-size:22px;
+	height:100px;
+	padding:0px;
+	border:0px;
+	background-color:transparent;
+	margin:0px;
+	margin-right:10px;
+	-webkit-appearance: none; 
+	-webkit-text-size-adjust: none;
+}
+#updatebtn {
+	background-color: #003682;
+	height:40px;
+	margin-top:9px;
+	background-image:url('../imgs/mobile_iphone/updatebtn.gif');
+	display:block;
+}
+#updatebtn strong {
+	display:block;
+	background-image:url('../imgs/mobile_iphone/updatebtn_right.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+}
+#updatebtn strong b {
+	display:block;
+	background-image:url('../imgs/mobile_iphone/updatebtn_left.gif');
+	background-position:top left;
+	background-repeat:no-repeat;
+	font-size:22px;
+	color:white;
+	text-shadow:1px 1px 0 #003682;
+	font-weight:normal;
+	text-align:center;
+	-webkit-text-size-adjust: none;
+	padding-top:6px;
+	padding-bottom:8px;
+}
+/**********/
+#attbtns {
+	height: 37px;
+	margin-top:9px;
+	background-image:url('../imgs/mobile_iphone/attbtns_a_last.gif');
+	background-position:top right;
+}
+#attbtns a {
+	display:block;
+	width:25%;
+	height: 37px;
+	float:left;
+	background-image:url('../imgs/mobile_iphone/attbtns_a.gif');
+	background-repeat:no-repeat;
+	background-position:top right;
+}
+#attbtns a strong {
+	display:block;
+	background-image:url('../imgs/mobile_iphone/attbtns_b.gif');
+	background-repeat:no-repeat;
+	padding:9px;
+	padding-left:30px;
+	padding-bottom:12px;
+	font-weight:normal;
+	font-size:14px;
+}
+
+#attbtns a.ab_last {
+	background-image:none;
+}
+#attbtns a.ab_first strong {
+	background-image:url('../imgs/mobile_iphone/attbtns_b_first.gif');
+}
+
+
+#attbtns a.pressed {	
+	background-image:url('../imgs/mobile_iphone/attbtns_a_pressed.gif');
+}
+#attbtns a.pressed strong {
+	background-image:url('../imgs/mobile_iphone/attbtns_b_pressed.gif');
+	color:black;
+	text-shadow:1px 1px 0 #fff;
+}
+
+
+
+#attbtns a.full strong {
+	background-image:url('../imgs/mobile_iphone/attbtns_b_full.gif');
+}
+
+#attbtns.lastpressed {
+	background-image:url('../imgs/mobile_iphone/attbtns_lastpressed.gif');
+}
+#attbtns.lastpressed a.pressed {
+	background-image:none;
+}
+
+#attbtns a.ab_first.full strong {
+	background-image:url('../imgs/mobile_iphone/attbtns_b_full_first.gif');
+}
+#attbtns a.ab_first.pressed strong {
+	background-image:url('../imgs/mobile_iphone/attbtns_b_pressed_first.gif');
+}
+
+
+/***********************************/
+
+#postattacher {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	background-image:url('../imgs/mobile_iphone/attachshadow.png');
+	background-position:bottom left;
+	background-repeat:repeat-x;
+	padding-bottom: 15px;
+}
+#postattacher2 {
+	background-color:white;
+	padding:10px;
+	background-image:url('../imgs/mobile_iphone/attachboxgrad.gif');
+	background-position:bottom left;
+	background-repeat:repeat-x;
+}
+#closeattach {
+	background-image:url('../imgs/mobile_iphone/closeattach.gif');
+	width: 40px;
+	height:40px;
+	float:right;
+}
+#attachbtn {
+	float:left;
+	display:block;
+	background-image:url('../imgs/mobile_iphone/attachbtn.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+	background-color: #003682;
+}
+#postattacher h2 {
+	display:block;
+	margin:0px;
+	padding:0px;
+	padding-bottom:9px;
+	font-size:14px;
+	-webkit-text-size-adjust: none;
+	font-weight:normal;
+}
+#attachbtn b{
+	float:left;
+	display:block;
+	background-image:url('../imgs/mobile_iphone/attachbtn_b.gif');
+	background-position:top left;
+	color:White;
+	background-repeat:no-repeat;
+	font-size:18px;
+	text-shadow:1px 1px 0 #002150;	
+	font-weight:normal;
+	padding:9px 15px 9px 15px;
+}
+#reattachbtn {
+	float:left;
+	display:block;
+	background-image:url('../imgs/mobile_iphone/reattachbtn.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+	background-color: #f90000;
+}
+#reattachbtn b{
+	float:left;
+	display:block;
+	background-image:url('../imgs/mobile_iphone/reattachbtn_b.gif');
+	background-position:top left;
+	color:White;
+	background-repeat:no-repeat;
+	font-size:18px;
+	text-shadow:1px 1px 0 #930000;	
+	font-weight:normal;
+	padding:9px 15px 9px 15px;
+}
+#postattacher #patt {
+	margin-bottom:9px;
+	background-color:#eee;
+	background-repeat:repeat-x;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:1px solid #999999;
+	padding:5px;
+	padding-left:2px;
+}
+#postattacher input {
+	display:block;
+	width:99%;
+	font-family:Arial;
+	font-size:22px;
+	padding:0px;
+	border:0px;
+	background-color:transparent;
+	margin:0px;
+	margin-right:10px;
+	-webkit-appearance: none; 
+	-webkit-text-size-adjust: none;
+}
+#postattacher .postattach_loader {
+	width:32px;
+	height:32px;
+	background-image:url('../imgs/mobile_iphone/postattach-loader.gif');
+	float:left;
+	margin-top:4px;
+	margin-left:10px;
+	display:none;
+}
+#postattacher.postattach_loading .postattach_loader {
+	display:block;
+}
+/********/
+.curratt {
+	background-image:url('../imgs/mobile_iphone/curratt.gif');
+	background-position:top left;
+	background-color:#eeeeee;
+	height: 38px;
+	margin-bottom:9px;
+	position:relative;
+}
+.curratt b {
+	display:block;
+	white-space:nowrap;
+	float:left;
+	padding-top:8px;
+	padding-left:8px;
+	font-size:18px;
+	font-weight:normal;
+	-webkit-text-size-adjust: none;
+}
+.currattmask {
+	height:38px;
+	position:absolute;
+	top:0px;
+	right:0px;
+	width: 46px;
+	background-image:url('../imgs/mobile_iphone/curratt_mask.png');
+}
+/*******/
+#attabs {
+	height: 43px;
+	background-image:url('../imgs/mobile_iphone/atabs.gif');
+	padding-left:8px;
+}
+#attabs a {
+	display:block;
+	float:left;
+	margin-top:8px;
+}
+#attabs a b {
+	display:block;
+	float:left;
+	font-size:16px;
+	-webkit-text-size-adjust: none;
+	padding:6px 10px 8px 10px;
+	font-weight:normal;
+}
+#attabs a.onattab {
+	display:block;
+	background-image:url('../imgs/mobile_iphone/attab_on.gif');
+	background-position:top right;
+}
+#attabs a.onattab b {
+	background-image:url('../imgs/mobile_iphone/attab_on_b.gif');
+	background-position:top left;
+	background-repeat:no-repeat;
+	color:black;
+	text-shadow:1px 1px 0 #fff;	
+	font-weight:normal;
+}
+
+/*******/
+
+.post_mentioned b, .post_tag b {
+	font-weight:normal;
+}
+
+
+/*******/
+#comments {
+	margin-bottom:9px;
+}
+.commentsttl {
+	border-left:1px solid #b6b6b6;
+	border-right:1px solid #b6b6b6;
+	font-weight:bold;
+	padding:5px;
+	margin-left: 37px;
+	background-image:url('../imgs/mobile_iphone/commentsttl.gif');
+	background-color: #f5f5f5;
+	background-repeat:repeat-x;
+	background-position:bottom left;
+}
+.commentsttl a {
+	float:right;
+}
+.acomment {
+	background-image:url('../imgs/mobile_iphone/avatarbackgr.gif');
+	background-repeat:no-repeat;
+	background-position:top left;
+	position:relative;
+	padding-left:37px;
+}
+.acomment .commentbody {
+	border-top:1px solid #ddd;
+	padding:5px;
+	padding-left:8px;
+	background-color:white;
+	border-left:1px solid #b6b6b6;
+	border-right:1px solid #b6b6b6;	
+	font-size:1em;
+}
+.acomment .commentauthor {
+	display:block;
+	margin-bottom:3px;
+	font-weight:bold;
+}
+.acomment .commentmeta {
+	font-size:12px;
+	color:#999;
+	margin-top:3px
+}
+#postcomment {
+	background-color:#f5f5f5;
+	border-left:1px solid #b6b6b6;
+	border-right:1px solid #b6b6b6;	
+	padding:6px;
+	border-top:1px solid #fff;
+	margin-left:37px;	
+	padding-bottom:0px;
+}
+#textar {
+	border:1px solid #aaa;
+	background-color:white;
+	-webkit-border-radius: 5px;
+	padding:5px;
+}
+#textar textarea {
+	width:95%;
+	font-size:1.5em;
+	-webkit-appearance: none; 
+	border:0px;
+	background-color:transparent;
+	padding:0px;
+	margin:0px;
+	height:100px;
+}
+
+#textar textarea:focus {
+	-webkit-appearance: none; 
+}
+
+
+#combtn {
+	float:left;
+	display:block;
+	background-image:url('../imgs/mobile_iphone/attachbtn.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+	background-color: #003682;
+	margin-top:6px;
+}
+#combtn b{
+	float:left;
+	display:block;
+	background-image:url('../imgs/mobile_iphone/attachbtn_b.gif');
+	background-position:top left;
+	color:White;
+	background-repeat:no-repeat;
+	font-size:18px;
+	text-shadow:1px 1px 0 #002150;	
+	font-weight:normal;
+	padding:9px 15px 9px 15px;
+}
+#commentsftr {
+	height:7px;
+	background-image:url('../imgs/mobile_iphone/cftr.gif');
+	margin-left:37px;
+}
+#commentsftr2 {
+	height:7px;
+	background-image:url('../imgs/mobile_iphone/cftr_left.gif');
+	background-repeat:no-repeat;
+	background-position:top left;
+}
+#commentsftr3 {
+	height:7px;
+	background-image:url('../imgs/mobile_iphone/cftr_right.gif');
+	background-repeat:no-repeat;
+	background-position:top right;
+}
+
+/***************/
+
+.mpost {
+	margin-bottom:9px;
+	background-image:url('../imgs/mobile_iphone/avatarbackgr.gif');
+	background-repeat:no-repeat;
+	background-position:top left;
+	position:relative;
+	padding-left:37px;
+}
+.closempost {
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:22px;
+	height:22px
+	background-image:url('../imgs/mobile_iphone/closempost.gif');
+	display:block;
+}
+.mpostbody {
+	background-image:url('../imgs/mobile_iphone/mphdr.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+}
+.mpostbody2 {
+	background-image:url('../imgs/mobile_iphone/mphdr2.gif');
+	background-position:top left;
+	background-repeat:no-repeat;	
+	padding-top:4px;
+}
+.mpostbody .thempostbody {
+	padding:5px;
+	padding-left:8px;
+	background-color:white;
+	border-left:1px solid #b6b6b6;
+	border-right:1px solid #b6b6b6;	
+	font-size:1em;
+	min-height: 28px;
+}
+.mpftr {
+	height:4px;
+	background-image:url('../imgs/mobile_iphone/mpftr_right.gif');
+	background-position:top right;
+}
+.mpftr2 {
+	height:4px;
+	background-image:url('../imgs/mobile_iphone/mpftr_left.gif');
+	background-position:top left;
+	background-repeat:no-repeat;
+}
+.mpostbody small {
+	font-size:1em;
+	color:#aaa;
+}
+
+/***************/
+
+.alert {
+	margin-bottom:9px;
+	padding:10px;
+	-webkit-border-radius: 5px;
+}
+.alert.red {
+	background-color:#ffd6d6;
+	border:1px solid #a81515;
+}
+.alert.green {
+	background-color:#d9ffd6;
+	border:1px solid #1a8e11;
+}
+.alert.yellow {
+	background-color:#fff5b4;
+	border:1px solid #927f00;
+}
+
+/***************/
+
+.pmto {
+	background-image:url('../imgs/mobile_iphone/pmto.gif');
+	display:block;
+	float:left;
+	width:9px;
+	height:12px;
+	margin-top:11px;
+	margin-left:2px;
+}
+
+/*************/
+#loginintro {
+	background-color:#eee;
+	padding:10px;
+}
+#loginintro p {
+	line-height:1.4;
+	margin-bottom:0px;
+	padding-bottom:0px;
+}
+#loginintro h2 {
+	margin:0px;
+	padding:0px;
+	font-size:22px;
+	font-weight:normal;
+	color:#002150;
+}
+#loginbox {
+	background-color:white;
+	padding:10px;
+
+}
+#loginbox b{
+	font-weight:normal;
+	display:block;
+	font-size:12px;
+	margin-bottom:5px;
+	-webkit-text-size-adjust: none;
+}
+.loginputdiv {
+	border:1px solid #aaa;
+	-webkit-border-radius:5px;
+	background-color:#f5f5f5;
+	padding:2px;
+	margin-bottom:10px;
+}
+.loginputdiv input {
+	border:0px;
+	background-color:transparent;
+	width:95%;
+	-webkit-appearance: none; 
+	font-size:22px;
+	-webkit-text-size-adjust: none;
+}
+.loginputdiv select {
+	border:0px;
+	background-color:transparent;
+	width:100%;
+	-webkit-appearance: none; 
+	font-size:22px;
+	-webkit-text-size-adjust: none;
+}
+
+#loginbtn {
+	float:left;
+	display:block;
+	background-image:url('../imgs/mobile_iphone/attachbtn.gif');
+	background-position:top right;
+	background-repeat:no-repeat;
+	background-color: #003682;
+}
+#loginbtn strong{
+	float:left;
+	display:block;
+	background-image:url('../imgs/mobile_iphone/attachbtn_b.gif');
+	background-position:top left;
+	color:White;
+	background-repeat:no-repeat;
+	font-size:18px;
+	text-shadow:1px 1px 0 #002150;	
+	font-weight:normal;
+	padding:9px 15px 9px 15px;
+}
+#forgpasslink {
+	border-top:1px solid #ccc;	
+	padding:10px;
+	background-color:white;
+}
+#loginbox label {
+	float:left;
+	margin:10px;
+}
+#loginbox label input {
+	float:left;
+}
+#loginbox label span {
+	float:left;
+	padding:3px;
+}
+/***************/
+#searchpage {
+	background-color:white;
+}
+#searchinput {
+	padding:9px;
+	background-color:#d2d2d2;
+	padding-top:6px;
+}
+#searchpage #attabs {
+	border-bottom:0px;
+	background-image:url('../imgs/mobile_iphone/atabs2.gif');
+}
+#searchinput input#submitsearch {
+	position:absolute;
+	top:1px;
+	right:1px;
+	width: 29px;
+	height:33px;
+	background-image:url('../imgs/mobile_iphone/searchicon.gif');
+	display:block;
+	border:0px;
+	background-color:transparent;
+	padding:0px;
+	margin:0px;
+	background-repeat:no-repeat;
+	background-position:12px 8px;
+}
+#searchinput span {
+	position:relative;
+	padding-right:20px;
+	display:block;
+	border:1px solid #aaa;
+	background-color:white;
+	-webkit-border-radius: 5px;
+}
+#searchinput span input {
+	width:87%;
+	font-size:20px;
+	-webkit-text-size-adjust: none;
+	-webkit-border-radius: 5px;
+	-webkit-appearance: none; 
+	border:0px;
+}
+#savedsearches {
+	border-top:1px solid #9c9c9c;
+}
+#savedsearches b {
+	border-bottom:1px solid #ccc;
+	padding:5px;
+	padding-left:10px;
+	display:block;
+	font-size:14px;
+	font-weight:normal;
+	background-color:#f9f9f9;
+	background-image:url('../imgs/mobile_iphone/savedsearchesttl.gif');
+	background-position:top right;
+	background-repeat:repeat-x;
+}
+#savedsearches a {
+	border-bottom:1px solid #f5f5f5;
+	padding:7px;
+	padding-left:10px;
+	display:block;
+	font-size:18px;
+	white-space:nowrap;
+}
+/***************/
+
+#infopage {
+	clear:both;
+	background-color:#cbcbcb;
+	overflow:visible;
+	padding:9px;
+}
+#infopage b {
+	padding:5px;
+	display:block;
+	padding-top:0px;
+	-webkit-text-size-adjust: none;
+}
+#infopagepanel {
+	background-color:#fff;
+	border:1px solid #999;	
+	-webkit-border-radius: 6px;
+	margin-bottom:10px;
+}
+#infopagepanel div {
+	border-bottom:1px solid #eee;
+	padding:5px 5px 5px 8px;
+	-webkit-text-size-adjust: none;
+	white-space:nowrap;
+}
+#infopagepanel div span {
+	color:#888;
+}
+#infopagepanel.exps a {
+	background-position:5px 5px;
+	background-repeat:no-repeat;
+	border-bottom:1px solid #eee;
+	padding:5px;
+	-webkit-text-size-adjust: none;
+	display:block;
+	padding-left:30px;
+}
+
+a.prof_linkedin { background-image:url('../imgs/ext_prof_linkedin.gif') }
+a.prof_orcut { background-image:url('../imgs/ext_prof_orcut.gif') }
+a.prof_myspace { background-image:url('../imgs/ext_prof_myspace.gif') }
+a.prof_youtube { background-image:url('../imgs/ext_prof_youtube.gif') }
+a.prof_mixx { background-image:url('../imgs/ext_prof_mixx.gif') }
+a.prof_edno23 { background-image:url('../imgs/ext_prof_edno23.gif') }
+a.prof_favit { background-image:url('../imgs/ext_prof_favit.gif') }
+a.prof_delicious { background-image:url('../imgs/ext_prof_delicious.gif') }
+a.prof_digg { background-image:url('../imgs/ext_prof_digg.gif') }
+a.prof_twitter { background-image:url('../imgs/ext_prof_twitter.gif') }
+a.prof_friendfeed { background-image:url('../imgs/ext_prof_friendfeed.gif') }
+a.prof_flickr { background-image:url('../imgs/ext_prof_flickr.gif') }
+a.prof_facebook { background-image:url('../imgs/ext_prof_facebook.gif') }
+
+#infopagepanel.mesgrs div {
+	background-position:5px 5px;
+	background-repeat:no-repeat;
+	border-bottom:1px solid #eee;
+	padding:5px;
+	-webkit-text-size-adjust: none;
+	display:block;
+	padding-left:30px;
+}
+div.im_aim { background-image:url('../imgs/im_aim.gif') }
+div.im_msn { background-image:url('../imgs/im_msn.gif') }
+div.im_gtalk { background-image:url('../imgs/im_gtalk.gif') }
+div.im_icq { background-image:url('../imgs/im_icq.gif') }
+div.im_jabber { background-image:url('../imgs/im_jabber.gif') }
+div.im_skype { background-image:url('../imgs/im_skype.gif') }
+div.im_yahoo { background-image:url('../imgs/im_yahoo.gif') }
+
+#aboutme {
+	padding:8px;
+	line-height:1.4;
+	background-color:#fff;
+	border:1px solid #999;	
+	-webkit-border-radius: 6px;
+	margin-bottom:10px;
+}
+
+/***********/
+.attachedpost {
+	padding:8px;
+	background-color:white;
+	border-left:1px solid #b6b6b6;
+	border-right:1px solid #b6b6b6;	
+	border-bottom:1px solid #f0f0f0;	
+	padding-bottom:3px;
+}
+.attachedpost a.linktoattachedpost {
+	display:block;
+	background-image:url('../imgs/mobile_iphone/attachedposticon.gif');
+	background-repeat:no-repeat;
+	background-position:top left;
+	padding-left:55px;
+	color:#888;
+	padding-bottom:5px;
+}
+.attachedpost a.linktoattachedpost b {
+	display:block;
+	color:#0052b3;
+}
+/***************/
+
+#vp_ap {
+	border:1px solid #666;
+	background-color:white;
+	border-bottom:0px;
+	position:relative;
+	overflow:visible;
+}
+#ap_avatar {
+	position:absolute;
+	top:-1px;
+	left:-38px;
+	background-color:white;
+	width:36px;
+	height:36px;
+	border:1px solid #666;
+	border-right:0px;
+}
+#ap_avatar img {
+	border:0px;
+	margin-top:3px;
+	margin-left:3px;
+}
+#ap_postbody {
+	padding:5px 5px 5px 8px;
+}
+#ap_postbody span{
+	color:#999;
+	-webkit-text-size-adjust: none;
+}
+#ap_postbody span a{
+	color:#666;
+}
+#ap_username {
+	display:block;
+	padding:5px 5px 5px 8px;
+	border-bottom:1px solid #f5f5f5;
+	font-size:18px;
+	font-weight:normal;
+
+}
+.ap_ttle {
+	padding:5px;
+	padding-left:8px;
+	background-color:white;
+	border-left:1px solid #b6b6b6;
+	border-right:1px solid #b6b6b6;	
+	font-size:1em;
+	color:#777;
+	-webkit-text-size-adjust: none;
+}
+#vp_ap .postimages {
+	border:0px;
+	border-top:1px solid #f5f5f5;
+}
+#vp_ap .postlink {
+	border:0px;
+	border-top:1px solid #f5f5f5;
+}
+#vp_ap .postcomments {
+	padding:5px 5px 5px 8px;
+}
+#vp_ap .postcomments a {
+	font-weight:bold;
+}
+#publiccomments #postcomment {
+	border-bottom:1px solid #666;
+	padding-bottom:5px;
+	border-left:1px solid #666;
+	border-right:1px solid #666;	
+}
+#publiccomments .commentsttl {
+	border-left:1px solid #666;
+	border-right:1px solid #666;	
+}
+#publiccomments .commentbody {
+	border-left:1px solid #666 !important;
+	border-right:1px solid #666 !important;	
+	
+}
+
+/***************/
+

@@ -1,0 +1,5 @@
+Opentronix 1.5.0 (initial release)
+
+    * Initial release based on Sharetronix 1.4.2
+    * Username autocompletion in posts
+    * Message content is now displayed in new-comment notifications 

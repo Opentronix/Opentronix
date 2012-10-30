@@ -9,14 +9,14 @@
 	
 	$current_theme	= (object) array
 	(
-		'name'		=> 'Default theme',
+		'name'			=> 'Default theme',
 		'version'		=> '',
-		'image'		=> 'theme.gif',
+		'image'			=> 'theme.gif',
 		'description'	=> 'Default theme for Opentronix',
 		
 		'author_name'	=> 'Opentronix',
-		'author_url'	=> 'http://...',
-		'author_email'	=> '...@...org',
+		'author_url'	=> 'http://localhost/opentronix/upload',
+		'author_email'	=> 'remo@trynet.ch',
 		
 		'logo_height'	=> '34',
 		'logo_bgcolor'	=> '#0055a4',

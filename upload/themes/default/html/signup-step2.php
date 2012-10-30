@@ -52,6 +52,7 @@
 				<tr>
 					<td class="regparam" style="padding-top:13px;"><?= $this->lang('signup_step2_form_captcha') ?></td>
 					<td>
+						<input type="hidden" maxlength="8" name="sp_postcode" value="" />
 						<input type="hidden" name="captcha_key" value="<?= $D->captcha_key ?>" />
 						<?= $D->captcha_html ?><br />
 						<input type="text" maxlength="20" name="captcha_word" value="" autocomplete="off" class="reginp" style="width:168px; margin-top:5px;" />

@@ -247,6 +247,15 @@
 				$D->password	= '';
 				$D->password2	= '';
 			}
+			
+			/**
+			 * Spam Protection Massnahme #1
+			 */
+			if(!empty($_POST['sp_postcode'])) {
+				$D->error = true;
+				$D->errmsg = 'signup_err_captcha';
+			}
+			
 			if( !$D->error && !$C->USERS_EMAIL_CONFIRMATION ) {
 				if( !isset($_POST['captcha_key'],$_POST['captcha_word']) || !isset($_SESSION['captcha_'.$_POST['captcha_key']]) || $_SESSION['captcha_'.$_POST['captcha_key']]!=strtolower($_POST['captcha_word']) ) {
 					$D->error	= TRUE;

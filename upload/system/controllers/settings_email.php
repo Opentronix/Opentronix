@@ -88,6 +88,7 @@
 			$D->error = TRUE;
 			$D->errmsg = $this->lang('st_email_current_error');
 		}
+		// HASHFAIL
 		elseif(empty($D->user_pass) || (md5($D->user_pass) != $this->user->info->password))
 		{
 			$D->error = TRUE;

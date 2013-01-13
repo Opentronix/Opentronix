@@ -92,6 +92,8 @@
 			}
 			$login	= $this->db2->escape($login);
 			$pass		= $this->db2->escape($pass);
+			// TODO: bcrypt $pass here. We also don't need the escape in that case. Just hash it.
+			// You're entering the rabbit-hole of fail here... Yeah, this is actually just the beginning.
 			$this->db2->query('SELECT id FROM users WHERE (email="'.$login.'" OR username="'.$login.'") AND password="'.$pass.'" AND active=1 LIMIT 1');
 			if( ! $obj = $this->db2->fetch_object() ) {
 				return FALSE;
@@ -108,6 +110,12 @@
 			$ip	= $this->db2->escape( ip2long($_SERVER['REMOTE_ADDR']) );
 			$this->db2->query('UPDATE users SET lastlogin_date="'.time().'", lastlogin_ip="'.$ip.'", lastclick_date="'.time().'" WHERE id="'.$this->id.'" LIMIT 1');
 			if( TRUE == $rememberme ) {
+				// HASHFAIL
+				// TODO: How do other frameworks do this? 
+				// We need a random value, not something derived from username et al. Especially because this never changes......
+				// This is a huge flaw! This here allows an Attacker to crack away at a session forever, because the magic cookie
+				// never changes. 
+				// http://stackoverflow.com/questions/2594960/best-practice-to-implement-secure-remember-me
 				$tmp	= $this->id.'_'.md5($this->info->username.'~~'.$this->info->password.'~~'.$_SERVER['HTTP_USER_AGENT']);
 				setcookie('rememberme', $tmp, time()+60*24*60*60, '/', cookie_domain());
 			}
@@ -135,7 +143,12 @@
 			}
 			$obj->username	= stripslashes($obj->username);
 			$obj->password	= stripslashes($obj->password);
+			// HASHFAIL
+			// NO! Nononono! See above. 
 			if( $tmp[1] == md5($obj->username.'~~'.$obj->password.'~~'.$_SERVER['HTTP_USER_AGENT']) ) {
+				// WTF IS THIS!?! This grabs the username and hashed password and sends it to another
+				// function to verify it against the username and hashed password FROM THE DATABASE!!!
+				// Shame on you, Sharetronix, shame on you!!
 				return $this->login($obj->username, $obj->password, TRUE);
 			}
 			setcookie('rememberme', NULL, time()+30*24*60*60, '/', cookie_domain());

@@ -37,6 +37,7 @@
 					$D->errmsg	= 'signinforg_err_passdiff';
 				}
 				else {
+					// HASHFAIL
 					$pass	= md5($pass);
 					$this->db2->query('UPDATE users SET password="'.$this->db2->e($pass).'", pass_reset_key="", pass_reset_valid="" WHERE id="'.$u->id.'" LIMIT 1');
 					$u	= $this->network->get_user_by_id($u->id, TRUE);

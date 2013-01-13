@@ -269,10 +269,12 @@
 			if( !$D->error ) {
 				$tmplang	= $db2->fetch_field('SELECT value FROM settings WHERE word="LANGUAGE" LIMIT 1');
 				$tmpzone	= $db2->fetch_field('SELECT value FROM settings WHERE word="DEF_TIMEZONE" LIMIT 1');
+				// HASHFAIL
 				$tmppass	= md5($D->password);
 				$db2->query('INSERT INTO users SET email="'.$db2->e($D->email).'", username="'.$db2->e($D->username).'", password="'.$db2->e($tmppass).'", fullname="'.$db2->e($D->fullname).'", language="'.$tmplang.'", timezone="'.$tmpzone.'", reg_date="'.time().'", reg_ip="'.ip2long($_SERVER['REMOTE_ADDR']).'", active=1');
 				$user_id	= intval($db2->insert_id());
 				$db1->query('DELETE FROM unconfirmed_registrations WHERE email="'.$db1->e($D->email).'" ');
+				// HASHFAIL
 				$this->user->login($D->email, md5($D->password), FALSE);
 				
 				$gravatar_url	= 'http://www.gravatar.com/avatar/'.md5($D->email).'?s='.$C->AVATAR_SIZE.'&d=404';

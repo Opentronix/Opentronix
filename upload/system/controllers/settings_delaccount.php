@@ -18,6 +18,7 @@
 	if( isset($_POST['userpass']) ) 
 	{
 		$D->submit	= TRUE;
+		// HASHFAIL
 		if( md5($_POST['userpass']) != $this->user->info->password ) {
 			$D->error	= TRUE;
 			$D->errmsg	= 'st_delaccount_pass_err';

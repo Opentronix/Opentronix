@@ -35,6 +35,7 @@
 			$D->error	= TRUE;
 			$D->errmsg	= 'admdelu_err_user1';
 		}
+		// HASHFAIL
 		elseif( md5($_POST['admpass']) != $this->user->info->password ) {
 			$D->error	= TRUE;
 			$D->errmsg	= 'admdelu_err_pass';

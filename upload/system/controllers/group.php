@@ -634,6 +634,7 @@
 					$D->error		= TRUE;
 					$D->errmsg		= 'group_del_f_err_posts';
 				}
+				// HASHFAIL
 				if( !$D->error && md5($D->password)!=$this->user->info->password ) {
 					$D->error		= TRUE;
 					$D->errmsg		= 'group_del_f_err_passwd';

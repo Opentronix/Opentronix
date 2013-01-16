@@ -89,5 +89,11 @@
 		$C->VERSION		= '';
 		$C->DEBUG_USERS		= '';
 	// 
+
+	// Google ReCaptcha API keys
+	//
+		$C->RECAPTCHA_PRIVATE_KEY = '';
+		$C->RECAPTCHA_PUBLIC_KEY  = '';
+	//
 	
 ?>

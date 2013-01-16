@@ -15,6 +15,7 @@
 	require_once( $C->INCPATH.'helpers/func_signup.php' );
 	require_once( $C->INCPATH.'helpers/func_images.php' );
 	require_once( $C->INCPATH.'helpers/func_captcha.php' );
+	require_once( $C->INCPATH.'helpers/func_recaptcha.php');
 	
 	$D->terms_of_use	= FALSE;
 	if( isset($C->TERMSPAGE_ENABLED,$C->TERMSPAGE_CONTENT) && $C->TERMSPAGE_ENABLED==1 && !empty($C->TERMSPAGE_CONTENT) ) {
@@ -68,7 +69,7 @@
 		}
 	}
 	
-	
+	// If user email confirmation is active and we have an email address in POST.
 	if( $C->USERS_EMAIL_CONFIRMATION && isset($_POST['email']) && !empty($_POST['email']) )
 	{
 		$D->submit	= TRUE;
@@ -103,10 +104,16 @@
 		$D->steps	= $D->network_members==0 ? 2 : 3;
 		$this->load_template('signup-step1.php');
 	}
+
+	// if user email confirmation is active and someone came here through the confirmation link
+	// in the email. We'll show her the forms for a new user and password and the captcha.
 	elseif( ($C->USERS_EMAIL_CONFIRMATION && $this->param('regid') && $this->param('regkey')) || !$C->USERS_EMAIL_CONFIRMATION )
 	{
 		$D->email		= '';
 		$D->fullname	= '';
+		if ( $C->RECAPTCHA_PRIVATE_KEY != '' ){
+			$D->captcha_html	=	recaptcha_get_html($C->RECAPTCHA_PUBLIC_KEY);
+		}
 		if( $twinfo && isset($twinfo->tmp_valid) && $twinfo->tmp_valid ) {
 			$D->email	= '';
 			$D->fullname	= $twinfo->name;
@@ -134,14 +141,6 @@
 			$D->email		= stripslashes($obj->email);
 			$D->fullname	= stripslashes($obj->fullname);
 		}
-		else {
-			$D->captcha_key	= '';
-			$D->captcha_word	= '';
-			$D->captcha_html	= '';
-			list($D->captcha_word, $D->captcha_html)	= generate_captcha(5);
-			$D->captcha_key	= md5($D->captcha_word.time().rand());
-			$_SESSION['captcha_'.$D->captcha_key]	= $D->captcha_word;
-		}
 		
 		$D->steps	= $C->USERS_EMAIL_CONFIRMATION ? ($D->network_members>0 ? 3 : 2) : ($D->network_members>0 ? 2 : 1);
 		$D->submit	= FALSE;
@@ -162,6 +161,9 @@
 		$D->password	= '';
 		$D->password2	= '';
 		$D->accept_terms	= FALSE;
+
+
+		// This means the user has already filled in the name and username (and presumably password.)
 		if( isset($_POST['fullname'], $_POST['username']) ) {
 			$D->submit	= TRUE;
 			$D->fullname	= trim($_POST['fullname']);
@@ -212,6 +214,8 @@
 					$D->errmsg	= $obj->active==1 ? 'signup_err_usernm_exists' : 'signup_err_usernm_disabled';
 				}
 			}
+
+			// username?
 			if( !$D->error ) {
 				$db2->query('SELECT id FROM groups WHERE groupname="'.$db2->e($D->username).'" LIMIT 1');
 				if($obj = $db2->fetch_object()) {
@@ -219,28 +223,40 @@
 					$D->errmsg	= 'signup_err_usernm_exists';
 				}
 			}
+
+			// username?
 			if( !$D->error && file_exists($C->INCPATH.'controllers/'.strtolower($D->username).'.php') ) {
 				$D->error	= TRUE;
 				$D->errmsg	= 'signup_err_usernm_existss';
 			}
+
+			// username exists already?
 			if( !$D->error && file_exists($C->INCPATH.'controllers/mobile/'.strtolower($D->username).'.php') ) {
 				$D->error	= TRUE;
 				$D->errmsg	= 'signup_err_usernm_existss';
 			}
+
+			// does the username exist already?
 			if( !$D->error && file_exists($C->INCPATH.'../'.strtolower($D->username)) ) {
 				$D->error	= TRUE;
 				$D->errmsg	= 'signup_err_usernm_existss';
 			}
+
+			// do we have two passwords?
 			if( !$D->error && (empty($D->password) || empty($D->password2)) ) {
 				$D->error	= TRUE;
 				$D->errmsg	= 'signup_err_password';
 				$D->password	= '';
 				$D->password2	= '';
 			}
+
+			// is the password long enough?
 			if( !$D->error && strlen($D->password)<5 ) {
 				$D->error	= TRUE;
 				$D->errmsg	= 'signup_err_passwdlen';
 			}
+
+			// do we have two passwords matching?
 			if( !$D->error && $D->password!=$D->password2 ) {
 				$D->error	= TRUE;
 				$D->errmsg	= 'signup_err_passwddiff';
@@ -248,24 +264,27 @@
 				$D->password2	= '';
 			}
 			
-			/**
-			 * Spam Protection Massnahme #1
-			 */
-			if(!empty($_POST['sp_postcode'])) {
-				$D->error = true;
-				$D->errmsg = 'signup_err_captcha';
-			}
-			
-			if( !$D->error && !$C->USERS_EMAIL_CONFIRMATION ) {
-				if( !isset($_POST['captcha_key'],$_POST['captcha_word']) || !isset($_SESSION['captcha_'.$_POST['captcha_key']]) || $_SESSION['captcha_'.$_POST['captcha_key']]!=strtolower($_POST['captcha_word']) ) {
+			// check recaptcha if everything else is fine
+			if( !$D->error ) {
+				$recaptcha_check = recaptcha_check_answer ( 
+					$C->RECAPTCHA_PRIVATE_KEY,
+					$_SERVER["REMOTE_ADDR"],
+					$_POST["recaptcha_challenge_field"],
+					$_POST["recaptcha_response_field"]
+				);
+				if (!$recaptcha_check->is_valid){
 					$D->error	= TRUE;
 					$D->errmsg	= 'signup_err_captcha';
 				}
 			}
+
+			// if the user didn't accept the terms of use
 			if( !$D->error && $D->terms_of_use && !$D->accept_terms ) {
 				$D->error	= TRUE;
 				$D->errmsg	= 'signup_err_terms';
 			}
+			
+			// if everything was okay. So far.
 			if( !$D->error ) {
 				$tmplang	= $db2->fetch_field('SELECT value FROM settings WHERE word="LANGUAGE" LIMIT 1');
 				$tmpzone	= $db2->fetch_field('SELECT value FROM settings WHERE word="DEF_TIMEZONE" LIMIT 1');
@@ -401,6 +420,7 @@
 					$this->redirect( $C->SITE_URL.'signup/follow/regid:'.$key);
 				}
 				else {
+					// everything worked out. redirect the user into his dashboard
 					$this->redirect($C->SITE_URL.'dashboard');
 				}
 			}

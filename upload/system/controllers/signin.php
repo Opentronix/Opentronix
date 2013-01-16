@@ -85,10 +85,12 @@
 			if( $this->user->is_logged ) {
 				$this->user->logout();
 			}
+			// HASHFAIL
 			$res	= $this->user->login($D->email, md5($D->password), $D->rememberme);
 			if( ! $res ) {
 				$D->error	= TRUE;
 				if( $this->network->id ) {
+					// HASHFAIL
 					$db2->query('SELECT id FROM users WHERE (email="'.$db2->e($D->email).'" OR username="'.$db2->e($D->email).'") AND password="'.$db2->e(md5($D->password)).'" AND active=0 LIMIT 1');
 					if( $db2->num_rows() > 0 ) {
 						$D->errmsg	= 'signin_form_errmsgsusp';

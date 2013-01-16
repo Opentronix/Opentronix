@@ -262,6 +262,7 @@
 			if( empty($username) && empty($password) ) {
 				return FALSE;
 			}
+			// HASHFAIL
 			if( $user->login($username, md5($password)) ) {
 				return TRUE;
 			}
@@ -281,6 +282,7 @@
 		if( isset($_SERVER['PHP_AUTH_USER']) ) {
 			$username	= trim($_SERVER['PHP_AUTH_USER']);
 			$password	= trim($_SERVER['PHP_AUTH_PW']);
+			// HASHFAIL
 			if( $user->login($username, md5($password)) ) {
 				return TRUE;
 			}

@@ -34,6 +34,7 @@
 			if( $this->user->is_logged ) {
 				$this->user->logout();
 			}
+			// HASHFAIL
 			$res	= $this->user->login($D->email, md5($D->password), $D->rememberme);
 			if( ! $res ) {
 				$D->error	= TRUE;

@@ -24,6 +24,7 @@
 		$D->pass_old	= trim($_POST['pass_old']);
 		$D->pass_new	= trim($_POST['pass_new']);
 		$D->pass_new2	= trim($_POST['pass_new2']);
+		// HASHFAIL
 		if( empty($D->pass_old) || md5($D->pass_old)!=$db2->fetch_field('SELECT password FROM users WHERE id="'.$this->user->id.'" LIMIT 1') ) {
 			$D->error	= TRUE;
 			$D->errmsg	= 'st_password_err_current';
@@ -37,6 +38,7 @@
 			$D->errmsg	= 'st_password_err_missmatch';
 		}
 		else {
+			// HASHFAIL
 			$pass	= md5($D->pass_new);
 			$db2->query('UPDATE users SET password="'.$db2->e($pass).'" WHERE id="'.$this->user->id.'" LIMIT 1');
 			$this->user->info->password	= $pass;

@@ -22,8 +22,12 @@
 		$D->terms_of_use	= TRUE;
 	}
 	
+
+	/* *************  FACEBOOK/TWITTER CONNECT ************* */
+
 	$fbinfo	= FALSE;
 	if( $this->param('fbinfo') && isset($_SESSION[$this->param('fbinfo')]) ) {
+		// someone is trying to connect through their facebook account.
 		$fbinfo	= $_SESSION[$this->param('fbinfo')];
 		$db2->query('SELECT email, password FROM users WHERE facebook_uid<>"" AND facebook_uid="'.$db2->e($fbinfo->uid).'" LIMIT 1');
 		if($tmp = $db2->fetch_object()) {
@@ -48,6 +52,7 @@
 	}
 	$twinfo	= FALSE;
 	if( $this->param('get')=='twitter' && isset($_SESSION['TWITTER_CONNECTED']) && $_SESSION['TWITTER_CONNECTED'] && $_SESSION['TWITTER_CONNECTED']->id ) {
+		// someone is trying to connect through their twitter account.
 		$twinfo	= $_SESSION['TWITTER_CONNECTED'];
 		$twinfo->id	= intval($twinfo->id);
 		$db2->query('SELECT email, password FROM users WHERE twitter_uid<>"" AND twitter_uid="'.$db2->e($twinfo->id).'" LIMIT 1');
@@ -69,6 +74,14 @@
 		}
 	}
 	
+	/* *************  END FACEBOOK/TWITTER CONNECT ************* */
+
+	/* if the user chose to connect with facebook or twitter, $C->USERS_EMAIL_CONFIRMATION
+	 * will be false. Thus these codeblocks below will not be applicable, as they deal with
+	 * email validation etc etc.
+	 */
+
+	/* *************  START EMAIL VALIDATION ************* */
 	// If user email confirmation is active and we have an email address in POST.
 	if( $C->USERS_EMAIL_CONFIRMATION && isset($_POST['email']) && !empty($_POST['email']) )
 	{
@@ -107,6 +120,9 @@
 
 	// if user email confirmation is active and someone came here through the confirmation link
 	// in the email. We'll show her the forms for a new user and password and the captcha.
+	// 
+
+	// ... or user email confirmation is disabled.
 	elseif( ($C->USERS_EMAIL_CONFIRMATION && $this->param('regid') && $this->param('regkey')) || !$C->USERS_EMAIL_CONFIRMATION )
 	{
 		$D->email		= '';
@@ -123,6 +139,8 @@
 			$D->fullname	= $fbinfo->name;
 		}
 		
+		// This checks if the confirmation key from the email is valid.
+		// if not, it redirects to the standard login page.
 		$invited_code	= '';
 		if( $C->USERS_EMAIL_CONFIRMATION ) {
 			$reg_id	= intval($this->param('regid'));
@@ -142,6 +160,8 @@
 			$D->fullname	= stripslashes($obj->fullname);
 		}
 		
+		// From here on, we have non-empty $D->email and $D->fullname variables
+
 		$D->steps	= $C->USERS_EMAIL_CONFIRMATION ? ($D->network_members>0 ? 3 : 2) : ($D->network_members>0 ? 2 : 1);
 		$D->submit	= FALSE;
 		$D->error	= FALSE;
@@ -149,6 +169,7 @@
 		$D->errmsg_lngkeys	= array();
 		$D->username	= '';
 		$tmp_try_username	= '';
+		// facebook/twitter stuff.
 		if( $fbinfo && !empty($fbinfo->username) ) { $tmp_try_username = trim($fbinfo->username); }
 		if( $twinfo && !empty($twinfo->screen_name) ) { $tmp_try_username = trim($twinfo->screen_name); }
 		if( !empty($tmp_try_username) && !preg_match('/[^a-z0-9-_]/i', $tmp_try_username) ) {
@@ -162,9 +183,12 @@
 		$D->password2	= '';
 		$D->accept_terms	= FALSE;
 
+		if( ! isset($_POST['fullname'], $_POST['username']) ){
+			$this->load_template('signup-step2.php');
+		}
 
 		// This means the user has already filled in the name and username (and presumably password.)
-		if( isset($_POST['fullname'], $_POST['username']) ) {
+		else {
 			$D->submit	= TRUE;
 			$D->fullname	= trim($_POST['fullname']);
 			$D->fullname	= strip_tags($D->fullname);
@@ -278,7 +302,7 @@
 				}
 			}
 
-			// if the user didn't accept the terms of use
+			// the user didn't accept the terms of use
 			if( !$D->error && $D->terms_of_use && !$D->accept_terms ) {
 				$D->error	= TRUE;
 				$D->errmsg	= 'signup_err_terms';
@@ -290,7 +314,7 @@
 				$tmpzone	= $db2->fetch_field('SELECT value FROM settings WHERE word="DEF_TIMEZONE" LIMIT 1');
 				// HASHFAIL
 				$tmppass	= md5($D->password);
-				$db2->query('INSERT INTO users SET email="'.$db2->e($D->email).'", username="'.$db2->e($D->username).'", password="'.$db2->e($tmppass).'", fullname="'.$db2->e($D->fullname).'", language="'.$tmplang.'", timezone="'.$tmpzone.'", reg_date="'.time().'", reg_ip="'.ip2long($_SERVER['REMOTE_ADDR']).'", active=1');
+				$db2->query('INSERT INTO users SET email="'.$db2->e($D->email).'", username="'.$db2->e($D->username).'", password="'.$db2->e($tmppass).'", fullname="'.$db2->e($D->fullname).'", language="'.$tmplang.'", timezone="'.$tmpzone.'", reg_date="'.time().'", reg_ip="'.ip2long($_SERVER['REMOTE_ADDR']).'", active=2');
 				$user_id	= intval($db2->insert_id());
 				$db1->query('DELETE FROM unconfirmed_registrations WHERE email="'.$db1->e($D->email).'" ');
 				// HASHFAIL
@@ -425,10 +449,14 @@
 				}
 			}
 		}
-		$this->load_template('signup-step2.php');
+		//
 	}
+	/* *************  END EMAIL VALIDATION ************* */
+
+
 	elseif( $C->USERS_EMAIL_CONFIRMATION )
 	{
+		// This is the default part of the sign up. When a user goes to /signup, they end up here.
 		$D->submit	= FALSE;
 		$D->error	= FALSE;
 		$D->errmsg	= '';
@@ -436,5 +464,6 @@
 		$D->steps	= $D->network_members==0 ? 2 : 3;
 		$this->load_template('signup-step1.php');
 	}
-	
+
+
 ?>

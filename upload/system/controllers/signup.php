@@ -408,42 +408,43 @@
 						}
 					}
 				}
-				if( $D->network_members > 0 ) {
-					$key	= md5(time().rand(0,999999));
-					$_SESSION['reg_'.$key]	= (object) array (
-						'network_id'	=> $this->network->id,
-						'user_id'		=> $user_id,
-					);
+				// if( $D->network_members > 0 ) {
+				// 	$key	= md5(time().rand(0,999999));
+				// 	$_SESSION['reg_'.$key]	= (object) array (
+				// 		'network_id'	=> $this->network->id,
+				// 		'user_id'		=> $user_id,
+				// 	);
 					
-					$this->load_langfile('inside/notifications.php');
-					$this->load_langfile('email/notifications.php');
-					$r	= $db2->query('SELECT id FROM users WHERE active=1', FALSE);
-					while($sdf = $db2->fetch_object($r)) {
-						$uid	= intval($sdf->id);
-						$send_post	= FALSE;
-						$send_mail	= FALSE;
-						$n	= intval( $this->network->get_user_notif_rules($uid)->ntf_me_if_u_registers );
-						if( $n == 2 ) { $send_post = TRUE; } elseif( $n == 3 ) { $send_mail = TRUE; } elseif( $n == 1 ) { $send_post = TRUE; $send_mail = TRUE; }
-						if( $send_post ) {
-							$lng	= array('#COMPANY#'=>$C->COMPANY, '#USER#'=>'<a href="'.$C->SITE_URL.$this->user->info->username.'" title="'.htmlspecialchars($this->user->info->fullname).'"><span class="mpost_mentioned">@</span>'.$this->user->info->username.'</a>');
-							$this->network->send_notification_post($uid, 0, 'msg_ntf_me_if_u_registers', $lng, 'replace');
-						}
-						if( $send_mail ) {
-							$lng_txt	= array('#SITE_TITLE#'=>$C->SITE_TITLE, '#COMPANY#'=>$C->COMPANY, '#USER#'=>'@'.$this->user->info->username, '#NAME#'=>$this->user->info->fullname, '#A0#'=>$C->SITE_URL.$this->user->info->username);
-							$lng_htm	= array('#SITE_TITLE#'=>$C->SITE_TITLE, '#COMPANY#'=>$C->COMPANY, '#USER#'=>'<a href="'.$C->SITE_URL.$this->user->info->username.'" title="'.htmlspecialchars($this->user->info->fullname).'" target="_blank">@'.$this->user->info->username.'</a>', '#NAME#'=>$this->user->info->fullname, '#A0#'=>'');
-							$subject		= $this->lang('emlsubj_ntf_me_if_u_registers', $lng_txt);
-							$message_txt	= $this->lang('emltxt_ntf_me_if_u_registers', $lng_txt);
-							$message_htm	= $this->lang('emlhtml_ntf_me_if_u_registers', $lng_htm);
-							$this->network->send_notification_email($uid, 'u_edt_profl', $subject, $message_txt, $message_htm);
-						}
-					}
+				// 	$this->load_langfile('inside/notifications.php');
+				// 	$this->load_langfile('email/notifications.php');
+				// 	$r	= $db2->query('SELECT id FROM users WHERE active=1', FALSE);
+				// 	while($sdf = $db2->fetch_object($r)) {
+				// 		$uid	= intval($sdf->id);
+				// 		$send_post	= FALSE;
+				// 		$send_mail	= FALSE;
+				// 		$n	= intval( $this->network->get_user_notif_rules($uid)->ntf_me_if_u_registers );
+				// 		if( $n == 2 ) { $send_post = TRUE; } elseif( $n == 3 ) { $send_mail = TRUE; } elseif( $n == 1 ) { $send_post = TRUE; $send_mail = TRUE; }
+				// 		if( $send_post ) {
+				// 			$lng	= array('#COMPANY#'=>$C->COMPANY, '#USER#'=>'<a href="'.$C->SITE_URL.$this->user->info->username.'" title="'.htmlspecialchars($this->user->info->fullname).'"><span class="mpost_mentioned">@</span>'.$this->user->info->username.'</a>');
+				// 			$this->network->send_notification_post($uid, 0, 'msg_ntf_me_if_u_registers', $lng, 'replace');
+				// 		}
+				// 		if( $send_mail ) {
+				// 			$lng_txt	= array('#SITE_TITLE#'=>$C->SITE_TITLE, '#COMPANY#'=>$C->COMPANY, '#USER#'=>'@'.$this->user->info->username, '#NAME#'=>$this->user->info->fullname, '#A0#'=>$C->SITE_URL.$this->user->info->username);
+				// 			$lng_htm	= array('#SITE_TITLE#'=>$C->SITE_TITLE, '#COMPANY#'=>$C->COMPANY, '#USER#'=>'<a href="'.$C->SITE_URL.$this->user->info->username.'" title="'.htmlspecialchars($this->user->info->fullname).'" target="_blank">@'.$this->user->info->username.'</a>', '#NAME#'=>$this->user->info->fullname, '#A0#'=>'');
+				// 			$subject		= $this->lang('emlsubj_ntf_me_if_u_registers', $lng_txt);
+				// 			$message_txt	= $this->lang('emltxt_ntf_me_if_u_registers', $lng_txt);
+				// 			$message_htm	= $this->lang('emlhtml_ntf_me_if_u_registers', $lng_htm);
+				// 			$this->network->send_notification_email($uid, 'u_edt_profl', $subject, $message_txt, $message_htm);
+				// 		}
+				// 	}
 					
-					$this->redirect( $C->SITE_URL.'signup/follow/regid:'.$key);
-				}
-				else {
-					// everything worked out. redirect the user into his dashboard
-					$this->redirect($C->SITE_URL.'dashboard');
-				}
+				// 	$this->redirect( $C->SITE_URL.'signup/follow/regid:'.$key);
+				// }
+				// else {
+				// 	// everything worked out. redirect the user into his dashboard
+				// 	
+				// }
+				$this->redirect($C->SITE_URL.'activationneeded');
 			}
 		}
 		$this->load_template('signup-step2.php');

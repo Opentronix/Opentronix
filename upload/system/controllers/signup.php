@@ -449,7 +449,7 @@
 				}
 			}
 		}
-		//
+		$this->load_template('signup-step2.php');
 	}
 	/* *************  END EMAIL VALIDATION ************* */
 

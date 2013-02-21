@@ -183,12 +183,9 @@
 		$D->password2	= '';
 		$D->accept_terms	= FALSE;
 
-		if( ! isset($_POST['fullname'], $_POST['username']) ){
-			$this->load_template('signup-step2.php');
-		}
 
 		// This means the user has already filled in the name and username (and presumably password.)
-		else {
+		if( isset($_POST['fullname'], $_POST['username']) ) {
 			$D->submit	= TRUE;
 			$D->fullname	= trim($_POST['fullname']);
 			$D->fullname	= strip_tags($D->fullname);

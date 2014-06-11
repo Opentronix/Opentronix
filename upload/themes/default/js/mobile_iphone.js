@@ -67,7 +67,7 @@ function menu_update_orientation() {
 	}
 	else if( o == 90 || o == -90 ) {
 		m.className	= "rotated";
-	}	
+	}
 }
 
 w.addEventListener("load", function() {
@@ -411,7 +411,7 @@ function pf_submit() {
 }
 function pf_submit_step2() {
 	if( !d.pf ) { return; }
-	if( !pf_submit_in_progress ) { return; } 
+	if( !pf_submit_in_progress ) { return; }
 	d.pf.onsubmit	= function() { return true; };
 	d.pf.submit();
 }

@@ -96,7 +96,7 @@ function posts_synchronize()
 	var req = ajax_init(false);
 	if( ! req ) { return; }
 	var dv	= d.getElementById("posts_html");
-	if( ! dv ) { return; }	
+	if( ! dv ) { return; }
 	var url	= w.location.href.toString();
 	if( ! url ) { return; }
 	if( url.substr(0, siteurl.length) == siteurl ) {
@@ -655,7 +655,7 @@ function extshare_openbox(tmpid)
 	}
 	var bx	= d.getElementById("extshare_tmpbox_"+tmpid);
 	if( !bx ) { return false; }
-	
+
 	var bx2	= d.getElementById("extshare_tmpbox_open_"+tmpid);
 	if( bx2 ) {
 		bx2.style.display	= "none";

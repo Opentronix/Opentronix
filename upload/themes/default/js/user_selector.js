@@ -98,7 +98,7 @@ UserSelector.prototype.init	= function()
 		c[11]	= false;
 	}
 	d.getElementById("userselectortab_sel_num").innerHTML	= this.selnum;
-	setTimeout( function() { 
+	setTimeout( function() {
 		obj.tab(obj.seltab);
 		obj.onload();
 	}, 1);

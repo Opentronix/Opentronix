@@ -973,7 +973,7 @@ function postform_htmlobject_show(div_id, orig_height, callback_after, steps, de
 	div.style.display		= "block";
 	div.style.opacity		= 0.5;
 	pf_htmlobjects_shown[div_id]	= 2;
-	func();	
+	func();
 }
 
 function postform_htmlobject_hide(div_id, callback_after, steps, delay)
@@ -1019,7 +1019,7 @@ function postform_htmlobject_hide(div_id, callback_after, steps, delay)
 	div.style.overflow	= "hidden";
 	div.style.opacity		= 1;
 	pf_htmlobjects_shown[div_id]	= 2;
-	func();	
+	func();
 }
 
 function postform_generate_tmpid(len, let)
@@ -1055,7 +1055,7 @@ function postform_is_valid_url(url)
 function postform_attach_pastelink(event, input, callback_if_ok)
 {
 	return false;
-	
+
 	if( !event && _w.event ) {
 		event	= _w.event;
 	}
@@ -1066,7 +1066,7 @@ function postform_attach_pastelink(event, input, callback_if_ok)
 		setTimeout( function() {
 			if( postform_is_valid_url(input.value) ) {
 				callback_if_ok();
-			}			
+			}
 		}, 1 );
 	}
 	else if( event.type == "keyup" ) {
@@ -1075,14 +1075,14 @@ function postform_attach_pastelink(event, input, callback_if_ok)
 			setTimeout( function() {
 				if( postform_is_valid_url(input.value) ) {
 					callback_if_ok();
-				}			
+				}
 			}, 1 );
 		}
 		if( event.shiftKey && code==45 && !event.altKey && !event.ctrlKey ) {
 			setTimeout( function() {
 				if( postform_is_valid_url(input.value) ) {
 					callback_if_ok();
-				}			
+				}
 			}, 1 );
 		}
 	}

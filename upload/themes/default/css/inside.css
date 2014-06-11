@@ -49,10 +49,10 @@ label {
 	height:20px;
 	clear:both;
 }
-label input {	
+label input {
 	float:left;
 }
-label span {	
+label span {
 	padding:3px;
 	float:left;
 }
@@ -82,7 +82,7 @@ label span {
 #toprow #toprow2 {
 	background-image:url('../imgs/toprow2.gif');
 	background-repeat:no-repeat;
-	background-position:bottom right;	
+	background-position:bottom right;
 	height:38px;
 	overflow:visible;
 }
@@ -351,17 +351,17 @@ label span {
 /***********/
 #home_left {
 	width:153px;
-	float:left;	
+	float:left;
 	margin-right:7px;
 }
 #home_content {
 	width:510px;
-	float:left;	
+	float:left;
 	overflow:visible;
 }
 #home_right {
 	width:250px;
-	float:right;	
+	float:right;
 }
 /**********/
 #homenav a {
@@ -372,19 +372,19 @@ label span {
 	padding-left:8px;
 	background-repeat:no-repeat;
 	margin-right: 13px;
-} 
+}
 #homenav a:hover {
 	background-position:bottom left;
 	text-decoration:underline;
 	color: #c9dbec;
-} 
+}
 #homenav a.new {
 	background-image:url('../imgs/homeleftnav_new.gif');
 	background-position:bottom left;
 }
 #homenav a:hover span {
 	color: #003464;
-} 
+}
 #homenav a.onn {
 	background-image:url('../imgs/homeleftnav_on.gif');
 	color:white;
@@ -418,11 +418,11 @@ label span {
 }
 
 /*************************************************************/
-#postform {	
+#postform {
 	overflow:visible;
 	margin-top:10px;
 }
-#pfhdr {	
+#pfhdr {
 	overflow:visible;
 	background-image:url('../imgs/pf_hdr.gif');
 	height:28px;
@@ -493,7 +493,7 @@ label span {
 	margin-top:1px;
 	width: 13px;
 	height:13px;
-	background-image:url('../imgs/updateoptionsdropper.gif');	
+	background-image:url('../imgs/updateoptionsdropper.gif');
 	cursor:pointer;
 	font-size:0px;
 }
@@ -544,7 +544,7 @@ label span {
 	width:100px;
 	float:left;
 }
-.pmuser a {	
+.pmuser a {
 	display:block;
 	float:left;
 	margin-left:4px;
@@ -555,7 +555,7 @@ label span {
 	margin-top:5px;
 	font-size:0px;
 }
-.pmuser a:hover {	
+.pmuser a:hover {
 	background-position:bottom left;
 }
 #postform textarea {
@@ -671,17 +671,17 @@ label span {
 	color:black;
 	line-height:1.2;
 }
-#pfattach .attachok a {	
+#pfattach .attachok a {
 	float:left;
 }
-#pfattach .attachok b {	
+#pfattach .attachok b {
 	float:left;
 	padding-right:3px;
 }
 #pfattach .attachok em {
 	font-style:	normal;
 }
-#pfattach .attachok .removeattachment {	
+#pfattach .attachok .removeattachment {
 	display:block;
 	width: 13px;
 	height:13px;
@@ -691,14 +691,14 @@ label span {
 	margin-top:1px;
 	font-size:0px;
 }
-#pfattach .attachok .removeattachment:hover {	
+#pfattach .attachok .removeattachment:hover {
 	background-position:bottom left;
 }
 #pfattach #postbtn {
 	display:block;
 	float:right;
 	background-image:url('../imgs/pf_btn_a.gif');
-	background-position:top right;	
+	background-position:top right;
 }
 #pfattach #postbtn b {
 	display:block;
@@ -749,13 +749,13 @@ label span {
 	margin-top:10px;
 	margin-bottom:0px;
 }
-#pf_postedok strong, #slim_msgbox strong {	
+#pf_postedok strong, #slim_msgbox strong {
 	display:block;
 	float:left;
 	padding:11px;
 	padding-left:38px;
 }
-#pf_postedok a, #slim_msgbox a {	
+#pf_postedok a, #slim_msgbox a {
 	display:block;
 	float:right;
 	margin-top: 6px;
@@ -763,7 +763,7 @@ label span {
 	background-image:url('../imgs/pf_postedok_ok.gif');
 	background-position:top right;
 }
-#pf_postedok a b, #slim_msgbox a b {	
+#pf_postedok a b, #slim_msgbox a b {
 	display:block;
 	float:left;
 	background-image:url('../imgs/pf_postedok_ok_b.gif');
@@ -773,10 +773,10 @@ label span {
 	padding:5px 8px 5px 8px;
 	cursor:pointer;
 }
-#pf_postedok a:hover, #slim_msgbox a:hover {	
+#pf_postedok a:hover, #slim_msgbox a:hover {
 	background-position:bottom right;
 }
-#pf_postedok a:hover b, #slim_msgbox a:hover b {	
+#pf_postedok a:hover b, #slim_msgbox a:hover b {
 	background-position:bottom left;
 	color:black;
 }
@@ -785,13 +785,13 @@ label span {
 	background-image:url('../imgs/pf_postederror.gif');
 	margin-bottom:5px;
 }
-#pf_postederror strong {	
+#pf_postederror strong {
 	display:block;
 	float:left;
 	padding:11px;
 	padding-left:38px;
 }
-#pf_postederror a {	
+#pf_postederror a {
 	display:block;
 	float:right;
 	margin-top: 6px;
@@ -799,7 +799,7 @@ label span {
 	background-image:url('../imgs/pf_postederror_ok.gif');
 	background-position:top right;
 }
-#pf_postederror a b {	
+#pf_postederror a b {
 	display:block;
 	float:left;
 	background-image:url('../imgs/pf_postederror_ok_b.gif');
@@ -809,10 +809,10 @@ label span {
 	padding:5px 8px 5px 8px;
 	cursor:pointer;
 }
-#pf_postederror a:hover {	
+#pf_postederror a:hover {
 	background-position:bottom right;
 }
-#pf_postederror a:hover b {	
+#pf_postederror a:hover b {
 	background-position:bottom left;
 	color:black;
 }
@@ -1090,7 +1090,7 @@ label span {
 	width:50px;
 	border:1px solid #d9d9d9;
 	padding:4px;
-	background-color:white;	
+	background-color:white;
 }
 .post .postavatar img {
 	border:0px;
@@ -1188,7 +1188,7 @@ label span {
 	clear:left;
 	line-height:16px;
 }
-.post .postftr {	
+.post .postftr {
 	color:#999;
 	font-size:11px;
 	margin-top:3px;
@@ -1203,10 +1203,10 @@ label span {
 .post .postftr a:hover {
 	color:#000;
 }
-.post .postftr a.commentlink {	
+.post .postftr a.commentlink {
 	color:#1975e1;
 }
-.post .postftr a.commentlink:hover {	
+.post .postftr a.commentlink:hover {
 	color: #11539e;
 	border-bottom:1px solid #cadef6;
 }
@@ -1390,7 +1390,7 @@ label span {
 	background-image:url('../imgs/close.gif');
 	font-size:0px;
 }
-.postcommentshdr a.closecomments:hover {	
+.postcommentshdr a.closecomments:hover {
 	background-position:bottom left;
 }
 .postcommentscontent {
@@ -1435,7 +1435,7 @@ label span {
 
 .addpc_big .addpc_right textarea {
 	width:420px;
-	padding:5px;	
+	padding:5px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color:#000;
@@ -1619,7 +1619,7 @@ a.commentname {
 	display:block;
 	border:1px solid #d9d9d9;
 	padding:4px;
-	background-color:white;	
+	background-color:white;
 	float:left;
 	margin-right:10px;
 }
@@ -1927,7 +1927,7 @@ a.commentname {
 .group .pgavatar {
 	width:60px;
 	height:60px;
-	background-position:5px 5px; 
+	background-position:5px 5px;
 	background-repeat:no-repeat;
 	float:left;
 	margin-right:10px;
@@ -1945,7 +1945,7 @@ a.commentname {
 	display:block;
 	border:1px solid #d9d9d9;
 	padding:4px;
-	background-color:white;	
+	background-color:white;
 	float:left;
 	margin-right:10px;
 }
@@ -1971,7 +1971,7 @@ a.commentname {
 .group .followusr {
 	float:left;
 	background-image:url('../imgs/followusr.gif');
-	background-repeat:no-repeat;	
+	background-repeat:no-repeat;
 	width: 12px;
 	height:13px;
 	background-position:bottom left;
@@ -1992,10 +1992,10 @@ a.commentname {
 	margin-left:15px;
 	color: #007408;
 }
-.group .unfollowusr {	
+.group .unfollowusr {
 	float:left;
 	background-image:url('../imgs/unfollowusr.gif');
-	background-repeat:no-repeat;	
+	background-repeat:no-repeat;
 	width: 12px;
 	height:13px;
 	background-position:bottom left;
@@ -2040,12 +2040,12 @@ a.commentname {
 	background-position:bottom left;
 	background-repeat:repeat-x;
 	height:27px;
-	margin-top:10px; 
+	margin-top:10px;
 }
 .htabs strong {
 	display:block;
 	float:left;
-	padding:6px 8px 6px 8px;	
+	padding:6px 8px 6px 8px;
 }
 .htabs a {
 	display:block;
@@ -2065,13 +2065,13 @@ a.commentname {
 }
 
 .htabs a:hover b {
-	background-image:url('../imgs/htabs_hvr.gif');	
+	background-image:url('../imgs/htabs_hvr.gif');
 }
 
 .htabs a.onhtab {
 	background-repeat:no-repeat;
 	background-position:top right;
-	background-image:url('../imgs/htabs_a_on.gif');	
+	background-image:url('../imgs/htabs_a_on.gif');
 }
 .htabs a.onhtab b {
 	padding:6px 8px 7px 8px;
@@ -2230,7 +2230,7 @@ a.commentname {
 	display:block;
 	margin-bottom:2px;
 	color:#592600;
-	font-size:14px;	
+	font-size:14px;
 }
 .alert .alertclose {
 	position:absolute;
@@ -2301,17 +2301,17 @@ a.commentname {
 .greygrad {
 	background-image:url('../imgs/greygrad1.gif');
 	background-repeat:repeat-x;
-	background-position:top left;	
+	background-position:top left;
 }
 .greygrad2 {
 	background-image:url('../imgs/greygrad2.gif');
 	background-repeat:no-repeat;
-	background-position:top left;	
+	background-position:top left;
 }
 .greygrad3 {
 	background-image:url('../imgs/greygrad3.gif');
 	background-repeat:no-repeat;
-	background-position:top right;	
+	background-position:top right;
 	padding:8px;
 	color:#555;
 	line-height:1.4;
@@ -2382,7 +2382,7 @@ a.commentname {
 	font-weight:bold;
 }
 .mpost .mpost2 {
-	padding:6px;	
+	padding:6px;
 	background-image:url('../imgs/mpost2.gif');
 	background-position:top right;
 	background-repeat:no-repeat;
@@ -2932,7 +2932,7 @@ a.commentname {
 }
 
 
-#vpostbody #vpostftr {	
+#vpostbody #vpostftr {
 	color:#999;
 	font-size:12px;
 	padding-bottom:4px;
@@ -2957,7 +2957,7 @@ a.commentname {
 	margin-left:10px;
 	margin-bottom:5px;
 }
-#viewpost .comment .comment_right { 
+#viewpost .comment .comment_right {
 	width:870px;
 }
 #viewpost .addpc_big .addpc_right {
@@ -3567,7 +3567,7 @@ a.commentname {
 	background-position:bottom left;
 }
 
-#homefltr .item {	
+#homefltr .item {
 	display:block;
 	background-image:url('../imgs/homeleftnav.gif');
 	height:21px;
@@ -3579,7 +3579,7 @@ a.commentname {
 #homefltr .item * {
 	cursor:pointer;
 }
-#homefltr .item b {	
+#homefltr .item b {
 	display:block;
 	float:left;
 	width:16px;
@@ -3588,13 +3588,13 @@ a.commentname {
 	margin-top:3px;
 	margin-left:1px;
 }
-#homefltr .item strong{	
+#homefltr .item strong{
 	font-weight:normal;
 	display:block;
 	float:left;
 	padding-top:4px;
 }
-#homefltr .item span{	
+#homefltr .item span{
 	margin-top:2px;
 	display:block;
 	float:right;
@@ -3603,7 +3603,7 @@ a.commentname {
 	background-position:top right;
 	margin-right:1px;
 }
-#homefltr .item span small{	
+#homefltr .item span small{
 	display:block;
 	float:left;
 	padding:3px;
@@ -3616,12 +3616,12 @@ a.commentname {
 	padding-top:1px;
 	text-shadow:1px 1px 0 #ff6600;
 }
-#homefltr .item:hover strong{	
+#homefltr .item:hover strong{
 	background-image:url('../imgs/homefltr_itemunderline.gif');
 	background-position:bottom left;
 	background-repeat:repeat-x;
 }
-#homefltr .item:hover{	
+#homefltr .item:hover{
 	background-position:bottom left;
 }
 
@@ -3671,7 +3671,7 @@ a.commentname {
 
 #contacts_left textarea {
 	width:400px;
-	padding:5px;	
+	padding:5px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color:#000;
@@ -3747,7 +3747,7 @@ a.commentname {
 	background-position:top right;
 	display:block;
 	background-repeat:no-repeat;
-	padding:6px 16px 8px 15px;	
+	padding:6px 16px 8px 15px;
 }
 #ïntrobtn:hover{
 	background-position:bottom left;
@@ -4020,7 +4020,7 @@ a#twitterconnect b {
 }
 
 
-#helppage {	
+#helppage {
 	width:640px;
 	float:left;
 }

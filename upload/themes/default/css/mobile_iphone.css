@@ -46,10 +46,10 @@ label {
 	display:block;
 	height:20px;
 }
-label input {	
+label input {
 	float:left;
 }
-label span {	
+label span {
 	padding:1px;
 	float:left;
 }
@@ -79,7 +79,7 @@ label span {
 	font-family:Arial;
 	font-weight:normal;
 	text-shadow:1px 1px 0 #002264;
-} 
+}
 
 #choosenet {
 	display:block;
@@ -291,7 +291,7 @@ label span {
 	color:white;
 	font-size:18px;
 	font-family:Arial;
-	font-weight:normal;	
+	font-weight:normal;
 	color:#ccc;
 	text-shadow:1px 1px 0 #000;
 }
@@ -380,12 +380,12 @@ label span {
 .posticons a.pi_at {
 	background-image:url('../imgs/mobile_iphone/pi_at.gif');
 }
-.postbody { 
+.postbody {
 	padding:5px;
 	padding-left:8px;
 	background-color:white;
 	border-left:1px solid #b6b6b6;
-	border-right:1px solid #b6b6b6;	
+	border-right:1px solid #b6b6b6;
 	border-bottom:1px solid #f0f0f0;
 	font-size:1em;
 }
@@ -393,12 +393,12 @@ label span {
 	font-size:1em;
 	color:#aaa;
 }
-.postlink { 
+.postlink {
 	padding:5px;
 	padding-left:8px;
 	background-color:white;
 	border-left:1px solid #b6b6b6;
-	border-right:1px solid #b6b6b6;	
+	border-right:1px solid #b6b6b6;
 	border-bottom:1px solid #f0f0f0;
 	font-size:1em;
 	position:relative;
@@ -416,11 +416,11 @@ label span {
 	right:0px;
 	background-image:url('../imgs/mobile_iphone/whiteoverlay.png');
 }
-.postimages { 
+.postimages {
 	padding:8px;
 	background-color:white;
 	border-left:1px solid #b6b6b6;
-	border-right:1px solid #b6b6b6;	
+	border-right:1px solid #b6b6b6;
 	border-bottom:1px solid #f0f0f0;
 }
 .postimages a {
@@ -600,12 +600,12 @@ label span {
 	background-repeat:no-repeat;
 	background-position:top left;
 }
-#profilenav a.onpnav {	
+#profilenav a.onpnav {
 	background-image:url('../imgs/mobile_iphone/pnav_on.gif');
 	background-repeat:repeat-x;
 	background-color:#cbcbcb;
 }
-#profilenav a.onpnav b {	
+#profilenav a.onpnav b {
 	background-image:none;
 	color:#000;
 	text-shadow:1px 1px 0 #fff;
@@ -837,7 +837,7 @@ label span {
 	margin-right:10px;
 	z-index:100;
 }
-#listfilteroptions2 {	
+#listfilteroptions2 {
 	border:1px solid #b6b6b6;
 	border-top:1px solid #e3e3e3;
 }
@@ -860,7 +860,7 @@ label span {
 }
 
 /***********************/
-#postpage {	
+#postpage {
 	clear:both;
 	border-top:1px solid #eee;
 	background-color:#cbcbcb;
@@ -918,7 +918,7 @@ label span {
 	right:0px;
 	height: 37px;
 	width: 69px;
-	background-image:url('../imgs/mobile_iphone/swd_mask.png');	
+	background-image:url('../imgs/mobile_iphone/swd_mask.png');
 }
 #swdropmenu {
 	position:absolute;
@@ -952,7 +952,7 @@ label span {
 	right:0px;
 	height: 32px;
 	width: 56px;
-	background-image:url('../imgs/mobile_iphone/swd_a_mask.png');	
+	background-image:url('../imgs/mobile_iphone/swd_a_mask.png');
 }
 #swdropmenu a span {
 	font-size:14px;
@@ -986,7 +986,7 @@ label span {
 	margin-left:3px;
 	font-size:18px;
 	-webkit-text-size-adjust: none;
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 }
 #swinput a#swinputdropper {
 	position:absolute;
@@ -995,7 +995,7 @@ label span {
 	height:37px;
 	width: 37px;
 }
-#txtr {	
+#txtr {
 	margin-top:9px;
 	background-color:white;
 	background-image:url('../imgs/mobile_iphone/pta_content.gif');
@@ -1007,7 +1007,7 @@ label span {
 	padding:5px;
 	padding-left:2px;
 }
-#txtr textarea {	
+#txtr textarea {
 	display:block;
 	width:99%;
 	font-family:Arial;
@@ -1018,7 +1018,7 @@ label span {
 	background-color:transparent;
 	margin:0px;
 	margin-right:10px;
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 	-webkit-text-size-adjust: none;
 }
 #updatebtn {
@@ -1083,7 +1083,7 @@ label span {
 }
 
 
-#attbtns a.pressed {	
+#attbtns a.pressed {
 	background-image:url('../imgs/mobile_iphone/attbtns_a_pressed.gif');
 }
 #attbtns a.pressed strong {
@@ -1163,7 +1163,7 @@ label span {
 	color:White;
 	background-repeat:no-repeat;
 	font-size:18px;
-	text-shadow:1px 1px 0 #002150;	
+	text-shadow:1px 1px 0 #002150;
 	font-weight:normal;
 	padding:9px 15px 9px 15px;
 }
@@ -1183,7 +1183,7 @@ label span {
 	color:White;
 	background-repeat:no-repeat;
 	font-size:18px;
-	text-shadow:1px 1px 0 #930000;	
+	text-shadow:1px 1px 0 #930000;
 	font-weight:normal;
 	padding:9px 15px 9px 15px;
 }
@@ -1208,7 +1208,7 @@ label span {
 	background-color:transparent;
 	margin:0px;
 	margin-right:10px;
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 	-webkit-text-size-adjust: none;
 }
 #postattacher .postattach_loader {
@@ -1279,7 +1279,7 @@ label span {
 	background-position:top left;
 	background-repeat:no-repeat;
 	color:black;
-	text-shadow:1px 1px 0 #fff;	
+	text-shadow:1px 1px 0 #fff;
 	font-weight:normal;
 }
 
@@ -1321,7 +1321,7 @@ label span {
 	padding-left:8px;
 	background-color:white;
 	border-left:1px solid #b6b6b6;
-	border-right:1px solid #b6b6b6;	
+	border-right:1px solid #b6b6b6;
 	font-size:1em;
 }
 .acomment .commentauthor {
@@ -1337,10 +1337,10 @@ label span {
 #postcomment {
 	background-color:#f5f5f5;
 	border-left:1px solid #b6b6b6;
-	border-right:1px solid #b6b6b6;	
+	border-right:1px solid #b6b6b6;
 	padding:6px;
 	border-top:1px solid #fff;
-	margin-left:37px;	
+	margin-left:37px;
 	padding-bottom:0px;
 }
 #textar {
@@ -1352,7 +1352,7 @@ label span {
 #textar textarea {
 	width:95%;
 	font-size:1.5em;
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 	border:0px;
 	background-color:transparent;
 	padding:0px;
@@ -1361,7 +1361,7 @@ label span {
 }
 
 #textar textarea:focus {
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 }
 
 
@@ -1382,7 +1382,7 @@ label span {
 	color:White;
 	background-repeat:no-repeat;
 	font-size:18px;
-	text-shadow:1px 1px 0 #002150;	
+	text-shadow:1px 1px 0 #002150;
 	font-weight:normal;
 	padding:9px 15px 9px 15px;
 }
@@ -1431,7 +1431,7 @@ label span {
 .mpostbody2 {
 	background-image:url('../imgs/mobile_iphone/mphdr2.gif');
 	background-position:top left;
-	background-repeat:no-repeat;	
+	background-repeat:no-repeat;
 	padding-top:4px;
 }
 .mpostbody .thempostbody {
@@ -1439,7 +1439,7 @@ label span {
 	padding-left:8px;
 	background-color:white;
 	border-left:1px solid #b6b6b6;
-	border-right:1px solid #b6b6b6;	
+	border-right:1px solid #b6b6b6;
 	font-size:1em;
 	min-height: 28px;
 }
@@ -1531,7 +1531,7 @@ label span {
 	border:0px;
 	background-color:transparent;
 	width:95%;
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 	font-size:22px;
 	-webkit-text-size-adjust: none;
 }
@@ -1539,7 +1539,7 @@ label span {
 	border:0px;
 	background-color:transparent;
 	width:100%;
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 	font-size:22px;
 	-webkit-text-size-adjust: none;
 }
@@ -1560,12 +1560,12 @@ label span {
 	color:White;
 	background-repeat:no-repeat;
 	font-size:18px;
-	text-shadow:1px 1px 0 #002150;	
+	text-shadow:1px 1px 0 #002150;
 	font-weight:normal;
 	padding:9px 15px 9px 15px;
 }
 #forgpasslink {
-	border-top:1px solid #ccc;	
+	border-top:1px solid #ccc;
 	padding:10px;
 	background-color:white;
 }
@@ -1621,7 +1621,7 @@ label span {
 	font-size:20px;
 	-webkit-text-size-adjust: none;
 	-webkit-border-radius: 5px;
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 	border:0px;
 }
 #savedsearches {
@@ -1663,7 +1663,7 @@ label span {
 }
 #infopagepanel {
 	background-color:#fff;
-	border:1px solid #999;	
+	border:1px solid #999;
 	-webkit-border-radius: 6px;
 	margin-bottom:10px;
 }
@@ -1721,7 +1721,7 @@ div.im_yahoo { background-image:url('../imgs/im_yahoo.gif') }
 	padding:8px;
 	line-height:1.4;
 	background-color:#fff;
-	border:1px solid #999;	
+	border:1px solid #999;
 	-webkit-border-radius: 6px;
 	margin-bottom:10px;
 }
@@ -1731,8 +1731,8 @@ div.im_yahoo { background-image:url('../imgs/im_yahoo.gif') }
 	padding:8px;
 	background-color:white;
 	border-left:1px solid #b6b6b6;
-	border-right:1px solid #b6b6b6;	
-	border-bottom:1px solid #f0f0f0;	
+	border-right:1px solid #b6b6b6;
+	border-bottom:1px solid #f0f0f0;
 	padding-bottom:3px;
 }
 .attachedpost a.linktoattachedpost {
@@ -1795,7 +1795,7 @@ div.im_yahoo { background-image:url('../imgs/im_yahoo.gif') }
 	padding-left:8px;
 	background-color:white;
 	border-left:1px solid #b6b6b6;
-	border-right:1px solid #b6b6b6;	
+	border-right:1px solid #b6b6b6;
 	font-size:1em;
 	color:#777;
 	-webkit-text-size-adjust: none;
@@ -1818,16 +1818,16 @@ div.im_yahoo { background-image:url('../imgs/im_yahoo.gif') }
 	border-bottom:1px solid #666;
 	padding-bottom:5px;
 	border-left:1px solid #666;
-	border-right:1px solid #666;	
+	border-right:1px solid #666;
 }
 #publiccomments .commentsttl {
 	border-left:1px solid #666;
-	border-right:1px solid #666;	
+	border-right:1px solid #666;
 }
 #publiccomments .commentbody {
 	border-left:1px solid #666 !important;
-	border-right:1px solid #666 !important;	
-	
+	border-right:1px solid #666 !important;
+
 }
 
 /***************/

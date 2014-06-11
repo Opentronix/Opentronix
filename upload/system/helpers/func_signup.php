@@ -1,5 +1,5 @@
 <?php
-	
+
 	function set_user_default_notification_rules($user_id)
 	{
 		global $db2, $network;
@@ -11,7 +11,7 @@
 			'ntf_them_if_i_edt_pictr'	=> 1,
 			'ntf_them_if_i_create_grp'	=> 1,
 			'ntf_them_if_i_join_grp'	=> 1,
-			
+
 			// 0 - off, 2 - post, 3 - email, 1 - both
 			'ntf_me_if_u_follows_me'	=> 3,
 			'ntf_me_if_u_follows_u2'	=> 2,
@@ -34,5 +34,5 @@
 		$in_sql	= implode(', ', $in_sql);
 		$db2->query('REPLACE INTO users_notif_rules SET '.$in_sql);
 	}
-	
+
 ?>

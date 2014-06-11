@@ -1,5 +1,5 @@
 <?php
-	
+
 	class cache_memcached
 	{
 		private $memcached_host;
@@ -8,7 +8,7 @@
 		private $mc;
 		private $debug_mode;
 		private $debug_info;
-		
+
 		public function __construct()
 		{
 			global $C;
@@ -23,7 +23,7 @@
 			);
 			$this->ext	= class_exists('Memcached',FALSE) ? 'memcached' : 'memcache';
 		}
-		
+
 		private function connect()
 		{
 			$time	= microtime(TRUE);
@@ -43,7 +43,7 @@
 			}
 			return $this->mc;
 		}
-		
+
 		public function get($key)
 		{
 			if( FALSE == $this->mc ) {
@@ -67,7 +67,7 @@
 			}
 			return $this->mc->get( $key );
 		}
-		
+
 		public function set($key, $data, $expire)
 		{
 			if( FALSE == $this->mc ) {
@@ -91,7 +91,7 @@
 			}
 			return $this->ext=='memcached' ? $this->mc->set( $key, $data, $expire ) : $this->mc->set( $key, $data, FALSE, $expire );
 		}
-		
+
 		public function del($key)
 		{
 			if( FALSE == $this->mc ) {
@@ -115,7 +115,7 @@
 			}
 			return $this->mc->delete( $key );
 		}
-		
+
 		public function get_debug_info()
 		{
 			$debug_info	= clone($this->debug_info);
@@ -123,10 +123,10 @@
 			$debug_info->queries	= array_reverse($debug_info->queries);
 			return $debug_info;
 		}
-		
+
 		public function garbage_collector()
 		{
 		}
 	}
-	
+
 ?>

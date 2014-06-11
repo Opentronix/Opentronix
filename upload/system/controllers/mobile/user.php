@@ -1,33 +1,33 @@
 <?php
-	
+
 	if( !$this->network->id || !$this->user->is_logged ) {
 		$this->redirect('home');
 	}
 	if( $this->network->id && $C->MOBI_DISABLED ) {
 		$this->redirect('mobidisabled');
 	}
-	
+
 	$this->load_langfile('mobile/global.php');
 	$this->load_langfile('mobile/user.php');
-	
+
 	$u	= $this->network->get_user_by_id(intval($this->params->user));
 	if( ! $u ) {
 		$this->params->user	= $this->user->id;
 		$u	= $this->user->info;
 	}
-	
+
 	$D->page_title	= $u->username.' - '.$C->SITE_TITLE;
-	
+
 	$D->usr	= & $u;
 	$D->is_my_profile	= $u->id==$this->user->id;
 	$D->i_follow_him	= $this->user->if_follow_user($u->id);
-	
+
 	$shows	= array('updates', 'info', 'groups', 'followers', 'following');
 	$D->show	= 'updates';
 	if( isset($_GET['show']) && in_array($_GET['show'],$shows) ) {
 		$D->show	= $_GET['show'];
 	}
-	
+
 	if( !$D->is_my_profile ) {
 		if( isset($_GET['do_follow']) && !$D->i_follow_him ) {
 			$this->user->follow($u->id, TRUE);
@@ -38,7 +38,7 @@
 			$D->i_follow_him	= FALSE;
 		}
 	}
-	
+
 	$D->num_results	= 0;
 	$D->num_pages	= 0;
 	$D->pg		= isset($_GET['pg']) ? intval($_GET['pg']) : 1;
@@ -46,7 +46,7 @@
 	$D->users_html	= '';
 	$D->groups_html	= '';
 	$D->paging_url	= $C->SITE_URL.$u->username.'/?show='.$D->show.'&pg=';
-	
+
 	if( $D->show == 'updates' ) {
 		$not_in_groups	= array();
 		if( ! $this->user->info->is_network_admin ) {
@@ -69,7 +69,7 @@
 			}
 		}
 		$not_in_groups	= count($not_in_groups)==0 ? '' : ('AND group_id NOT IN('.implode(', ', $not_in_groups).')');
-		
+
 		$q1	= 'SELECT COUNT(id) FROM posts WHERE user_id="'.$u->id.'" '.$not_in_groups;
 		$q2	= 'SELECT *, "public" AS `type` FROM posts WHERE user_id="'.$u->id.'" '.$not_in_groups.' ORDER BY id DESC ';
 		$D->num_results	= $db2->fetch_field($q1);
@@ -219,7 +219,7 @@
 			$D->usr->email	= '';
 		}
 	}
-	
+
 	$this->load_template('mobile/user.php');
-	
+
 ?>

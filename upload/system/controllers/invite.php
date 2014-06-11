@@ -1,19 +1,19 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('signin');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/invite.php');
-	
+
 	$D->page_title	= $this->lang('os_invite_ttl_colleagues', array('#SITE_TITLE#'=>$C->SITE_TITLE, '#OUTSIDE_SITE_TITLE#'=>$C->OUTSIDE_SITE_TITLE));
-	
+
 	$D->formdata	= array();
-	
+
 	$D->submit	= FALSE;
 	if( isset($_POST['name'], $_POST['email']) && is_array($_POST['name']) && is_array($_POST['email']) ) {
 		$D->submit	= TRUE;
@@ -46,7 +46,7 @@
 			);
 		}
 	}
-	
+
 	$D->status	= '';
 	$D->mtitle	= '';
 	$D->message	= '';
@@ -130,7 +130,7 @@
 			}
 		}
 	}
-	
+
 	$this->load_template('invite_colleagues.php');
-	
+
 ?>

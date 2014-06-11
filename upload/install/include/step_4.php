@@ -1,9 +1,9 @@
 <?php
-	
+
 	$PAGE_TITLE	= 'Installation - Step 4';
-	
+
 	$s	= & $_SESSION['INSTALL_DATA'];
-	
+
 	$options	= array (
 		'memcached'		=> class_exists('Memcached',FALSE)||class_exists('Memcache',FALSE) ? TRUE : FALSE,
 		'apc'			=> function_exists('apc_cache_info') ? TRUE : FALSE,
@@ -18,7 +18,7 @@
 			$options['mysqlheap']	= TRUE;
 		}
 	}
-	
+
 	$is_upgrade	= isset($OLDC->CACHE_MECHANISM, $OLDC->CACHE_KEYS_PREFIX, $OLDC->CACHE_MEMCACHE_HOST, $OLDC->CACHE_MEMCACHE_PORT);
 	if( $is_upgrade ) {
 		$s['CACHE_MECHANISM']	= $OLDC->CACHE_MECHANISM;
@@ -43,14 +43,14 @@
 			}
 		}
 	}
-	
+
 	if( ! isset($s['CACHE_EXPIRE']) ) {
 		$s['CACHE_EXPIRE']	= 60*60;
 	}
 	if( ! isset($s['CACHE_KEYS_PREFIX']) ) {
 		$s['CACHE_KEYS_PREFIX']	= substr(md5(time().rand()),0,5).'~';
 	}
-	
+
 	if( ! isset($s['CACHE_MECHANISM']) ) {
 		$s['CACHE_MECHANISM']	= '';
 	}
@@ -60,7 +60,7 @@
 	if( ! isset($s['CACHE_MEMCACHE_PORT']) ) {
 		$s['CACHE_MEMCACHE_PORT']	= '';
 	}
-	
+
 	$submit	= FALSE;
 	$error	= FALSE;
 	$errmsg	= '';
@@ -93,7 +93,7 @@
 			header('Location: ?next');
 		}
 	}
-	
+
 	$html	.= '
 							<div class="ttl">
 								<div class="ttl2">
@@ -120,11 +120,11 @@
 												document.getElementById("form_memcached_row").style.display = ismc ? "" : "none";
 											}
 										</script>';
-	
+
 	if( $error ) {
 		$html	.= errorbox('Error', $errmsg);
 	}
-	
+
 	$html	.= '
 										<form name="f" method="post" action="">
 										<table id="setform" cellpadding="5" style="width:100%;">
@@ -188,5 +188,5 @@
 									</div>
 								</div>
 							</div>';
-	
+
 ?>

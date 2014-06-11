@@ -1,9 +1,9 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		exit;
 	}
-	
+
 	if( $this->param('pid') )
 	{
 		$tmp	= trim($this->param('pid'));
@@ -60,7 +60,7 @@
 		}
 		exit;
 	}
-	
+
 	if( $this->param('tmpid') )
 	{
 		$tmp	= trim($this->param('tmpid'));
@@ -87,7 +87,7 @@
 			exit;
 		}
 	}
-	
+
 	exit;
-	
+
 ?>

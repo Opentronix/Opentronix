@@ -1,9 +1,9 @@
 <?php
-	
+
 	$this->load_langfile('inside/global.php');
-	
+
 	echo '<'.'?xml version="1.0" encoding="UTF-8" ?'.'>';
-	
+
 	if( !$this->network->id ) {
 		echo '<result></result>';
 		exit;
@@ -12,7 +12,7 @@
 		echo '<result></result>';
 		exit;
 	}
-	
+
 	$post_temp_id	= isset($_POST['post_temp_id']) ? trim($_POST['post_temp_id']) : FALSE;
 	$post_message	= isset($_POST['message']) ? trim($_POST['message']) : '';
 	if( ! $post_temp_id ) {
@@ -23,7 +23,7 @@
 		echo '<result><status>ERROR</status><message>'.$this->lang('pf_msgerr_text').'</message></result>';
 		exit;
 	}
-	
+
 	$s	= & $this->user->sess;
 	if( ! isset($s['POSTFORM_TEMP_POSTS']) ) {
 		$s['POSTFORM_TEMP_POSTS']	= array();
@@ -32,7 +32,7 @@
 		$s['POSTFORM_TEMP_POSTS'][$post_temp_id]	= new newpost();
 	}
 	$post_temp	= & $s['POSTFORM_TEMP_POSTS'][$post_temp_id];
-	
+
 	$post_edit	= isset($_POST['editpost']) ? trim($_POST['editpost']) : FALSE;
 	if($post_edit)
 	{
@@ -122,5 +122,5 @@
 		echo '<result><status>OK</status><message>'.$this->lang($okmsg).'</message></result>';
 		exit;
 	}
-	
+
 ?>

@@ -1,26 +1,26 @@
 <?php
-	
+
 	if( $this->user->is_logged ) {
 		$this->redirect('dashboard');
 	}
 	if( $C->MOBI_DISABLED ) {
 		$this->redirect('mobidisabled');
 	}
-	
+
 	$this->load_langfile('mobile/global.php');
 	$this->load_langfile('mobile/home.php');
-	
+
 	$D->page_title	= $this->lang('home_page_title', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->is_network	= TRUE;
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
 	$D->email		= '';
 	$D->password	= '';
 	$D->rememberme	= TRUE;
-	
+
 	if( isset($_POST['email'], $_POST['password']) ) {
 		$D->submit	= TRUE;
 		$D->email		= trim($_POST['email']);
@@ -45,7 +45,7 @@
 			}
 		}
 	}
-	
+
 	$this->load_template('mobile_iphone/home.php');
-	
+
 ?>

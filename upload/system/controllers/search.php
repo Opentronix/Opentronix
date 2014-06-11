@@ -1,12 +1,12 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/search.php');
-	
+
 	if( $this->param('saved') ) {
 		$tmp	= $db2->e(trim($this->param('saved')));
 		$db2->query('SELECT search_url FROM searches WHERE user_id="'.$this->user->id.'" AND search_key="'.$tmp.'" LIMIT 1');
@@ -47,20 +47,20 @@
 		$tmp	= str_replace('/', '', $_POST['lookfor']);
 		$this->redirect( $C->SITE_URL.'search/tab:'.trim($_POST['lookin']).'/s:'.urlencode(trim($tmp)) );
 	}
-	
+
 	$tabs	= array('posts', 'users', 'groups');
 	$D->tab	= 'posts';
 	if( $this->param('tab') && in_array($this->param('tab'), $tabs) ) {
 		$D->tab	= $this->param('tab');
 	}
-	
+
 	$D->search_string	= urldecode($this->param('s'));
 	$D->search_string	= preg_replace('/\s+/us', ' ', $D->search_string);
 	$D->search_string	= trim($D->search_string);
-	
+
 	$D->page_title	= $this->lang('srch_title_'.$D->tab, array('#SITE_TITLE#'=>$C->SITE_TITLE));
 	$D->search_title	= $this->lang( (empty($D->search_string)?'srch_title2_':'srch_title3_').$D->tab, array('#STRING#'=>htmlspecialchars(str_cut($D->search_string,30))));
-	
+
 	$D->num_results	= 0;
 	$D->num_pages	= 0;
 	$D->num_per_page	= 0;
@@ -68,7 +68,7 @@
 	$D->posts_html	= '';
 	$D->users_html	= '';
 	$D->groups_html	= '';
-	
+
 	if( $D->tab=='users' && !empty($D->search_string) )
 	{
 		$uids	= array();
@@ -213,7 +213,7 @@
 		if( ! preg_match('/^[0-9]{1,2}\,[0-9]{1,2}\,[0-9]{4}$/', $pdate1) ) { $pdate1 = ''; }
 		$pdate2	= trim( preg_replace('/[^0-9\,]/iu', '', $this->param('pdate2')) );
 		if( ! preg_match('/^[0-9]{1,2}\,[0-9]{1,2}\,[0-9]{4}$/', $pdate2) ) { $pdate2 = ''; }
-		
+
 		$D->box_expanded	= (object) array('type'=>FALSE, 'author'=>FALSE, 'group'=>FALSE, 'date'=>FALSE);
 		if( count($ptypes) != 5 ) {
 			$D->box_expanded->type		= TRUE;
@@ -227,7 +227,7 @@
 		if( ! empty($pdate1) || ! empty($pdate2) ) {
 			$D->box_expanded->date		= TRUE;
 		}
-		
+
 		$D->form_user	= $puser;
 		$D->form_group	= $pgroup;
 		$D->form_type	= array();
@@ -257,7 +257,7 @@
 		$D->form_date2_days	= $D->form_date1_days;
 		$D->form_date2_months	= $D->form_date1_months;
 		$D->form_date2_years	= $D->form_date1_years;
-		
+
 		if( ! empty($D->search_string) ) {
 			$D->error	= FALSE;
 			$D->errmsg	= '';
@@ -433,7 +433,7 @@
 				$tmp_url	= '/'.trim($tmp_url, '/');
 				$D->ajax_url	= str_replace('/search/', '/from:ajax/search/', $tmp_url);
 				$D->paging_url	= $tmp_url.'/pg:';
-				
+
 				if( $this->param('from')=='ajax' && isset($_POST['savesearch']) ) {
 					if( $_POST['savesearch']=='on' && !$D->search_saved ) {
 						$db2->query('INSERT INTO searches SET user_id="'.$this->user->id.'", search_key="'.$search_key.'", search_string="'.$db2->e($D->search_string).'", search_url="'.$db2->e($tmp_url).'", added_date="'.time().'", total_hits=1, last_results="'.$D->num_results.'" ');
@@ -448,7 +448,7 @@
 					echo 'ERROR';
 					return;
 				}
-				
+
 				if( $D->num_results == 0 ) {
 					$D->error	= TRUE;
 					$D->errmsg	= $this->lang('srch_noresult_posts_def');
@@ -508,13 +508,13 @@
 			$tmp->search_string	= stripslashes($tmp->search_string);
 			$D->saved_searches[$tmp->id]	= $tmp;
 		}
-		
+
 		if( $D->can_be_saved && !$this->user->is_logged ) {
 			$D->can_be_saved	= FALSE;
 		}
 	}
-	
-	
+
+
 	$this->load_template('search.php');
-	
+
 ?>

@@ -1,5 +1,5 @@
 <?php
-	
+
 	$lang	= array
 	(
 		'settings_profile_pagetitle'	=> 'Profile Information - #SITE_TITLE#',
@@ -11,7 +11,7 @@
 		'settings_notif_pagetitle'	=> 'Notification Settings - #SITE_TITLE#',
 		'settings_rssfeeds_pagetitle'	=> 'RSS Feeds Settings - #SITE_TITLE#',
 		'settings_delaccount_pagetitle'	=> 'Delete Your Account - #SITE_TITLE#',
-		
+
 		'settings_profile_ttl2'		=> 'Profile Information',
 		'settings_contacts_ttl2'	=> 'Contacts Details',
 		'settings_avatar_ttl2'		=> 'Change Your Picture',
@@ -21,7 +21,7 @@
 		'settings_notif_ttl2'		=> 'Notifications',
 		'settings_rssfeeds_ttl2'	=> 'RSS/Atom Feeds',
 		'settings_delaccount_ttl2'	=> 'Delete Your Account',
-		
+
 		'settings_menu_title'		=> 'Account Settings',
 		'settings_menu_profile'		=> 'Profile Information',
 		'settings_menu_contacts'	=> 'Contacts Details',
@@ -32,10 +32,10 @@
 		'settings_menu_notif'		=> 'Notifications',
 		'settings_menu_rssfeeds'	=> 'RSS Feeds',
 		'settings_menu_delaccount'	=> 'Delete Account',
-		
+
 		'settings_fbconnect'		=> 'Connect with your Facebook account to fill your profile information automatically.',
 		'settings_viewprofile_link'	=> 'view profile',
-		
+
 		'st_profile_name'				=> 'Name:',
 		'st_profile_position'			=> 'Title:',
 		'st_profile_location'			=> 'Location:',
@@ -48,7 +48,7 @@
 		'st_profile_savebtn'			=> 'Save',
 		'st_profile_ok'				=> 'Done',
 		'st_profile_okmsg'			=> 'Information was saved.',
-		
+
 		'st_avatar_current_picture'		=> 'Current picture:',
 		'st_avatar_current_pic_flybox'	=> 'Current Picture',
 		'st_avatar_change_picture'		=> 'Change picture:',
@@ -65,7 +65,7 @@
 		'st_avatat_ok'				=> 'Done',
 		'st_avatat_okmsg'				=> 'Profile picture was changed successfully.',
 		'st_avatat_okdelmsg'			=> 'Profile picture was deleted.',
-		
+
 		'st_password_current'			=> 'Current password:',
 		'st_password_newpass'			=> 'New password:',
 		'st_password_newconfirm'		=> 'New password again:',
@@ -78,7 +78,7 @@
 		'st_password_okmsg'			=> 'Password was changed successfully.',
 		'st_password_multinetworks_ttl'	=> 'Warning',
 		'st_password_multinetworks_txt'	=> 'Your e-mail address is registered in more than one networks on #SITE_TITLE#. If you change your password here, it will be changed in all networks where you are a member.',
-		
+
 		'st_system_language'			=> 'Language:',
 		'st_system_timezone'			=> 'Local timezone:',
 		'st_system_jsanim'			=> 'Javascript animations:',
@@ -91,7 +91,7 @@
 		'st_system_savebtn'			=> 'Save',
 		'st_system_ok'				=> 'Done',
 		'st_system_okmsg'				=> 'Information was saved.',
-		
+
 		'st_contacts_section1'			=> 'Contacts Information',
 		'st_contacts_section2'			=> 'Messengers',
 		'st_contacts_section3'			=> 'External Profiles',
@@ -138,7 +138,7 @@
 		'st_cnt_error_favit'			=> 'Invalid Favit profile url.',
 		'st_cnt_ok'					=> 'Done',
 		'st_cnt_okmsg'				=> 'Information was saved.',
-		
+
 		'st_notif_title'	=> 'Notifications',
 		'st_notif_ttl1'	=> 'Notify my colleagues when I...',
 		'st_notif_ttl2'	=> 'Notify me when...',
@@ -150,7 +150,7 @@
 		'st_notif_ntf_them_if_i_edt_profl'	=> '...edit my profile info',
 		'st_notif_ntf_them_if_i_edt_pictr'	=> '...change my profile picture',
 		'st_notif_ntf_them_if_i_create_grp'	=> '...create a group',
-		'st_notif_ntf_them_if_i_join_grp'	=> '...join a group',		
+		'st_notif_ntf_them_if_i_join_grp'	=> '...join a group',
 		'st_notif_ntf_me_if_u_follows_me'	=> '...someone starts following me',
 		'st_notif_ntf_me_if_u_follows_u2'	=> '...someone I follow starts following somebody else',
 		'st_notif_ntf_me_if_u_commments_me'	=> '...someone comments on my post',
@@ -177,7 +177,7 @@
 		'os_st_notif_ntf_them_if_i_edt_profl'	=> '...edit my profile info',
 		'os_st_notif_ntf_them_if_i_edt_pictr'	=> '...change my profile picture',
 		'os_st_notif_ntf_them_if_i_create_grp'	=> '...create a group',
-		'os_st_notif_ntf_them_if_i_join_grp'	=> '...join a group',		
+		'os_st_notif_ntf_them_if_i_join_grp'	=> '...join a group',
 		'os_st_notif_ntf_me_if_u_follows_me'	=> '...someone starts following me',
 		'os_st_notif_ntf_me_if_u_follows_u2'	=> '...someone I follow starts following somebody else',
 		'os_st_notif_ntf_me_if_u_commments_me'	=> '...someone comments on my post',
@@ -193,7 +193,7 @@
 		'os_st_notif_savebtn'		=> 'Save',
 		'os_st_notif_ok'			=> 'Done',
 		'os_st_notif_okmsg'		=> 'Information was saved.',
-		
+
 		'st_rssfeeds_title'		=> 'RSS Feeds for automated posting',
 		'st_rssfeeds_nofeeds_ttl'	=> 'No feeds added yet.',
 		'st_rssfeeds_nofeeds_txt'	=> 'You can add RSS/Atom feeds for automated posting to your profile.',
@@ -216,7 +216,7 @@
 		'st_rssfeeds_ok'			=> 'Done',
 		'st_rssfeeds_ok_txt'		=> 'Feed was added successfully. All future feed entries will be posted.',
 		'st_rssfeeds_okdel_txt'		=> 'Feed was deleted.',
-		
+
 		'st_delaccount_error'		=> 'Error',
 		'st_delaccount_pass_err'	=> 'Wrong password.',
 		'st_delaccount_admins_err'	=> 'You cannot delete your own account while you are the only network administrator.',
@@ -224,7 +224,7 @@
 		'st_delaccount_confirm'		=> 'Please, confirm your account deletion.',
 		'st_delaccount_password'	=> 'Your password:',
 		'st_delaccount_submit'		=> 'Permanently Delete',
-		
+
 		'st_email_new'			=> 'New e-mail address: ',
 		'st_email_current'		=> 'Your current e-mail address is: <b>#CURRENT_EMAIL#</b>',
 		'st_email_conf_mes'		=> 'Your current e-mail address is: <b>#CURRENT_EMAIL#</b>. When you change it a confirmation link will be sent to the new e-mail address.',
@@ -242,10 +242,10 @@
 		'st_email_notif_sendttl'	=> 'Check your e-mail',
 		'st_email_notif_send'		=> 'You need to confirm your new e-mail address. We sent a confirmation link to #EMAIL#.',
 		'st_email_name_repeat'		=> 'This e-mail have been already registered in #SITE_TITLE#.',
-		
+
 		'st_email_wrong_link'		=> 'Invalid confirmation link.',
 		'st_email_wrong_conf_id'	=> 'Invalid confirmation key.',
 		'st_email_wrong_time'		=> 'Confirmation time extended.',
 	);
-		
+
 ?>

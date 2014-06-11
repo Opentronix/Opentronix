@@ -1,5 +1,5 @@
 <?php
-	
+
 	$lang	= array
 	(
 		'posttime_before'	=> '',
@@ -16,7 +16,7 @@
 		'postgroup_in'	=> 'in',
 		'postgroup_del'	=> 'Deleted Group:',
 		'postsharelink'	=> 'Share',
-		
+
 		'pf_title_newmsg'		=> 'Share something with',
 		'pf_title_newmsg_all'	=> 'Colleagues',
 		'os_pf_title_newmsg_all'	=> 'My followers',
@@ -70,29 +70,29 @@
 		'pf_msgerr_group'	=> 'Invalid group',
 		'pf_msgerr_text'	=> 'Cannot submit blank message.',
 		'pf_msgerr_sys'	=> 'Error, please try again later.',
-		
+
 		'posts_filter_ttl'	=> 'show:',
 		'posts_filter_all'	=> 'All Posts',
 		'posts_filter_videos'	=> 'Videos',
 		'posts_filter_images'	=> 'Images',
 		'posts_filter_links'	=> 'Links',
 		'posts_filter_files'	=> 'Files',
-		
+
 		'paging_title'	=> 'Pages:',
-		
+
 		'user_unfollow_confirm'	=> 'Unfollow #USERNAME# - Are you sure?',
 		'post_unfave_confirm'	=> 'Remove from Favorites - Are you sure?',
 		'post_delete_confirm'	=> 'Remove this message?',
-		
+
 		'post_fave_link'		=> 'Add to Favorites',
 		'post_unfave_link'	=> 'Remove from Favorites',
 		'post_edit_link'		=> 'Edit this post',
 		'post_delete_link'	=> 'Remove this message',
-		
+
 		'post_usricon_mention'	=> 'Post @#USERNAME#',
 		'post_usricon_private'	=> 'Private message',
 		'post_usricon_follow'	=> 'Follow #USERNAME#',
-		
+
 		'post_opncomments_0'	=> 'Comment',
 		'post_opncomments_1'	=> '#NUM# comment',
 		'post_opncomments_more'	=> '#NUM# comments',
@@ -109,7 +109,7 @@
 		'post_comments_sbmcncl'	=> 'cancel',
 		'post_delcomment_lnk'	=> 'Delete',
 		'post_delcomment_cnfrm'	=> 'Delete this comment - Are you sure?',
-		
+
 		'post_extpostatch_onnet'	=> 'on',
 		'post_extpostatch_opncomments_0'	=> 'Write public comment',
 		'post_extpostatch_opncomments_1'	=> '#NUM# public comment',
@@ -122,30 +122,30 @@
 		'post_extpostatch_comments_sbmor'	=> 'or',
 		'post_extpostatch_comments_sbmcncl'	=> 'cancel',
 		'post_extpostatch_error'	=> 'Error: Cannot load attached external post.',
-		
+
 		'group_unfollow_confirm'	=> 'Leave #GROUP# - Are you sure?',
-		
+
 		'post_atchimg_title'		=> 'Attached Image',
 		'post_atchimg_ftr_dwnld'	=> 'download',
 		'post_atchvid_title'		=> 'Attached Video',
 		'post_atchvid_ftr_site'		=> 'original embed source',
 		'post_atchbox_close'		=> 'Close',
 		'post_atchftr_permalink'	=> 'Post Permalink',
-		
+
 		'usrlist_numfollowers'	=> 'Followers',
 		'usrlist_numfollowers1'	=> 'Follower',
 		'usrlist_numposts'	=> 'Posts',
 		'usrlist_numposts1'	=> 'Post',
 		'usrlist_tltp_follow'	=> 'Follow',
 		'usrlist_tltp_unfollow'	=> 'Unfollow',
-		
+
 		'grplist_numfollowers'	=> 'Members',
 		'grplist_numfollowers1'	=> 'Member',
 		'grplist_numposts'	=> 'Posts',
 		'grplist_numposts1'	=> 'Post',
 		'grplist_tltp_follow'	=> 'Join',
 		'grplist_tltp_unfollow'	=> 'Leave',
-		
+
 		'rss_mydashboard'	=> '#USERNAME#\'s Dashboard Feed',
 		'rss_myposts'	=> '#USERNAME#\'s Posts',
 		'rss_myprivate'	=> '#USERNAME#\'s Private Posts',
@@ -154,20 +154,20 @@
 		'rss_usrposts'	=> 'Posts by #USERNAME#',
 		'rss_grpposts'	=> 'Posts in #GROUP#',
 		'rss_everybody'	=> 'All posts in #SITE_TITLE#',
-		
+
 		'msg_post_deleted_ttl'	=> 'Done',
 		'msg_post_deleted_txt'	=> 'Post was deleted.',
-		
+
 		'userselector_tab_all'	=> 'All',
 		'userselector_tab_sel'	=> 'Selected',
 		'userselector_srchinp'	=> 'Search Members',
-		
+
 		'msg_follow_user_on'	=> 'You now follow #USERNAME#.',
 		'msg_follow_user_off'	=> 'You don\'t follow #USERNAME# anymore.',
 		'msg_follow_group_on'	=> 'You are now member of #GROUP#.',
 		'msg_follow_group_off'	=> 'You are no longer member of #GROUP#.',
-  		
+
 		'global_html_direction'	=> 'ltr',
 	);
-	
+
 ?>

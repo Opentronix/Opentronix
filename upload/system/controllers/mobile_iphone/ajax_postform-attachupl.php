@@ -1,9 +1,9 @@
 <?php
-	
+
 	if( !$this->user->is_logged ) {
 		return;
 	}
-	
+
 	if( !isset($_POST['keyy']) ) {
 		return;
 	}
@@ -12,7 +12,7 @@
 	}
 	$key	= trim($_POST['keyy']);
 	$file	= (object) $_FILES['file'];
-	
+
 	if( empty($key) ) {
 		return;
 	}
@@ -23,12 +23,12 @@
 		$this->user->sess['POSTFORM_TEMP_FILES'][$key]	= new stdClass;
 	}
 	$data	= & $this->user->sess['POSTFORM_TEMP_FILES'][$key];
-	
+
 	if( ! is_uploaded_file($file->tmp_name) ) {
 		$data	= FALSE;
 		return;
 	}
-	
+
 	$ext	= '';
 	$pos	= strpos($file->name, '.');
 	if( FALSE !== $pos ) {
@@ -47,5 +47,5 @@
 		'filesize'	=> filesize($C->TMP_DIR.$tempfile),
 	);
 	return;
-	
+
 ?>

@@ -1,5 +1,5 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
@@ -10,18 +10,18 @@
 	if( 0 == $db2->num_rows() ) {
 		$this->redirect('dashboard');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/admin.php');
-	
+
 	require_once( $C->INCPATH.'helpers/func_languages.php' );
-	
+
 	$s	= new stdClass;
 	$db2->query('SELECT word, value FROM settings');
 	while($o = $db2->fetch_object()) {
 		$s->{stripslashes($o->word)}	= stripslashes($o->value);
 	}
-	
+
 	$D->menu_timezones	= array();
 	if( floatval(substr(phpversion(),0,3)) >= 5.2 ) {
 		$tmp	= array();
@@ -38,14 +38,14 @@
 		}
 		asort($D->menu_timezones);
 	}
-	
+
 	$D->menu_languages	= array();
 	foreach(get_available_languages(FALSE) as $k=>$v) {
 		$D->menu_languages[$k]	= $v->name;
 	}
-	
+
 	$D->menu_postlength	= array(140, 150, 160, 170, 180, 190, 200);
-	
+
 	$D->network_name	= $s->SITE_TITLE;
 	$D->system_email	= $s->SYSTEM_EMAIL;
 	$D->def_language	= $s->LANGUAGE;
@@ -57,7 +57,7 @@
 	$D->post_atch_file	= !isset($s->ATTACH_FILE_DISABLED) || $s->ATTACH_FILE_DISABLED==0;
 	$D->mobi_enabled	= $C->MOBI_DISABLED==0;
 	$D->email_confirm	= $s->USERS_EMAIL_CONFIRMATION;
-	
+
 	$D->intro_ttl	= isset($C->HOME_INTRO_TTL) ? trim($C->HOME_INTRO_TTL) : '';
 	$D->intro_txt	= isset($C->HOME_INTRO_TTL) ? trim($C->HOME_INTRO_TXT) : '';
 	if( empty($D->intro_ttl) && empty($D->intro_txt) ) {
@@ -65,7 +65,7 @@
 		$D->intro_ttl	= $this->lang('os_welcome_ttl', array('#SITE_TITLE#'=>$C->SITE_TITLE));
 		$D->intro_txt	= $this->lang('os_welcome_txt', array('#SITE_TITLE#'=>$C->SITE_TITLE));
 	}
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
@@ -83,7 +83,7 @@
 		if( isset($_POST['def_timezone']) && isset($D->menu_timezones[$_POST['def_timezone']]) ) {
 			$D->def_timezone	= $_POST['def_timezone'];
 		}
-		
+
 		if( isset($_POST['def_language']) && isset($D->menu_languages[$_POST['def_language']]) ) {
 			$D->def_language	= $_POST['def_language'];
 			$old	= $db2->fetch_field('SELECT value FROM settings WHERE word="LANGUAGE" LIMIT 1');
@@ -144,9 +144,9 @@
 		}
 		$this->network->load_network_settings();
 	}
-	
+
 	$D->page_title	= $this->lang('admpgtitle_general', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$this->load_template('admin_general.php');
-	
+
 ?>

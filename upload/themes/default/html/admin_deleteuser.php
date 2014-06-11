@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<div id="settings">
 						<div id="settings_left">
@@ -23,7 +23,7 @@
 									<div class="greygrad3">
 										<?= $this->lang('admdelu_descr') ?>
 										<?= $this->lang('admdelu_descr2', array('#A2#'=>'</a>', '#A1#'=>'<a href="'.$C->SITE_URL.'admin/suspendusers">',)) ?>
-										
+
 										<form method="post" name="deluser" onsubmit="return confirm('<?= htmlspecialchars($this->lang('admdelu_confirm')) ?>');" action="<?= $C->SITE_URL ?>admin/deleteuser" autocomplete="off">
 										<table id="setform" cellspacing="5" style="margin-top:5px;">
 											<tr>
@@ -37,18 +37,18 @@
 											<tr>
 												<td></td>
 												<td><input type="submit" value="<?= $this->lang('admdelu_submit') ?>" style="padding:4px; font-weight:bold;"/></td>
-		
+
 											</tr>
 										</table>
 										</form>
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

@@ -1,17 +1,17 @@
 <?php
-	
+
 	if( !$this->network->id || !$this->user->is_logged ) {
 		$this->redirect('home');
 	}
 	if( $this->network->id && $C->MOBI_DISABLED ) {
 		$this->redirect('mobidisabled');
 	}
-		
+
 	$this->load_langfile('mobile/global.php');
 	$this->load_langfile('mobile/newpost.php');
-	
+
 	$D->page_title	= $this->lang('newpost_page_title', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$to_user	= FALSE;
 	if( $this->param('touser') ) {
 		$to_user	= $this->network->get_user_by_username($this->param('touser'));
@@ -42,7 +42,7 @@
 			}
 		}
 	}
-	
+
 	$D->to_user		= & $to_user;
 	$D->to_group	= & $to_group;
 	$D->menu_groups	= array();
@@ -53,16 +53,16 @@
 		array_unshift($D->menu_groups, $to_group);
 	}
 	$D->menu_groups	= array_values($D->menu_groups);
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
 	$D->message	= '';
-	
+
 	if( $this->param('mention') && !isset($_POST['message']) && $tmp = $this->network->get_user_by_username($this->param('mention')) ) {
 		$D->message	= '@'.$tmp->username.' ';
 	}
-	
+
 	if( isset($_POST['message']) )
 	{
 		$D->submit	= TRUE;
@@ -73,11 +73,11 @@
 			$D->message	= mb_substr($D->message, 0, $C->POST_MAX_SYMBOLS);
 		}
 		$D->message	= trim($D->message);
-		
+
 		$p	= new newpost;
 		$p->set_api_id($C->API_ID);
 		$p->set_message($D->message);
-		
+
 		if( !$D->error && $to_user ) {
 			if( ! $p->set_to_user($to_user->id) ) {
 				$D->error	= TRUE;
@@ -123,8 +123,8 @@
 		}
 		if( ! $D->error ) {
 			$this->redirect('newpost/okmsg:'.($to_user?'sent':'posted'));
-		}	
+		}
 	}
 	$this->load_template('mobile/newpost.php');
-	
+
 ?>

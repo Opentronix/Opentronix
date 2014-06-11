@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile/header.php');
-	
+
 ?>
 	<div id="select">
 		<form method="get" action="<?= $C->SITE_URL ?>search/">
@@ -71,7 +71,7 @@
 		<?php } ?>
 	<?php } ?>
 <?php
-	
+
 	$this->load_template('mobile/footer.php');
-	
+
 ?>

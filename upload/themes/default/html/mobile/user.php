@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile/header.php');
-	
+
 ?>
 	<div id="profilehdr">
 		<img src="<?= $C->IMG_URL.'avatars/thumbs3/'.$D->usr->avatar ?>" alt="<?= htmlspecialchars($D->usr->fullname) ?>" align="left" />
@@ -163,7 +163,7 @@
 	</div>
 	<?php } ?>
 <?php
-	
+
 	$this->load_template('mobile/footer.php');
-	
+
 ?>

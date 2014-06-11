@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 		<script type="text/javascript">
 			function js_chkbxfunc() {
@@ -35,7 +35,7 @@
 			}
 		</script>
 		<div id="invcenter">
-			<h2><?= $this->lang('invite_title') ?></h2>			
+			<h2><?= $this->lang('invite_title') ?></h2>
 			<div class="htabs" style="margin-bottom:6px; margin-top:0px;">
 				<a href="<?= $C->SITE_URL ?>invite"><b><?= $this->lang('os_invite_tab_colleagues') ?></b></a>
 				<a href="<?= $C->SITE_URL ?>invite/parsemail" class="<?= $this->request[1]=='parsemail'?'onhtab':'' ?>"><b><?= $this->lang('os_invite_tab_parsemail') ?></b></a>
@@ -77,7 +77,7 @@
 			</div>
 		</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

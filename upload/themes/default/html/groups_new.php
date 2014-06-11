@@ -1,10 +1,10 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<div id="invcenter">
-						<h2><?= $this->lang('newgroup_title2') ?></h2>	
+						<h2><?= $this->lang('newgroup_title2') ?></h2>
 						<?php if( $D->error ) { ?>
 						<?= errorbox($this->lang('newgroup_f_err'), $this->lang($D->errmsg), TRUE, 'margin-top:5px; margin-bottom:4px;') ?>
 						<?php } ?>
@@ -43,7 +43,7 @@
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

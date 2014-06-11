@@ -1,9 +1,9 @@
 <?php
-	
+
 	$PAGE_TITLE	= 'Installation - Step 6';
-	
+
 	$s	= & $_SESSION['INSTALL_DATA'];
-	
+
 	if( isset($OLDC->DOMAIN, $OLDC->SITE_URL, $OLDC->SITE_TITLE) ) {
 		$s['DOMAIN']	= trim($OLDC->DOMAIN);
 		$s['SITE_URL']	= trim($OLDC->SITE_URL);
@@ -35,7 +35,7 @@
 			}
 		}
 	}
-	
+
 	if( ! isset($s['SITE_URL']) ) {
 		$s['SITE_URL']	= 'http://'.trim($_SERVER['HTTP_HOST']);
 		$uri	= $_SERVER['REQUEST_URI'];
@@ -51,7 +51,7 @@
 	if( ! isset($s['SITE_TITLE']) ) {
 		$s['SITE_TITLE']	= '';
 	}
-	
+
 	$submit	= FALSE;
 	$error	= FALSE;
 	if( isset($_POST['SITE_URL'], $_POST['SITE_TITLE']) ) {
@@ -86,7 +86,7 @@
 			header('Location: ?next&r='.rand(0,99999));
 		}
 	}
-	
+
 	$html	.= '
 							<div class="ttl">
 								<div class="ttl2">
@@ -119,5 +119,5 @@
 									</div>
 								</div>
 							</div>';
-	
+
 ?>

@@ -1,5 +1,5 @@
 <?php
-	
+
 	function get_available_languages($even_if_beta=FALSE)
 	{
 		global $C;
@@ -36,5 +36,5 @@
 		asort($data);
 		return $data;
 	}
-	
+
 ?>

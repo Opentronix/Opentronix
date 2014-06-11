@@ -1,5 +1,5 @@
 <?php
-	
+
 	class rssfeed
 	{
 		public $url;
@@ -10,7 +10,7 @@
 		public $raw;
 		public $title;
 		public $items;
-		
+
 		public function __construct($feed_url, $feed_auth_userpwd='')
 		{
 			$this->url		= $feed_url;
@@ -23,7 +23,7 @@
 			$this->items	= array();
 			$this->has_curl	= function_exists('curl_init');
 		}
-		
+
 		public function check_if_requires_auth()
 		{
 			global $C;
@@ -61,7 +61,7 @@
 				if( preg_match('/(^|\n|\r)(\s)*WWW\-Authenticate\:\s([a-z0-9-]+)/i', $result) ) {
 					return TRUE;
 				}
-			}			
+			}
 			if( preg_match('/(^|\n|\r)(\s)*HTTP\/[0-9.]+(\s)+401(\s)+Unauthorized(\s)*($|\n|\r)/is', $result) ) {
 				if( preg_match('/(^|\n|\r)(\s)*WWW\-Authenticate\:\s([a-z0-9-]+)/i', $result) ) {
 					return TRUE;
@@ -71,12 +71,12 @@
 			}
 			return FALSE;
 		}
-		
+
 		public function set_userpwd($feed_auth_userpwd)
 		{
 			$this->userpwd	= $feed_auth_userpwd;
 		}
-		
+
 		public function read()
 		{
 			if( $this->is_read ) {
@@ -84,7 +84,7 @@
 			}
 			if( $this->error ) {
 				return FALSE;
-			}	
+			}
 			global $C;
 			if( $this->has_curl ) {
 				$ch	= curl_init();
@@ -147,7 +147,7 @@
 			$this->error	= TRUE;
 			return FALSE;
 		}
-		
+
 		public function fetch()
 		{
 			if( $this->is_fetched ) {
@@ -219,7 +219,7 @@
 					$data->source_description	= trim(strip_tags($data->source_description));
 					$data->source_title		= html_entity_decode($data->source_title, ENT_COMPAT, 'UTF-8');
 					$data->source_description	= html_entity_decode($data->source_description, ENT_COMPAT, 'UTF-8');
-					
+
 					if( empty($data->source_date) ) {
 						continue;
 					}
@@ -273,7 +273,7 @@
 			$this->is_fetched	= TRUE;
 			return $this->items;
 		}
-		
+
 		public function get_lastitem_date()
 		{
 			if( ! $this->is_fetched ) {
@@ -288,7 +288,7 @@
 			}
 			return $dt==0 ? FALSE : $dt;
 		}
-		
+
 		public static function parse_date_to_timestamp($date)
 		{
 			$date	= trim($date);
@@ -307,7 +307,7 @@
 				return $d;
 			}
 		}
-		
+
 		public function get_ordered_items($after_date, $keywords_filter='')
 		{
 			if( ! $this->is_fetched ) {
@@ -364,7 +364,7 @@
 			}
 			return $items2;
 		}
-		
+
 		private function item_validate_attachments($item)
 		{
 			if( ! empty($item->source_image) ) {
@@ -385,5 +385,5 @@
 			return $item;
 		}
 	}
-	
+
 ?>

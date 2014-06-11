@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 		<div id="profile">
 			<div id="profile2">
@@ -48,7 +48,7 @@
 						<? } ?>
 					</div>
 					<?php } ?>
-					
+
 					<?php if( count($D->post_tags) > 0 ) { ?>
 					<div class="ttl" style="margin-top:5px; margin-bottom:5px;"><div class="ttl2"><h3><?= $this->lang('usr_left_posttags') ?></h3></div></div>
 					<div class="taglist">
@@ -57,7 +57,7 @@
 						<?php } ?>
 					</div>
 					<?php } ?>
-					
+
 					<?php if( count($D->some_followers) > 0 && !($D->tab=='coleagues'&&$D->filter=='followers') ) { ?>
 					<div class="ttl" style="margin-bottom:8px; margin-top:4px;">
 						<div class="ttl2">
@@ -104,7 +104,7 @@
 							<?php } ?>
 						</div>
 					</div>
-					
+
 				<?php if( $D->tab == 'updates' ) { ?>
 					<div class="ttl" style="margin-top:8px; margin-bottom:6px;">
 						<div class="ttl2">
@@ -119,7 +119,7 @@
 									<a href="<?= userlink($D->usr->username) ?>/filter:files" style="border-bottom:0px;"><?= $this->lang('posts_filter_files') ?></a>
 								</div>
 								<span><?= $this->lang('posts_filter_ttl') ?></span>
-							</div>		
+							</div>
 						</div>
 					</div>
 					<?php if($this->param('msg')=='deletedpost') { ?>
@@ -247,7 +247,7 @@
 			</div>
 		</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

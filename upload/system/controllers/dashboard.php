@@ -1,17 +1,17 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('home');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/dashboard.php');
-	
+
 	$D->page_title	= $this->lang('dashboard_page_title', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	if( $this->param('from')=='ajax' && isset($_POST['toggle_whattodo']) ) {
 		$tmp	= intval($_POST['toggle_whattodo'])==0 ? 1 : 0;
 		$this->db2->query('UPDATE users SET dbrd_whattodo_closed="'.$tmp.'" WHERE id="'.$this->user->id.'" LIMIT 1');
@@ -34,7 +34,7 @@
 		exit;
 	}
 	$D->groupsmenu_active	= $this->user->info->dbrd_groups_closed==1 ? FALSE : TRUE;
-	
+
 	$D->rss_feeds	= array(
 		array( $C->SITE_URL.'rss/my:dashboard',	$this->lang('rss_mydashboard',array('#USERNAME#'=>$this->user->info->username)), ),
 		array( $C->SITE_URL.'rss/my:posts',		$this->lang('rss_myposts',array('#USERNAME#'=>$this->user->info->username)), ),
@@ -43,16 +43,16 @@
 		array( $C->SITE_URL.'rss/my:bookmarks',	$this->lang('rss_mybookmarks',array('#USERNAME#'=>$this->user->info->username)), ),
 		array( $C->SITE_URL.'rss/all:posts',	$this->lang('rss_everybody',array('#SITE_TITLE#'=>$C->SITE_TITLE)), ),
 	);
-	
+
 	$tabs		= array('all', '@me', 'private', 'commented', 'bookmarks', 'everybody', 'group');
 	$filters	= array('all', 'videos', 'images', 'links', 'files');
 	$at_tmp	= array('videos'=>'videoembed', 'images'=>'image', 'links'=>'link', 'files'=>'file');
-	
+
 	$D->show_feeds_tab	= $db2->fetch_field('SELECT post_id FROM post_userbox_feeds WHERE user_id="'.$this->user->id.'" LIMIT 1') ? TRUE : FALSE;
 	if($D->show_feeds_tab) {
 		$tabs[]	= 'feeds';
 	}
-	
+
 	$tab	= 'all';
 	if( $this->param('tab') && in_array($this->param('tab'), $tabs) ) {
 		$tab	= $this->param('tab');
@@ -61,7 +61,7 @@
 	if( $this->param('filter') && in_array($this->param('filter'), $filters) ) {
 		$filter	= $this->param('filter');
 	}
-	
+
 	$privtabs	= array('all', 'inbox', 'sent', 'usr');
 	$privtab	= 'all';
 	$privusr	= FALSE;
@@ -71,7 +71,7 @@
 	if($tab=='private' && $privtab=='usr' && $this->param('usr') && $this->param('usr')!=$this->user->info->username) {
 		$privusr	= $this->network->get_user_by_username($this->param('usr'));
 	}
-	
+
 	$onlygroup	= FALSE;
 	if($tab=='group' && $this->param('g')) {
 		$onlygroup	= $this->network->get_group_by_name($this->param('g'));
@@ -84,7 +84,7 @@
 			$onlygroup	= FALSE;
 		}
 	}
-	
+
 	$not_in_groups	= '';
 	if( !$this->user->info->is_network_admin && ($tab == '@me' || $tab == 'everybody')) {
 		$not_in_groups	= array();
@@ -105,7 +105,7 @@
 		}
 		$not_in_groups	= count($not_in_groups)>0 ? ('AND p.group_id NOT IN('.implode(', ', $not_in_groups).')') : '';
 	}
-	
+
 	$q1	= '';
 	$q2	= '';
 	switch($tab)
@@ -120,7 +120,7 @@
 				$q2	= 'SELECT p.*, "public" AS `type` FROM post_userbox b LEFT JOIN posts p ON p.id=b.post_id, posts_attachments a WHERE b.post_id=a.post_id AND a.type="'.$at_tmp[$filter].'" AND b.user_id="'.$this->user->id.'" ORDER BY p.id DESC ';
 			}
 			break;
-			
+
 		case 'feeds':
 			if($filter == 'all') {
 				$q1	= 'SELECT COUNT(post_id) FROM post_userbox_feeds WHERE user_id="'.$this->user->id.'" ';
@@ -131,7 +131,7 @@
 				$q2	= 'SELECT p.*, "public" AS `type` FROM post_userbox_feeds b LEFT JOIN posts p ON p.id=b.post_id, posts_attachments a WHERE b.post_id=a.post_id AND a.type="'.$at_tmp[$filter].'" AND b.user_id="'.$this->user->id.'" ORDER BY p.id DESC ';
 			}
 			break;
-		
+
 		case '@me':
 			if($filter == 'all') {
 				$q1	= 'SELECT COUNT(p.id) FROM posts p INNER JOIN (SELECT post_id FROM posts_mentioned WHERE user_id="'.$this->user->id.'" UNION SELECT p.post_id FROM posts_comments p, posts_comments_mentioned c WHERE c.comment_id = p.id AND c.user_id ="'.$this->user->id.'") x ON x.post_id=p.id '.$not_in_groups;
@@ -142,7 +142,7 @@
 				$q2	= 'SELECT p.*, "public" AS `type` FROM posts p JOIN posts_attachments a ON p.id=a.post_id AND a.type="'.$at_tmp[$filter].'" INNER JOIN (SELECT post_id FROM posts_mentioned WHERE user_id="'.$this->user->id.'" UNION SELECT p.post_id FROM posts_comments p, posts_comments_mentioned c WHERE c.comment_id = p.id AND c.user_id ="'.$this->user->id.'") x ON x.post_id=p.id '.$not_in_groups.' ORDER BY p.id DESC ';
 			}
 			break;
-		
+
 		case 'commented':
 			if($filter == 'all') {
 				$q1	= '
@@ -169,7 +169,7 @@
 					ORDER BY cdt DESC ';
 			}
 			break;
-		
+
 		case 'everybody':
 			if($filter == 'all') {
 				$q1	= 'SELECT COUNT(p.id) FROM posts p WHERE p.user_id<>0 AND p.api_id<>2 '.$not_in_groups;
@@ -180,7 +180,7 @@
 				$q2	= 'SELECT p.*, "public" AS `type` FROM posts p, posts_attachments a WHERE p.id=a.post_id AND p.user_id<>0 AND p.api_id<>2 '.$not_in_groups.' AND a.type="'.$at_tmp[$filter].'" ORDER BY p.id DESC ';
 			}
 			break;
-			
+
 		case 'bookmarks':
 			if($filter == 'all') {
 				$q1	= 'SELECT COUNT(post_id) FROM post_favs WHERE user_id="'.$this->user->id.'"';
@@ -203,9 +203,9 @@
 					ORDER BY fid DESC ';
 			}
 			break;
-			
+
 		case 'private':
-			
+
 			if($privtab == 'all') {
 				if($filter == 'all') {
 					$q1	= 'SELECT COUNT(id) FROM posts_pr WHERE (user_id="'.$this->user->id.'" OR (to_user="'.$this->user->id.'" AND is_recp_del=0))';
@@ -247,7 +247,7 @@
 				}
 			}
 			break;
-		
+
 		case 'group':
 			if($filter == 'all') {
 				$q1	= 'SELECT COUNT(p.id) FROM posts p WHERE group_id="'.$onlygroup->id.'"';
@@ -268,7 +268,7 @@
 	$D->num_pages	= 0;
 	$D->pg		= 1;
 	$D->posts_html	= '';
-	
+
 	if( $q1!='' && $q2!='' ) {
 		$D->num_results	= $db2->fetch_field($q1);
 		$D->num_pages	= ceil($D->num_results / $C->PAGING_NUM_POSTS);
@@ -321,7 +321,7 @@
 		$D->posts_html	= ob_get_contents();
 		ob_end_clean();
 	}
-	
+
 	if( 0 == $D->num_results ) {
 		if( ! ($tab=='private' && $privtab=='usr' && !$privusr) ) {
 			$arr	= array('#USERNAME#'=>$this->user->info->username, '#SITE_TITLE#'=>htmlspecialchars($C->OUTSIDE_SITE_TITLE), '#A1#'=>'<a href="javascript:;" onclick="postform_open();">', '#A2#'=>'</a>', );
@@ -352,25 +352,25 @@
 			$D->posts_html	= $this->load_template('noposts_box.php', FALSE);
 		}
 	}
-	
+
 	if( $tab=='all' || $tab=='@me' || $tab=='private' || $tab=='commented' || $tab=='feeds' ) {
 		$this->network->reset_dashboard_tabstate($this->user->id, $tab);
 	}
-	
+
 	if( $this->param('from') == 'ajax' )
 	{
 		echo 'OK:';
 		echo $D->posts_html;
 		exit;
 	}
-	
+
 	$D->menu_groups	= $this->user->get_top_groups(15);
-	
+
 	$D->tabs_state	= $this->network->get_dashboard_tabstate($this->user->id, array('all','@me','private','commented','feeds'));
 	if( isset($D->tabs_state[$tab]) ) {
 		$D->tabs_state[$tab]	= 0;
 	}
-	
+
 	$D->whattodo_active	= FALSE;
 	$D->whattodo_minimized	= FALSE;
 	$D->whattodo_links	= array();
@@ -382,7 +382,7 @@
 		'invite'	=> FALSE,
 		'followg'	=> FALSE,
 	);
-	
+
 	$ui	= & $this->user->info;
 	if( empty($ui->position) && empty($ui->location) && 0==intval($ui->birthdate) && empty($ui->gender) && empty($ui->about_me) && 0==count($ui->tags) ) {
 		$D->whattodo_lines['prof_info']	= TRUE;
@@ -422,7 +422,7 @@
 	if( $D->whattodo_active && $D->whattodo_minimized && !$D->whattodo_lines['prof_info'] && !$D->whattodo_lines['cnt_info'] && !$D->whattodo_lines['avatar'] && !$D->whattodo_lines['followu'] ) {
 		$D->whattodo_active	= FALSE;
 	}
-	
+
 	$D->last_online	= array();
 	$num	= 6;
 	$time	= 5*60;
@@ -437,7 +437,7 @@
 		$D->last_online[]	= $this->network->get_user_by_id($o->id);
 	}
 	$D->last_online	= array_slice($D->last_online, 0, $num);
-	
+
 	$D->saved_searches	= array();
 	$db2->query('SELECT id, search_key, search_string FROM searches WHERE user_id="'.$this->user->id.'" ORDER BY id DESC');
 	while($tmp = $db2->fetch_object()) {
@@ -445,7 +445,7 @@
 		$tmp->search_string	= stripslashes($tmp->search_string);
 		$D->saved_searches[$tmp->id]	= $tmp;
 	}
-	
+
 	$D->post_tags	= array();
 	$not_in_groups	= array();
 	$r	= $this->db2->query('SELECT id FROM groups WHERE is_public=0');
@@ -454,7 +454,7 @@
 	}
 	$not_in_groups	= count($not_in_groups)>0 ? ('AND group_id NOT IN('.implode(', ', $not_in_groups).')') : '';
 	$D->post_tags	= $this->network->get_recent_posttags($not_in_groups, 10);
-	
+
 	$this->load_template('dashboard.php');
-	
+
 ?>

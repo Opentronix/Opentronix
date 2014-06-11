@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 		<script type="text/javascript">
 			inv_lines	= 0;
@@ -47,7 +47,7 @@
 			}
 		</script>
 		<div id="invcenter">
-			<h2><?= $this->lang('invite_title') ?></h2>			
+			<h2><?= $this->lang('invite_title') ?></h2>
 			<div class="htabs" style="margin-bottom:6px; margin-top:0px;">
 				<a href="<?= $C->SITE_URL ?>invite" class="onhtab"><b><?= $this->lang('os_invite_tab_colleagues') ?></b></a>
 				<a href="<?= $C->SITE_URL ?>invite/parsemail"><b><?= $this->lang('os_invite_tab_parsemail') ?></b></a>
@@ -76,7 +76,7 @@
 								<tbody id="invite_table" class="invtbl_emldmns_<?= count($C->EMAIL_DOMAINS) ?>">
 								<?php foreach($D->formdata as $obj) { ?>
 								<script type="text/javascript">
-									inv_lines ++; 
+									inv_lines ++;
 								</script>
 								<tr>
 									<td class="setparam" style="text-align:right;"><?= $this->lang('inv_clg_form_name') ?></td>
@@ -92,7 +92,7 @@
 										<a href="javascript:;" onclick="invform_line_add();" onfocus="this.blur();" class="addaline"><?= $this->lang('inv_clg_form_lnadd') ?></a>
 										<a href="javascript:;" onclick="invform_line_del();" onfocus="this.blur();" class="remaline"><?= $this->lang('inv_clg_form_lndel') ?></a>
 									</td>
-								</tr>	
+								</tr>
 								<tr>
 									<td></td>
 									<td><input type="submit" value="<?= $this->lang('inv_clg_form_submit') ?>" style="padding:4px; font-weight:bold;"/></td>
@@ -105,7 +105,7 @@
 		<?php } ?>
 		</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

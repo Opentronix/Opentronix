@@ -1,13 +1,13 @@
 <?php
-	
+
 	$lang	= array
 	(
 		'eml_ntf_title'	=> 'Hey #USER#,',
 		'eml_ntf_signatr'	=> "Regards,\n#SITE_URL#",
-		
+
 		'emltxt_ntf_editnotif'	=> 'You can edit your notification settings from here: #A0#',
 		'emlhtml_ntf_editnotif'	=> 'You can edit your notification settings from #A1#here#A2#.',
-		
+
 		'emlsubj_ntf_me_if_u_follows_me'		=> "#NAME# is now following you on #SITE_TITLE#",
 		'emlsubj_ntf_me_if_u_follows_u2'		=> "#NAME# is now following #USER2# on #SITE_TITLE#",
 		'emlsubj_ntf_me_if_u_commments_me'		=> "#NAME# commented on your post on #SITE_TITLE#",
@@ -24,7 +24,7 @@
 		'emlsubj_ntf_me_if_u_posts_qme'		=> "#NAME# mentioned you in their post on #SITE_TITLE#",
 		'emlsubj_ntf_me_if_u_posts_prvmsg'		=> "#NAME# sent you a private message on #SITE_TITLE#",
 		'emlsubj_ntf_me_if_u_registers'		=> "#NAME# joined the #COMPANY# network",
-		
+
 		'emlhtml_ntf_me_if_u_follows_me'		=> '#NAME# (#USER#) is now following you.',
 		'emlhtml_ntf_me_if_u_follows_u2'		=> '#NAME# (#USER#) is now following #USER2#.',
 		'emlhtml_ntf_me_if_u_commments_me'		=> "#USER# commented on your #A1#post#A2#.",
@@ -41,7 +41,7 @@
 		'emlhtml_ntf_me_if_u_posts_qme'		=> '#USER# mentioned you in their #A1#post#A2#.',
 		'emlhtml_ntf_me_if_u_posts_prvmsg'		=> '#USER# sent you a #A1#private message#A2#.',
 		'emlhtml_ntf_me_if_u_registers'		=> '#USER# joined the #COMPANY# network.',
-		
+
 		'emltxt_ntf_me_if_u_follows_me'		=> "#NAME# (#USER#) is now following you.\nCheck out #USER#'s profile: #A0#",
 		'emltxt_ntf_me_if_u_follows_u2'		=> "#NAME# (#USER#) is now following #USER2#.\nCheck out #USER#'s profile: #A0#",
 		'emltxt_ntf_me_if_u_commments_me'		=> "#USER# commented on your post:\n#A0#",
@@ -59,5 +59,5 @@
 		'emltxt_ntf_me_if_u_posts_prvmsg'		=> "#USER# sent you a private message:\n#A0#",
 		'emltxt_ntf_me_if_u_registers'		=> "#USER# joined the #COMPANY# network.\nCheck out #USER#'s profile: #A0#",
 	);
-	
+
 ?>

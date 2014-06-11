@@ -1,5 +1,5 @@
 <?php
-	
+
 	$date		= time() - 14*24*60*60;
 	$faved	= array();
 	$r	= $db2->query('SELECT DISTINCT post_id FROM post_favs WHERE post_type="public" ');
@@ -15,7 +15,7 @@
 		}
 		$posts[]	= $tmp->id;
 	}
-	
+
 	$user	= (object) array (
 		'is_logged'	=> TRUE,
 		'id'		=> 0,
@@ -25,5 +25,5 @@
 		$p	= new post('public', $tmp);
 		$p->delete_this_post();
 	}
-	
+
 ?>

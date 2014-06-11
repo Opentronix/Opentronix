@@ -1,5 +1,5 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
@@ -10,21 +10,21 @@
 	if( 0 == $db2->num_rows() ) {
 		$this->redirect('dashboard');
 	}
-	
+
 	require_once( $C->INCPATH.'helpers/func_images.php' );
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/admin.php');
-	
+
 	$D->page_title	= $this->lang('admpgtitle_editusers', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	if( isset($_POST['editusername']) ) {
 		$tmp	= trim($_POST['editusername']);
 		if( $this->network->get_user_by_username($tmp) ) {
 			$this->redirect('admin/editusers/user:'.$tmp);
 		}
 	}
-	
+
 	$D->user	= FALSE;
 	if( $this->param('user') ) {
 		$tmp	= trim($this->param('user'));
@@ -32,12 +32,12 @@
 			$D->user	= $tmp;
 		}
 	}
-	
+
 	if( $D->user )
 	{
 		$this->load_langfile('inside/settings.php'); // load settings texts
 		$this->load_langfile('inside/admin.php'); // overwrite some of them
-		
+
 		$tabs	= array('profile', 'picture', 'rssfeeds');
 		$D->tab	= 'profile';
 		if( $this->param('tab') && in_array($this->param('tab'),$tabs) ) {
@@ -46,7 +46,7 @@
 		$D->submit	= FALSE;
 		$D->error	= FALSE;
 		$D->errmsg	= '';
-		
+
 		if( $D->tab == 'profile' ) {
 			$D->menu_bdate_d	= array();
 			$D->menu_bdate_m	= array();
@@ -120,7 +120,7 @@
 					$D->tags[$k]	= $v;
 				}
 				$D->tags	= implode(', ', $D->tags);
-				
+
 				$db2->query('UPDATE users SET fullname="'.$db2->e($D->name).'", about_me="'.$db2->e($D->aboutme).'", tags="'.$db2->e($D->tags).'", gender="'.$db2->e($D->gender).'", birthdate="'.$db2->e($birthdate).'", position="'.$db2->e($D->position).'", location="'.$db2->e($D->location).'" WHERE id="'.$D->user->id.'" LIMIT 1');
 				$D->user	= $this->network->get_user_by_id($D->user->id, TRUE);
 			}
@@ -272,7 +272,7 @@
 			}
 		}
 	}
-	
+
 	$this->load_template('admin_editusers.php');
-	
+
 ?>

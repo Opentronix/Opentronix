@@ -1,7 +1,7 @@
 <?php
-	
+
 	require_once($C->INCPATH.'conf_embed.php');
-	
+
 	class newpostcomment
 	{
 		private $network	= FALSE;
@@ -16,7 +16,7 @@
 		private $db2;
 		private $cache;
 		public $error	= FALSE;
-		
+
 		public function __construct($post_obj)
 		{
 			global $C;
@@ -40,7 +40,7 @@
 			}
 			$this->id	= FALSE;
 		}
-		
+
 		public function set_user($network_id, $user_id)
 		{
 			$this->network	= FALSE;
@@ -56,7 +56,7 @@
 			$this->user		= $u;
 			return TRUE;
 		}
-		
+
 		public function set_api_id($api_id)
 		{
 			if( $this->id ) {
@@ -65,7 +65,7 @@
 			$this->api_id	= intval($api_id);
 			return TRUE;
 		}
-		
+
 		public function set_message($message)
 		{
 			if( empty($message) ) {
@@ -73,7 +73,7 @@
 			}
 			global $C;
 			$this->message	= trim($message);
-			
+
 			$this->mentioned	= array();
 			if( preg_match_all('/\@([a-zA-Z0-9\-_]{3,30})/u', $message, $matches, PREG_PATTERN_ORDER) ) {
 				foreach($matches[1] as $unm) {
@@ -83,7 +83,7 @@
 				}
 			}
 			$this->mentioned	= array_unique($this->mentioned);
-			
+
 			$this->posttags	= array();
 			if( preg_match_all('/\#([א-תÀ-ÿ一-龥а-яa-z0-9\-_]{1,50})/iu', $message, $matches, PREG_PATTERN_ORDER) ) {
 				foreach($matches[1] as $tg) {
@@ -92,7 +92,7 @@
 			}
 			$this->posttags	= count( array_unique($this->posttags) );
 		}
-		
+
 		public function save()
 		{
 			if( $this->error ) {
@@ -113,17 +113,17 @@
 			$db_posttags	= intval($this->posttags);
 			$db_date		= time();
 			$db_ip_addr		= ip2long($_SERVER['REMOTE_ADDR']);
-			
+
 			$db2->query('INSERT INTO '.($is_private?'posts_pr_comments':'posts_comments').' SET api_id="'.$db_api_id.'", post_id="'.$this->post->post_id.'", user_id="'.$db_user_id.'", message="'.$db_message.'", mentioned="'.$db_mentioned.'", posttags="'.$db_posttags.'", date="'.$db_date.'", ip_addr="'.$db_ip_addr.'"   ');
 			if( ! $id = $db2->insert_id() ) {
 				return FALSE;
 			}
 			$db2->query('UPDATE '.($is_private?'posts_pr':'posts').' SET comments=comments+1, date_lastcomment="'.time().'" WHERE id="'.$this->post->post_id.'" LIMIT 1');
-			
+
 			foreach($this->mentioned as $uid) {
 				$db2->query('INSERT INTO '.($is_private?'posts_pr_comments_mentioned':'posts_comments_mentioned').' SET comment_id="'.$id.'", user_id="'.intval($uid).'" ');
 			}
-			
+
 			$db2->query('SELECT id, newcomments FROM '.($is_private?'posts_pr_comments_watch':'posts_comments_watch').' WHERE user_id="'.$this->user->id.'" AND post_id="'.$this->post->post_id.'" LIMIT 1');
 			if( $sdf = $db2->fetch_object() ) {
 				if( $sdf->newcomments <> 0 ) {
@@ -144,7 +144,7 @@
 				//}
 			}
 			$db2->query('UPDATE '.($is_private?'posts_pr_comments_watch':'posts_comments_watch').' SET newcomments=newcomments+1 WHERE user_id<>"'.$this->user->id.'" AND post_id="'.$this->post->post_id.'" ');
-			
+
 			if( $is_private ) {
 				$db2->query('UPDATE posts_pr SET is_recp_del=0 WHERE id="'.$this->post->post_id.'" LIMIT 1');
 				$uid	= $this->post->post_to_user->id;
@@ -152,7 +152,7 @@
 					$uid	= $this->post->post_user->id;
 				}
 				$this->network->set_dashboard_tabstate($uid, 'private', 1);
-				
+
 				$n	= intval( $this->network->get_user_notif_rules($uid)->ntf_me_if_u_posts_prvmsg );
 				if( $n==1 || $n==3 ) {
 					global $C, $page;
@@ -217,12 +217,12 @@
 							$message_txt	= $page->lang('emltxt_ntf_me_if_'.$notifkey, $lng_txt)."\n\n \"".$this->message.'"';
 							$message_htm	= $page->lang('emlhtml_ntf_me_if_'.$notifkey, $lng_htm).'<br /><br /> "'.$this->message.'"';
 							$this->network->send_notification_email($uid, $notifkey, $subject, $message_txt, $message_htm);
-						}	
+						}
 					}
 				}
 			}
 			return $id;
 		}
 	}
-	
+
 ?>

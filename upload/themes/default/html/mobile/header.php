@@ -1,11 +1,11 @@
 <?php
-	
+
 	if( $this->user->is_logged ) {
 		$this->user->write_pageview();
 	}
-	
+
 	$this->load_langfile('mobile/header.php');
-	
+
 ?>
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
@@ -23,7 +23,7 @@
 	<body>
 		<h1 id="hdr" style="text-align:left; background-image:none;"><?= $C->SITE_TITLE ?></div></h1>
 		<hr />
-		
+
 		<?php if( $this->user->is_logged ) { ?>
 		<div id="nav">
 			<?php if( $this->request[0] == 'dashboard' ) { ?>

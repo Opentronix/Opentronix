@@ -1,10 +1,10 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<div id="settings">
-						<div id="settings_left">				
+						<div id="settings_left">
 							<div class="ttl" style="margin-right:12px;"><div class="ttl2"><h3><?= $this->lang('settings_menu_title') ?></h3></div></div>
 							<div class="sidenav">
 								<a href="<?= $C->SITE_URL ?>settings/profile"><?= $this->lang('settings_menu_profile') ?></a>
@@ -22,18 +22,18 @@
 						</div>
 						<div id="settings_right">
 							<div class="ttl"><div class="ttl2"><h3><?= $this->lang('settings_email_ttl2') ?></h3></div></div>
-							
-							<?php 
-							if($D->submit && !$D->error && !$D->notif) 
-							{ 
+
+							<?php
+							if($D->submit && !$D->error && !$D->notif)
+							{
 							?>
 								<?= okbox($this->lang('st_email_okttl'), $this->lang('st_email_oktxt'), FALSE, 'margin-top:5px;') ?>
-							<?php 
-							}elseif($D->submit &&  $D->error && !$D->notif) 
-							{ 
+							<?php
+							}elseif($D->submit &&  $D->error && !$D->notif)
+							{
 							?>
 								<?= errorbox($this->lang('st_email_current_errttl'), $D->errmsg, TRUE, 'margin-top:5px;') ?>
-							<?php 
+							<?php
 							}elseif($D->submit &&  $D->error && $D->notif)
 							{
 							?>
@@ -41,7 +41,7 @@
 							<?php
 							}
 							?>
-							
+
 							<?php
 							if(!$D->notif && !$D->new_email_active)
 							{
@@ -75,7 +75,7 @@
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

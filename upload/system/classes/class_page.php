@@ -1,5 +1,5 @@
 <?php
-	
+
 	class page
 	{
 		public function __construct()
@@ -19,20 +19,20 @@
 			$this->lang_data		= array();
 			$this->tpl_name	 	= 'default';
 		}
-		
+
 		public function LOAD()
 		{
 			$this->_parse_input();
-			
+
 			if( !$this->user->is_logged && $this->param('invited') ) {
 				$_SESSION['invite_code']	= trim($this->param('invited'));
 			}
-			
+
 			$this->_set_template();
 			$this->_send_headers();
 			$this->_load_controller();
 		}
-		
+
 		private function _parse_input()
 		{
 			global $C;
@@ -150,14 +150,14 @@
 				return;
 			}
 		}
-		
+
 		private function _send_headers()
 		{
 			header('Cache-Control: no-store, no-cache, must-revalidate');
 			header('Cache-Control: post-check=0, pre-check=0', FALSE);
 			header('Pragma: no-cache');
 			header('Last-Modified: '.gmdate('D, d M Y H:i:s'). ' GMT');
-			
+
 			if( $this->request[0] == 'ajax' ) {
 				if( $this->param('ajaxtp') == 'xml' ) {
 					header('Content-type: application/xml; charset=utf-8');
@@ -170,7 +170,7 @@
 				header('Content-type: text/html; charset=utf-8');
 			}
 		}
-		
+
 		public function _set_template()
 		{
 			if( isset($GLOBALS['C']->THEME) && file_exists($GLOBALS['C']->INCPATH.'../themes/'.$GLOBALS['C']->THEME.'/theme.php') ) {
@@ -186,7 +186,7 @@
 			$GLOBALS['C']->THEME	= $this->tpl_name;
 			return $current_theme;
 		}
-		
+
 		private function _load_controller()
 		{
 			global $C, $D;
@@ -198,10 +198,10 @@
 			$cache	= & $this->cache;
 			$user		= & $this->user;
 			$network	= & $this->network;
-			
+
 			require_once( $this->controllers.implode('_',$this->request).'.php' );
 		}
-		
+
 		public function load_template($filename, $output_content=TRUE)
 		{
 			global $C, $D;
@@ -218,7 +218,7 @@
 				return $cnt;
 			}
 		}
-		
+
 		public function load_langfile($filename)
 		{
 			if( ! isset($this->tmp_loaded_langfiles) ) {
@@ -237,7 +237,7 @@
 				$this->lang_data[$k]	= $v;
 			}
 		}
-		
+
 		public function lang($key, $replace_strings=array(), $in_another_language=FALSE)
 		{
 			if( $in_another_language && $in_another_language!=$GLOBALS['C']->LANGUAGE && is_dir($GLOBALS['C']->INCPATH.'languages/'.$in_another_language) ) {
@@ -255,7 +255,7 @@
 			}
 			return str_replace(array_keys($replace_strings), array_values($replace_strings), $txt);
 		}
-		
+
 		public function lang_in_another_language($key, $replace_strings=array(), $in_language=FALSE)
 		{
 			if( empty($key) ) {
@@ -290,7 +290,7 @@
 			}
 			return str_replace(array_keys($replace_strings), array_values($replace_strings), $txt);
 		}
-		
+
 		public function param($key)
 		{
 			if( FALSE == isset($this->params->$key) ) {
@@ -308,7 +308,7 @@
 			}
 			return $value;
 		}
-		
+
 		public function redirect($loc, $abs=FALSE)
 		{
 			global $C;
@@ -327,7 +327,7 @@
 			echo '<script type="text/javascript"> self.location = "'.$loc.'"; </script>';
 			exit;
 		}
-		
+
 		public function set_lasturl($url='')
 		{
 			if( ! empty($url) ) {
@@ -343,5 +343,5 @@
 			return isset($_SESSION['LAST_URL']) ? $_SESSION['LAST_URL'] : '/';
 		}
 	}
-	
+
 ?>

@@ -1,11 +1,11 @@
 <?php
-	
+
 	class cache_apc
 	{
 		private $keys_prefix;
 		private $debug_mode;
 		private $debug_info;
-		
+
 		public function __construct()
 		{
 			global $C;
@@ -16,7 +16,7 @@
 				'time'	=> 0,
 			);
 		}
-		
+
 		public function get($key)
 		{
 			$key	= $this->keys_prefix.$key;
@@ -34,7 +34,7 @@
 			}
 			return $res;
 		}
-		
+
 		public function set($key, $data, $ttl)
 		{
 			$key	= $this->keys_prefix.$key;
@@ -52,7 +52,7 @@
 			}
 			return apc_store($key, $data, $ttl);
 		}
-		
+
 		public function del($key)
 		{
 			$key	= $this->keys_prefix.$key;
@@ -71,7 +71,7 @@
 			}
 			return apc_delete($key);
 		}
-		
+
 		public function get_debug_info()
 		{
 			$debug_info	= clone($this->debug_info);
@@ -79,10 +79,10 @@
 			$debug_info->queries	= array_reverse($debug_info->queries);
 			return $debug_info;
 		}
-		
+
 		public function garbage_collector()
 		{
 		}
 	}
-	
+
 ?>

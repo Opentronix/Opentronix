@@ -1,10 +1,10 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<div id="settings">
-						<div id="settings_left">				
+						<div id="settings_left">
 							<div class="ttl" style="margin-right:12px;"><div class="ttl2"><h3><?= $this->lang('settings_menu_title') ?></h3></div></div>
 							<div class="sidenav">
 								<a href="<?= $C->SITE_URL ?>settings/profile"><?= $this->lang('settings_menu_profile') ?></a>
@@ -36,7 +36,7 @@
 										<?php foreach($D->feeds as $f) { ?>
 										<div class="groupfeed">
 											<a href="<?= $C->SITE_URL ?>settings/rssfeeds/delfeed:<?= $f->id ?>" onclick="return confirm('<?= $this->lang('st_rssfeeds_feed_delcnf') ?>');" title="<?= $this->lang('st_rssfeeds_feed_delete') ?>" onfocus="this.blur();" class="grpdelbtn"></a>
-											<?= htmlspecialchars(str_cut($f->feed_title,35)) ?>				
+											<?= htmlspecialchars(str_cut($f->feed_title,35)) ?>
 											<span><a href="<?= htmlspecialchars($f->feed_url) ?>" target="_blank"><?= htmlspecialchars(str_cut_link($f->feed_url,50)) ?></a></span>
 											<?php if( !empty($f->filter_keywords) ) { ?>
 											<span><?= $this->lang('st_rssfeeds_feed_filter') ?> <?= htmlspecialchars($f->filter_keywords) ?></span>
@@ -46,7 +46,7 @@
 										</div>
 									</td>
 								</tr>
-							</table>		
+							</table>
 							<?php } ?>
 							<div class="ttl" style="margin-top:10px; margin-bottom:6px;"><div class="ttl2"><h3><?= $this->lang('st_rssfeeds_f_title') ?></h3></div></div>
 							<?php if( $D->error ) { ?>
@@ -84,11 +84,11 @@
 									</tr>
 								</table>
 							</form>
-										
+
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

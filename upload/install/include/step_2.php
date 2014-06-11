@@ -1,11 +1,11 @@
 <?php
-	
+
 	$PAGE_TITLE	= 'Installation - Step 2';
-	
+
 	$s	= & $_SESSION['INSTALL_DATA'];
-	
+
 	$is_upgrade	= isset($OLDC->DB_HOST, $OLDC->DB_USER, $OLDC->DB_PASS, $OLDC->DB_NAME);
-	
+
 	if( $is_upgrade ) {
 		$s['MYSQL_MYEXT']	= isset($OLDC->DB_MYEXT)&&$OLDC->DB_MYEXT=='mysqli' ? 'mysqli' : myext();
 		$s['MYSQL_HOST']	= trim($OLDC->DB_HOST);
@@ -23,7 +23,7 @@
 			}
 		}
 	}
-	
+
 	if( ! isset($s['MYSQL_HOST']) ) {
 		$s['MYSQL_HOST']	= isset($OLDC->DB_HOST) ? $OLDC->DB_HOST : 'localhost';
 	}
@@ -39,7 +39,7 @@
 	if( ! isset($s['MYSQL_MYEXT']) ) {
 		$s['MYSQL_MYEXT']	= isset($OLDC->DB_MYEXT)&&$OLDC->DB_MYEXT=='mysqli' ? 'mysqli' : myext();
 	}
-	
+
 	$submit	= FALSE;
 	$error	= FALSE;
 	$errmsg	= '';
@@ -97,7 +97,7 @@
 			header('Location: ?next&r='.rand(0,99999));
 		}
 	}
-	
+
 	$html	.= '
 							<div class="ttl">
 								<div class="ttl2">
@@ -143,5 +143,5 @@
 									</div>
 								</div>
 							</div>';
-	
+
 ?>

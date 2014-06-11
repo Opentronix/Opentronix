@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<script type="text/javascript" src="<?= $C->SITE_URL.'themes/'.$C->THEME ?>/js/inside_admintools.js"></script>
 					<div id="settings">
@@ -17,12 +17,12 @@
 							<?php if( $this->param('msg')=='admsaved' ) { ?>
 							<?= okbox($this->lang('admadm_frm_ok'), $this->lang('admadm_frm_ok_txt'), TRUE, 'margin-top:5px; margin-bottom:4px;') ?>
 							<?php } ?>
-							
+
 							<div class="greygrad" style="margin-top:5px;">
 								<div class="greygrad2">
 									<div class="greygrad3">
 										<?= $this->lang('admadm_descr') ?>
-							
+
 										<table id="setform" cellspacing="5" style="margin-top:5px;">
 											<tr>
 												<td width="110" class="setparam" valign="top"><?= $this->lang('admadm_frm_adm') ?></td>
@@ -61,11 +61,11 @@
 								group_admins_putintolist("<?= $u->username ?>");
 								<?php } ?>
 							</script>
-							
+
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

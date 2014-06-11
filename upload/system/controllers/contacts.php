@@ -1,16 +1,16 @@
 <?php
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('outside/contacts.php');
-	
+
 	require_once( $C->INCPATH.'helpers/func_captcha.php' );
-	
+
 	$D->page_title	= $this->lang('contacts_pgtitle', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
-	
+
 	$D->fullname	= '';
 	$D->email		= '';
 	$D->message		= '';
@@ -18,14 +18,14 @@
 		$D->fullname	= $this->user->info->fullname;
 		$D->email		= $this->user->info->email;
 	}
-	
+
 	$D->captcha_key	= '';
 	$D->captcha_word	= '';
 	$D->captcha_html	= '';
 	list($D->captcha_word, $D->captcha_html)	= generate_captcha(5);
 	$D->captcha_key	= md5($D->captcha_word.time().rand());
 	$_SESSION['captcha_'.$D->captcha_key]	= $D->captcha_word;
-	
+
 	if( isset($_POST['sbm']) ) {
 		$D->submit	= TRUE;
 		$D->fullname	= trim($_POST['fullname']);
@@ -56,18 +56,18 @@
 			$recipient	= $C->SYSTEM_EMAIL;
 			$subject	= $C->OUTSIDE_SITE_TITLE.' - '.$this->lang('cnt_frm_sbj');
 			$message	= $D->message;
-			
+
 			do_send_mail($recipient, $subject, $message, $sender);
-			
+
 			$D->fullname	= '';
 			$D->email		= '';
 			$D->subject		= '';
 			$D->message		= '';
 		}
 	}
-	
+
 	$this->load_template('contacts.php');
-	
+
 	cleanup_captcha_files();
-	
+
 ?>

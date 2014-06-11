@@ -1,12 +1,12 @@
 <?php
-	
+
 	class cache_mysqlheap
 	{
 		private $keys_prefix;
 		private $debug_mode;
 		private $debug_info;
 		private $db;
-		
+
 		public function __construct()
 		{
 			global $C;
@@ -18,7 +18,7 @@
 			);
 			$this->db	= isset($GLOBALS['db1']) ? $GLOBALS['db1'] : new mysql($C->DB_HOST, $C->DB_USER, $C->DB_PASS, $C->DB_NAME);
 		}
-		
+
 		public function get($key)
 		{
 			$time	= microtime(TRUE);
@@ -48,7 +48,7 @@
 			}
 			return $res;
 		}
-		
+
 		public function set($key, $data, $ttl)
 		{
 			$time	= microtime(TRUE);
@@ -68,7 +68,7 @@
 			}
 			return $res;
 		}
-		
+
 		public function del($key)
 		{
 			$time	= microtime(TRUE);
@@ -87,7 +87,7 @@
 			}
 			return $res;
 		}
-		
+
 		public function get_debug_info()
 		{
 			$debug_info	= clone($this->debug_info);
@@ -95,7 +95,7 @@
 			$debug_info->queries	= array_reverse($debug_info->queries);
 			return $debug_info;
 		}
-		
+
 		public function garbage_collector()
 		{
 			$time	= microtime(TRUE);

@@ -1,7 +1,7 @@
 <?php
-	
+
 	$D->is_network	= $this->network->id ? TRUE : FALSE;
-	
+
 	if( ! $this->param('regid') ) {
 		$this->redirect( $C->SITE_URL.'signup' );
 	}
@@ -24,7 +24,7 @@
 		$this->redirect( $C->SITE_URL.'signup' );
 	}
 	$this->user->login($u->email, $u->password);
-	
+
 	if( isset($_POST['follow_users']) )
 	{
 		$users	= trim($_POST['follow_users'], ',');
@@ -76,13 +76,13 @@
 		}
 		$this->redirect( $C->SITE_URL.'dashboard' );
 	}
-	
+
 	$auto_select	= array();
 	$db2->query('SELECT DISTINCT user_id FROM users_invitations WHERE recp_email="'.$u->email.'" ');
 	while($obj = $db2->fetch_object()) {
 		$auto_select[$obj->user_id]	= TRUE;
 	}
-	
+
 	$members	= array();
 	$r	= $db2->query('SELECT id FROM users WHERE id<>"'.$uid.'" AND active=1 ORDER BY username ASC');
 	while($obj = $db2->fetch_object($r)) {
@@ -101,13 +101,13 @@
 	if( 0 == count($members) ) {
 		$this->redirect( $C->SITE_URL.'dashboard' );
 	}
-	
+
 	$D->members	= & $members;
-	
+
 	$this->load_langfile('outside/global.php');
 	$this->load_langfile('outside/signup.php');
 	$D->page_title	= $this->lang('signup_page_title', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$this->load_template('signup-step3.php');
-	
+
 ?>

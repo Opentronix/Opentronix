@@ -1,15 +1,15 @@
 <?php
-	
+
 	if( $this->network->id && $this->user->is_logged ) {
 		$this->redirect('dashboard');
 	}
-	
+
 	$this->load_langfile('outside/global.php');
 	$this->load_langfile('outside/signin.php');
-	
+
 	$D->page_title	= $this->lang('signin_page_title', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
-	
+
+
 	$D->allow_fb_connect	= FALSE;
 	if( isset($C->FACEBOOK_API_KEY) && !empty($C->FACEBOOK_API_KEY) ) {
 		$D->allow_fb_connect	= TRUE;
@@ -63,15 +63,15 @@
 			}
 		}
 	}
-	
-	
+
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
 	$D->email		= '';
 	$D->password	= '';
 	$D->rememberme	= FALSE;
-	
+
 	if( isset($_POST['email'], $_POST['password']) ) {
 		$D->submit	= TRUE;
 		$D->email		= trim($_POST['email']);
@@ -116,14 +116,14 @@
 			}
 		}
 	}
-	
+
 	$D->num_members	= 0;
 	$D->num_posts	= 0;
 	if( $this->network->id ) {
 		$D->num_members	= intval($db2->fetch_field('SELECT COUNT(id) FROM users WHERE active=1'));
 		$D->num_posts	= intval($db2->fetch_field('SELECT COUNT(id) FROM posts WHERE user_id<>0 AND api_id<>2'));
 	}
-	
+
 	$this->load_template('signin.php');
-	
+
 ?>

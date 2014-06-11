@@ -1,15 +1,15 @@
 <?php
-	
+
 	if( !$this->user->is_logged ) {
 		$this->redirect('home');
 	}
 	if( $this->network->id && $C->MOBI_DISABLED ) {
 		$this->redirect('mobidisabled');
 	}
-	
+
 	$this->load_langfile('mobile/global.php');
 	$this->load_langfile('mobile/search.php');
-	
+
 	if( $this->param('usertag') ) {
 		$tmp	= str_replace('/', '', urldecode($this->param('usertag')));
 		$this->redirect( $C->SITE_URL.'search/lookin:users/lookfor:'.urlencode(trim($tmp)) );
@@ -33,19 +33,19 @@
 		$tmp2	= trim(str_replace('/', '', $_POST['lookfor']));
 		$this->redirect( $C->SITE_URL.'search/lookin:'.$tmp1.'/lookfor:'.urlencode($tmp2) );
 	}
-	
+
 	$lookins	= array('posts', 'users', 'groups');
 	$D->lookin	= 'posts';
 	if( $this->param('lookin') && in_array($this->param('lookin'), $lookins) ) {
 		$D->lookin	= $this->param('lookin');
 	}
-	
+
 	$D->search_string	= $this->param('lookfor') ? urldecode($this->param('lookfor')) : '';
 	$D->search_string	= preg_replace('/\s+/us', ' ', $D->search_string);
 	$D->search_string	= trim($D->search_string);
-	
+
 	$D->page_title	= $this->lang('search_title_'.$D->lookin, array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	if( $D->lookin=='users' && !empty($D->search_string) )
 	{
 		$D->num_results	= 0;
@@ -262,7 +262,7 @@
 			}
 		}
 	}
-	
+
 	$D->saved_searches	= array();
 	if( $D->lookin == 'posts' ) {
 		$db2->query('SELECT id, search_key, search_string FROM searches WHERE user_id="'.$this->user->id.'" ORDER BY id DESC');
@@ -272,7 +272,7 @@
 			$D->saved_searches[$tmp->id]	= $tmp;
 		}
 	}
-	
+
 	$this->load_template('mobile_iphone/search.php');
-	
+
 ?>

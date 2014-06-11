@@ -1,14 +1,14 @@
 <?php
-	
+
 	$this->load_langfile('inside/global.php');
-	
+
 	echo '<'.'?xml version="1.0" encoding="UTF-8" ?'.'>';
-	
+
 	if( !$this->network->id ) {
 		echo '<result></result>';
 		return;
 	}
-	
+
 	$datatype	= isset($_POST['datatype']) ? trim($_POST['datatype']) : '';
 	if( $datatype!='username' && $datatype!='groupname' ) {
 		echo '<result></result>';
@@ -19,8 +19,8 @@
 		echo '<result></result>';
 		return;
 	}
-	
-	
+
+
 	if( $datatype == 'username' )
 	{
 		$u	= $this->network->get_user_by_username($word);
@@ -37,8 +37,8 @@
 			return;
 		}
 	}
-	
+
 	echo '<result></result>';
 	return;
-	
+
 ?>

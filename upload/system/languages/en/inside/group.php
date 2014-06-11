@@ -1,5 +1,5 @@
 <?php
-	
+
 	$lang	= array
 	(
 		'group_pagetitle_members'	=> 'Members of #GROUP# - #SITE_TITLE#',
@@ -9,35 +9,35 @@
 		'group_pagetitle_settings_rssfeeds'	=> 'RSS Feeds - #GROUP# - #SITE_TITLE#',
 		'group_pagetitle_settings_delgroup'	=> 'Delete Group - #GROUP# - #SITE_TITLE#',
 		'group_pagetitle_settings_privmembers'	=> 'Private members - #GROUP# - #SITE_TITLE#',
-		
+
 		'group_left_members'	=> 'Group Members',
 		'group_left_admins'	=> 'Group Admins',
 		'group_left_viewall'	=> 'view all',
 		'group_left_invite_txt'	=> 'Invite other network members to join #GROUP#.',
 		'group_left_invite_btn'	=> 'Invite Members',
 		'group_left_posttags'	=> 'Frequently used post tags',
-		
+
 		'group_subtitle_type_public'	=> 'Public group',
 		'group_subtitle_type_private'	=> 'Private group',
 		'group_subtitle_nm_posts'	=> '#NUM# posts',
 		'group_subtitle_nm_posts1'	=> '1 post',
 		'group_subtitle_nm_members'	=> '#NUM# members',
 		'group_subtitle_nm_members1'	=> '1 member',
-		
+
 		'grp_toplnks_follow'	=> 'Join Group',
 		'grp_toplnks_unfollow'	=> 'Leave Group',
 		'grp_toplnks_post'	=> 'Post to Group',
-		
+
 		'grp_tab_updates'		=> 'Updates',
 		'grp_tab_members'		=> 'Members',
 		'grp_tab_settings'	=> 'Group Settings',
-		
+
 		'group_title_updates'	=> 'Posts in #GROUP#',
 		'group_tab_members_all'		=> 'All members',
 		'group_tab_members_admins'	=> 'Admins',
 		'group_updates_rss'		=> 'RSS',
 		'group_updates_rss_dsc'		=> 'Subscribe for #GROUP# via RSS',
-		
+
 		'group_del_ttl'			=> 'Delete Group',
 		'group_del_f_posts'		=> 'Posts action:',
 		'group_del_f_posts_keep'	=> 'Delete this group but <b>keep</b> the posts',
@@ -48,7 +48,7 @@
 		'group_del_f_err'			=> 'Error',
 		'group_del_f_err_posts'		=> 'Please choose what to do with the posts.',
 		'group_del_f_err_passwd'	=> 'Password is incorrect.',
-		
+
 		'group_sett_subtabs_main'	=> 'General settings',
 		'group_sett_subtabs_rssfeeds'	=> 'RSS feeds',
 		'group_sett_subtabs_admins'	=> 'Admins',
@@ -114,16 +114,16 @@
 		'group_privmmb_jscnf_del'		=> 'Remove #USERNAME# from this group - are you sure?',
 		'group_privmmb_f_ok'			=> 'Done',
 		'group_privmmb_f_ok_txt'		=> 'Information was saved.',
-		
+
 		'noposts_group_ttl'		=> 'No posts yet',
 		'noposts_group_txt'		=> 'Click #A1#here#A2# to post the first message in #GROUP#.',
 		'noposts_group_ttl_filter'	=> 'No posts',
 		'noposts_group_txt_filter'	=> 'There are no posts matching your search criteria.',
-		
+
 		'group_justcreated_box_ttl'	=> 'Group was created',
 		'group_justcreated_box_txt'	=> 'Now you can #A1#invite members#A2# to join or #A3#edit group settings#A4#.',
 		'group_invited_box_ttl'	=> 'Done',
 		'group_invited_box_txt'	=> 'Invitations was sent successfully.',
 	);
-	
+
 ?>

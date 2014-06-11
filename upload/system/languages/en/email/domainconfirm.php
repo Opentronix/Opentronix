@@ -1,5 +1,5 @@
 <?php
-	
+
 	$lang	= array
 	(
 		'domainconfirm_email_subject'	=> '#DOMAIN# ownership confirmation',
@@ -8,5 +8,5 @@
 		'domainconfirm_email_warning'	=> 'In case you have not requested this confirmation, please disregard this message.',
 		'domainconfirm_email_signature'	=> "Regards,\n#SITE_TITLE#",
 	);
-	
+
 ?>

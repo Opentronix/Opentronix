@@ -1,7 +1,7 @@
 <?php
-		
+
 	$this->load_template('header.php');
-	
+
 ?>
 		<div class="ttl" style="margin-bottom:10px;">
 			<div class="ttl2">
@@ -11,7 +11,7 @@
 				<?php } ?>
 			</div>
 		</div>
-		
+
 		<?php if($D->error) { ?>
 			<?= errorbox($this->lang('signup_step2_error'), $this->lang($D->errmsg,$D->errmsg_lngkeys)); ?>
 		<?php } ?>
@@ -111,9 +111,9 @@
 			<a id="twitterconnect" href="<?= $C->SITE_URL ?>twitter-connect?backto=<?= $C->SITE_URL ?>signin/get:twitter" title="Twitter Connect" style="float:left; margin-left:5px; margin-top:1px;"><b>Twitter</b></a>
 		</div>
 		<?php } ?>
-		
+
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

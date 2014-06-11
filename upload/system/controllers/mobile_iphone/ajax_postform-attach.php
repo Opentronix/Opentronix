@@ -1,25 +1,25 @@
 <?php
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('mobile/newpost.php');
-	
+
 	echo '<'.'?xml version="1.0" encoding="UTF-8" ?'.'>';
-	
+
 	if( !$this->user->is_logged ) {
 		echo '<result></result>';
 		return;
 	}
-	
+
 	$post_temp_id	= isset($_POST['post_temp_id']) ? trim($_POST['post_temp_id']) : '';
 	$attach_type	= isset($_POST['at_type']) ? trim($_POST['at_type']) : '';
 	$attach_data	= isset($_POST['data']) ? trim($_POST['data']) : '';
 	$s	= & $this->user->sess;
-	
+
 	if( empty($post_temp_id) || empty($attach_type) || empty($attach_data) ) {
 		echo '<result></result>';
 		return;
 	}
-	
+
 	if( ! isset($s['POSTFORM_TEMP_POSTS']) ) {
 		$s['POSTFORM_TEMP_POSTS']	= array();
 	}
@@ -27,7 +27,7 @@
 		$s['POSTFORM_TEMP_POSTS'][$post_temp_id]	= new newpost();
 	}
 	$p	= & $s['POSTFORM_TEMP_POSTS'][$post_temp_id];
-	
+
 	if( $attach_type == 'link' && $C->ATTACH_LINK_DISABLED==0 )
 	{
 		if( $l = $p->attach_link($attach_data) ) {
@@ -104,8 +104,8 @@
 		echo '<result><status>ERROR</status><message>'.$this->lang('iphone_pf_atchbx_err_img').'</message></result>';
 		return;
 	}
-	
+
 	echo '<result></result>';
 	return;
-	
+
 ?>

@@ -1,12 +1,12 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/user.php');
-	
+
 	$u	= $this->network->get_user_by_id(intval($this->params->user));
 	if( !$u && $this->user->is_logged ) {
 		$this->params->user	= $this->user->id;
@@ -15,10 +15,10 @@
 	if( !$u ) {
 		$this->redirect('dashboard');
 	}
-	
+
 	$D->page_title	= $u->username.' - '.$C->SITE_TITLE;
 	$D->page_favicon	= $C->IMG_URL.'avatars/thumbs2/'.$u->avatar;
-	
+
 	if( $u->id == $this->user->id ) {
 		$D->rss_feeds	= array(
 			array( $C->SITE_URL.'rss/my:dashboard',	$this->lang('rss_mydashboard',array('#USERNAME#'=>$this->user->info->username)), ),
@@ -33,17 +33,17 @@
 			array( $C->SITE_URL.'rss/username:'.$u->username,	$this->lang('rss_usrposts',array('#USERNAME#'=>$u->username)), ),
 		);
 	}
-	
+
 	$D->usr	= & $u;
 	$D->is_my_profile	= $u->id==$this->user->id;
 	$D->i_follow_him	= $this->user->is_logged ? $this->user->if_follow_user($u->id) : FALSE;
-	
+
 	$tabs	= array('updates', 'info', 'coleagues', 'groups');
 	$D->tab	= 'updates';
 	if( $this->param('tab') && in_array($this->param('tab'), $tabs) ) {
 		$D->tab	= $this->param('tab');
 	}
-	
+
 	$D->usr_website	= '';
 	$D->usr_pemail	= '';
 	$D->usr_wphone	= '';
@@ -58,7 +58,7 @@
 	if( $D->usr_website=='http://' || $D->usr_website=='https://' || $D->usr_website=='ftp://' ) {
 		$D->usr_website	= '';
 	}
-	
+
 	$D->post_tags	= array();
 	$not_in_groups	= array();
 	$r	= $this->db2->query('SELECT id FROM groups WHERE is_public=0');
@@ -67,7 +67,7 @@
 	}
 	$not_in_groups	= count($not_in_groups)>0 ? ('AND group_id NOT IN('.implode(', ', $not_in_groups).')') : '';
 	$D->post_tags		= $this->network->get_recent_posttags('AND user_id="'.$u->id.'" '.$not_in_groups, 10);
-	
+
 	$D->some_followers	= array();
 	$tmp	= array_keys($this->network->get_user_follows($u->id)->followers);
 	shuffle($tmp);
@@ -83,7 +83,7 @@
 			}
 		}
 	}
-	
+
 	$D->num_groups	= 0;
 	$groups	= array_keys($this->network->get_user_follows($u->id)->follow_groups);
 	$not_in_groups	= array();
@@ -108,7 +108,7 @@
 	}
 	$groups	= array_diff($groups, $not_in_groups);
 	$D->num_groups	= count($groups);
-	
+
 	if($D->tab == 'updates') {
 		$not_in_groups	= count($not_in_groups)==0 ? '' : ('AND p.group_id NOT IN('.implode(', ', $not_in_groups).')');
 		$D->posts_html	= '';
@@ -316,7 +316,7 @@
 		unset($tmp, $sdf, $grps, $D->g);
 		$D->groups_title	= $this->lang($D->is_my_profile?'usr_groups_title_me':'usr_groups_title', array('#USERNAME#'=>$D->usr->username));
 	}
-	
+
 	$this->load_template('user.php');
-	
+
 ?>

@@ -1,11 +1,11 @@
 <?php
-	
+
 	$lang	= array
 	(
 		'api_inv_img'		=> 'Invalid image file.',
 		'api_inv_format'		=> 'Invalid file format.',
 		'api_inv_resolution'	=> 'Too small avatar resolution.',
-		
+
 		'api_copy_err'		=> 'Can\'t copy your avatar picture.',
 		'api_name_err'		=> 'Please, type a name for your application.',
 		'api_desc_err'		=> 'Please, type a description for your application.',
@@ -13,10 +13,10 @@
 		'api_org_err'		=> 'Please, enter your organization name.',
 		'api_comp_web_err'	=> 'Please, provide a valid company website.',
 		'api_callback_err'	=> 'Please, provide a valid callback url for you application.',
-		
+
 		'api_saved_ok'	=> 'Your application was saved!',
 		'api_saved_err'	=> 'Error saving your application!',
-		
+
 		'api_heading_1'	=> 'My Applications',
 		'api_edit'	=> 'Edit Application Settings',
 		'api_more_apps'	=> 'Working on more than one #SITE_TITLE# based applications?',
@@ -24,7 +24,7 @@
 		'api_a'	=> 'Add an ',
 		'api_e'	=> 'Edit your ',
 		'api_app'	=> 'application',
-		
+
 		'api_fld_err'	=> 'Please, fill in all input fields!',
 		'api_icon_name'	=> 'Application Icon:',
 		'api_avatar_mes'	=> 'Minimum resolution of 200x200. JPG, GIF, PNG.',
@@ -55,27 +55,27 @@
 		'api_app_lgn'	=> 'Use #SITE_TITLE# for login:',
 		'api_app_lgn_msg'	=> 'Yes, use #SITE_TITLE# for login ',
 		'api_app_lgn_msg2'	=> 'Does your application intend to use #SITE_TITLE# for authentication?',
-		
+
 		'api_app_save'	=> 'Save',
 		'api_app_cnl'	=> 'Cancel',
 		'api_app_btn'	=> 'My Applications',
-		
+
 		'api_app_suspended'	=> 'Your application has been suspended.',
-		
+
 		'api_head_2'	=> '#SITE_TITLE# API',
 		'api_hlp'	=> 'Need help with our API? Check this out:',
 		'api_doc'	=> 'API Documentation',
-		
+
 		'api_id_err'	=> 'There is no application with this ID.',
 		'api_err_ttl'	=> 'Error',
 		'api_ok_ttl'	=> 'Success',
 		'api_app_del'	=> 'Your application was deleted!',
 		'api_app_del_err'	=> 'Error deleting your application!',
 		'api_app_details'	=> 'Application details',
-		
-		'api_app_havent'	=> 'You haven\'t got applications yet.', 
+
+		'api_app_havent'	=> 'You haven\'t got applications yet.',
 		'api_app_create'	=> 'Create a new application.',
-		
+
 	);
-	
+
 ?>

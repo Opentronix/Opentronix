@@ -1,9 +1,9 @@
 <?php
-	
+
 	$this->load_template('mobile/header.php');
-	
+
 	if( $this->param('okmsg') ) {
-	
+
 ?>
 	<div class="okbox" style="margin-top:10px;"><?= $this->lang('newpost_okmsg_'.($this->param('okmsg')=='sent'?'sent':'posted')) ?></div>
 <?php
@@ -50,9 +50,9 @@
 		//-->
 	</script>
 <?php
-	
+
 	}
-	
+
 	$this->load_template('mobile/footer.php');
-	
+
 ?>

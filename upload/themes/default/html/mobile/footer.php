@@ -1,10 +1,10 @@
 <?php
-	
+
 	$this->load_langfile('mobile/footer.php');
-	
+
 ?>
 		<hr />
-		
+
 		<?php if( $this->user->is_logged ) { ?>
 		<div id="ftr">
 			<?php if( $this->request[0] != 'members' ) { ?>
@@ -19,12 +19,12 @@
 		</div>
 		<hr />
 		<?php } ?>
-		
+
 		<div id="ftrtext">
 			&copy; <a href="<?= $C->SITE_URL ?>"><?= $C->SITE_TITLE ?></a>
 		</div>
-		
+
 		<script type="text/javascript"> footer_touchversion_link("<?= $this->lang('footer_mobi_touch') ?>"); </script>
-		
+
 	</body>
 </html>

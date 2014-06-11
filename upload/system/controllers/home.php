@@ -1,9 +1,9 @@
 <?php
-	
+
 	if( $this->user->is_logged ) {
 		$this->redirect('dashboard');
 	}
-	
+
 	if( isset($_SESSION['TWITTER_CONNECTED']) && $_SESSION['TWITTER_CONNECTED'] && $_SESSION['TWITTER_CONNECTED']->id ) {
 		$uid	= intval($_SESSION['TWITTER_CONNECTED']->id);
 		$db2->query('SELECT email, password FROM users WHERE twitter_uid<>"" AND twitter_uid="'.$uid.'" LIMIT 1');
@@ -13,12 +13,12 @@
 			}
 		}
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('outside/global.php');
 	$this->load_langfile('inside/dashboard.php');
 	$this->load_langfile('outside/home.php');
-	
+
 	$D->page_title	= $this->lang('os_home_page_title', array('#SITE_TITLE#'=>$C->SITE_TITLE));
 	$D->intro_ttl	= $this->lang('os_welcome_ttl', array('#SITE_TITLE#'=>$C->SITE_TITLE));
 	$D->intro_txt	= $this->lang('os_welcome_txt', array('#SITE_TITLE#'=>$C->SITE_TITLE));
@@ -29,14 +29,14 @@
 	if( isset($C->HOME_INTRO_TXT) && !empty($C->HOME_INTRO_TXT) ) {
 		$D->intro_txt	= $C->HOME_INTRO_TXT;
 	}
-	
+
 	$filters	= array('all', 'videos', 'images', 'links', 'files');
 	$filter	= 'all';
 	if( $this->param('filter') && in_array($this->param('filter'), $filters) ) {
 		$filter	= $this->param('filter');
 	}
 	$at_tmp	= array('videos'=>'videoembed', 'images'=>'image', 'links'=>'link', 'files'=>'file');
-	
+
 	$not_in_groups	= '';
 	if( !$this->user->is_logged || !$this->user->info->is_network_admin ) {
 		$not_in_groups	= array();
@@ -61,7 +61,7 @@
 		}
 		$not_in_groups	= count($not_in_groups)>0 ? ('AND p.group_id NOT IN('.implode(', ', $not_in_groups).')') : '';
 	}
-	
+
 	if($filter == 'all') {
 		$q1	= 'SELECT COUNT(p.id) FROM posts p WHERE p.user_id<>0 AND p.api_id<>2 '.$not_in_groups;
 		$q2	= 'SELECT p.*, "public" AS `type` FROM posts p WHERE p.user_id<>0 AND p.api_id<>2 '.$not_in_groups.' ORDER BY p.id DESC ';
@@ -70,13 +70,13 @@
 		$q1	= 'SELECT COUNT(p.id) FROM posts p, posts_attachments a WHERE p.id=a.post_id AND p.user_id<>0 AND p.api_id<>2 '.$not_in_groups.' AND a.type="'.$at_tmp[$filter].'" ';
 		$q2	= 'SELECT p.*, "public" AS `type` FROM posts p, posts_attachments a WHERE p.id=a.post_id AND p.user_id<>0 AND p.api_id<>2 '.$not_in_groups.' AND a.type="'.$at_tmp[$filter].'" ORDER BY p.id DESC ';
 	}
-	
+
 	$D->filter		= $filter;
 	$D->num_results	= 0;
 	$D->num_pages	= 0;
 	$D->pg		= 1;
 	$D->posts_html	= '';
-	
+
 	$D->num_results	= $db2->fetch_field($q1);
 	$D->num_pages	= ceil($D->num_results / $C->PAGING_NUM_POSTS);
 	$D->pg	= $this->param('pg') ? intval($this->param('pg')) : 1;
@@ -119,14 +119,14 @@
 	}
 	$D->posts_html	= ob_get_contents();
 	ob_end_clean();
-	
+
 	if( $this->param('from') == 'ajax' )
 	{
 		echo 'OK:';
 		echo $D->posts_html;
 		exit;
 	}
-	
+
 	$D->last_online	= array();
 	$num	= 6;
 	$time	= 5*60;
@@ -138,7 +138,7 @@
 		$D->last_online[]	= $this->network->get_user_by_id($o->id);
 	}
 	$D->last_online	= array_slice($D->last_online, 0, $num);
-	
+
 	$D->post_tags	= array();
 	$not_in_groups	= array();
 	$r	= $this->db2->query('SELECT id FROM groups WHERE is_public=0');
@@ -147,7 +147,7 @@
 	}
 	$not_in_groups	= count($not_in_groups)>0 ? ('AND group_id NOT IN('.implode(', ', $not_in_groups).')') : '';
 	$D->post_tags	= $this->network->get_recent_posttags($not_in_groups, 10);
-	
+
 	$this->load_template('home.php');
-	
+
 ?>

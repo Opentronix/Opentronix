@@ -1,15 +1,15 @@
 <?php
-	
+
 	if( !$this->network->id || !$this->user->is_logged ) {
 		$this->redirect('home');
 	}
 	if( $this->network->id && $C->MOBI_DISABLED ) {
 		$this->redirect('mobidisabled');
 	}
-		
+
 	$this->load_langfile('mobile/global.php');
 	$this->load_langfile('mobile/view.php');
-	
+
 	$post_type	= '';
 	$post_id	= '';
 	if( $this->param('post') ) {
@@ -23,7 +23,7 @@
 	else {
 		$this->redirect('dashboard');
 	}
-	
+
 	$D->post	= new post($post_type, $post_id);
 	if($D->post->error) {
 		$this->redirect('dashboard');
@@ -31,7 +31,7 @@
 	if($D->post->is_system_post) {
 		$this->redirect('dashboard');
 	}
-	
+
 	if( isset($_POST['message']) ) {
 		$c	= new newpostcomment($D->post);
 		$c->set_api_id($C->API_ID);
@@ -39,13 +39,13 @@
 		$c->save();
 		$this->redirect($D->post->permalink.'#comments');
 	}
-	
+
 	$D->page_title	= ($D->post->post_user->id==0&&$D->post->post_group ? $D->post->post_group->title : $D->post->post_user->username).': '.$D->post->post_message;
-	
+
 	$D->post->reset_new_comments();
-	
+
 	$D->p	= & $D->post;
-	
+
 	$D->cnm		= $D->post->post_commentsnum;
 	$D->cpg		= FALSE;
 	$D->comments	= array();
@@ -65,7 +65,7 @@
 			$D->comments	= array_slice($D->post->get_comments(), $C->PAGING_NUM_COMMENTS*($D->cpg-1), $C->PAGING_NUM_COMMENTS);
 		}
 	}
-	
+
 	$this->load_template('mobile/view.php');
-	
+
 ?>

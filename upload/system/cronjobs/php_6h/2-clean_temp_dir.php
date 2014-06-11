@@ -1,7 +1,7 @@
 <?php
-	
+
 	$d	= opendir( $C->TMP_DIR );
-	
+
 	while( $fl = readdir($d) ) {
 		if( $fl=='.' || $fl=='..' ) {
 			continue;
@@ -11,5 +11,5 @@
 			rm( $C->TMP_DIR.$fl );
 		}
 	}
-	
+
 ?>

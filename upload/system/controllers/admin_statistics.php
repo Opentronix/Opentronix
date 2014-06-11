@@ -1,5 +1,5 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
@@ -10,15 +10,15 @@
 	if( 0 == $db2->num_rows() ) {
 		$this->redirect('dashboard');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/admin.php');
-	
+
 	$D->page_title	= $this->lang('admpgtitle_statistics', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$firstpost	= $db2->fetch_field('SELECT date FROM posts ORDER BY id ASC LIMIT 1');
 	$firstpost	= $firstpost ? intval($firstpost) : time();
-	
+
 	$D->dates	= array();
 	$D->seldate	= FALSE;
 	$D->dates['all']	= (object) array(
@@ -38,12 +38,12 @@
 			break;
 		}
 	}
-	
+
 	$D->year	= date('Y');
 	$D->month	= date('m');
 	$D->day	= FALSE;
 	$D->seldate	= $D->dates[date('Ym')]->txt;
-	
+
 	if( $this->param('month') && isset($D->dates[$this->param('month')]) ) {
 		if( preg_match('/^[0-9]{6}$/',$this->param('month')) ) {
 			$D->year	= substr($this->param('month'), 0, 4);
@@ -62,7 +62,7 @@
 			$D->seldate	= strftime($this->lang('admstat_filter_dateformat_d'), mktime(0,0,1,$D->month,$D->day,$D->year));
 		}
 	}
-	
+
 	$dt1	= FALSE;
 	$dt2	= FALSE;
 	$dt1_tst	= FALSE;
@@ -88,26 +88,26 @@
 		$dt1	= date('Y-m', $dt1_tst);
 		$dt2	= date('Y-m', $dt2_tst);
 	}
-	
+
 	$D->members_total	= $db2->fetch_field('SELECT COUNT(id) FROM users WHERE active=1');
 	$D->members_new	= $db2->fetch_field('SELECT COUNT(id) FROM users WHERE active=1 AND reg_date BETWEEN '.$dt1_tst.' AND '.$dt2_tst);
 	$D->members_newp	= $D->members_total==0 ? 0 : (100 * $D->members_new / $D->members_total);
-	
+
 	$D->posts_total	= $db2->fetch_field('SELECT COUNT(id) FROM posts WHERE user_id<>0 AND api_id<>2');
 	$D->posts_new	= $db2->fetch_field('SELECT COUNT(id) FROM posts WHERE user_id<>0 AND api_id<>2 AND date BETWEEN '.$dt1_tst.' AND '.$dt2_tst);
 	$D->posts_newp	= $D->posts_total==0 ? 0 : (100 * $D->posts_new / $D->posts_total);
-	
+
 	$D->stat_visits_m	= array();
 	$D->stat_visits_d	= array();
 	$D->stat_visits_h	= array();
-	
+
 	$D->stat_posts_m	= array();
 	$D->stat_posts_d	= array();
 	$D->stat_posts_h	= array();
-	
+
 	$D->stat_regs_m	= array();
 	$D->stat_regs_d	= array();
-	
+
 	if( $D->month || $D->day ) {
 		for($i=0; $i<24; $i++) {
 			$D->stat_visits_h[$i]	= (object) array( 'cnt' => 0 );
@@ -189,7 +189,7 @@
 			$D->stat_regs_m[$obj->dt]	= (object) array( 'cnt' => $obj->cnt );
 		}
 	}
-	
+
 	if( count($D->stat_visits_m) ) {
 		$tmp	= 0;
 		foreach($D->stat_visits_m as $dt=>$obj) {
@@ -294,9 +294,9 @@
 			$D->stat_posts_h	= array();
 		}
 	}
-	
+
 	$D->charts	= array();
-	
+
 	if( count($D->stat_posts_m) ) {
 		$tmp	= new stdClass;
 		$tmp->bg_colour	= '#ffffff';
@@ -506,5 +506,5 @@
 		);
 	}
 	$this->load_template('admin_statistics.php');
-	
+
 ?>

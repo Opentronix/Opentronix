@@ -1,5 +1,5 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		echo 'ERROR';
 		return;
@@ -8,7 +8,7 @@
 		echo 'ERROR';
 		return;
 	}
-	
+
 	if( isset($_POST['checktabs']) )
 	{
 		$checktabs	= explode(',', $_POST['checktabs']);
@@ -26,8 +26,8 @@
 		echo implode("\n", $withnew);
 		return;
 	}
-	
+
 	echo 'ERROR';
 	return;
-	
+
 ?>

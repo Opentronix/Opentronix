@@ -1,4 +1,4 @@
-								<div class="group">				
+								<div class="group">
 									<a href="<?= userlink($D->u->username) ?>" class="groupavatar" title="<?= htmlspecialchars($D->u->fullname) ?>"><img src="<?= $C->IMG_URL ?>avatars/thumbs1/<?= $D->u->avatar ?>" style="width:50px; height:50px;" /></a>
 									<div class="groupinfo">
 										<a href="<?= userlink($D->u->username) ?>" class="groupname" title="<?= htmlspecialchars($D->u->fullname) ?>"><?= str_cut($D->u->username,18) ?></a>

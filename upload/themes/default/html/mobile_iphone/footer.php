@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_langfile('mobile/footer.php');
-	
+
 ?>
 		<?php if( $this->user->is_logged ) { ?>
 		<div id="menu_container" style="display:none;">
@@ -20,14 +20,14 @@
 			</div>
 		</div>
 		<?php } ?>
-		
+
 		<div id="ftr">
 			&copy; <a href="<?= $C->SITE_URL ?>"><?= $C->SITE_TITLE ?></a>
 		</div>
-		
+
 		<?php if( isset($_COOKIE['mobitouch']) && $_COOKIE['mobitouch']==1 ) { ?>
 		<script type="text/javascript"> footer_simpleversion_link("<?= $this->lang('footer_mobi_simple') ?>"); </script>
 		<?php } ?>
-		
+
 	</body>
 </html>

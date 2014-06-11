@@ -1,5 +1,5 @@
 <?php
-	
+
 	$loadavg	= '';
 	if( function_exists('sys_getloadavg') ) {
 		$sys_loadavg	= sys_getloadavg();
@@ -15,7 +15,7 @@
 	$mch	= $GLOBALS['cache']->get_debug_info();
 	$mchnum	= count($mch->queries);
 	$mchtime	= floatval($mch->time);
-	
+
 ?>
 		<div style="width: 980px; padding-bottom: 20px; margin: 0px auto;">
 			<script type="text/javascript">

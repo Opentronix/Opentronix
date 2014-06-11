@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<script type="text/javascript" src="<?= $C->SITE_URL.'themes/'.$C->THEME ?>/js/inside_admintools.js"></script>
 					<div id="settings">
@@ -22,7 +22,7 @@
 									<div class="greygrad3">
 										<?= $this->lang('admsusp_descr') ?>
 										<?= $this->lang('admsusp_descr2', array('#A2#'=>'</a>', '#A1#'=>'<a href="'.$C->SITE_URL.'admin/deleteuser">',)) ?>
-										
+
 										<table id="setform" cellspacing="5" style="margin-top:5px;">
 											<tr>
 												<td width="150" class="setparam" valign="top" nowrap="nowrap"><?= $this->lang('admsusp_frm_adm') ?></td>
@@ -60,11 +60,11 @@
 								group_admins_putintolist("<?= $u->username ?>");
 								<?php } ?>
 							</script>
-							
+
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

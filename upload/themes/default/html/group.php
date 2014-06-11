@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 		<?php if( $D->i_am_member ) { ?>
 		<script type="text/javascript">
@@ -61,7 +61,7 @@
 						<a href="<?= userlink($u->username) ?>" class="slimuser" title="<?= htmlspecialchars($u->username) ?>"><img src="<?= $C->IMG_URL ?>avatars/thumbs1/<?= $u->avatar ?>" alt="" /></a>
 						<?php } ?>
 					</div>
-					
+
 					<?php if( count($D->post_tags) > 0 ) { ?>
 					<div class="ttl" style="margin-top:5px; margin-bottom:5px;"><div class="ttl2"><h3><?= $this->lang('group_left_posttags') ?></h3></div></div>
 					<div class="taglist">
@@ -70,7 +70,7 @@
 						<?php } ?>
 					</div>
 					<?php } ?>
-					
+
 					<?php if( $D->i_can_invite ) { ?>
 					<div class="greygrad" style="margin-top:3px;">
 						<div class="greygrad2">
@@ -82,7 +82,7 @@
 						</div>
 					</div>
 					<?php } ?>
-					
+
 				</div>
 				<div id="profile_right">
 					<div id="profilehdr">
@@ -114,7 +114,7 @@
 							<?php } ?>
 						</div>
 					</div>
-					
+
 				<?php if( $D->tab == 'updates' ) { ?>
 					<div class="ttl" style="margin-top:8px; margin-bottom:6px;">
 						<div class="ttl2">
@@ -129,7 +129,7 @@
 									<a href="<?= userlink($D->g->groupname) ?>/filter:files" style="border-bottom:0px;"><?= $this->lang('posts_filter_files') ?></a>
 								</div>
 								<span><?= $this->lang('posts_filter_ttl') ?></span>
-							</div>		
+							</div>
 						</div>
 					</div>
 					<?php if($this->param('msg')=='deletedpost') { ?>
@@ -222,7 +222,7 @@
 												<?php foreach($D->feeds as $f) { ?>
 												<div class="groupfeed">
 													<a href="<?= userlink($D->g->groupname).'/tab:settings/subtab:rssfeeds/delfeed:'.$f->id ?>" onclick="return confirm('<?= $this->lang('group_feedsett_feed_delcnf') ?>');" title="<?= $this->lang('group_feedsett_feed_delete') ?>" onfocus="this.blur();" class="grpdelbtn"></a>
-													<?= htmlspecialchars(str_cut($f->feed_title,35)) ?>				
+													<?= htmlspecialchars(str_cut($f->feed_title,35)) ?>
 													<span><a href="<?= htmlspecialchars($f->feed_url) ?>" target="_blank"><?= htmlspecialchars(str_cut_link($f->feed_url,50)) ?></a></span>
 													<?php if( !empty($f->filter_keywords) ) { ?>
 													<span><?= $this->lang('group_feedsett_feed_filter') ?> <?= htmlspecialchars($f->filter_keywords) ?></span>
@@ -404,7 +404,7 @@
 			</div>
 		</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

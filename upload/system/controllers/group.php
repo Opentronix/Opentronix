@@ -1,14 +1,14 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/group.php');
-	
+
 	require_once( $C->INCPATH.'helpers/func_images.php' );
-	
+
 	$g	= $this->network->get_group_by_id(intval($this->params->group));
 	if( ! $g ) {
 		$this->redirect('dashboard');
@@ -22,10 +22,10 @@
 			$this->redirect('dashboard');
 		}
 	}
-	
+
 	$D->page_title	= $g->title.' - '.$C->SITE_TITLE;
 	$D->page_favicon	= $C->IMG_URL.'avatars/thumbs2/'.$g->avatar;
-	
+
 	$D->g	= & $g;
 	$D->i_am_member	= $this->user->if_follow_group($g->id);
 	$D->i_am_admin	= FALSE;
@@ -35,10 +35,10 @@
 	if( !$D->i_am_admin && $this->user->is_logged && $this->user->info->is_network_admin==1 ) {
 		$D->i_am_admin	= TRUE;
 	}
-	
+
 	$D->i_can_invite	= $D->i_am_admin || ($D->i_am_member && $g->is_public);
 	$D->i_can_invite	= $this->user->is_logged && $D->i_can_invite;
-	
+
 	if( $D->i_can_invite ) {
 		$tmp	= $this->network->get_user_follows($this->user->id);
 		$tmp	= array_keys($tmp->followers);
@@ -51,7 +51,7 @@
 			$D->i_can_invite	= FALSE;
 		}
 	}
-	
+
 	if( $this->param('act')=='join' || $this->param('act')=='leave' ) {
 		if( $this->param('act')=='join' && !$D->i_am_member ) {
 			$this->user->follow_group($g->id, TRUE);
@@ -75,13 +75,13 @@
 		$tmp_url	.= '/msg:'.$this->param('act');
 		$this->redirect($tmp_url);
 	}
-	
+
 	if( $D->i_am_member ) {
 		$D->rss_feeds	= array(
 			array( $C->SITE_URL.'rss/groupname:'.$g->groupname,	$this->lang('rss_grpposts',array('#GROUP#'=>$g->title)), ),
 		);
 	}
-	
+
 	$tabs	= array('updates', 'members');
 	if( $D->i_am_admin ) { $tabs[] = 'settings'; }
 	$D->tab	= 'updates';
@@ -101,7 +101,7 @@
 	if( $this->param('subtab') && in_array($this->param('subtab'), $subtabs) ) {
 		$D->subtab	= $this->param('subtab');
 	}
-	
+
 	$D->num_members	= 0;
 	$D->some_members	= array();
 	$tmp	= $this->network->get_group_members($g->id);
@@ -125,7 +125,7 @@
 		$D->some_members[$k]	= $this->network->get_user_by_id($v);
 		if( ! $D->some_members[$k] ) { unset($D->some_members[$k]); }
 	}
-	
+
 	$D->num_admins	= 0;
 	$D->some_admins	= array();
 	$tmp	= array();
@@ -153,13 +153,13 @@
 		$D->some_admins[$k]	= $this->network->get_user_by_id($v);
 		if( ! $D->some_admins[$k] ) { unset($D->some_admins[$k]); }
 	}
-	
+
 	$D->post_tags	= $this->network->get_recent_posttags('AND group_id="'.$g->id.'"', 10);
 	$D->about_me	= nl2br(htmlspecialchars($D->g->about_me));
 	if( FALSE!==strpos($D->about_me,'http://') || FALSE!==strpos($D->about_me,'http://') || FALSE!==strpos($D->about_me,'ftp://') ) {
 		$D->about_me	= preg_replace('#(^|\s)((http|https|ftp)://\w+[^\s\[\]]+)#ie', 'post::_postparse_build_link("\\2", "\\1")', $D->about_me);
 	}
-	
+
 	if( $D->tab == 'updates' )
 	{
 		$D->posts_html	= '';
@@ -181,7 +181,7 @@
 		if( 0 == $D->num_results ) {
 			$arr	= array('#GROUP#'=>htmlspecialchars($g->title), '#SITE_TITLE#'=>htmlspecialchars($C->OUTSIDE_SITE_TITLE), '#A1#'=>'<a href="javascript:;" onclick="postform_open(({groupname:\''.htmlspecialchars($g->title).'\'}));">', '#A2#'=>'</a>', );
 			$lngkey_ttl	= 'noposts_group_ttl';
-			$lngkey_txt	= 'noposts_group_txt';		
+			$lngkey_txt	= 'noposts_group_txt';
 			if( $D->filter != 'all' ) {
 				$lngkey_ttl	.= '_filter';
 				$lngkey_txt	.= '_filter';
@@ -683,7 +683,7 @@
 			}
 		}
 	}
-	
+
 	$this->load_template('group.php');
-	
+
 ?>

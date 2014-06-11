@@ -1,5 +1,5 @@
 <?php
-	
+
 	class mysql
 	{
 		private $connection	= FALSE;
@@ -13,7 +13,7 @@
 		private $debug_info	= FALSE;
 		private $ext;
 		public $disconnect_on_descruct;
-		
+
 		public function __construct($host, $user, $pass, $db)
 		{
 			$this->dbhost	= $host;
@@ -31,7 +31,7 @@
 			}
 			$this->disconnect_on_descruct	= TRUE;
 		}
-		
+
 		public function connect()
 		{
 			$time	= microtime(TRUE);
@@ -54,7 +54,7 @@
 			}
 			return $this->connection;
 		}
-		
+
 		public function query($query, $remember_result=TRUE)
 		{
 			if(FALSE == $this->connection) {
@@ -78,7 +78,7 @@
 			}
 			return $result;
 		}
-		
+
 		public function fetch_object($res=FALSE) {
 			$res	= FALSE!==$res ? $res : $this->last_result;
 			if(FALSE == $res) {
@@ -86,7 +86,7 @@
 			}
 			return $this->ext=='mysqli' ? mysqli_fetch_object($res) : mysql_fetch_object($res);
 		}
-		
+
 		public function fetch($query) {
 			$res	= $this->query($query, FALSE);
 			if(FALSE == $res) {
@@ -94,7 +94,7 @@
 			}
 			return $this->fetch_object($res);
 		}
-		
+
 		public function fetch_all($query) {
 			$res	= $this->query($query, FALSE);
 			if(FALSE == $res) {
@@ -107,7 +107,7 @@
 			$this->free_result($res);
 			return $data;
 		}
-		
+
 		public function fetch_field($query) {
 			$res	= $this->query($query, FALSE);
 			if(FALSE == $res) {
@@ -119,7 +119,7 @@
 			$this->free_result($res);
 			return $row[0];
 		}
-		
+
 		public function num_rows($res=FALSE) {
 			$res    = FALSE!==$res ? $res : $this->last_result;
 			if(FALSE == $res) {
@@ -127,21 +127,21 @@
 			}
 			return $this->ext=='mysqli' ? mysqli_num_rows($res) : mysql_num_rows($res);
 		}
-		
+
 		public function insert_id() {
 			if(FALSE == $this->connection) {
 				$this->connect();
 			}
 			return intval( $this->ext=='mysqli' ? mysqli_insert_id($this->connection) : mysql_insert_id($this->connection) );
 		}
-		
+
 		public function affected_rows() {
 			if(FALSE == $this->connection) {
 				$this->connect();
 			}
 			return $this->ext=='mysqli' ? mysqli_affected_rows($this->connection) : mysql_affected_rows($this->connection);
 		}
-		
+
 		public function data_seek($row=0, $res=FALSE) {
 			$res    = FALSE!==$res ? $res : $this->last_result;
 			if(FALSE == $res) {
@@ -149,7 +149,7 @@
 			}
 			return $this->ext=='mysqli' ? mysqli_data_seek($res, $row) : mysql_data_seek($res, $row);
 		}
-		
+
 		public function free_result($res=FALSE) {
 			$res    = FALSE!==$res ? $res : $this->last_result;
 			if(FALSE == $res) {
@@ -157,18 +157,18 @@
 			}
 			return $this->ext=='mysqli' ? mysqli_free_result($res) : mysql_free_result($res);
 		}
-		
+
 		public function escape($string) {
 			if(FALSE == $this->connection) {
 				$this->connect();
 			}
 			return $this->ext=='mysqli' ? mysqli_real_escape_string($this->connection, $string) : mysql_real_escape_string($string, $this->connection);
 		}
-		
+
 		public function e($str) {
 			return $this->escape($str);
 		}
-		
+
 		private function fatal_error($query) {
 			$this->fatal_error	= TRUE;
 			$error	= $this->ext=='mysqli' ? mysqli_error($this->connection) : mysql_error($this->connection);
@@ -180,7 +180,7 @@
 			exit;
 			//return FALSE;
 		}
-		
+
 		public function get_debug_info()
 		{
 			$debug_info	= clone($this->debug_info);
@@ -188,12 +188,12 @@
 			$debug_info->queries	= array_reverse($debug_info->queries);
 			return $debug_info;
 		}
-		
+
 		public function delete_debug_info()
 		{
 			$this->debug_info->queries	= array();
 		}
-		
+
 		public function __destruct()
 		{
 			if( $this->disconnect_on_descruct ) {
@@ -204,5 +204,5 @@
 			}
 		}
 	}
-	
+
 ?>

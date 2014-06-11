@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile_iphone/header.php');
-	
+
 ?>
 		<div id="profile">
 			<div id="profile_avatar"><img src="<?= $C->TMP_URL.$D->usr_avatar ?>"/></div>
@@ -24,9 +24,9 @@
 			<a href="<?= $C->SITE_URL.$D->usr->username ?>/show:friends" style="width:27%;" class="<?= $D->show=='friends'?'onpnav':'' ?>"><b><?= $this->lang('iphone_user_menu_friends') ?></b></a>
 			<a href="<?= $C->SITE_URL.$D->usr->username ?>/show:groups" style="width:27%;" class="<?= $D->show=='groups'?'onpnav':'' ?>"><b><?= $this->lang('iphone_user_menu_groups') ?></b></a>
 		</div>
-		
+
 		<?php if( $D->show == 'updates' ) { ?>
-			
+
 			<div id="postspage" style="border-top:0px;">
 				<div id="posts">
 					<?php if( $D->num_results == 0 ) { ?>
@@ -42,11 +42,11 @@
 				</div>
 				<?php } ?>
 			</div>
-			
+
 		<?php } elseif( $D->show == 'info' ) { ?>
-			
+
 			<div id="infopage">
-				
+
 				<?php if( !empty($D->usr->about_me) ) { ?>
 				<b><?= $this->lang('iphone_user_info_about') ?></b>
 				<div id="aboutme">
@@ -102,9 +102,9 @@
 				</div>
 				<?php } ?>
 			</div>
-			
+
 		<?php } elseif( $D->show == 'friends' ) { ?>
-			
+
 			<div id="listpage">
 				<div id="listfilter">
 					<a href="javascript:;" onclick="toggle_listfilter();" id="listfilterchosen"><b><strong><?= $this->lang($D->filter=='followers'?'iphone_user_submenu_followers':'iphone_user_submenu_following', array('#USER#'=>$D->usr->username)) ?> <span>&middot; <?= $D->filter=='followers'?$D->num_followers:$D->num_following ?></span></strong></b></a>
@@ -145,11 +145,11 @@
 						</div>
 					</div>
 					<?php } ?>
-				<?php } ?>	
+				<?php } ?>
 			</div>
-			
+
 		<?php } elseif( $D->show == 'groups' ) { ?>
-			
+
 			<div id="listpage">
 				<?php if( $D->num_results == 0 ) { ?>
 					<div class="alert yellow"><?= $this->lang('iphone_user_no_groups', array('#USER#'=>$D->usr->username)) ?></div>
@@ -181,13 +181,13 @@
 						</div>
 					</div>
 					<?php } ?>
-				<?php } ?>	
+				<?php } ?>
 			</div>
-			
+
 		<?php } ?>
-		
+
 <?php
-	
+
 	$this->load_template('mobile_iphone/footer.php');
-	
+
 ?>

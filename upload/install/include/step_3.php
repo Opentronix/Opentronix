@@ -1,9 +1,9 @@
 <?php
-	
+
 	$PAGE_TITLE	= 'Installation - Step 3';
-	
+
 	$s	= & $_SESSION['INSTALL_DATA'];
-	
+
 	$texts	= array (
 		'is_apache'			=> 'Apache HTTP Server required',
 		'apache_mod_rewrite'	=> 'Apache: mod_rewrite module required',
@@ -13,7 +13,7 @@
 		'php_short_open_tag_on'	=> 'PHP: "short_open_tag" directive should be On',
 		'php_gd'			=> 'PHP: gd extension required',
 	);
-	
+
 	$check	= array (
 		'is_apache'			=> FALSE,
 		'apache_mod_rewrite'	=> FALSE,
@@ -23,8 +23,8 @@
 		'php_short_open_tag_on'	=> FALSE,
 		'php_gd'			=> FALSE,
 	);
-	
-	
+
+
 	if( function_exists('apache_get_version') ) {
 		$check['is_apache']		= TRUE;
 	}
@@ -34,12 +34,12 @@
 	elseif( isset($_SERVER['SERVER_SOFTWARE']) && preg_match('/Apache/i', $_SERVER['SERVER_SOFTWARE']) ) {
 		$check['is_apache']		= TRUE;
 	}
-	
+
 	$tmp	= floatval(substr(phpversion(), 0, 3));
 	if( $tmp >= 5.1 ) {
 		$check['php_version_51']	= TRUE;
 	}
-	
+
 	$tmp	= my_mysql_connect($s['MYSQL_HOST'], $s['MYSQL_USER'], $s['MYSQL_PASS']);
 	if( $tmp ) {
 		$tmp	= my_mysql_get_server_info($tmp);
@@ -49,11 +49,11 @@
 			$check['mysql_version_5']	= TRUE;
 		}
 	}
-	
+
 	if( function_exists('gd_info') ) {
 		$check['php_gd']	= TRUE;
 	}
-	
+
 	if( function_exists('curl_init') ) {
 		$check['php_curl_or_urlfopen']	= TRUE;
 	}
@@ -63,12 +63,12 @@
 			$check['php_curl_or_urlfopen']	= TRUE;
 		}
 	}
-	
+
 	$tmp	= intval(ini_get('short_open_tag'));
 	if( $tmp == 1 ) {
 		$check['php_short_open_tag_on']	= TRUE;
 	}
-	
+
 	if( function_exists('apache_get_modules') ) {
 		$tmp	= @apache_get_modules();
 		if( is_array($tmp) ) {
@@ -112,7 +112,7 @@
 			}
 		}
 	}
-	
+
 	$error	= FALSE;
 	foreach($check as $tmp) {
 		if( ! $tmp ) {
@@ -120,12 +120,12 @@
 			break;
 		}
 	}
-	
+
 	if( ! $error ) {
 		$_SESSION['INSTALL_STEP']	= 3;
 		header('Location: ?next&r='.rand(0,99999));
 	}
-	
+
 	$html	.= '
 							<div class="ttl">
 								<div class="ttl2">
@@ -136,7 +136,7 @@
 		$html	.= errorbox('Not Compatible', 'Please correct the highlighted settings and hit "Refresh".', FALSE, 'margin-top:5px;margin-bottom:0px;');
 		$_SESSION['INSTALL_STEP']	= 2;
 	}
-	
+
 	$html	.= '
 							<div class="greygrad" style="margin-top: 5px;">
 								<div class="greygrad2">
@@ -158,17 +158,17 @@
 												<td colspan="2" style="font-size:0; line-height:0; height: 0; padding: 0; border-bottom: 1px solid #efefef;"></td>
 											</tr>
 										</table>';
-	
+
 	if( ! $error ) {
 		$html	.= '
 										<div style="margin-top:20px;">
 											<a href="?next">&raquo; Continue</a>
 										</div>';
 	}
-	
+
 	$html	.= '
 									</div>
 								</div>
 							</div>';
-	
+
 ?>

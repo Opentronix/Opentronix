@@ -1,36 +1,36 @@
 <?php
-	
+
 	/**
-	 *	
+	 *
 	 * Some feeds require an username/password authentication, for other feeds is only optional
-	 * 
+	 *
 	 * for example:
 	 *
 	 *  /rss/my:dashboard - this feed is based on the current user, so auth is requred
 	 *  /rss/my:private - this feed is based on the current user, so auth is requred
-	 *  
+	 *
 	 *  /rss/username:Somebody - if no User/pass is provided, feed will contain only Somebody's public posts,
 	 *  else feed will provide also Somebody's posts from private groups that User is a member of.
-	 * 	 	
+	 *
 	 */
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/rss.php');
-	
+
 	header('Content-type: application/xml; charset=UTF-8');
-	
+
 	if( ! $this->network->id ) {
 		echo '<'.'?xml version="1.0" encoding="UTF-8"?'.">\n";
 		echo '<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">'."\n";
 		echo '</feed>'."\n";
 		return;
 	}
-	
+
 	$rss_title		= '';
 	$rss_altlink	= '';
 	$q		= '';
 	$q_limit	= $C->PAGING_NUM_POSTS;
-	
+
 	if( $this->param('my')=='dashboard' ) {
 		_feed_auth_required();
 		$rss_title	= $this->lang('rss_mydashboard', array('#USERNAME#'=>$this->user->info->username));
@@ -168,7 +168,7 @@
 			}
 		}
 	}
-	
+
 	$rss_dtupd	= 0;
 	$posts	= array();
 	if( ! empty($q) ) {
@@ -182,7 +182,7 @@
 			$rss_dtupd	= max($rss_dtupd, $p->post_date);
 		}
 	}
-	
+
 	echo '<'.'?xml version="1.0" encoding="UTF-8"?'.">\n";
 	echo '<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">'."\n";
 	echo "\t<title>".$rss_title." - ".$C->SITE_TITLE."</title>\n";
@@ -204,7 +204,7 @@
 		}
 		$title	.= ': '.$p->post_message;
 		$title	= preg_replace('/\s+/s', ' ', $title);
-		
+
 		$content	= '<div style="line-height:1.3; padding:5px;">';
 		if( $p->post_user->id == 0 && $p->post_group ) {
 			$content	.= '<img src="'.$C->IMG_URL.'/avatars/thumbs2/'.$p->post_group->avatar.'" width="16" height="16" alt="" border="0" /> <strong>'.$p->post_group->title.'</strong>';
@@ -230,7 +230,7 @@
 		}
 		$content	.= '</div>';
 		$content	= preg_replace('/\s+/s', ' ', $content);
-		
+
 		echo "\t<entry>\n";
 		echo "\t\t<title>".htmlspecialchars($title)."</title>\n";
 		echo "\t\t<id>tag:".$C->DOMAIN.",".date('c',$p->post_date).",".md5($p->permalink)."</id>\n";
@@ -242,12 +242,12 @@
 	}
 	echo '</feed>'."\n";
 	return;
-	
+
 	/************************************************************/
 	/************************************************************/
 	/************************************************************/
 	/************************************************************/
-	
+
 	function _feed_auth_optional()
 	{
 		return FALSE;
@@ -272,7 +272,7 @@
 		return FALSE;
 		*/
 	}
-	
+
 	function _feed_auth_required()
 	{
 		global $user, $C;
@@ -294,5 +294,5 @@
 		echo '</feed>'."\n";
 		exit;
 	}
-	
+
 ?>

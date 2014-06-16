@@ -14,11 +14,54 @@ License
 
 INSTALLATION
   -------------------------
-  To install Opentronix on your webserver, upload the contents
-  of the "upload/" folder to the preferred location on your webserver
-  (wherever you want to install Opentronix) with your favorite FTP client.
-  Open with your browser the "install" location in this folder and follow
-  the steps in the installation wizard.
+  The following steps describe the installation on a basic Debian Wheezy
+  system, but might also be adopted to any other compatible distribution.
+
+  Please copy and paste the lines with trailing \ as a block. Let's try it
+  with this one: It should make sure all packages listed in the following
+  two lines are going to be installed:
+
+  apt-get install apache2 mysql-server mysql-client php5 \
+   libapache2-mod-php5 php5-gd php5-mysql unzip
+
+  mysql -p
+
+  Enter the password, that you have defined during installation. Within the
+  MySQL console, execute the following commands:
+
+  CREATE DATABASE opentronix;
+  CREATE USER 'opentronix'@'localhost' IDENTIFIED BY 'YourPassword';
+  GRANT ALL PRIVILEGES ON opentronix . * TO 'opentronix'@'localhost';
+  FLUSH PRIVILEGES;
+  exit
+
+  a2enmod rewrite
+
+  sed -ie 's/AllowOverride None/AllowOverride All/' /etc/apache2/sites-enabled/000-default
+
+  wget https://github.com/Opentronix/Opentronix/archive/master.zip -O /var/www/master.zip
+
+  unzip -d /var/www/ /var/www/master.zip && mv /var/www/Opentronix-master/upload/* \ 
+   /var/www/ && rm -rf /var/www/Opentronix-master/
+
+  touch /var/www/.htaccess && chmod 766 /var/www/.htaccess
+
+  for i in /var/www/themes/ /var/www/i/attachments/ /var/www/i/avatars/thumbs1/ \ 
+   /var/www/i/avatars/thumbs2/ /var/www/i/avatars/thumbs3/ /var/www/i/avatars/ \
+   /var/www/i/tmp/ /var/www/system/cache/ /var/www/system; do mkdir -p $i \
+   && chmod 766 $i; done
+
+  find /var/www/ -exec chown www-data:www-data {} \;
+
+  Open http://YourFQDN/install or http://YourIPAddress/install where you have to replace
+  YourFQDN with the resolvable hostname or YourIPAddress with the IP Address of your host.
+
+  During the installation process, please select a proper caching system. FileSystem Storage
+  does not require any additional configuration, so that might be the easiest to setup,
+  though it's not the fastest one.
+
+  Define http://YourIPAddress or http://YourFQDN as Website Address.
+
   -------------------------
 
 UPGRADE

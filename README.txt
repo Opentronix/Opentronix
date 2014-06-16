@@ -18,8 +18,8 @@ INSTALLATION
   system, but might also be adopted to any other compatible distribution.
 
   Please copy and paste the lines with trailing \ as a block. Let's try it
-  with this one: It should make sure all packages listed in the following
-  two lines are going to be installed:
+  with the following one. It should make sure all packages listed in the
+  two lines below, are going to be installed:
 
   apt-get install apache2 mysql-server mysql-client php5 \
    libapache2-mod-php5 php5-gd php5-mysql unzip

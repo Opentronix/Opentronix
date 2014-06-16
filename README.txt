@@ -27,7 +27,8 @@ INSTALLATION
   mysql -p
 
   Enter the password, that you have defined during installation. Within the
-  MySQL console, execute the following commands:
+  MySQL console, execute the following commands, but replace YourPassword
+  that you are planning to use for your database:
 
   CREATE DATABASE opentronix;
   CREATE USER 'opentronix'@'localhost' IDENTIFIED BY 'YourPassword';

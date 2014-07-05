@@ -8,4 +8,6 @@
 								<a href="<?= $C->SITE_URL ?>admin/administrators" class="<?= $this->request[1]=='administrators' ? 'onsidenav' : '' ?>"><?= $this->lang('admmenu_administrators') ?></a>
 								<a href="<?= $C->SITE_URL ?>admin/editusers" class="<?= $this->request[1]=='editusers' ? 'onsidenav' : '' ?>"><?= $this->lang('admmenu_editusers') ?></a>
 								<a href="<?= $C->SITE_URL ?>admin/suspendusers" class="<?= $this->request[1]=='suspendusers'||$this->request[1]=='deleteuser' ? 'onsidenav' : '' ?>"><?= $this->lang('admmenu_suspendusers') ?></a>
+								<a href="<?= $C->SITE_URL ?>admin/activateusers" class="<?= $this->request[1]=='activateusers' ? 'onsidenav' : '' ?>">Activate Users</a>
+
 							</div>

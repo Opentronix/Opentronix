@@ -22,7 +22,7 @@
 		$D->terms_of_use	= TRUE;
 	}
 
-	$fbinfo	= FALSE;
+	$fbinfo	= FALSE; // Facebook info.
 	if( $this->param('fbinfo') && isset($_SESSION[$this->param('fbinfo')]) ) {
 		$fbinfo	= $_SESSION[$this->param('fbinfo')];
 		$db2->query('SELECT email, password FROM users WHERE facebook_uid<>"" AND facebook_uid="'.$db2->e($fbinfo->uid).'" LIMIT 1');
@@ -46,7 +46,7 @@
 			$fbinfo->proxied_email	= preg_replace('/^apps\s/', 'apps+', $fbinfo->proxied_email);
 		}
 	}
-	$twinfo	= FALSE;
+	$twinfo	= FALSE; // Twitter info.
 	if( $this->param('get')=='twitter' && isset($_SESSION['TWITTER_CONNECTED']) && $_SESSION['TWITTER_CONNECTED'] && $_SESSION['TWITTER_CONNECTED']->id ) {
 		$twinfo	= $_SESSION['TWITTER_CONNECTED'];
 		$twinfo->id	= intval($twinfo->id);
@@ -70,8 +70,7 @@
 	}
 
 	// If user email confirmation is active and we have an email address in POST.
-	if( $C->USERS_EMAIL_CONFIRMATION && isset($_POST['email']) && !empty($_POST['email']) )
-	{
+	if( $C->USERS_EMAIL_CONFIRMATION && isset($_POST['email']) && !empty($_POST['email']) ) {
 		$D->submit	= TRUE;
 		$D->error	= FALSE;
 		$D->errmsg	= '';
@@ -107,8 +106,8 @@
 
 	// if user email confirmation is active and someone came here through the confirmation link
 	// in the email. We'll show her the forms for a new user and password and the captcha.
-	elseif( ($C->USERS_EMAIL_CONFIRMATION && $this->param('regid') && $this->param('regkey')) || !$C->USERS_EMAIL_CONFIRMATION )
-	{
+	elseif( ($C->USERS_EMAIL_CONFIRMATION && $this->param('regid') && $this->param('regkey'))
+			|| !$C->USERS_EMAIL_CONFIRMATION ) {
 		$D->email		= '';
 		$D->fullname	= '';
 		if ( $C->RECAPTCHA_PRIVATE_KEY != '' ){
@@ -265,7 +264,8 @@
 			}
 
 			// check recaptcha if everything else is fine
-			if( !$D->error ) {
+			$use_captcha	= $db2->fetch_field('SELECT value FROM settings WHERE word="CAPTCHA" LIMIT 1');
+			if( !$D->error && $use_captcha ) {
 				$recaptcha_check = recaptcha_check_answer (
 					$C->RECAPTCHA_PRIVATE_KEY,
 					$_SERVER["REMOTE_ADDR"],
@@ -427,8 +427,7 @@
 		}
 		$this->load_template('signup-step2.php');
 	}
-	elseif( $C->USERS_EMAIL_CONFIRMATION )
-	{
+	elseif( $C->USERS_EMAIL_CONFIRMATION ) {
 		$D->submit	= FALSE;
 		$D->error	= FALSE;
 		$D->errmsg	= '';

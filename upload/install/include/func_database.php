@@ -4,8 +4,7 @@
 	include_once(INCPATH.'../../system/conf_embed.php');
 	$VIDSRC	= $C->NEWPOST_EMBEDVIDEO_SOURCES;
 
-	function create_database($convert_version=FALSE)
-	{
+	function create_database($convert_version=FALSE) {
 		global $s, $VIDSRC;
 		$conn	= my_mysql_connect($s['MYSQL_HOST'], $s['MYSQL_USER'], $s['MYSQL_PASS']);
 		$dbs	= my_mysql_select_db($s['MYSQL_DBNAME'], $conn);
@@ -666,6 +665,7 @@
 			('ATTACH_FILE_DISABLED', '0'),
 			('USERS_EMAIL_CONFIRMATION', '1'),
 			('THEME', 'default'),
+			('CAPTCHA', '1'),
 			('MOBI_DISABLED', '0');
 		", $conn);
 		$res	= $res && my_mysql_query("
@@ -1203,8 +1203,7 @@
 		return $res;
 	}
 
-	function database_drop_tables_with_prefix($prefix)
-	{
+	function database_drop_tables_with_prefix($prefix) {
 		if( empty($prefix) ) {
 			return FALSE;
 		}

@@ -445,11 +445,17 @@
 			if( FALSE!==$data && TRUE!=$force_refresh ) {
 				return array_slice($data, 0, $count);
 			}
-			$this->cache->set($cachekey, array(), $GLOBALS['C']->CACHE_EXPIRE); // this is to avoid running the query below multiple times at once
+			$this->cache->set($cachekey, array(), $GLOBALS['C']->CACHE_EXPIRE);
+			// this is to avoid running the query below multiple times at once
+
 			$data	= array();
-			$this->db2->query('SELECT message, date FROM posts WHERE api_id<>2 AND posttags<>0 '.$in_sql.' ORDER BY id DESC LIMIT 1000');
+			$this->db2->query('SELECT message, date FROM posts WHERE api_id<>2 AND posttags<>0 '.
+				$in_sql.' ORDER BY id DESC LIMIT 1000');
 			while($tmp = $this->db2->fetch_object()) {
-				if( ! preg_match_all('/\#([א-תÀ-ÿ一-龥а-яa-z0-9\-_]{1,50})/iu', stripslashes($tmp->message), $matches, PREG_PATTERN_ORDER) ) {
+				if( ! preg_match_all('/\#([א-תÀ-ÿ一-龥а-яa-z0-9\-_]{1,50})/iu',
+					stripslashes($tmp->message),
+					$matches,
+					PREG_PATTERN_ORDER) ) {
 					continue;
 				}
 				$thisposttags	= array();

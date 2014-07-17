@@ -153,10 +153,17 @@
 	<?php } ?>
 
 	<?php if( count($D->post_tags) > 0 ) { ?>
-	<div class="ttl" style="margin-top:0px; margin-bottom:8px;"><div class="ttl2"><h3><?= $this->lang('dbrd_right_posttags') ?></h3></div></div>
+	<div class="ttl" style="margin-top:0px; margin-bottom:8px;">
+		<div class="ttl2">
+			<h3><?= $this->lang('dbrd_right_posttags') ?></h3>
+		</div>
+	</div>
 	<div class="taglist" style="margin-bottom:5px;">
 		<?php foreach($D->post_tags as $tmp) { ?>
-		<a href="<?= $C->SITE_URL ?>search/posttag:%23<?= $tmp ?>" title="#<?= htmlspecialchars($tmp) ?>"><small>#</small><?= htmlspecialchars(str_cut($tmp,25)) ?></a>
+		<a href="<?= $C->SITE_URL ?>search/posttag:%23<?= $tmp ?>" title="#<?= htmlspecialchars($tmp) ?>">
+			<small>#</small>
+			<?= htmlspecialchars(str_cut($tmp,25)) ?>
+		</a>
 		<?php } ?>
 	</div>
 	<?php } ?>

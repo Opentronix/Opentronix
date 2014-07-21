@@ -66,7 +66,7 @@
 	float:right;
 }
 .filterreguserlist a.slctd b {
-	background-image:url('../imgs/inviterlinks_b.gif');	
+	background-image:url('../imgs/inviterlinks_b.gif');
 	background-position:top left;
 	background-repeat:no-repeat;
 	cursor:pointer;

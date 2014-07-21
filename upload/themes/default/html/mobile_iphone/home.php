@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile_iphone/header.php');
-	
+
 ?>
 
 	<div id="loginintro">
@@ -29,7 +29,7 @@
 	</div>
 	-->
 <?php
-	
+
 	$this->load_template('mobile_iphone/footer.php');
-	
+
 ?>

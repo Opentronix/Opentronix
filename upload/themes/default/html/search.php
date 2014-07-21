@@ -1,11 +1,11 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 	if( $D->tab != 'posts' ) {
 ?>
 					<div id="invcenter">
-						<h2><?= $D->search_title ?></h2>			
+						<h2><?= $D->search_title ?></h2>
 						<div class="htabs" style="margin-bottom:6px; margin-top:0px;">
 							<a href="<?= $C->SITE_URL ?>search/tab:posts/s:<?= urlencode($D->search_string) ?>" class="<?= $D->tab=='posts'?'onhtab':'' ?>"><b><?= $this->lang('srch_tab_posts') ?></b></a>
 							<a href="<?= $C->SITE_URL ?>search/tab:users/s:<?= urlencode($D->search_string) ?>" class="<?= $D->tab=='users'?'onhtab':'' ?>"><b><?= $this->lang('srch_tab_users') ?></b></a>
@@ -81,7 +81,7 @@
 								<a href="javascript:;" onclick="srchposts_togglefilt('type');" id="srchposts_droplnk_type" class="sdropper<?= $D->box_expanded->type?' dropppped':'' ?>" onfocus="this.blur();"><?= $this->lang('srch_posts_ptype') ?></a>
 								<div class="greygrad" id="srchposts_dropbox_type" style="display:<?= $D->box_expanded->type?'block':'none' ?>;">
 									<div class="greygrad2">
-										<div class="greygrad3">				
+										<div class="greygrad3">
 											<label><input type="checkbox" name="ptype[]" value="link" <?= isset($D->form_type['link'])?'checked="checked"':'' ?> /><span><?= $this->lang('srch_posts_ptp_link') ?></span></label>
 											<label><input type="checkbox" name="ptype[]" value="image" <?= isset($D->form_type['image'])?'checked="checked"':'' ?> /><span><?= $this->lang('srch_posts_ptp_image') ?></span></label>
 											<label><input type="checkbox" name="ptype[]" value="video" <?= isset($D->form_type['video'])?'checked="checked"':'' ?> /><span><?= $this->lang('srch_posts_ptp_video') ?></span></label>
@@ -90,7 +90,7 @@
 										</div>
 									</div>
 								</div>
-								<a href="javascript:;" onclick="srchposts_togglefilt('author');" id="srchposts_droplnk_author" class="sdropper<?= $D->box_expanded->author?' dropppped':'' ?>" onfocus="this.blur();"><?= $this->lang('srch_posts_user') ?></a>				 
+								<a href="javascript:;" onclick="srchposts_togglefilt('author');" id="srchposts_droplnk_author" class="sdropper<?= $D->box_expanded->author?' dropppped':'' ?>" onfocus="this.blur();"><?= $this->lang('srch_posts_user') ?></a>
 								<div class="greygrad" id="srchposts_dropbox_author" style="display:<?= $D->box_expanded->author?'block':'none' ?>;">
 									<div class="greygrad2">
 										<div class="greygrad3">
@@ -188,7 +188,7 @@
 					</script>
 <?php
 	}
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

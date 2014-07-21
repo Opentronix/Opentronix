@@ -1,21 +1,21 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('signin');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/settings.php');
-	
+
 	require_once( $C->INCPATH.'helpers/func_images.php' );
-	
+
 	$D->page_title	= $this->lang('settings_avatar_pagetitle', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->u	= & $this->user;
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
@@ -72,7 +72,7 @@
 			$send_notif	= TRUE;
 		}
 	}
-	
+
 	if( $send_notif ) {
 		$n	= intval( $this->network->get_user_notif_rules($this->user->id)->ntf_them_if_i_edt_pictr );
 		if( $n == 1 ) {
@@ -99,9 +99,9 @@
 			}
 		}
 	}
-	
+
 	list($D->currw, $D->currh) = getimagesize($C->IMG_DIR.'avatars/'.$D->u->info->avatar);
-	
+
 	$this->load_template('settings_avatar.php');
-	
+
 ?>

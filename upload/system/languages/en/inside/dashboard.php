@@ -1,9 +1,9 @@
 <?php
-	
+
 	$lang	= array
 	(
 		'dashboard_page_title'	=> 'Dashboard - #SITE_TITLE#',
-		
+
 		'dbrd_left_newpost'	=> 'New Post',
 		'dbrd_leftmenu_all'		=> 'Activity Feed',
 		'dbrd_leftmenu_@me'		=> '@Me',
@@ -13,7 +13,7 @@
 		'dbrd_leftmenu_bookmarks'	=> 'Favorites',
 		'dbrd_leftmenu_everybody'	=> 'Everybody',
 		'dbrd_leftmenu_groups'	=> 'Groups',
-		
+
 		'dbrd_poststitle_all'		=> 'Activity Feed',
 		'dbrd_poststitle_@me'		=> '@#USERNAME#',
 		'dbrd_poststitle_private'	=> 'Private Messages',
@@ -21,7 +21,7 @@
 		'dbrd_poststitle_feeds'		=> 'External Feeds',
 		'dbrd_poststitle_bookmarks'	=> 'Favorites',
 		'dbrd_poststitle_everybody'	=> 'Everybody in #COMPANY# network',
-		
+
 		'dbrd_privtab_title'		=> 'Private Messages:',
 		'dbrd_privtab_subtab_all'	=> 'All',
 		'dbrd_privtab_subtab_inbox'	=> 'Inbox',
@@ -29,12 +29,12 @@
 		'dbrd_privtab_subtab_usr'	=> 'Filter by user',
 		'dbrd_privtab_usrtb_txt'	=> 'See messages between you and',
 		'dbrd_privtab_usrtb_txt_x'	=> 'switch user',
-		
+
 		'dbrd_right_choosenetwork'	=> 'Network:',
-		
+
 		'dbrd_right_mobi_title'	=> 'Mobile #SITE_TITLE#',
 		'dbrd_right_mobi_text'	=> 'Open with your phone browser:',
-		
+
 		'dbrd_whattodo_title'		=> 'What to do next:',
 		'dbrd_whattodo_title_mnm'	=> 'What to do next ?',
 		'dbrd_whattodo_closebtn'	=> 'Close',
@@ -53,12 +53,12 @@
 		'os_dbrd_whattodoo_followusr'		=> 'Follow other network members',
 		'os_dbrd_whattodoo_followgrp'		=> 'Create or join groups',
 		'os_dbrd_whattodoo_invite'		=> 'Invite friends to join',
-		
+
 		'dbrd_right_lastonline'		=> 'Last Online',
 		'dbrd_right_savedsearches'	=> 'Saved Searches',
 		'dbrd_right_posttags'		=> 'Recently active tags',
 		'dbrd_right_wrongaddress'	=> 'Warning: You are currently using the #COMPANY# network via incorrect web address. The correct network address is:',
-		
+
 		'noposts_dtb_all_ttl'				=> 'Welcome to your dashboard',
 		'noposts_dtb_all_txt'				=> 'Click #A1#here#A2# to post your first message.',
 		'noposts_dtb_all_ttl_filter'			=> 'No posts',
@@ -92,5 +92,5 @@
 		'noposts_dtb_group_ttl_filter'		=> 'No posts',
 		'noposts_dtb_group_txt_filter'		=> 'There are no posts matching your search criteria.',
 	);
-	
+
 ?>

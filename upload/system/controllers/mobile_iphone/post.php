@@ -1,17 +1,17 @@
 <?php
-	
+
 	if( !$this->user->is_logged ) {
 		$this->redirect('home');
 	}
 	if( $C->MOBI_DISABLED ) {
 		$this->redirect('mobidisabled');
 	}
-		
+
 	$this->load_langfile('mobile/global.php');
 	$this->load_langfile('mobile/newpost.php');
-	
+
 	$D->page_title	= $this->lang('newpost_page_title', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->post_temp_id	= md5(time().rand());
 	$D->pf_message	= '';
 	$D->pf_sharewith	= 'all';
@@ -40,7 +40,7 @@
 			$D->pf_message	= '@'.$tmp->username.' ';
 		}
 	}
-	
+
 	$D->menu_groups	= array();
 	foreach($this->user->get_top_groups(5) as $g) {
 		$D->menu_groups[$g->id]	= $g;
@@ -49,10 +49,10 @@
 		array_unshift($D->menu_groups, $to_group);
 	}
 	$D->menu_groups	= array_values($D->menu_groups);
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
-	
+
 	if( isset($_POST['post_temp_id'], $_POST['message']) ) {
 		$post_temp_id	= trim($_POST['post_temp_id']);
 		$message		= trim($_POST['message']);
@@ -120,7 +120,7 @@
 			}
 		}
 	}
-	
+
 	$this->load_template('mobile_iphone/post.php');
-	
+
 ?>

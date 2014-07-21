@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 	?>
 	<script type="text/javascript">
 		function js_fix_url() {
@@ -44,7 +44,7 @@
 			js_fix_url();
 		<?php } ?>
 	</script>
-	
+
 			<?php if($D->error) { ?>
 				<?= errorbox($this->lang('signin_form_error'), $this->lang($D->errmsg)); ?>
 			<?php } elseif($this->param('pass')=='changed') { ?>
@@ -86,7 +86,7 @@
 				<?= $this->lang('os_signin_reg_txt_comp', array('#COMPANY#'=>$C->COMPANY, '#NUM_MEMBERS#'=>$D->num_members, '#NUM_POSTS#'=>$D->num_posts)) ?>
 				<div id="joinnow">
 					<a href="<?= $C->SITE_URL ?>signup" class="bluebtn1" style="margin-top:0px;"><b><?= $this->lang('signin_reg_button') ?></b></a>
-					
+
 					<?php if( $D->allow_fb_connect ) { ?>
 					<div style="float:left; margin-top:5px; margin-left:10px; margin-right:5px;"><?= $this->lang('signin_or_connect') ?></div>
 					<div style="float:left; margin-top:1px;">
@@ -102,12 +102,12 @@
 						<?php } ?>
 					</div>
 					<?php } ?>
-					
+
 				</div>
 			</div>
 			<div class="klear"></div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

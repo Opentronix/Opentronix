@@ -1,5 +1,5 @@
 <?php
-	
+
 	$lang	= array
 	(
 		'members_page_title_all'		=> 'Network Members - #SITE_TITLE#',
@@ -8,14 +8,14 @@
 		'members_page_title_admins'		=> 'Administrators - #SITE_TITLE#',
 		'members_page_title_invited'		=> 'Invited Members - #SITE_TITLE#',
 		'members_page_title_recommended'	=> 'Recommended Members - #SITE_TITLE#',
-		
+
 		'members_left_title_all'		=> 'Network Members',
 		'members_left_title_ifollow'		=> 'Members I Follow',
 		'members_left_title_followers'	=> 'My Followers',
 		'members_left_title_admins'		=> 'Administrators',
 		'members_left_title_invited'		=> 'Invited Members',
 		'members_left_title_recommended'	=> 'Recommended',
-		
+
 		'members_left_text_all'			=> 'These are all #NUM# people from your company\'s private network.',
 		'members_left_text_all1'		=> 'You are the first member of your company\'s private network.',
 		'members_left_text_ifollow'		=> 'You follow #NUM# people from your company\'s private network.',
@@ -50,15 +50,15 @@
 		'os_members_left_text_recommended'		=> '',
 		'os_members_left_text_recommended1'		=> '',
 		'os_members_left_text_recommended0'		=> '',
-		
+
 		'members_left_invite_text'		=> 'Expand this network by inviting more colleagues to join #SITE_TITLE#.',
 		'members_left_invite_button'		=> 'Invite Colleagues',
-		
+
 		'os_members_left_invite_text'			=> 'Expand this network by inviting more people to join #SITE_TITLE#.',
 		'os_members_left_invite_button'		=> 'Invite Members',
-		
+
 		'members_left_personaltags'		=> 'Popular personal tags',
-		
+
 		'members_tabs_all'		=> 'All',
 		'members_tabs_ifollow'		=> 'I follow',
 		'members_tabs_followers'	=> 'My Followers',
@@ -66,5 +66,5 @@
 		'members_tabs_invited'		=> 'Invited',
 		'members_tabs_recommended'	=> 'Recommended',
 	);
-	
+
 ?>

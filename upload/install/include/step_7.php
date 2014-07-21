@@ -1,16 +1,16 @@
 <?php
-	
+
 	$PAGE_TITLE	= 'Installation - Step 7';
-	
+
 	$s	= & $_SESSION['INSTALL_DATA'];
-	
+
 	$conn	= my_mysql_connect($s['MYSQL_HOST'], $s['MYSQL_USER'], $s['MYSQL_PASS']);
 	$dbs	= my_mysql_select_db($s['MYSQL_DBNAME'], $conn);
 	if( !$conn || !$dbs ) {
 		$_SESSION['INSTALL_STEP']	= 1;
 		header('Location: ?next&r='.rand(0,99999));
 	}
-	
+
 	$convert_version	= FALSE;
 	$res	= my_mysql_query('SHOW TABLES FROM '.$s['MYSQL_DBNAME'], $conn);
 	if( my_mysql_num_rows($res) ) {
@@ -21,7 +21,7 @@
 		sort($tables);
 	}
 	if( isset($OLDC->VERSION) ) {
-		$convert_version	= $OLDC->VERSION; 
+		$convert_version	= $OLDC->VERSION;
 	}
 	elseif( file_exists(INCPATH.'../../include/conf_main.php') && in_array('users_watched', $tables) ) {
 		$convert_version	= 'unofficial';
@@ -41,7 +41,7 @@
 			header('Location: ?next&r='.rand(0,99999));
 		}
 	}
-	
+
 	if( ! isset($s['ADMIN_ID']) ) {
 		$s['ADMIN_ID']	= FALSE;
 	}
@@ -57,7 +57,7 @@
 	if( ! isset($s['ADMIN_EMAIL']) ) {
 		$s['ADMIN_EMAIL']	= '';
 	}
-	
+
 	$submit	= FALSE;
 	$error	= FALSE;
 	$errmsg	= '';
@@ -113,7 +113,7 @@
 			header('Location: ?next&r='.rand(0,99999));
 		}
 	}
-	
+
 	$html	.= '
 							<div class="ttl">
 								<div class="ttl2">
@@ -155,5 +155,5 @@
 									</div>
 								</div>
 							</div>';
-	
+
 ?>

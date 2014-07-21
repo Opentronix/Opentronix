@@ -1,9 +1,9 @@
 <?php
-	
+
 	$this->load_langfile('inside/global.php');
-	
+
 	echo '<'.'?xml version="1.0" encoding="UTF-8" ?'.'>';
-	
+
 	if( !$this->network->id ) {
 		echo '<result></result>';
 		return;
@@ -12,13 +12,13 @@
 		echo '<result></result>';
 		return;
 	}
-	
+
 	$tmp	= isset($_POST['postid']) ? trim($_POST['postid']) : '';
 	if( ! preg_match('/^(public|private)_([0-9]+)$/', $tmp, $m) ) {
 		echo '<result></result>';
 		return;
 	}
-	
+
 	$p	= new post($m[1], $m[2]);
 	if( $p->error ) {
 		echo '<result></result>';
@@ -28,7 +28,7 @@
 		echo '<result></result>';
 		return;
 	}
-	
+
 	$message	= htmlspecialchars(preg_replace('/\s+/ius', ' ', $p->post_message));
 	$attached	= array();
 	foreach($p->post_attached as $k=>$v) {
@@ -55,7 +55,7 @@
 		}
 		$attached[]	= $obj;
 	}
-	
+
 	echo '<result>';
 	echo '<post id="'.$m[1].'_'.$m[2].'" message="'.$message.'">';
 	foreach($attached as $obj) {
@@ -64,5 +64,5 @@
 	echo '</post>';
 	echo '</result>';
 	return;
-	
+
 ?>

@@ -1,5 +1,5 @@
 <?php
-	
+
 	function generate_captcha($len=4)
 	{
 		global $C;
@@ -51,7 +51,7 @@
 		$word	= strtolower($word);
 		return array($word, $html);
 	}
-	
+
 	function cleanup_captcha_files()
 	{
 		clearstatcache();
@@ -66,5 +66,5 @@
 		}
 		closedir($dir);
 	}
-	
+
 ?>

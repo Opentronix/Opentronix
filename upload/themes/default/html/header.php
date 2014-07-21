@@ -1,11 +1,11 @@
 <?php
-	
+
 	$this->user->write_pageview();
-	
+
 	$hdr_search	= ($this->request[0]=='members' ? 'users' : ($this->request[0]=='groups' ? 'groups' : ($this->request[0]=='search' ? $D->tab : 'posts') ) );
-	
+
 	$this->load_langfile('inside/header.php');
-	
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
@@ -20,7 +20,7 @@
 		<script type="text/javascript" src="<?= $C->SITE_URL ?>themes/default/js/swfobject.js"></script>
 		<base href="<?= $C->SITE_URL ?>" />
 		<script type="text/javascript"> var siteurl = "<?= $C->SITE_URL ?>"; </script>
-		
+
 		<?php if( isset($D->page_favicon) ) { ?>
 		<link href="<?= $D->page_favicon ?>" type="image/x-icon" rel="shortcut icon" />
 		<?php } elseif( $C->HDR_SHOW_FAVICON == 1 ) { ?>
@@ -75,7 +75,7 @@
 				<div id="toprow" class="<?= $this->request[0]=='dashboard'||$this->request[0]=='home'? 'specialhomelink' : '' ?>">
 					<div id="toprow2">
 						<?php if( $C->HDR_SHOW_LOGO==2 && !empty($C->HDR_CUSTOM_LOGO) ) { ?>
-						<a href="<?= $C->SITE_URL ?>dashboard" id="logolink_custom" title="<?= htmlspecialchars($C->SITE_TITLE) ?>"><img src="<?= $C->IMG_URL.'attachments/'.$this->network->id.'/'.$C->HDR_CUSTOM_LOGO ?>" alt="<?= htmlspecialchars($C->SITE_TITLE) ?>" /></a>	
+						<a href="<?= $C->SITE_URL ?>dashboard" id="logolink_custom" title="<?= htmlspecialchars($C->SITE_TITLE) ?>"><img src="<?= $C->IMG_URL.'attachments/'.$this->network->id.'/'.$C->HDR_CUSTOM_LOGO ?>" alt="<?= htmlspecialchars($C->SITE_TITLE) ?>" /></a>
 						<?php } else { ?>
 						<a href="<?= $C->SITE_URL ?>dashboard" id="logolink" title="<?= htmlspecialchars($C->SITE_TITLE) ?>"><strong><?= htmlspecialchars($C->SITE_TITLE) ?></strong></a>
 						<?php } ?>

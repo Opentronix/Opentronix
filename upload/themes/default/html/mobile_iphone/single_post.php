@@ -1,7 +1,7 @@
 		<?php if( $D->p->is_system_post ) { ?>
 			<div class="mpost">
 				<a href="<?= $C->SITE_URL.$D->p->tmp->syspost_about_user->username ?>" class="postavatar"><img src="<?= $C->IMG_URL.'avatars/thumbs3/'.$D->p->tmp->syspost_about_user->avatar ?>" alt="" /></a>
-				<div class="mpostbody"><div class="mpostbody2">			
+				<div class="mpostbody"><div class="mpostbody2">
 					<div class="thempostbody">
 						<?= $D->p->parse_text() ?>
 						<small><?= post::parse_date($D->p->post_date) ?></small>

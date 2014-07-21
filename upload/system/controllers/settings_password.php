@@ -1,24 +1,24 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('signin');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/settings.php');
-	
+
 	$D->page_title	= $this->lang('settings_password_pagetitle', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
 	$D->pass_old	= '';
 	$D->pass_new	= '';
 	$D->pass_new2	= '';
-	
+
 	if( isset($_POST['pass_old'], $_POST['pass_new'], $_POST['pass_new2']) ) {
 		$D->submit	= TRUE;
 		$D->pass_old	= trim($_POST['pass_old']);
@@ -48,7 +48,7 @@
 			$D->pass_new2	= '';
 		}
 	}
-	
+
 	$this->load_template('settings_password.php');
-	
+
 ?>

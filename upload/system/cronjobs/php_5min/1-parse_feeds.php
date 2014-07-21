@@ -1,7 +1,7 @@
 <?php
-	
+
 	$new_rss_posts	= 0;
-	
+
 	$r	= $db2->query('SELECT * FROM groups_rssfeeds WHERE is_deleted=0');
 	while($obj = $db2->fetch_object($r)) {
 		$db2->query('UPDATE groups_rssfeeds SET date_last_crawl="'.time().'" WHERE id="'.$obj->id.'" LIMIT 1');
@@ -131,9 +131,9 @@
 			}
 		}
 	}
-	
+
 	if( $new_rss_posts > 0 ) {
 		echo 'New RSS posts: '.$new_rss_posts."\n";
 	}
-	
+
 ?>

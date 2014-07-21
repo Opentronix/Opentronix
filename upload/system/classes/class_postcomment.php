@@ -1,5 +1,5 @@
 <?php
-	
+
 	class postcomment
 	{
 		private $network;
@@ -17,7 +17,7 @@
 		public $comment_date;
 		public $error	= FALSE;
 		public $tmp;
-		
+
 		public function __construct($post_obj, $load_id=FALSE, $load_obj=FALSE)
 		{
 			global $C;
@@ -90,7 +90,7 @@
 			}
 			return TRUE;
 		}
-		
+
 		public function parse_text()
 		{
 			global $C;
@@ -101,7 +101,7 @@
 			if( FALSE!==strpos($message,'http://') || FALSE!==strpos($message,'http://') || FALSE!==strpos($message,'ftp://') ) {
 				$message	= preg_replace('#(^|\s)((http|https|ftp)://\w+[^\s\[\]]+)#ie', 'post::_postparse_build_link("\\2", "\\1")', $message);
 			}
-			
+
 			if( count($this->comment_mentioned) > 0 ) {
 				$tmp	= array();
 				foreach($this->comment_mentioned as $i=>$v) {
@@ -117,7 +117,7 @@
 					$message	= preg_replace('/(^|\s)\@'.preg_quote($u[0]).'/ius', '$1'.$txt, $message);
 				}
 			}
-			
+
 			if( count($this->comment_posttags) > 0 ) {
 				$tmp	= array();
 				foreach($this->comment_posttags as $i=>$v) {
@@ -133,14 +133,14 @@
 					$message	= preg_replace('/(^|\s)\#'.preg_quote($tag).'/ius', '$1'.$txt, $message);
 				}
 			}
-			
+
 			foreach($C->POST_ICONS as $k=>$v) {
 				$txt	= '<img src="'.$C->IMG_URL.'icons/'.$v.'" class="post_smiley" alt="'.$k.'" title="'.$k.'" />';
 				$message	= str_replace($k, $txt, $message);
 			}
 			return $message;
 		}
-		
+
 		public function if_can_delete()
 		{
 			if( $this->error ) {
@@ -154,7 +154,7 @@
 			}
 			return FALSE;
 		}
-		
+
 		public function delete_this_comment()
 		{
 			global $C;
@@ -169,5 +169,5 @@
 			return TRUE;
 		}
 	}
-	
+
 ?>

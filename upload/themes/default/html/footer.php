@@ -1,8 +1,8 @@
 <?php
-	
+
 	$this->load_langfile('outside/footer.php');
 	$this->load_langfile('inside/footer.php');
-	
+
 ?>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 				<div id="sfright">
 					<span style="color:#888;">
 						Opentronix is Powered by <a href="http://blogtronix.com" target="_blank" style="color:#666;">Blogtronix</a>
-					</span> 
+					</span>
 				</div>
 			</div>
 		</div>
@@ -70,16 +70,16 @@
 				try { FB.XFBML.Host.parseDomTree(); } catch(e) {}
 			</script>
 		<?php } ?>
-		
+
 		<?php
 			// Important - do not remove this:
 			$this->load_template('footer_cronsimulator.php');
 			if( $C->DEBUG_MODE ) { $this->load_template('footer_debuginfo.php'); }
 		?>
-		
+
 		<?php
 			@include( $C->INCPATH.'../themes/include_in_footer.php' );
 		?>
-		
+
 	</body>
 </html>

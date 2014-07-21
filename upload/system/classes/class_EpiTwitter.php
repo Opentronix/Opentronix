@@ -1,5 +1,5 @@
 <?php
-	
+
 	class EpiOAuthResponse
 	{
 		private $__resp;
@@ -18,11 +18,11 @@
 			return $result[$name];
 		}
 	}
-	
+
 	class EpiOAuth
 	{
 		public $version = '1.0';
-		
+
 		protected $requestTokenUrl;
 		protected $accessTokenUrl;
 		protected $authorizeUrl;
@@ -31,23 +31,23 @@
 		protected $token;
 		protected $tokenSecret;
 		protected $signatureMethod;
-		
+
 		public function getAccessToken() {
 			$resp = $this->httpRequest('GET', $this->accessTokenUrl);
 			return new EpiOAuthResponse($resp);
 		}
-		
-		public function getAuthorizationUrl() { 
-			$retval = "{$this->authorizeUrl}?";	
+
+		public function getAuthorizationUrl() {
+			$retval = "{$this->authorizeUrl}?";
 			$token = $this->getRequestToken();
 			return $this->authorizeUrl . '?oauth_token=' . $token->oauth_token;
 		}
-		
+
 		public function getRequestToken() {
 			$resp = $this->httpRequest('GET', $this->requestTokenUrl);
 			return new EpiOAuthResponse($resp);
 		}
-		
+
 		public function httpRequest($method = null, $url = null, $params = null) {
 			if(empty($method) || empty($url)) {
 				return false;
@@ -64,17 +64,17 @@
 					break;
 			}
 		}
-		
+
 		public function setToken($token = null, $secret = null) {
 			$params = func_get_args();
 			$this->token = $token;
 			$this->tokenSecret = $secret;
-		} 
-		
+		}
+
 		public function encode($string) {
 			return rawurlencode(utf8_encode($string));
 		}
-		
+
 		protected function addOAuthHeaders(&$ch, $url, $oauthHeaders)
 		{
 			$_h = array('Expect:');
@@ -84,9 +84,9 @@
 				$oauth .= "{$name}=\"{$value}\",";
 			}
 			$_h[] = substr($oauth, 0, -1);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $_h); 
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $_h);
 		}
-		
+
 		protected function generateNonce()
 		{
 			if(isset($this->nonce)) { // for unit testing
@@ -94,13 +94,13 @@
 			}
 			return md5(uniqid(rand(), true));
 		}
-		
+
 		protected function generateSignature($method = null, $url = null, $params = null)
 		{
 			if(empty($method) || empty($url)) {
 				return false;
 			}
-			
+
 			// concatenating
 			$concatenatedParams = '';
 			foreach($params as $k => $v) {
@@ -108,15 +108,15 @@
 				$concatenatedParams .= "{$k}={$v}&";
 			}
 			$concatenatedParams = $this->encode(substr($concatenatedParams, 0, -1));
-			
+
 			// normalize url
 			$normalizedUrl = $this->encode($this->normalizeUrl($url));
 			$method = $this->encode($method); // don't need this but why not?
-			
+
 			$signatureBaseString = "{$method}&{$normalizedUrl}&{$concatenatedParams}";
 			return $this->signString($signatureBaseString);
 		}
-			
+
 		protected function httpGet($url, $params = null) {
 			if(count($params['request']) > 0) {
 				$url .= '?';
@@ -131,7 +131,7 @@
 			$resp  = $this->curl->addCurl($ch);
 			return $resp;
 		}
-		
+
 		protected function httpPost($url, $params = null) {
 			$ch = curl_init($url);
 			$this->addOAuthHeaders($ch, $url, $params['oauth']);
@@ -141,13 +141,13 @@
 			$resp  = $this->curl->addCurl($ch);
 			return $resp;
 		}
-		
+
 		protected function normalizeUrl($url = null)
 		{
 			$urlParts = parse_url($url);
 			$scheme = strtolower($urlParts['scheme']);
 			$host   = strtolower($urlParts['host']);
-			$port = isset($urlParts['port']) ? intval($urlParts['port']) : 80;	
+			$port = isset($urlParts['port']) ? intval($urlParts['port']) : 80;
 			$retval = "{$scheme}://{$host}";
 			if($port > 0 && ($scheme === 'http' && $port !== 80) || ($scheme === 'https' && $port !== 443)) {
 				$retval .= ":{$port}";
@@ -158,7 +158,7 @@
 			}
 			return $retval;
 		}
-		
+
 		protected function prepareParameters($method = null, $url = null, $params = null)
 		{
 			if(empty($method) || empty($url)) {
@@ -170,22 +170,22 @@
 			$oauth['oauth_timestamp'] = !isset($this->timestamp) ? time() : $this->timestamp; // for unit test
 			$oauth['oauth_signature_method'] = $this->signatureMethod;
 			$oauth['oauth_version'] = $this->version;
-			
+
 			// encoding
 			array_walk($oauth, array($this, 'encode'));
 			if(is_array($params)) {
 				array_walk($params, array($this, 'encode'));
 			}
 			$encodedParams = array_merge($oauth, (array)$params);
-			
+
 			// sorting
 			ksort($encodedParams);
-			
+
 			// signing
 			$oauth['oauth_signature'] = $this->encode($this->generateSignature($method, $url, $encodedParams));
 			return array('request' => $params, 'oauth' => $oauth);
 		}
-			
+
 		protected function signString($string = null) {
 			$retval = false;
 			switch($this->signatureMethod) {
@@ -196,7 +196,7 @@
 			}
 			return $retval;
 		}
-		
+
 		public function __construct($consumerKey, $consumerSecret, $signatureMethod='HMAC-SHA1') {
 			$this->consumerKey = $consumerKey;
 			$this->consumerSecret = $consumerSecret;
@@ -204,8 +204,8 @@
 			$this->curl = EpiCurl::getInstance();
 		}
 	}
-	
-	
+
+
 	class EpiTwitter extends EpiOAuth
 	{
 		const EPITWITTER_SIGNATURE_METHOD = 'HMAC-SHA1';
@@ -213,7 +213,7 @@
 		protected $accessTokenUrl = 'http://twitter.com/oauth/access_token';
 		protected $authorizeUrl = 'http://twitter.com/oauth/authorize';
 		protected $apiUrl = 'http://twitter.com';
-		
+
 		public function __call($name, $params = null) {
 			$parts  = explode('_', $name);
 			$method = strtoupper(array_shift($parts));
@@ -225,13 +225,13 @@
 			}
 			return new EpiTwitterJson(call_user_func(array($this, 'httpRequest'), $method, $url, $args));
 		}
-		
+
 		public function __construct($consumerKey = null, $consumerSecret = null, $oauthToken = null, $oauthTokenSecret = null) {
 			parent::__construct($consumerKey, $consumerSecret, self::EPITWITTER_SIGNATURE_METHOD);
 			$this->setToken($oauthToken, $oauthTokenSecret);
 		}
 	}
-	
+
 	class EpiTwitterJson
 	{
 		private $resp;
@@ -247,8 +247,8 @@
 			return $this->$name;
 		}
 	}
-	
-	
+
+
 	class EpiCurl
 	{
 		const timeout = 3;
@@ -260,7 +260,7 @@
 		private $requests = array();
 		private $responses = array();
 		private $properties = array();
-		
+
 		function __construct() {
 			if(self::$singleton == 0) {
 				throw new Exception('This class cannot be instantiated by the new keyword.  You must instantiate it using: $obj = EpiCurl::getInstance();');
@@ -273,7 +273,7 @@
 				'type'  => CURLINFO_CONTENT_TYPE
 			);
 		}
-		
+
 		public function addCurl($ch) {
 			$key = (string)$ch;
 			$this->requests[$key] = $ch;
@@ -289,7 +289,7 @@
 				return $res;
 			}
 		}
-		
+
 		public function getResult($key = null) {
 			if($key != null) {
 				if(isset($this->responses[$key])) {
@@ -309,7 +309,7 @@
 			}
 			return false;
 		}
-		
+
 		private function storeResponses()
 		{
 			while($done = curl_multi_info_read($this->mc)) {
@@ -321,7 +321,7 @@
 				}
 			}
 		}
-		
+
 		static function getInstance()
 		{
 			if(self::$inst == null) {
@@ -331,18 +331,18 @@
 			return self::$inst;
 		}
 	}
-	
+
 	class EpiCurlManager
 	{
 		private $key;
 		private $epiCurl;
-		
+
 		function __construct($key)
 		{
 			$this->key = $key;
 			$this->epiCurl = EpiCurl::getInstance();
 		}
-		
+
 		function __get($name)
 		{
 			$responses = $this->epiCurl->getResult($this->key);

@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile/header.php');
-	
+
 ?>
 	<h3 id="ttle"><?= $this->lang('home_form_title', array('#SITE_TITLE#'=>$C->OUTSIDE_SITE_TITLE)) ?></h3>
 	<div id="postpage">
@@ -16,9 +16,9 @@
 			<input type="checkbox" name="rememberme" value="1" <?= $D->rememberme?'checked="checked"':'' ?>  style="margin-top:10px; margin-bottom:10px;" />&nbsp;<?= $this->lang('home_form_rmbme') ?><br />
 			<input type="submit" value="<?= $this->lang('home_form_btn') ?>" class="submitbtn" />
 		</form>
-	</div>	
+	</div>
 <?php
-	
+
 	$this->load_template('mobile/footer.php');
-	
+
 ?>

@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile_iphone/header.php');
-	
+
 ?>
 		<div id="postspage">
 			<div id="posts">
@@ -141,7 +141,7 @@
 		</div>
 
 <?php
-	
+
 	$this->load_template('mobile_iphone/footer.php');
-	
+
 ?>

@@ -1,14 +1,14 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 			<div class="ttl" style="margin-bottom:10px;">
 				<div class="ttl2">
 					<h3><?= $this->lang('signinforg_form_title', array('#SITE_TITLE#'=>$C->SITE_TITLE)) ?> - <?= $C->COMPANY ?></h3>
 				</div>
 			</div>
-			<?php if( ! $D->have_key ) { ?> 
+			<?php if( ! $D->have_key ) { ?>
 				<?php if( $D->submit && !$D->error ) { ?>
 					<div class="greenbox">
 						<div class="greenbox2">
@@ -56,9 +56,9 @@
 					</table>
 				</form>
 			<?php } ?>
-			
+
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

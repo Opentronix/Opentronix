@@ -269,7 +269,7 @@ function input_scroll_autocomplete(dir)
 	}
 	else {
 		nw	= autocomplete_data.focusIndex + (dir=="DOWN" ? 1 : -1);
-		if( nw == autocomplete_data.data.length ) { nw = 0; } else 
+		if( nw == autocomplete_data.data.length ) { nw = 0; } else
 		if( nw == -1 ) { nw = autocomplete_data.data.length-1; }
 	}
 	input_scroll_autocomplete_to(nw);
@@ -374,7 +374,7 @@ function input_show_autocomplete_textarea(obj)
 	if( obj.getAttribute("autocompleteafter") ) {
 		callbck_after	= function() { try{ eval(obj.getAttribute("autocompleteafter")) } catch(e){}; };
 	}
-	
+
 	var f_only_filltextarea	= function(word, url) {
 		input_hide_autocompletes();
 		var str	=	obj.value;
@@ -384,7 +384,7 @@ function input_show_autocomplete_textarea(obj)
 		obj.value	= valuebefore+word;
 		callbck_after();
 	};
-	
+
 	var datatype	= false;
 	var jsaction	= f_only_filltextarea;
 	if( obj.name=="message") {
@@ -450,9 +450,9 @@ function input_show_autocomplete_textarea(obj)
 				input_scroll_autocomplete_toarea(this.getAttribute("autorowindex"), true);
 			}
 			dv2.onclick	= function() {
-				input_scroll_autocomplete_toarea(this.getAttribute("autorowindex"));				
+				input_scroll_autocomplete_toarea(this.getAttribute("autorowindex"));
 				if( autocomplete_data.data[autocomplete_data.focusIndex] ) {
-					var sdf	= autocomplete_data.data[autocomplete_data.focusIndex];		
+					var sdf	= autocomplete_data.data[autocomplete_data.focusIndex];
 					sdf[2](sdf[0], sdf[1]);
 				}
 				input_hide_autocompletes();
@@ -479,10 +479,10 @@ function input_scroll_autocomplete_toarea(pos, dontshow)
 	if( ! autocomplete_open ) { return; }
 	if( autocomplete_data.focusIndex !== false ) {
 		var old	= d.getElementById("inp_dropbox_"+autocomplete_data.id+"_row_"+autocomplete_data.focusIndex);
-		if( old ) { old.className = ""; }			
+		if( old ) { old.className = ""; }
 	}
 
-	if( pos!==false && autocomplete_data.data[pos] ) {		
+	if( pos!==false && autocomplete_data.data[pos] ) {
 		pos	= parseInt(pos, 10);
 		if( ! dontshow ) {
 			var str	=	autocomplete_open.value;
@@ -505,7 +505,7 @@ function input_scroll_autocomplete_area(dir)
 	}
 	else {
 		nw	= autocomplete_data.focusIndex + (dir=="DOWN" ? 1 : -1);
-		if( nw == autocomplete_data.data.length ) { nw = 0; } else 
+		if( nw == autocomplete_data.data.length ) { nw = 0; } else
 		if( nw == -1 ) { nw = autocomplete_data.data.length-1; }
 	}
 	input_scroll_autocomplete_toarea(nw);

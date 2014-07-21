@@ -1,5 +1,5 @@
 <?php
-	
+
 	class user
 	{
 		public $id;
@@ -7,7 +7,7 @@
 		public $is_logged;
 		public $info;
 		public $sess;
-		
+
 		public function __construct()
 		{
 			$this->id	= FALSE;
@@ -19,7 +19,7 @@
 			$this->is_logged	= FALSE;
 			$this->sess		= array();
 		}
-		
+
 		public function LOAD()
 		{
 			if( ! $this->network->id ) {
@@ -63,7 +63,7 @@
 			}
 			return FALSE;
 		}
-		
+
 		private function _session_start()
 		{
 			if( ! $this->network->id ) {
@@ -77,7 +77,7 @@
 			}
 			$this->sess	= & $_SESSION['NETWORKS_USR_DATA'][$this->network->id];
 		}
-		
+
 		public function login($login, $pass, $rememberme=FALSE)
 		{
 			global $C;
@@ -106,25 +106,25 @@
 			$this->sess['IS_LOGGED']	= TRUE;
 			$this->sess['LOGGED_USER']	= & $this->info;
 			$this->id	= $this->info->id;
-			
+
 			$ip	= $this->db2->escape( ip2long($_SERVER['REMOTE_ADDR']) );
 			$this->db2->query('UPDATE users SET lastlogin_date="'.time().'", lastlogin_ip="'.$ip.'", lastclick_date="'.time().'" WHERE id="'.$this->id.'" LIMIT 1');
 			if( TRUE == $rememberme ) {
 				// HASHFAIL
-				// TODO: How do other frameworks do this? 
+				// TODO: How do other frameworks do this?
 				// We need a random value, not something derived from username et al. Especially because this never changes......
 				// This is a huge flaw! This here allows an Attacker to crack away at a session forever, because the magic cookie
-				// never changes. 
+				// never changes.
 				// http://stackoverflow.com/questions/2594960/best-practice-to-implement-secure-remember-me
 				$tmp	= $this->id.'_'.md5($this->info->username.'~~'.$this->info->password.'~~'.$_SERVER['HTTP_USER_AGENT']);
 				setcookie('rememberme', $tmp, time()+60*24*60*60, '/', cookie_domain());
 			}
-			
+
 			$this->sess['total_pageviews']	= 0;
 			$this->sess['cdetails']	= $this->db2->fetch('SELECT * FROM users_details WHERE user_id="'.$this->id.'" LIMIT 1');
 			return TRUE;
 		}
-		
+
 		public function try_autologin()
 		{
 			if( ! $this->network->id ) {
@@ -144,7 +144,7 @@
 			$obj->username	= stripslashes($obj->username);
 			$obj->password	= stripslashes($obj->password);
 			// HASHFAIL
-			// NO! Nononono! See above. 
+			// NO! Nononono! See above.
 			if( $tmp[1] == md5($obj->username.'~~'.$obj->password.'~~'.$_SERVER['HTTP_USER_AGENT']) ) {
 				// WTF IS THIS!?! This grabs the username and hashed password and sends it to another
 				// function to verify it against the username and hashed password FROM THE DATABASE!!!
@@ -155,7 +155,7 @@
 			$_COOKIE['rememberme']	= NULL;
 			return FALSE;
 		}
-		
+
 		public function logout()
 		{
 			if( ! $this->is_logged ) {
@@ -172,7 +172,7 @@
 			$this->is_logged	= FALSE;
 			$_SESSION['TWITTER_CONNECTED']	= FALSE;
 		}
-		
+
 		public function follow($whom_id, $how=TRUE)
 		{
 			if( ! $this->is_logged ) {
@@ -192,7 +192,7 @@
 			if( $how == TRUE ) {
 				$this->db2->query('INSERT INTO users_followed SET who="'.$this->id.'", whom="'.$whom_id.'", date="'.time().'", whom_from_postid="'.$this->network->get_last_post_id().'" ');
 				$this->db2->query('UPDATE users SET num_followers=num_followers+1 WHERE id="'.$whom_id.'" LIMIT 1');
-				
+
 				$n	= intval( $this->network->get_user_notif_rules($this->id)->ntf_them_if_i_follow_usr );
 				if( $n == 1 ) {
 					global $C, $page;
@@ -247,7 +247,7 @@
 			$this->network->get_user_follows($this->id, TRUE);
 			return TRUE;
 		}
-		
+
 		public function follow_group($group_id, $how=TRUE)
 		{
 			if( ! $this->is_logged ) {
@@ -327,7 +327,7 @@
 			$this->get_top_groups(1, TRUE);
 			return TRUE;
 		}
-		
+
 		public function if_follow_user($user_id)
 		{
 			if( ! $this->is_logged ) {
@@ -335,7 +335,7 @@
 			}
 			return isset($this->network->get_user_follows($this->id)->follow_users[$user_id]);
 		}
-		
+
 		public function if_follow_group($group_id)
 		{
 			if( ! $this->is_logged ) {
@@ -343,7 +343,7 @@
 			}
 			return isset($this->network->get_user_follows($this->id)->follow_groups[$group_id]);
 		}
-		
+
 		public function if_can_leave_group($group_id)
 		{
 			if( ! $this->is_logged ) {
@@ -356,7 +356,7 @@
 			}
 			return $loaded[$group_id];
 		}
-		
+
 		public function get_top_groups($num, $force_refresh=FALSE)
 		{
 			static $loaded=FALSE;
@@ -374,7 +374,7 @@
 			}
 			return array_slice($loaded, 0, $num);
 		}
-		
+
 		public function write_pageview()
 		{
 			if( ! $this->is_logged ) {
@@ -388,5 +388,5 @@
 			}
 		}
 	}
-	
+
 ?>

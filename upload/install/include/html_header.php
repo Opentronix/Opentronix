@@ -1,6 +1,6 @@
 <?php
 
-$header	= 
+$header	=
 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
@@ -24,5 +24,5 @@ $header	=
 					</div>
 				</div>
 				<div style="padding-top:10px; padding-bottom:10px;">';
-	
+
 ?>

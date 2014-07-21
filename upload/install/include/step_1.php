@@ -1,15 +1,15 @@
 <?php
-	
+
 	$PAGE_TITLE	= 'Installation';
-		
+
 	$installed	= FALSE;
 	//if( isset($OLDC->INSTALLED, $OLDC->VERSION) && $OLDC->INSTALLED == 1 && $OLDC->VERSION>=VERSION ) {
 	//	$installed	= TRUE;
 	//}
-	
+
 	if( $installed ) {
 		$_SESSION['INSTALL_STEP']	= 0;
-		
+
 		$html	.= '
 							<div class="ttl">
 								<div class="ttl2">
@@ -20,7 +20,7 @@
 	}
 	else {
 		$_SESSION['INSTALL_STEP']	= 0;
-		
+
 		$error	= FALSE;
 		if( isset($_POST['submit']) ) {
 			$a	= isset($_POST['accept']) && $_POST['accept']=="1";
@@ -33,7 +33,7 @@
 				exit;
 			}
 		}
-		
+
 		$html	.= '
 							<div class="ttl">
 								<div class="ttl2">
@@ -62,5 +62,5 @@
 								</div>
 							</div>';
 	}
-	
+
 ?>

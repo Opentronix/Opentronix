@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<div id="page_browse_mg">
 						<div id="page_browse_mg_left">
@@ -40,7 +40,7 @@
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

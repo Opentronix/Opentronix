@@ -1,9 +1,9 @@
 <?php
-	
+
 	$this->load_langfile('inside/global.php');
-	
+
 	echo '<'.'?xml version="1.0" encoding="UTF-8" ?'.'>';
-	
+
 	if( !$this->network->id ) {
 		echo '<result></result>';
 		return;
@@ -12,7 +12,7 @@
 		echo '<result></result>';
 		return;
 	}
-	
+
 	$datatype	= isset($_POST['datatype']) ? trim($_POST['datatype']) : '';
 	if( $datatype!='username' && $datatype!='groupname' ) {
 		echo '<result></result>';
@@ -23,9 +23,9 @@
 		echo '<result></result>';
 		return;
 	}
-	
+
 	echo '<result>';
-	
+
 	if( $datatype == 'username' )
 	{
 		$w	= $this->db2->escape($word);
@@ -111,7 +111,7 @@
 			echo '<row word="'.htmlspecialchars($g->title).'" url="'.htmlspecialchars($C->SITE_URL.$g->groupname).'" html="'.htmlspecialchars($html).'" />';
 		}
 	}
-	
+
 	echo '</result>';
-	
+
 ?>

@@ -4,5 +4,5 @@
 					<strong><?= htmlspecialchars($D->u->username) ?></strong>
 					<?= htmlspecialchars($D->u->fullname) ?>
 				</div>
-				<span></span>	
+				<span></span>
 			</a>

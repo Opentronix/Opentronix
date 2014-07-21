@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header_flybox.php');
-	
+
 	if( $D->type == 'image' ) {
 ?>
 			<div class="flyboxattachment">
@@ -24,20 +24,20 @@
 	}
 	elseif( $D->type == 'videoembed' )
 	{
-?>	
+?>
 			<div class="flyboxattachment">
 				<?= $D->att->embed_code ?>
 			</div>
 			<div class="flyboxdata">
 				<a href="<?= $D->att->orig_url ?>" target="_blank"><?= str_cut_link($D->att->orig_url,55) ?></a>
-				<!-- 
+				<!--
 				<a href="<?= $D->att->orig_url ?>" target="_blank"><?= $this->lang('post_atchvid_ftr_site') ?></a> &middot;
 				<a href="<?= $D->p->permalink ?>" target="_top"><?= $this->lang('post_atchftr_permalink') ?></a>
 				-->
 			</div>
-<?php	
+<?php
 	}
-	
+
 	$this->load_template('footer_flybox.php');
-	
+
 ?>

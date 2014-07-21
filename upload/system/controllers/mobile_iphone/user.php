@@ -1,34 +1,34 @@
 <?php
-	
+
 	if( !$this->user->is_logged ) {
 		$this->redirect('home');
 	}
 	if(  $C->MOBI_DISABLED ) {
 		$this->redirect('mobidisabled');
 	}
-	
+
 	$this->load_langfile('mobile/global.php');
 	$this->load_langfile('mobile/user.php');
-	
+
 	$u	= $this->network->get_user_by_id(intval($this->params->user));
 	if( ! $u ) {
 		$this->params->user	= $this->user->id;
 		$u	= $this->user->info;
 	}
-	
+
 	$D->page_title	= $u->username.' - '.$C->SITE_TITLE;
-	
+
 	$D->usr	= & $u;
 	$D->is_my_profile	= $u->id==$this->user->id;
 	$D->i_follow_him	= $this->user->if_follow_user($u->id);
-	
+
 	$shows	= array('updates', 'info', 'groups', 'friends');
 	$D->show	= 'updates';
-	
+
 	if( $this->param('show') && in_array($this->param('show'),$shows) ) {
 		$D->show	= $this->param('show');
 	}
-	
+
 	if( !$D->is_my_profile ) {
 		if( $this->param('do_follow') && !$D->i_follow_him ) {
 			$this->user->follow($u->id, TRUE);
@@ -39,19 +39,19 @@
 			$D->i_follow_him	= FALSE;
 		}
 	}
-	
+
 	$D->usr_avatar	= md5($D->usr->id.'-'.$D->usr->avatar).'.'.pathinfo($D->usr->avatar,PATHINFO_EXTENSION);
 	if( ! file_exists($C->TMP_DIR.$D->usr_avatar) ) {
 		require_once($C->INCPATH.'helpers/func_images.php');
 		copy_attachment_videoimg($C->IMG_DIR.'avatars/'.$D->usr->avatar, $C->TMP_DIR.$D->usr_avatar, 100);
 	}
-	
+
 	if( $D->show == 'updates' )
 	{
 		$D->num_results	= 0;
 		$D->start_from	= 0;
 		$D->posts_html	= '';
-		
+
 		$not_in_groups	= array();
 		if( ! $this->user->info->is_network_admin ) {
 			$r	= $db2->query('SELECT id FROM groups WHERE is_public=0');
@@ -73,7 +73,7 @@
 			}
 		}
 		$not_in_groups	= count($not_in_groups)==0 ? '' : ('AND group_id NOT IN('.implode(', ', $not_in_groups).')');
-		
+
 		$q1	= 'SELECT COUNT(id) FROM posts WHERE user_id="'.$u->id.'" '.$not_in_groups;
 		$q2	= 'SELECT *, "public" AS `type` FROM posts WHERE user_id="'.$u->id.'" '.$not_in_groups.' ORDER BY id DESC ';
 		$D->num_results	= $db2->fetch_field($q1);
@@ -213,7 +213,7 @@
 		$D->num_followers	= count($this->network->get_user_follows($D->usr->id)->followers);
 		$D->num_following	= count($this->network->get_user_follows($D->usr->id)->follow_users);
 	}
-	
+
 	$this->load_template('mobile_iphone/user.php');
-	
+
 ?>

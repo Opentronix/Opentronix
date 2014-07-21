@@ -1,13 +1,13 @@
 <?php
-	
+
 	ini_set('memory_limit', -1);
-	
+
 	$PAGE_TITLE	= 'Installation - Step 8';
-	
+
 	$s	= & $_SESSION['INSTALL_DATA'];
-	
+
 	$error	= FALSE;
-	
+
 	if( isset($s['INSTALLED']) && $s['INSTALLED'] ) {
 		$configfile	= INCPATH.'../../system/conf_main.php';
 		$is_ok	= FALSE;
@@ -26,10 +26,10 @@
 			exit;
 		}
 	}
-	
+
 	$error	= FALSE;
 	$errmsg	= '0';
-	
+
 	if( !isset($s['INSTALLED']) || !$s['INSTALLED'] )
 	{
 		$s['LANGUAGE']	= 'en';
@@ -43,9 +43,9 @@
 			@mkdir( INCPATH.'../../i/attachments/1/' );
 		}
 		@chmod( INCPATH.'../../i/attachments/1/', 0777 );
-		
+
 		$s['SITE_URL']	= rtrim($s['SITE_URL'],'/').'/';
-		
+
 		if( ! $error ) {
 			$rwbase	= '/';
 			$tmp	= preg_replace('/^http(s)?\:\/\//', '', $s['SITE_URL']);
@@ -71,9 +71,9 @@
 			}
 			@chmod($filename, 0777);
 		}
-		
+
 		$convert_version	= FALSE;
-		
+
 		if( ! $error ) {
 			$conn	= my_mysql_connect($s['MYSQL_HOST'], $s['MYSQL_USER'], $s['MYSQL_PASS']);
 			$dbs	= my_mysql_select_db($s['MYSQL_DBNAME'], $conn);
@@ -91,7 +91,7 @@
 			}
 			$convert_version	= FALSE;
 			if( isset($OLDC->VERSION) ) {
-				$convert_version	= $OLDC->VERSION; 
+				$convert_version	= $OLDC->VERSION;
 			}
 			elseif( file_exists(INCPATH.'../../include/conf_main.php') && in_array('users_watched', $tables) ) {
 				$convert_version	= 'unofficial';
@@ -103,7 +103,7 @@
 				$errmsg	= 'V4dCBldm';
 			}
 		}
-		
+
 		if( ! $error ) {
 			if( $convert_version == 'unofficial' ) {
 				$resize	= array();
@@ -382,7 +382,7 @@
 			header('Location: '.$url);
 		}
 	}
-	
+
 	$html	.= '
 
 							<div class="ttl">
@@ -391,5 +391,5 @@
 								</div>
 							</div>';
 	$html	.= errorbox('Installation Failed!', 'Please <a href="?reset" style="font-size:inherit;">try again</a> or contact our team for help. Error code: '.$errmsg.'.', FALSE, 'margin-top:5px;');
-	
+
 ?>

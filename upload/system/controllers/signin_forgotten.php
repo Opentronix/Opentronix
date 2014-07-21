@@ -1,21 +1,21 @@
 <?php
-	
+
 	if( $this->network->id && $this->user->is_logged ) {
 		$this->redirect('dashboard');
 	}
-	
+
 	$this->load_langfile('outside/global.php');
 	$this->load_langfile('outside/signin.php');
-	
+
 	$D->page_title	= $this->lang('signinforg_page_title', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->have_key	= FALSE;
-	
+
 	if( $this->param('key') )
 	{
 		$D->have_key	= TRUE;
 		$D->error_key	= FALSE;
-		
+
 		$key	= $this->db2->e(trim($this->param('key')));
 		$this->db2->query('SELECT id FROM users WHERE active=1 AND pass_reset_key="'.$key.'" AND pass_reset_valid>="'.time().'" LIMIT 1');
 		if( ! $u = $this->db2->fetch_object() ) {
@@ -25,7 +25,7 @@
 			$D->submit	= FALSE;
 			$D->error	= FALSE;
 			$D->errmsg	= '';
-			
+
 			if( isset($_POST['pass1'], $_POST['pass2']) ) {
 				$pass	= trim($_POST['pass1']);
 				if( strlen($pass)<5 ) {
@@ -52,7 +52,7 @@
 		$D->error	= FALSE;
 		$D->errmsg	= '';
 		$D->email	= '';
-		
+
 		if( isset($_POST['email']) ) {
 			$D->submit	= TRUE;
 			$D->email	= strtolower(trim($_POST['email']));
@@ -92,7 +92,7 @@
 			}
 		}
 	}
-	
+
 	$this->load_template('signin_forgotten.php');
-	
+
 ?>

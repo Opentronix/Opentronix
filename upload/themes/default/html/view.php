@@ -103,7 +103,7 @@
 							<div class="attachmentinfo">
 								<b><?= htmlspecialchars($D->post->post_attached['image']->title) ?></b> &middot;
 								<a href="<?= $C->SITE_URL ?>getfile/pid:<?= $D->post->post_tmp_id ?>/tp:image/<?= htmlspecialchars($D->post->post_attached['image']->title) ?>" target="_top">
-									<?= $D->post->post_attached['image']->size_original[0] ?>x<?= $D->post->post_attached['image']->size_original[1] ?>px, 
+									<?= $D->post->post_attached['image']->size_original[0] ?>x<?= $D->post->post_attached['image']->size_original[1] ?>px,
 									<?= show_filesize($D->post->post_attached['image']->filesize) ?>
 								</a>
 							</div>

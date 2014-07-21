@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<div id="home_left">
 						<?php if( $D->tab == 'group' ) { ?>
@@ -12,7 +12,7 @@
 						<?php } else { ?>
 						<a href="javascript:;" class="npbtn" id="postform_open_button" onclick="postform_open();" onfocus="this.blur();"><b><?= $this->lang('dbrd_left_newpost') ?></b></a>
 						<?php } ?>
-						
+
 						<div id="homefltr">
 							<a href="<?= $C->SITE_URL ?>dashboard" class="item mystr<?= $D->tab=='all'?' onitem':'' ?>"><b></b><strong><?= $this->lang('dbrd_leftmenu_all') ?></strong><span><small id="dbrd_tab_all" style="<?= $D->tabs_state['all']==0||$D->tab=='all'?'display:none;':'' ?>"><?= $D->tabs_state['all'] ?></small></span></a>
 							<a href="<?= $C->SITE_URL ?>dashboard/tab:@me" class="item atme<?= $D->tab=='@me'?' onitem':'' ?>"><b></b><strong><?= $this->lang('dbrd_leftmenu_@me', array('#USERNAME#'=>$this->user->info->username)) ?></strong><span><small id="dbrd_tab_mention" style="<?= $D->tabs_state['@me']==0||$D->tab=='@me'?'display:none;':'' ?>"><?= $D->tabs_state['@me'] ?></small></span></a>
@@ -51,7 +51,7 @@
 										<a href="<?= $C->SITE_URL ?>dashboard/tab:group/g:<?= $D->onlygroup->groupname ?>/filter:files" style="border-bottom:0px;"><?= $this->lang('posts_filter_files') ?></a>
 									</div>
 									<span><?= $this->lang('posts_filter_ttl') ?></span>
-								</div>		
+								</div>
 							</div>
 						</div>
 						<?php } elseif( $D->tab != 'private' ) { ?>
@@ -68,7 +68,7 @@
 										<a href="<?= $C->SITE_URL ?>dashboard/tab:<?= $D->tab ?>/filter:files" style="border-bottom:0px;"><?= $this->lang('posts_filter_files') ?></a>
 									</div>
 									<span><?= $this->lang('posts_filter_ttl') ?></span>
-								</div>		
+								</div>
 							</div>
 						</div>
 						<?php } else { ?>
@@ -108,14 +108,14 @@
 						</div>
 					</div>
 					<div id="home_right">
-						
+
 						<?php if( $C->MOBI_DISABLED==0 ) { ?>
 						<div id="mobiad">
 							<strong><?= $this->lang('dbrd_right_mobi_title', array('#SITE_TITLE#' => $C->OUTSIDE_SITE_TITLE) ) ?></strong>
 							<?= $this->lang('dbrd_right_mobi_text') ?> <b><?= $C->SITE_URL ?>m</b>
 						</div>
 						<?php } ?>
-						
+
 						<?php if($D->whattodo_active) { ?>
 						<a href="javascript:;" id="closedgtd" style="display:<?= $D->whattodo_minimized?'block':'none' ?>;" onclick="dbrd_whattodo_show();" onfocus="this.blur();"><b><?= $this->lang('dbrd_whattodo_title_mnm') ?></b></a>
 						<div id="greentodo" style="display:<?= $D->whattodo_minimized?'none':'block' ?>;">
@@ -132,7 +132,7 @@
 							</div>
 						</div>
 						<?php } ?>
-						
+
 						<?php if( count($D->last_online) > 0 ) { ?>
 						<div class="ttl" style="margin-top:0px; margin-bottom:8px;"><div class="ttl2"><h3><?= $this->lang('dbrd_right_lastonline') ?></h3></div></div>
 						<div class="slimusergroup" style="margin-right:-10px; margin-bottom:5px;">
@@ -141,7 +141,7 @@
 							<?php } ?>
 						</div>
 						<?php } ?>
-						
+
 						<?php if( count($D->saved_searches) > 0 ) { ?>
 						<div class="ttl" style="margin-top:0px; margin-bottom:8px;"><div class="ttl2"><h3><?= $this->lang('dbrd_right_savedsearches') ?></h3></div></div>
 						<div class="taglist" style="margin-bottom:5px;">
@@ -150,7 +150,7 @@
 							<?php } ?>
 						</div>
 						<?php } ?>
-						
+
 						<?php if( count($D->post_tags) > 0 ) { ?>
 						<div class="ttl" style="margin-top:0px; margin-bottom:8px;"><div class="ttl2"><h3><?= $this->lang('dbrd_right_posttags') ?></h3></div></div>
 						<div class="taglist" style="margin-bottom:5px;">
@@ -161,7 +161,7 @@
 						<?php } ?>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

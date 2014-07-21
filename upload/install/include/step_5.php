@@ -1,19 +1,19 @@
 <?php
-	 
+
 	$PAGE_TITLE	= 'Installation - Step 5';
-	
+
 	$s	= & $_SESSION['INSTALL_DATA'];
-	
+
 	$convert_version	= FALSE;
 	if( isset($OLDC->VERSION) ) {
-		$convert_version	= $OLDC->VERSION; 
+		$convert_version	= $OLDC->VERSION;
 	}
 	elseif( file_exists(INCPATH.'../../include/conf_main.php') ) {
 		$convert_version	= 'unofficial';
 	}
-	
+
 	$path	= INCPATH.'../../';
-	
+
 	$files	= array(
 		'./themes/',
 		'./i/attachments/',
@@ -31,7 +31,7 @@
 	else {
 		$files[]	= './system/';
 	}
-	
+
 	$recursive	= array();
 	if( $convert_version == 'unofficial' ) {
 		$recursive	= array(
@@ -54,7 +54,7 @@
 		$recursive[]	= './i/css/';
 		$recursive[]	= './i/js/';
 	}
-	
+
 	$perms	= array();
 	$error	= FALSE;
 	@clearstatcache();
@@ -73,7 +73,7 @@
 			unset($files[$i]);
 		}
 	}
-	
+
 	$rperms	= array();
 	foreach($recursive as $i=>$dr) {
 		$curr_error	= FALSE;
@@ -87,12 +87,12 @@
 			unset($recursive[$i]);
 		}
 	}
-	
+
 	if( ! $error ) {
 		$_SESSION['INSTALL_STEP']	= 5;
 		header('Location: ?next&r='.rand(0,99999));
 	}
-	
+
 	$html	.= '
 							<div class="ttl">
 								<div class="ttl2">
@@ -137,12 +137,12 @@
 									</div>
 								</div>
 							</div>';
-	
+
 	if( ! $error ) {
 		$html	.= '
 							<div style="margin-top:20px;">
 								<a href="?next">&raquo; Continue</a>
 							</div>';
 	}
-	
+
 ?>

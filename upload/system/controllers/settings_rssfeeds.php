@@ -1,17 +1,17 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('signin');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/settings.php');
-	
+
 	$D->page_title	= $this->lang('settings_rssfeeds_pagetitle', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
@@ -108,7 +108,7 @@
 		$this->db2->query('UPDATE users_rssfeeds SET is_deleted=1 WHERE id="'.intval($this->param('delfeed')).'" AND is_deleted=0 AND user_id="'.$this->user->id.'" LIMIT 1');
 		$this->redirect($C->SITE_URL.'settings/rssfeeds/msg:deleted');
 	}
-	
+
 	$this->load_template('settings_rssfeeds.php');
-	
+
 ?>

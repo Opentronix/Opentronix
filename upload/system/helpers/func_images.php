@@ -1,5 +1,5 @@
 <?php
-	
+
 	function networkbranding_logo_resize($source, $destination, $height)
 	{
 		global $C;
@@ -71,7 +71,7 @@
 		chmod( $destination, 0777 );
 		return TRUE;
 	}
-	
+
 	function copy_avatar($source, $fn)
 	{
 		global $C;
@@ -179,7 +179,7 @@
 		chmod( $fn3, 0777 );
 		return TRUE;
 	}
-	
+
 	function copy_attachment_image($input, $data)
 	{
 		global $C;
@@ -329,7 +329,7 @@
 		$data->title	= trim($data->title);
 		return $data;
 	}
-	
+
 	function copy_attachment_videoimg($source, $destination, $size)
 	{
 		global $C;
@@ -403,5 +403,5 @@
 		chmod( $destination, 0777 );
 		return TRUE;
 	}
-	
+
 ?>

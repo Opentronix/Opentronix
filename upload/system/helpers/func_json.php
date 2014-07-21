@@ -1,11 +1,11 @@
 <?php
-	
+
 	if( ! function_exists('json_encode') )
 	{
 		function json_encode($a=false)
 		{
 			// Thanks to Mike Griffiths, http://www.mike-griffiths.co.uk/
-			
+
 			// Some basic debugging to ensure we have something returned
 			if (is_null($a)) return 'null';
 			if ($a === false) return 'false';
@@ -17,7 +17,7 @@
 					// Always use "." for floats.
 					return floatval(str_replace(",", ".", strval($a)));
 				}
-	
+
 				if (is_string($a))
 				{
 					static $jsonReplaces = array(array("\\", "/", "\n", "\t", "\r", "\b", "\f", '"'), array('\\\\', '\\/', '\\n', '\\t', '\\r', '\\b', '\\f', '\"'));

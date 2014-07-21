@@ -1,21 +1,21 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('signin');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/invite.php');
-	
+
 	$D->page_title	= $this->lang('os_invite_ttl_uploadcsv', array('#SITE_TITLE#'=>$C->SITE_TITLE, '#OUTSIDE_SITE_TITLE#'=>$C->OUTSIDE_SITE_TITLE));
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
-	
+
 	if( $this->param('get')=='loaded' && isset($this->user->sess['INVITE_EMAILS_LOADED']) && isset($_POST['emails']) )
 	{
 		$emails	= array();
@@ -165,7 +165,7 @@
 						$data[$mail]	= $name;
 					}
 				}
-			}		
+			}
 		}
 		if( !$D->error && count($data)==0 ) {
 			$D->error	= TRUE;
@@ -178,7 +178,7 @@
 			return;
 		}
 	}
-	
+
 	$this->load_template('invite_uploadcsv.php');
-	
+
 ?>

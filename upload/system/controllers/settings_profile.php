@@ -1,17 +1,17 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('signin');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/settings.php');
-	
+
 	$D->page_title	= $this->lang('settings_profile_pagetitle', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->menu_bdate_d	= array();
 	$D->menu_bdate_m	= array();
 	$D->menu_bdate_y	= array();
@@ -29,11 +29,11 @@
 	for($i=intval(date('Y')); $i>=1900; $i--) {
 		$D->menu_bdate_y[$i]	= $i;
 	}
-	
+
 	$D->submit	= FALSE;
 	$D->error	= FALSE;
 	$D->errmsg	= '';
-	
+
 	$D->name		= $this->user->info->fullname;
 	$D->location	= $this->user->info->location;
 	$D->gender		= $this->user->info->gender;
@@ -47,11 +47,11 @@
 		$D->bdate_m		= intval(substr($this->user->info->birthdate,5,2));
 		$D->bdate_y		= intval(substr($this->user->info->birthdate,0,4));
 	}
-	
+
 	$u	= $this->user->info;
-	
+
 	$tmphash	= md5($u->fullname.$u->location.$u->birthdate.$u->gender.$u->about_me.serialize($u->tags));
-	
+
 	if( isset($_POST['sbm']) ) {
 		$D->submit	= TRUE;
 		$D->name		= trim($_POST['name']);
@@ -92,12 +92,12 @@
 			$D->tags[$k]	= $v;
 		}
 		$D->tags	= implode(', ', $D->tags);
-		
+
 		$db2->query('UPDATE users SET fullname="'.$db2->e($D->name).'", about_me="'.$db2->e($D->aboutme).'", tags="'.$db2->e($D->tags).'", gender="'.$db2->e($D->gender).'", birthdate="'.$db2->e($birthdate).'", location="'.$db2->e($D->location).'" WHERE id="'.$this->user->id.'" LIMIT 1');
-		
+
 		$this->user->sess['LOGGED_USER']	= $this->network->get_user_by_id($this->user->id, TRUE);
 		$this->user->info	= & $this->user->sess['LOGGED_USER'];
-		
+
 		$u	= $this->user->info;
 		$tmphash2	= md5($u->fullname.$u->location.$u->birthdate.$u->gender.$u->about_me.serialize($u->tags));
 		if( $tmphash != $tmphash2 ) {
@@ -127,7 +127,7 @@
 			}
 		}
 	}
-	
+
 	$this->load_template('settings_profile.php');
-	
+
 ?>

@@ -1,12 +1,12 @@
 <?php
-	
+
 	class cache_filesystem
 	{
 		private $path;
 		private $keys_prefix;
 		private $debug_mode;
 		private $debug_info;
-		
+
 		public function __construct()
 		{
 			global $C;
@@ -18,12 +18,12 @@
 				'time'	=> 0,
 			);
 		}
-		
+
 		private function find_filename($key)
 		{
 			return $this->path.'/'.md5($this->keys_prefix).'-'.md5($key);
 		}
-		
+
 		public function get($key)
 		{
 			$file	= $this->find_filename($key);
@@ -52,7 +52,7 @@
 			}
 			return $res;
 		}
-		
+
 		public function set($key, $data, $ttl)
 		{
 			$file	= $this->find_filename($key);
@@ -73,7 +73,7 @@
 			}
 			return $res;
 		}
-		
+
 		public function del($key)
 		{
 			$file	= $this->find_filename($key);
@@ -94,7 +94,7 @@
 				return $res;
 			}
 		}
-		
+
 		public function get_debug_info()
 		{
 			$debug_info	= clone($this->debug_info);
@@ -102,7 +102,7 @@
 			$debug_info->queries	= array_reverse($debug_info->queries);
 			return $debug_info;
 		}
-		
+
 		public function garbage_collector()
 		{
 			$prefix	= md5($this->keys_prefix).'-';
@@ -139,5 +139,5 @@
 			return $i;
 		}
 	}
-	
+
 ?>

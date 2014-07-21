@@ -1,19 +1,19 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('signin');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/invite.php');
-	
+
 	$D->page_title	= $this->lang('os_invite_ttl_sentinvites', array('#SITE_TITLE#'=>$C->SITE_TITLE, '#OUTSIDE_SITE_TITLE#'=>$C->OUTSIDE_SITE_TITLE));
-	
+
 	$D->invites	= array();
-	
+
 	$r	= $db2->query('SELECT * FROM users_invitations WHERE user_id="'.$this->user->id.'" ORDER BY id DESC');
 	while($tmp = $db2->fetch_object($r)) {
 		$obj	= new stdClass;
@@ -34,7 +34,7 @@
 		}
 		$D->invites[]	= $obj;
 	}
-	
+
 	$this->load_template('invite_sentinvites.php');
-	
+
 ?>

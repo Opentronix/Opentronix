@@ -526,7 +526,7 @@ function dbrd_groupmenu_toggle()
 			req.send("toggle_grpmenu=0");
 		}
 	}
-	
+
 }
 
 function srchposts_togglefilt(which)
@@ -534,7 +534,7 @@ function srchposts_togglefilt(which)
 	var lnk	= d.getElementById("srchposts_droplnk_"+which);
 	var box	= d.getElementById("srchposts_dropbox_"+which);
 	var ison	= box.style.display == "block";
-	
+
 	if( ison ) {
 		lnk.className	= "sdropper";
 		box.style.display	= "none"

@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile_iphone/header.php');
-	
+
 ?>
 		<script type="text/javascript">
 			pferr_user1	= "<?= $this->lang('iphone_np_jserr_user1') ?>";
@@ -178,10 +178,10 @@
 			setTimeout( function() {
 				pf_validate(document.pf.message);
 				pf_validate_advanced(document.pf.message);
-			}, 1000 );	
+			}, 1000 );
 		</script>
 <?php
-	
+
 	$this->load_template('mobile_iphone/footer.php');
-	
+
 ?>

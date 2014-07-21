@@ -1,15 +1,15 @@
 <?php
-	
+
 	if( !$this->network->id || !$this->user->is_logged ) {
 		$this->redirect('home');
 	}
 	if( $this->network->id && $C->MOBI_DISABLED ) {
 		$this->redirect('mobidisabled');
 	}
-	
+
 	$this->load_langfile('mobile/global.php');
 	$this->load_langfile('mobile/group.php');
-	
+
 	$g	= $this->network->get_group_by_id(intval($this->params->group));
 	if( ! $g ) {
 		$this->redirect('dashboard');
@@ -20,9 +20,9 @@
 			$this->redirect('dashboard');
 		}
 	}
-	
+
 	$D->page_title	= $g->title.' - '.$C->SITE_TITLE;
-	
+
 	$D->g	= & $g;
 	$D->i_am_member	= $this->user->if_follow_group($g->id);
 	$D->i_am_admin	= FALSE;
@@ -33,7 +33,7 @@
 		$D->i_am_admin	= TRUE;
 	}
 	$D->i_can_invite	= $D->i_am_admin || ($D->i_am_member && $g->is_public);
-	
+
 	if( isset($_GET['do_join']) && !$D->i_am_member ) {
 		$this->user->follow_group($g->id, TRUE);
 		$D->i_am_member	= TRUE;
@@ -42,22 +42,22 @@
 		$this->user->follow_group($g->id, FALSE);
 		$D->i_am_member	= FALSE;
 	}
-	
+
 	$D->num_members	= count($this->network->get_group_members($g->id));
-	
+
 	$shows	= array('updates', 'members', 'admins');
 	$D->show	= 'updates';
 	if( isset($_GET['show']) && in_array($_GET['show'],$shows) ) {
 		$D->show	= $_GET['show'];
 	}
-	
+
 	$D->num_results	= 0;
 	$D->num_pages	= 0;
 	$D->pg		= isset($_GET['pg']) ? intval($_GET['pg']) : 1;
 	$D->posts_html	= '';
 	$D->users_html	= '';
 	$D->paging_url	= $C->SITE_URL.$g->groupname.'/?show='.$D->show.'&pg=';
-	
+
 	if( $D->show == 'updates' )
 	{
 		$q1	= 'SELECT COUNT(id) FROM posts WHERE group_id="'.$g->id.'"';
@@ -142,7 +142,7 @@
 		unset($tmp, $sdf, $usrs, $D->u);
 
 	}
-	
+
 	$this->load_template('mobile/group.php');
-	
+
 ?>

@@ -1,12 +1,12 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/members.php');
-	
+
 	if( $this->user->is_logged ) {
 		$tabs		= array('all', 'ifollow', 'followers', 'admins');
 	}
@@ -17,10 +17,10 @@
 	if( $this->param('tab') && in_array($this->param('tab'), $tabs) ) {
 		$tab	= $this->param('tab');
 	}
-	
+
 	$D->tab		= $tab;
 	$D->page_title	= $this->lang('members_page_title_'.$tab, array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->tabnums	= array();
 	$D->tabnums['all']		= $db2->fetch_field('SELECT COUNT(id) FROM users WHERE active=1');
 	$D->tabnums['admins']		= $db2->fetch_field('SELECT COUNT(id) FROM users WHERE active=1 AND is_network_admin=1');
@@ -29,12 +29,12 @@
 		$D->tabnums['ifollow']		= count($followtmp->follow_users);
 		$D->tabnums['followers']	= count($followtmp->followers);
 	}
-	
+
 	$D->num_results	= 0;
 	$D->num_pages	= 0;
 	$D->pg		= 1;
 	$D->users_html	= '';
-	
+
 	$tmp	= array();
 	if( $tab == 'all' ) {
 		$D->num_results	= $D->tabnums['all'];
@@ -78,7 +78,7 @@
 			$tmp[]	= $o->id;
 		}
 	}
-	
+
 	$u	= array();
 	foreach($tmp as $sdf) {
 		if($sdf = $this->network->get_user_by_id($sdf)) {
@@ -96,12 +96,12 @@
 	}
 	$D->users_html	= ob_get_contents();
 	ob_end_clean();
-	
+
 	unset($followtmp, $tmp, $sdf, $u, $D->u);
-	
+
 	$D->leftcol_title	= $this->lang('os_members_left_title_'.$tab);
 	$D->leftcol_text	= $this->lang('os_members_left_text_'.$tab.($D->num_results==1||$D->num_results==0?$D->num_results:''), array('#NUM#'=>$D->num_results,'#SITE_TITLE#'=>$C->OUTSIDE_SITE_TITLE));
-	
+
 	$this->load_template('members.php');
-	
+
 ?>

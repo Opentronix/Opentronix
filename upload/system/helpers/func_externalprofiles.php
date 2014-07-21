@@ -1,5 +1,5 @@
 <?php
-	
+
 	function validate_facebook_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -28,7 +28,7 @@
 		}
 		return FALSE;
 	}
-	
+
 	function validate_twitter_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -52,7 +52,7 @@
 		}
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_flickr_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -73,7 +73,7 @@
 		$result_name	= $str;
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_friendfeed_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -94,7 +94,7 @@
 		$result_name	= $str;
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_delicious_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -139,7 +139,7 @@
 		$result_name	= $str;
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_linkedin_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -160,7 +160,7 @@
 		$result_name	= $str;
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_myspace_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -184,7 +184,7 @@
 		}
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_orcut_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -197,7 +197,7 @@
 		$result_name	= '';
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_mixx_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -218,7 +218,7 @@
 		$result_name	= $str;
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_youtube_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -239,7 +239,7 @@
 		$result_name	= $str;
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_favit_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -268,7 +268,7 @@
 		}
 		return array($result_url, $result_name);
 	}
-	
+
 	function validate_edno23_profile_url($str)
 	{
 		if( empty($str) ) {
@@ -292,5 +292,5 @@
 		}
 		return array($result_url, $result_name);
 	}
-	
+
 ?>

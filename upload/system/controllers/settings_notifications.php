@@ -1,21 +1,21 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('signin');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/settings.php');
-	
+
 	$D->page_title	= $this->lang('settings_notif_pagetitle', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->i	= $this->network->get_user_notif_rules($this->user->id);
-	
+
 	$p	= & $_POST;
-	
+
 	$D->submit	= FALSE;
 	if( isset($_POST['sbm']) ) {
 		$D->submit	= TRUE;
@@ -47,7 +47,7 @@
 		$db2->query('REPLACE INTO users_notif_rules SET '.$in_sql);
 		$D->i	= $this->network->get_user_notif_rules($this->user->id, TRUE);
 	}
-	
+
 	$this->load_template('settings_notifications.php');
-	
+
 ?>

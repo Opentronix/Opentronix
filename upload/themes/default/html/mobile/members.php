@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile/header.php');
-	
+
 ?>
 	<div id="ttle"><?= $this->lang('members_top_title') ?></div>
 	<div id="select">
@@ -37,7 +37,7 @@
 		<?php } ?>
 	</div>
 <?php
-	
+
 	$this->load_template('mobile/footer.php');
-	
+
 ?>

@@ -134,7 +134,7 @@ function group_admins_add()
 	}
 	req.open("POST", siteurl+"ajax/checkname/ajaxtp:xml/r:"+Math.round(Math.random()*1000), true);
 	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	req.send("datatype=username&word="+encodeURIComponent(inp.value));	
+	req.send("datatype=username&word="+encodeURIComponent(inp.value));
 	inp.disabled	= true;
 	btn.disabled	= true;
 	inp.style.cursor	= "wait";

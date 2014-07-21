@@ -1,7 +1,7 @@
 <?php
 
 	global $C;
-	
+
 	$C->NEWPOST_EMBEDVIDEO_SOURCES	= array
 	(
 		'youtube'	=> (object) array
@@ -64,7 +64,7 @@
 			'embed_thumb'	=> 'http://frame.revver.com/frame/120x90/###ID###.jpg',
 			'insite_url'	=> 'http://revver.com/video/###ID###',
 		),
-		'vimeo'	=> (object) array 
+		'vimeo'	=> (object) array
 		(
 			'src_url_pattern'		=> '/^http(s)?\:\/\/(www\.)?(vimeo\.com)\/([a-z0-9-]{3,})/i',
 			'src_url_matchnum'	=> 4,
@@ -101,5 +101,5 @@
 			'insite_url'	=> 'http://vbox7.com/play:###ID###',
 		),
 	);
-	
+
 ?>

@@ -1,5 +1,5 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		echo 'ERROR';
 		return;
@@ -8,7 +8,7 @@
 		echo 'ERROR';
 		return;
 	}
-	
+
 	$type	= TRUE;
 	if( isset($_POST['type']) && ($_POST['type']=='on' || $_POST['type']=='off') ) {
 		$type	= $_POST['type']=='off' ? FALSE : TRUE;
@@ -17,7 +17,7 @@
 		echo 'ERROR';
 		return;
 	}
-	
+
 	if( isset($_POST['username']) )
 	{
 		$u	= $this->network->get_user_by_username($_POST['username']);
@@ -46,7 +46,7 @@
 		echo 'OK';
 		return;
 	}
-	
+
 	return;
-	
+
 ?>

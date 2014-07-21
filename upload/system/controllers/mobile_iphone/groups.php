@@ -1,23 +1,23 @@
 <?php
-	
+
 	if( !$this->user->is_logged ) {
 		$this->redirect('home');
 	}
 	if( $C->MOBI_DISABLED ) {
 		$this->redirect('mobidisabled');
 	}
-	
+
 	$this->load_langfile('mobile/global.php');
 	$this->load_langfile('mobile/groups.php');
-	
+
 	$D->shows	= array('my', 'all');
 	$D->show	= 'my';
 	if( $this->param('show') && in_array($this->param('show'),$D->shows) ) {
 		$D->show	= $this->param('show');
 	}
-	
+
 	$D->page_title	= $this->lang('groups_page_title_'.$D->show, array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$not_in_groups	= array();
 	if( ! $this->user->info->is_network_admin ) {
 		$r	= $db2->query('SELECT id FROM groups WHERE is_public=0');
@@ -38,21 +38,21 @@
 		}
 	}
 	$not_in_groups	= count($not_in_groups)>0 ? ('AND id NOT IN('.implode(', ', $not_in_groups).')') : '';
-	
+
 	$D->num_results	= 0;
 	$D->num_pages	= 0;
 	$D->pg		= 1;
 	$D->groups_html	= '';
-	
+
 	if( $this->param('pg') ) {
 		$D->pg	= intval($this->param('pg'));
 		$D->pg	= max(1, $D->pg);
 	}
-	
+
 	$D->nums	= array();
 	$D->nums['my']	= count($this->network->get_user_follows($this->user->id)->follow_groups);
 	$D->nums['all']	= $db2->fetch_field('SELECT COUNT(id) FROM groups WHERE 1 '.$not_in_groups);
-	
+
 	$tmp	= array();
 	if( $D->show == 'my' ) {
 		$D->num_results	= count($this->network->get_user_follows($this->user->id)->follow_groups);
@@ -73,14 +73,14 @@
 			$tmp[]	= $o->id;
 		}
 	}
-	
+
 	$g	= array();
 	foreach($tmp as $sdf) {
 		if($sdf = $this->network->get_group_by_id($sdf)) {
 			$g[]	= $sdf;
 		}
 	}
-	
+
 	if( count($g) > 0 ) {
 		ob_start();
 		$i	= 0;
@@ -92,7 +92,7 @@
 		$D->groups_html	= ob_get_contents();
 		ob_end_clean();
 	}
-	
+
 	$this->load_template('mobile_iphone/groups.php');
-	
+
 ?>

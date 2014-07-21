@@ -1,16 +1,16 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<div id="settings">
 						<div id="settings_left">
 							<?php $this->load_template('admin_leftmenu.php') ?>
 						</div>
 						<div id="settings_right">
-							
-							<?php if( ! $D->user ) { ?> 
-							
+
+							<?php if( ! $D->user ) { ?>
+
 								<div class="ttl">
 									<div class="ttl2">
 										<h3><?= $this->lang('admtitle_editusers') ?></h3>
@@ -35,24 +35,24 @@
 										</div>
 									</div>
 								</div>
-							
+
 							<?php } else { ?>
-							
+
 								<div class="htabs" style="margin-top:0; margin-bottom:10px;">
 									<strong><?= $this->lang('admeditu_ifuser_title', array('#USERNAME#'=>$D->user->username)) ?></strong>
 									<a href="<?= $C->SITE_URL ?>admin/editusers/user:<?= $D->user->username ?>" class="<?= $D->tab=='profile'?'onhtab':'' ?>"><b><?= $this->lang('admeditu_tab_profile') ?></b></a>
 									<a href="<?= $C->SITE_URL ?>admin/editusers/user:<?= $D->user->username ?>/tab:picture" class="<?= $D->tab=='picture'?'onhtab':'' ?>"><b><?= $this->lang('admeditu_tab_picture') ?></b></a>
 									<a href="<?= $C->SITE_URL ?>admin/editusers/user:<?= $D->user->username ?>/tab:rssfeeds" class="<?= $D->tab=='rssfeeds'?'onhtab':'' ?>"><b><?= $this->lang('admeditu_tab_rssfeeds') ?></b></a>
-									<div style="float:right; padding-top:6px;"> 
+									<div style="float:right; padding-top:6px;">
 										<a href="<?= $C->SITE_URL.$D->user->username ?>" style="display:inline; float:none;">
 											<b style="display:inline; float:none; padding:0;">&raquo;</b>
 											<?= $this->lang('admeditu_ifuser_view',array('#USER#'=>$D->user->username)) ?>
 										</a>
 									</div>
 								</div>
-								
+
 								<?php if( $D->tab == 'profile' ) { ?>
-									
+
 									<?php if($D->submit) { ?>
 									<?= okbox($this->lang('st_profile_ok'), $this->lang('st_profile_okmsg')) ?>
 									<?php } ?>
@@ -111,9 +111,9 @@
 											</tr>
 										</table>
 									</form>
-									
+
 								<?php } elseif( $D->tab == 'picture' ) { ?>
-									
+
 									<?php if($D->error) { ?>
 									<?= errorbox($this->lang('st_avatat_err'), $this->lang($D->errmsg)) ?>
 									<?php } elseif($D->submit) { ?>
@@ -147,9 +147,9 @@
 											</tr>
 										</table>
 									</form>
-									
+
 								<?php } elseif( $D->tab == 'rssfeeds' ) { ?>
-									
+
 									<?php if( $this->param('msg') == 'added' ) { ?>
 										<?= okbox($this->lang('st_rssfeeds_ok'), $this->lang('st_rssfeeds_ok_txt'), TRUE, 'margin-bottom:5px;') ?>
 									<?php } elseif( $this->param('msg') == 'deleted' ) { ?>
@@ -166,7 +166,7 @@
 												<?php foreach($D->feeds as $f) { ?>
 												<div class="groupfeed">
 													<a href="<?= $C->SITE_URL ?>admin/editusers/user:<?= $D->user->username ?>/tab:rssfeeds/delfeed:<?= $f->id ?>" onclick="return confirm('<?= $this->lang('st_rssfeeds_feed_delcnf') ?>');" title="<?= $this->lang('st_rssfeeds_feed_delete') ?>" onfocus="this.blur();" class="grpdelbtn"></a>
-													<?= htmlspecialchars(str_cut($f->feed_title,35)) ?>				
+													<?= htmlspecialchars(str_cut($f->feed_title,35)) ?>
 													<span><a href="<?= htmlspecialchars($f->feed_url) ?>" target="_blank"><?= htmlspecialchars(str_cut_link($f->feed_url,50)) ?></a></span>
 													<?php if( !empty($f->filter_keywords) ) { ?>
 													<span><?= $this->lang('st_rssfeeds_feed_filter') ?> <?= htmlspecialchars($f->filter_keywords) ?></span>
@@ -176,7 +176,7 @@
 												</div>
 											</td>
 										</tr>
-									</table>		
+									</table>
 									<?php } ?>
 									<div class="ttl" style="margin-top:10px; margin-bottom:6px;"><div class="ttl2"><h3><?= $this->lang('st_rssfeeds_f_title') ?></h3></div></div>
 									<?php if( $D->error ) { ?>
@@ -214,16 +214,16 @@
 											</tr>
 										</table>
 									</form>
-									
-									
+
+
 								<?php } ?>
-								
+
 							<?php } ?>
-							
+
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

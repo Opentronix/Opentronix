@@ -1,5 +1,5 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		echo 'ERROR';
 		return;
@@ -8,7 +8,7 @@
 		echo 'ERROR';
 		return;
 	}
-	
+
 	if( isset($_POST['postid'], $_POST['commentid']) && preg_match('/^(public|private)_([0-9]+)$/', $_POST['postid'], $m) )
 	{
 		$c	= new postcomment( new post($m[1], $m[2]), $_POST['commentid'] );
@@ -24,8 +24,8 @@
 		echo 'OK';
 		return;
 	}
-	
+
 	echo 'ERROR';
 	return;
-	
+
 ?>

@@ -1,5 +1,5 @@
 <?php
-	
+
 	$lang	= array
 	(
 		'adm_menu_title'	=> 'Administration',
@@ -18,7 +18,7 @@
 		'admmenu_inviteusers'		=> 'Invite users',
 		'admmenu_linkednetworks'	=> 'Linked networks',
 		'admmenu_payments'		=> 'Payments',
-		
+
 		'admpgtitle_general'		=> 'General settings - #SITE_TITLE#',
 		'admpgtitle_networkdomain'	=> 'Network address - #SITE_TITLE#',
 		'admpgtitle_themes'		=> 'Themes - #SITE_TITLE#',
@@ -36,7 +36,7 @@
 		'admpgtitle_invitedusers'	=> 'Invited Members - #SITE_TITLE#',
 		'admpgtitle_linkednetworks'	=> 'Linked Public Networks - #SITE_TITLE#',
 		'admpgtitle_payments'		=> 'Payments - #SITE_TITLE#',
-		
+
 		'admtitle_general'		=> 'General settings',
 		'admtitle_networkdomain'	=> 'Network address',
 		'admtitle_themes'			=> 'Themes',
@@ -54,7 +54,7 @@
 		'admtitle_invitedusers'		=> 'Sent invitations',
 		'admtitle_linkednetworks'	=> 'Linked Public Networks',
 		'admtitle_payments'		=> 'Payments',
-		
+
 		'admgnrl_frm_company'	=> 'Company name:',
 		'admgnrl_frm_network'	=> 'Network name:',
 		'admgnrl_frm_email'	=> 'Contacts email:',
@@ -86,7 +86,7 @@
 		'admgnrl_err_introtxt'	=> 'Please enter a text for the homepage intro box.',
 		'admgnrl_okay'		=> 'Done',
 		'admgnrl_okay_txt'	=> 'Information was saved.',
-		
+
 		'admadm_descr'		=> 'Network Administrators have full access to the Administration center and can edit all network settings. They are able to modify all groups (including all private groups) and delete everybody\'s posts.',
 		'admadm_frm_adm'		=> 'Current admins:',
 		'admadm_frm_adm_you'	=> 'You',
@@ -97,7 +97,7 @@
 		'admadm_jscnf_del'	=> 'Remove #USERNAME# from admins - are you sure?',
 		'admadm_frm_ok'		=> 'Done',
 		'admadm_frm_ok_txt'	=> 'Information was saved.',
-		
+
 		'admbrnd_frm_logo'	=> 'Logo settings:',
 		'admbrnd_frm_logo_default'	=> 'Use the default #SITE_TITLE# logo',
 		'admbrnd_frm_logo_nologo'	=> 'Don\'t show any logo',
@@ -128,14 +128,14 @@
 		'admbrnd_frm_err_ficn_invalidformat'	=> 'Favicon must be ICO, JPEG, or PNG format.',
 		'admbrnd_frm_err_ficn_badsize'		=> 'Favicon size must be exactly 16x16px.',
 		'admbrnd_frm_err_ficn_cantcopy'		=> 'Favicon cannot be processed, please try again later.',
-		
+
 		'admbrnd_th_title'		=> 'Themes',
 		'admbrnd_th_theme_author'	=> 'Designed by',
 		'admbrnd_th_theme_select'	=> 'Change Theme',
 		'admbrnd_th_theme_ok1'		=> 'Done',
 		'admbrnd_th_theme_ok2'		=> 'Theme was changed successfully',
 		'admbrnd_th_theme_ok3'		=> 'However, your current logo may be stretched or replaced so you may need to #A1#upload a new one#A2#.',
-		
+
 		'admemld_description'	=> 'Network\'s default e-mail domain is <b>#DOMAIN#</b>. This means that anyone who signs up in #SITE_TITLE# with e-mail address something@#DOMAIN# will become a member of the #COMPANY# network. If your company\'s employees have e-mails in other company e-mail domains (e.g. company-name.com, company-name.net, company-name.org), you can add them as additional e-mail domains for this network.',
 		'admemld_lst_current'	=> 'Current email domains:',
 		'admemld_lst_remove'	=> 'Remove this email domain',
@@ -175,7 +175,7 @@
 		'admemld_ok_txt'	=> 'The e-mail domain was successfully added to the #COMPANY# network.',
 		'admemld_okeml_ttl'	=> 'Confirmation link was sent',
 		'admemld_okeml_txt'	=> 'Please check your e-mail address to confirm the domain ownership.',
-		
+
 		'admaddr_description'	=> 'Network\'s default address is <b>http://#DOMAIN#</b>. You can change the network address by adding your own existing domain or subdomain (e.g.: your-company.com, intranet.your-company.com, whatever-you-like.com) with this form and pointing it to our server. If you change the network address, the old one will be accessible too.',
 		'admaddr_point_descr'	=> 'To change the address you must first confirm with the form below that you are the owner (or administrative person) of the new domain. Then <b>you must point the domain (or subdomain) to our server</b>. In order to do this you will need <b>administrative rights to domain\'s DNS records</b>. You must set up CNAME records for the domain (or subdomain) pointing to #DOMAIN# or A records pointing to #IPADDRESS#. Keep in mind that when you modify the DNS settings it takes up to 24 hours before the changes take effect. See some configuration examples:',
 		'admaddr_xampl_d_c'	=> 'Configuring a domain with CNAME records',
@@ -210,7 +210,7 @@
 		'admaddr_ok_txt'	=> 'When you login to this network through the new address for the first time, it will be set as default network address. If you\'ve modified domain\'s DNS settings it can take up to 24 hours before the changes take effect and the domain becomes accessible.',
 		'admaddr_okeml_ttl'	=> 'Confirmation link was sent',
 		'admaddr_okeml_txt'	=> 'Please check your e-mail address to confirm the domain ownership.',
-		
+
 		'admip_frm_state'		=> 'IP filter state:',
 		'admip_frm_state_off'		=> '<b>Disabled</b>',
 		'admip_frm_state_on_allow'	=> '<b>Enabled:</b> Allow access to this network <b>only from</b> the IP adresses listed below',
@@ -228,7 +228,7 @@
 		'admip_err_noaccess'	=> 'Changes not saved. You haven\'t specified any IP addresses to access the network.',
 		'admip_ok_ttl'	=> 'Done',
 		'admip_ok_txt'	=> 'Information was saved.',
-		
+
 		'admsusp_descr'		=> 'Suspended members have no access to the network. However, their profiles and posts are kept and visible to the other network members.',
 		'admsusp_descr2'		=> 'You also can #A1#permanently delete#A2# users including their posts.',
 		'admsusp_frm_adm'		=> 'Suspended members:',
@@ -240,7 +240,7 @@
 		'admsusp_jscnf_del'	=> 'Restore #USERNAME#\'s network access - are you sure?',
 		'admsusp_frm_ok'		=> 'Done',
 		'admsusp_frm_ok_txt'	=> 'Information was saved.',
-		
+
 		'admdelu_descr'		=> 'With this form you can permanently delete user accounts, including their posts and comments.',
 		'admdelu_descr2'		=> 'Before deleting someone, please consider if you just want to #A1#suspend#A2# the account.',
 		'admdelu_user'		=> 'Member to delete:',
@@ -253,7 +253,7 @@
 		'admdelu_err_user'	=> 'No such user account.',
 		'admdelu_err_user1'	=> 'You cannot delete your own account.',
 		'admdelu_err_pass'	=> 'Wrong password.',
-		
+
 		'admuinv_send_title'	=> 'With this form you can invite people to join the #COMPANY# network. Note that unlike the <a href="/invite">standard Invitation center</a> here you are able to invite people with emails <b>different</b> than something@#EMAILDOMAIN#.',
 		'admuinv_send_form_title'	=> 'Send invitations to:',
 		'admuinv_send_form_name'	=> 'Name:',
@@ -279,7 +279,7 @@
 		'admuinv_sent_date_format'	=> '%B %e, %Y',
 		'admuinv_sent_status_acptd'	=> 'Accepted',
 		'admuinv_sent_status_pndng'	=> 'Pending',
-		
+
 		'admstat_filter'			=> 'period:',
 		'admstat_filter_all'		=> 'All time',
 		'admstat_filter_dateformat_m'	=> '%B %Y',
@@ -295,11 +295,11 @@
 		'admstat_stat_regs_d'		=> 'Signups per day for #PERIOD#',
 		'admstat_nostat_ttl'		=> 'Sorry',
 		'admstat_nostat_txt'		=> 'No statistics available for selected period.',
-		
+
 		'admpay_dateformat'	=> '%a, %d %b %Y',
 		'admpay_premiumdate'	=> 'Your premium network expires on #DATE#.',
 		'admpay_makepayment'	=> 'Make a payment now.',
-		'admpay_activerecurr'	=> 'There is an active recurring billing process for this network which will charge you automatically on #DATE#. You will be notified by e-mail 2 days earlier and will be able to cancel it. You can also #A1#cancel it now#A2#.', 
+		'admpay_activerecurr'	=> 'There is an active recurring billing process for this network which will charge you automatically on #DATE#. You will be notified by e-mail 2 days earlier and will be able to cancel it. You can also #A1#cancel it now#A2#.',
 		'admpay_norecurr_cnf'	=> 'Are you sure?',
 		'admpay_history'		=> 'Payment history',
 		'admpay_history_date'	=> 'Date',
@@ -307,8 +307,8 @@
 		'admpay_history_sum'	=> 'Amount',
 		'admpay_history_type'	=> 'Type',
 		'admpay_history_type_m'	=> 'Manual payment',
-		'admpay_history_type_a'	=> 'Automatic billing',	
-		
+		'admpay_history_type_a'	=> 'Automatic billing',
+
 		'admlnkn_description'	=> '
 			With this feature you can create unlimited open public communities for your products and services and easily connect them to the company private network. It works as follows:
 			<ul>
@@ -342,7 +342,7 @@
 		'admlnkn_new_err_sys'		=> 'Network cannot be created, please try again later or contact us for more information.',
 		'admlnkn_new_ok'		=> 'Network was registered',
 		'admlnkn_new_ok_msg'	=> 'New public network was created successfully and linked to this company private network. Please go to network\'s Administration center to customize the settings.',
-		
+
 		'admtrms_description'	=> 'Here you can set your site\'s Terms of use. When you complete the form and Enable the Terms page, all users who registered will be required to agree to these Terms.',
 		'admtrms_enable'		=> 'Enable the Terms of use page',
 		'admtrms_sbm'		=> 'Save',
@@ -351,7 +351,7 @@
 		'admtrms_ok_txt2'		=> 'The #A1#Terms of use#A2# page was edited successfully.',
 		'admtrms_err_ttl'		=> 'Error',
 		'admtrms_err_txt'		=> 'You cannot enable the Terms of use page before you complete the texts.',
-		
+
 		'admeditu_chooseuser_descr'	=> 'With this form you can edit users profiles.',
 		'admeditu_chooseuser_usr'	=> 'User:',
 		'admeditu_chooseuser_sbm'	=> 'Edit',
@@ -365,7 +365,7 @@
 		'st_rssfeeds_nofeeds_txt'	=> 'You can add RSS/Atom feeds for automated posting to #USER#\'s profile.',
 		'st_avatat_okmsg'			=> 'Profile picture was changed successfully.',
 		'st_avatat_okdelmsg'		=> 'Profile picture was deleted.',
-		
+
 	);
-	
+
 ?>

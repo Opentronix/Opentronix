@@ -1,5 +1,5 @@
 <?php
-	
+
 	function msgbox($title, $text, $closebtn=TRUE, $incss='')
 	{
 		$div_id	= 'tmpid'.rand(0,99999);
@@ -24,7 +24,7 @@
 				</div>';
 		return $html;
 	}
-	
+
 	function okbox($title, $text, $closebtn=TRUE, $incss='')
 	{
 		$div_id	= 'tmpid'.rand(0,99999);
@@ -49,7 +49,7 @@
 				</div>';
 		return $html;
 	}
-	
+
 	function errorbox($title, $text, $closebtn=TRUE, $incss='')
 	{
 		$div_id	= 'tmpid'.rand(0,99999);
@@ -74,34 +74,34 @@
 				</div>';
 		return $html;
 	}
-	
+
 	function str_cut($str, $mx)
 	{
 		return mb_strlen($str)>$mx ? mb_substr($str, 0, $mx-1).'..' : $str;
 	}
-	
+
 	function nowrap($string)
 	{
 		return str_replace(' ', '&nbsp;', $string);
 	}
-	
+
 	function br2nl($string)
 	{
 		return str_replace(array('<br />', '<br/>', '<br>'), "\r\n", $string);
 	}
-	
+
 	function strip_url($url)
 	{
 		$url	= preg_replace('/^(http|https):\/\/(www\.)?/u', '', trim($url));
 		$url	= preg_replace('/\/$/u', '', $url);
 		return trim($url);
 	}
-	
+
 	function my_ucwords($str)
 	{
 		return mb_convert_case($str, MB_CASE_TITLE);
 	}
-	
+
 	function my_ucfirst($str)
 	{
 		if( function_exists('mb_strtoupper') ) {
@@ -109,12 +109,12 @@
 		}
 		else return $str;
 	}
-	
+
 	function is_valid_email($email)
 	{
 		return preg_match('/^[a-zA-Z0-9._%-]+@([a-zA-Z0-9.-]+\.)+[a-zA-Z]{2,4}$/u', $email);
 	}
-	
+
 	function is_valid_username($uname, $check_scripts=TRUE)
 	{
 		if( FALSE == preg_match('/^[a-zA-Z0-9\-]{4,20}$/', $uname) ) {
@@ -133,7 +133,7 @@
 		}
 		return TRUE;
 	}
-	
+
 	function config_replace_variable($source, $variable, $value, $keep_quots=TRUE)
 	{
 		$pattern	= '/('.preg_quote($variable).'\s*\=\s*)\'([^\\\']*)(\'\s*)/su';
@@ -142,14 +142,14 @@
 		}
 		return preg_replace($pattern, '${1}'.$value.'${2}', $source);
 	}
-	
+
 	function load_old_config()
 	{
 		$file	= INCPATH.'../../system/conf_main.php';
 		if( file_exists($file) ) {
 			$C	= new stdClass;
 			$C->INCPATH	= realpath(INCPATH.'../../system/').'/';
-			include($file);			
+			include($file);
 			$conn	= my_mysql_connect($C->DB_HOST, $C->DB_USER, $C->DB_PASS);
 			if( $conn ) {
 				$dbs	= my_mysql_select_db($C->DB_NAME, $conn);
@@ -181,7 +181,7 @@
 		}
 		return new stdClass;
 	}
-	
+
 	function directory_tree_is_writable($node)
 	{
 		$node	= realpath($node);
@@ -208,7 +208,7 @@
 		}
 		return TRUE;
 	}
-	
+
 	function directory_tree_delete($node)
 	{
 		$node	= realpath($node);
@@ -230,10 +230,10 @@
 		@rmdir($node);
 		return;
 	}
-	
-	
-	
-	
+
+
+
+
 	function myext() {
 		$myext	= 'mysql';
 		if( function_exists('mysqli_connect') ) {
@@ -315,5 +315,5 @@
 			return $conn ? @mysql_real_escape_string($str, $conn) : @mysql_real_escape_string($str);
 		}
 	}
-	
+
 ?>

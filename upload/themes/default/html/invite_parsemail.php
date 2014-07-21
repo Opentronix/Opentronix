@@ -1,12 +1,12 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 	$use_yahoo	= isset($C->YAHOO_CONSUMER_KEY,$C->YAHOO_CONSUMER_SECRET) && !empty($C->YAHOO_CONSUMER_KEY) && !empty($C->YAHOO_CONSUMER_SECRET);
-	
+
 ?>
 		<div id="invcenter">
-			<h2><?= $this->lang('invite_title') ?></h2>			
+			<h2><?= $this->lang('invite_title') ?></h2>
 			<div class="htabs" style="margin-bottom:6px; margin-top:0px;">
 				<a href="<?= $C->SITE_URL ?>invite"><b><?= $this->lang('os_invite_tab_colleagues') ?></b></a>
 				<a href="<?= $C->SITE_URL ?>invite/parsemail" class="onhtab"><b><?= $this->lang('os_invite_tab_parsemail') ?></b></a>
@@ -26,9 +26,9 @@
 				</div>
 				<div id="emailinvitescontent">
 					<div id="emailinvitescontent2">
-						
+
 						<?php if( $D->tab == 'gmail' ) { ?>
-							
+
 							<?php if( $D->error ) { ?>
 							<h3 style="color:red;"><?= $this->lang($D->errmsg) ?></h3>
 							<?php } else { ?>
@@ -60,9 +60,9 @@
 							<div id="securealert">
 								<?= $this->lang('inv_prsml_gmail_secure') ?>
 							</div>
-							
+
 						<?php } elseif( $D->tab == 'yahoo' ) { ?>
-								
+
 							<h3><?= $this->lang('inv_prsml_yahoo_title') ?></h3>
 							<?php
 							if(!$D->error) {
@@ -76,12 +76,12 @@
 							else {
 								?>
 								<h3 style="color:red;"><?= $this->lang('inv_prsml_yahoo_err') ?></h3>
-								<?php	
+								<?php
 							}
-							?>	
-									
+							?>
+
 						<?php } elseif( $D->tab == 'facebook' ) { ?>
-							
+
 							<?php if( ! $D->use_fb_connect ) { ?>
 								<h3><?= $this->lang('inv_prsml_fb_nofbconnect_title') ?></h3>
 								<p style="margin:0;padding:0;margin-bottom:10px;"><?= $this->lang('inv_prsml_fb_nofbconnect_descr', array('#SITE_TITLE#'=>$C->SITE_TITLE)) ?></p>
@@ -102,21 +102,21 @@
 								<p style="margin:0;padding:0;margin-bottom:10px;"><?= $this->lang('inv_prsml_fb_nofbconnect_descr', array('#SITE_TITLE#'=>$C->SITE_TITLE)) ?></p>
 								<a href="javascript:;" onclick="fbinvite();"><?= $this->lang('inv_prsml_fb_nofbconnect_link') ?></a>
 							<?php } ?>
-							
+
 						<?php } elseif( $D->tab == 'twitter' ) { ?>
-							
+
 							<h3><?= $this->lang('inv_prsml_twitter_title') ?></h3>
 							<p style="margin:0;padding:0;margin-bottom:10px;"><?= $this->lang('inv_prsml_twitter_descr', array('#SITE_TITLE#'=>$C->SITE_TITLE)) ?></p>
 							<a href="<?= $D->twitter_link ?>" target="_blank"><?= $this->lang('inv_prsml_twitter_link') ?></a>
-							
-						<?php } ?> 
-						
+
+						<?php } ?>
+
 					</div>
 				</div>
 			</div>
 		</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

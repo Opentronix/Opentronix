@@ -1,5 +1,5 @@
 <?php
-	
+
 	class post
 	{
 		private $network;
@@ -26,7 +26,7 @@
 		public $is_feed_post	= FALSE;
 		public $error	= FALSE;
 		public $tmp;
-		
+
 		public function __construct($type, $load_id=FALSE, $load_obj=FALSE)
 		{
 			global $C;
@@ -201,7 +201,7 @@
 			}
 			return TRUE;
 		}
-		
+
 		public function is_post_faved()
 		{
 			if( isset($this->tmp->is_post_faved) ) {
@@ -226,7 +226,7 @@
 			$this->tmp->is_post_faved = in_array(intval($this->user->id), $favs);
 			return $this->tmp->is_post_faved;
 		}
-		
+
 		public function get_post_favs($force_refresh=FALSE)
 		{
 			if( $this->error ) {
@@ -248,7 +248,7 @@
 			$this->cache->set($cachekey, $data, $GLOBALS['C']->CACHE_EXPIRE);
 			return $data;
 		}
-		
+
 		public function fave_post($state=TRUE)
 		{
 			if( $this->error ) {
@@ -271,7 +271,7 @@
 			$this->get_post_favs(TRUE);
 			return TRUE;
 		}
-		
+
 		public function parse_text()
 		{
 			global $C;
@@ -332,7 +332,7 @@
 			}
 			return $message;
 		}
-		
+
 		public static function parse_date($timestamp, $return_words='auto', $return_dt_format='%b %e %Y, %H:%M')
 		{
 			if( $return_words == FALSE ) {
@@ -397,7 +397,7 @@
 			$txt	= str_replace(' ', '&nbsp;', $txt);
 			return $txt;
 		}
-		
+
 		public function parse_group($cutstr=20)
 		{
 			if( $this->error ) {
@@ -411,7 +411,7 @@
 			}
 			return $GLOBALS['page']->lang('postgroup_in').'&nbsp;<a href="'.$GLOBALS['C']->SITE_URL.$this->post_group->groupname.'" title="'.$this->post_group->title.'">'.str_cut($this->post_group->title,intval($cutstr)).'</a>';
 		}
-		
+
 		public static function parse_api($api_id=0)
 		{
 			if( $api_id == 0 ) {
@@ -422,7 +422,7 @@
 			}
 			return $GLOBALS['page']->lang('postapi_via').'&nbsp;'.$api->name;
 		}
-		
+
 		public function show_share_link()
 		{
 			global $C;
@@ -435,11 +435,11 @@
 							<a href="javascript:;" onfocus="this.blur();" id="extshare_link_'.$p->post_tmp_id.'" onclick="extshare_openbox(\''.$p->post_tmp_id.'\');" onmouseout="extshare_closebox(\''.$p->post_tmp_id.'\');">'.$lnktxt.'</a>
 							<div class="post_share_dropbox" id="extshare_tmpbox_'.$p->post_tmp_id.'" style="display:none;">';
 				if( isset($C->FACEBOOK_API_KEY) && !empty($C->FACEBOOK_API_KEY) ) {
-					$html	.= '			
+					$html	.= '
 								<a class="shr_fb" href="javascript:;" onclick="FB.Connect.showShareDialog(\''.htmlspecialchars($p->permalink).'\');">Facebook</a>';
 				}
 				else {
-					$html	.= '			
+					$html	.= '
 								<a class="shr_fb" href="http://www.facebook.com/sharer.php?u='.urlencode($p->permalink).'&t='.urlencode(htmlspecialchars($p->post_user->fullname.': '.$p->post_message)).'">Facebook</a>';
 				}
 				$html	.= '
@@ -452,9 +452,9 @@
 			}
 			return '';
 		}
-		
+
 		public function if_can_edit()
-		{	
+		{
 			global $C;
 			if( $this->error ) {
 				return FALSE;
@@ -473,7 +473,7 @@
 			}
 			return FALSE;
 		}
-		
+
 		public function if_can_delete()
 		{
 			global $C;
@@ -507,7 +507,7 @@
 			}
 			return FALSE;
 		}
-		
+
 		public function delete_this_post()
 		{
 			global $C;
@@ -586,7 +586,7 @@
 			$this->error	= TRUE;
 			return TRUE;
 		}
-		
+
 		public static function _postparse_build_link($url, $before='')
 		{
 			$after	= '';
@@ -603,7 +603,7 @@
 			}
 			return $before.'<a href="'.$url.'" title="'.$url.'" target="_blank" rel="nofollow">'.$txt.'</a>'.$after;
 		}
-		
+
 		public function if_new_comments()
 		{
 			if( $this->error ) {
@@ -644,5 +644,5 @@
 			return array_reverse( array_slice( array_reverse($this->post_comments), 0, $C->POST_LAST_COMMENTS ) );
 		}
 	}
-	
+
 ?>

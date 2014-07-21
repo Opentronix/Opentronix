@@ -1,24 +1,24 @@
 <?php
-	
+
 	if( !$this->network->id ) {
 		$this->redirect('home');
 	}
 	if( !$this->user->is_logged ) {
 		$this->redirect('signin');
 	}
-	
+
 	$this->load_langfile('inside/global.php');
 	$this->load_langfile('inside/settings.php');
-	
+
 	require_once($C->INCPATH.'helpers/func_externalprofiles.php');
-	
+
 	$D->page_title	= $this->lang('settings_contacts_pagetitle', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->submit	= FALSE;
 	$D->errmsg1	= '';
 	$D->errmsg2	= '';
 	$D->errmsg3	= '';
-	
+
 	$D->i	= (object) array (
 		'website'	=> '',
 		'im_skype'	=> '',
@@ -56,17 +56,17 @@
 			}
 		}
 	}
-	
+
 	$tmphash	= md5(serialize($D->i));
-	
+
 	if( isset($_POST['sbm']) ) {
 		$D->submit	= TRUE;
 		foreach($D->i as $k=>$v) {
 			$D->i->$k	= isset($_POST[$k]) ? trim($_POST[$k]) : '';
 		}
-		
+
 		$update_fields	= array();
-		
+
 		if( $D->i->website == 'http://' ) {
 			$D->i->website	= '';
 		}
@@ -79,7 +79,7 @@
 			}
 			$update_fields['website']	= $D->i->website;
 		}
-		
+
 		// not bad idea to validate messengers... some day ;)
 		$update_fields['im_skype']	= $D->i->im_skype;
 		$update_fields['im_icq']	= $D->i->im_icq;
@@ -87,7 +87,7 @@
 		$update_fields['im_msn']	= $D->i->im_msn;
 		$update_fields['im_yahoo']	= $D->i->im_yahoo;
 		$update_fields['im_jabber']	= $D->i->im_jabber;
-		
+
 		$tmp	= array();
 		foreach($D->i as $k=>$v) {
 			if( ! preg_match('/^prof_(.*)$/i', $k, $m) ) {
@@ -106,7 +106,7 @@
 				$D->i->{'prof_'.$site}		= empty($D->i->{'prof_'.$site}) ? '' : $m[0];
 			}
 		}
-		
+
 		if( count($update_fields) > 0 ) {
 			$insql	= array();
 			foreach($update_fields as $k=>$v) {
@@ -115,9 +115,9 @@
 			$insql	= implode(', ', $insql);
 			$db2->query('REPLACE INTO users_details SET user_id="'.$this->user->id.'", '.$insql);
 			$this->user->sess['cdetails']	= $this->db2->fetch('SELECT * FROM users_details WHERE user_id="'.$this->user->id.'" LIMIT 1');
-			
+
 			if( $tmphash != md5(serialize($D->i)) ) {
-				
+
 				$n	= intval( $this->network->get_user_notif_rules($this->user->id)->ntf_them_if_i_edt_profl );
 				if( $n == 1 ) {
 					$this->load_langfile('inside/notifications.php');
@@ -145,7 +145,7 @@
 			}
 		}
 	}
-	
+
 	$this->load_template('settings_contacts.php');
-	
+
 ?>

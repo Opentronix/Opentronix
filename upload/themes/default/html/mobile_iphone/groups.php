@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile_iphone/header.php');
-	
+
 ?>
 			<div id="listpage">
 				<div id="listfilter">
@@ -46,7 +46,7 @@
 				<?php } ?>
 			</div>
 <?php
-	
+
 	$this->load_template('mobile_iphone/footer.php');
-	
+
 ?>

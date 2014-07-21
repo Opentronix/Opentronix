@@ -1,7 +1,7 @@
 <?php
-		
+
 	$this->load_template('header.php');
-	
+
 ?>
 		<link rel="stylesheet" href="<?= $C->SITE_URL.'themes/'.$C->THEME ?>/css/user_selector.css" type="text/css" />
 		<script type="text/javascript" src="<?= $C->SITE_URL.'themes/'.$C->THEME ?>/js/user_selector.js"></script>
@@ -21,7 +21,7 @@
 			</form>
 		</div>
 		<div class="klear"></div>
-		
+
 		<script type="text/javascript">
 			window.onload	= function() {
 				var u = new UserSelector();
@@ -40,7 +40,7 @@
 			pf_autoopen = false;
 		</script>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

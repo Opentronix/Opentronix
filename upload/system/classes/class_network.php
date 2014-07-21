@@ -1,12 +1,12 @@
 <?php
-	
+
 	class network
 	{
 		public $id;
 		public $info;
 		public $is_private;
 		public $is_public;
-		
+
 		public function __construct()
 		{
 			$this->id	= FALSE;
@@ -16,7 +16,7 @@
 			$this->db1		= & $GLOBALS['db1'];
 			$this->db2		= & $GLOBALS['db2'];
 		}
-		
+
 		public function LOAD()
 		{
 			if( $this->id ) {
@@ -31,7 +31,7 @@
 			$this->id	= $this->info->id;
 			return $this->id;
 		}
-		
+
 		public function load_network_settings()
 		{
 			$db	= &$this->db1;
@@ -39,7 +39,7 @@
 			while($obj = $db->fetch_object($r)) {
 				$this->C->{$obj->word}	= stripslashes($obj->value);
 			}
-			
+
 			global $C;
 			foreach($this->C as $k=>$v) {
 				$C->$k	= & $this->C->$k;
@@ -54,22 +54,22 @@
 			if( ! isset($C->HDR_SHOW_FAVICON) ) { $C->HDR_SHOW_FAVICON = 1; }
 			if( ! isset($C->HDR_CUSTOM_FAVICON) ) { $C->HDR_CUSTOM_FAVICON = ''; }
 			if( ! isset($C->MOBI_DISABLED) ) { $C->MOBI_DISABLED = 0; }
-			
+
 			$current_language	= new stdClass;
 			include($C->INCPATH.'languages/'.$C->LANGUAGE.'/language.php');
 			setlocale(LC_ALL, $current_language->php_locale);
-			
+
 			if( ! isset($C->DEF_TIMEZONE) ) {
 				$C->DEF_TIMEZONE	= $current_language->php_timezone;
 			}
 			date_default_timezone_set($C->DEF_TIMEZONE);
-			
+
 			if( !isset($C->SITE_TITLE) || empty($C->SITE_TITLE) ) {
 				$C->SITE_TITLE	= 'Opentronix';
 			}
 			$C->OUTSIDE_SITE_TITLE	= $C->SITE_TITLE;
 		}
-		
+
 		public function get_user_by_username($uname, $force_refresh=FALSE, $return_id=FALSE)
 		{
 			if( ! $this->id ) {
@@ -93,7 +93,7 @@
 			$this->cache->del($cachekey);
 			return FALSE;
 		}
-		
+
 		public function get_user_by_email($email, $force_refresh=FALSE, $return_id=FALSE)
 		{
 			if( ! $this->id ) {
@@ -117,7 +117,7 @@
 			$this->cache->del($cachekey);
 			return FALSE;
 		}
-		
+
 		public function get_user_by_id($uid, $force_refresh=FALSE)
 		{
 			if( ! $this->id ) {
@@ -169,7 +169,7 @@
 			$this->cache->del($cachekey);
 			return FALSE;
 		}
-		
+
 		public function get_user_follows($uid, $force_refresh=FALSE)
 		{
 			if( ! $this->id ) {
@@ -209,7 +209,7 @@
 			$loaded[$cachekey] = $data;
 			return $data;
 		}
-		
+
 		public function get_mostactive_users($force_refresh=FALSE)
 		{
 			if( ! $this->id ) {
@@ -230,7 +230,7 @@
 			$this->cache->set($cachekey, $data, $GLOBALS['C']->CACHE_EXPIRE);
 			return $data;
 		}
-		
+
 		public function get_latest_users($force_refresh=FALSE)
 		{
 			if( ! $this->id ) {
@@ -250,7 +250,7 @@
 			$this->cache->set($cachekey, $data, $GLOBALS['C']->CACHE_EXPIRE);
 			return $data;
 		}
-		
+
 		public function get_online_users($force_refresh=FALSE)
 		{
 			if( ! $this->id ) {
@@ -273,7 +273,7 @@
 			$this->cache->set($cachekey, $data, $GLOBALS['C']->CACHE_EXPIRE);
 			return $data;
 		}
-		
+
 		public function get_group_by_name($gname, $force_refresh=FALSE, $return_id=FALSE)
 		{
 			if( ! $this->id ) {
@@ -297,7 +297,7 @@
 			$this->cache->del($cachekey);
 			return FALSE;
 		}
-		
+
 		public function get_group_by_id($gid, $force_refresh=FALSE)
 		{
 			if( ! $this->id ) {
@@ -316,7 +316,7 @@
 			if( FALSE!==$data && TRUE!=$force_refresh ) {
 				$loaded[$cachekey] = $data;
 				return $data;
-			}	
+			}
 			$r	= $this->db2->query('SELECT * FROM groups WHERE id="'.$gid.'" LIMIT 1', FALSE);
 			if($o = $this->db2->fetch_object($r)) {
 				$o->title		= stripslashes($o->title);
@@ -334,7 +334,7 @@
 			$this->cache->del($cachekey);
 			return FALSE;
 		}
-		
+
 		public function get_deleted_group_by_id($gid, $force_refresh=FALSE)
 		{
 			if( ! $this->id ) {
@@ -367,7 +367,7 @@
 			$this->cache->del($cachekey);
 			return FALSE;
 		}
-		
+
 		public function get_group_invited_members($gid, $force_refresh=FALSE)
 		{
 			if( ! $this->id ) {
@@ -395,7 +395,7 @@
 			$loaded[$cachekey] = $data;
 			return $data;
 		}
-		
+
 		public function get_group_members($gid, $force_refresh=FALSE)
 		{
 			if( ! $this->id ) {
@@ -429,7 +429,7 @@
 			$this->cache->set($cachekey, $data, $GLOBALS['C']->CACHE_EXPIRE);
 			return $data;
 		}
-		
+
 		public function get_last_post_id()
 		{
 			if( ! $this->id ) {
@@ -437,7 +437,7 @@
 			}
 			return intval($this->db2->fetch_field('SELECT MAX(id) FROM posts'));
 		}
-		
+
 		public function get_recent_posttags($in_sql, $count=20, $force_refresh=FALSE)
 		{
 			$cachekey	= 'n:'.$this->id.',active_tags:'.md5($in_sql);
@@ -445,7 +445,7 @@
 			if( FALSE!==$data && TRUE!=$force_refresh ) {
 				return array_slice($data, 0, $count);
 			}
-			$this->cache->set($cachekey, array(), $GLOBALS['C']->CACHE_EXPIRE); // this is to avoid running the query below multiple times at once 
+			$this->cache->set($cachekey, array(), $GLOBALS['C']->CACHE_EXPIRE); // this is to avoid running the query below multiple times at once
 			$data	= array();
 			$this->db2->query('SELECT message, date FROM posts WHERE api_id<>2 AND posttags<>0 '.$in_sql.' ORDER BY id DESC LIMIT 1000');
 			while($tmp = $this->db2->fetch_object()) {
@@ -480,7 +480,7 @@
 			$this->cache->set($cachekey, $data, $GLOBALS['C']->CACHE_EXPIRE);
 			return array_slice($data, 0, $count);
 		}
-		
+
 		public function get_user_notif_rules($user_id, $force_refresh=FALSE)
 		{
 			$cachekey	= 'n:'.$this->id.',usr_ntf_rulz:'.$user_id;
@@ -501,7 +501,7 @@
 			$this->cache->set($cachekey, $obj, $GLOBALS['C']->CACHE_EXPIRE);
 			return $obj;
 		}
-		
+
 		public function get_posts_api($id, $force_refresh=FALSE)
 		{
 			$id	= intval($id);
@@ -524,7 +524,7 @@
 			}
 			return FALSE;
 		}
-		
+
 		public function send_notification_post($to_user_id, $in_group_id, $lang_key, $lang_params, $if_exists_action='ignore')
 		{
 			global $C;
@@ -618,7 +618,7 @@
 			}
 			do_send_mail_html($to_user->email, $subject, $msgtxt, $msghtml);
 		}
-		
+
 		public function get_dashboard_tabstate($user_id, $tabs)
 		{
 			$user_id	= intval($user_id);
@@ -679,5 +679,5 @@
 			return TRUE;
 		}
 	}
-	
+
 ?>

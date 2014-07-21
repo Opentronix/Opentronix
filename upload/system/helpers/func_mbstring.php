@@ -1,9 +1,9 @@
 <?php
-	
+
 	//
 	// In case "mbstring" extension is not available, we define some important mb functions...
 	//
-	
+
 	if( ! defined('MB_CASE_UPPER') ) {
 		define( 'MB_CASE_UPPER', 0 );
 	}
@@ -13,7 +13,7 @@
 	if( ! defined('MB_CASE_TITLE') ) {
 		define( 'MB_CASE_TITLE', 2 );
 	}
-	
+
 	if( ! function_exists('mb_convert_case') )
 	{
 		function mb_convert_case($str, $mode, $enc=FALSE)
@@ -30,7 +30,7 @@
 			return $str;
 		}
 	}
-	
+
 	if( ! function_exists('mb_convert_encoding') )
 	{
 		function mb_convert_encoding($str, $to_enc, $from_enc=FALSE)
@@ -46,7 +46,7 @@
 			return $str;
 		}
 	}
-	
+
 	if( ! function_exists('mb_strtolower') )
 	{
 		function mb_strtolower($str, $enc=FALSE)
@@ -54,7 +54,7 @@
 			return strtolower($str);
 		}
 	}
-	
+
 	if( ! function_exists('mb_strtoupper') )
 	{
 		function mb_strtoupper($str, $enc=FALSE)
@@ -62,7 +62,7 @@
 			return strtoupper($str);
 		}
 	}
-	
+
 	if( ! function_exists('mb_internal_encoding') )
 	{
 		function mb_internal_encoding($enc=FALSE)
@@ -76,7 +76,7 @@
 			return '';
 		}
 	}
-	
+
 	if( ! function_exists('mb_strlen') )
 	{
 		function mb_strlen($str, $enc=FALSE)
@@ -87,7 +87,7 @@
 			return strlen($str);
 		}
 	}
-	
+
 	if( ! function_exists('mb_substr') )
 	{
 		function mb_substr($str, $start, $len=FALSE, $enc=FALSE)
@@ -103,8 +103,8 @@
 			return $len ? substr($str, $start, $len) : substr($str, $start);
 		}
 	}
-	
-	
+
+
 	if( ! function_exists('mb_strpos') )
 	{
 		function mb_strpos($haystack, $needle, $offset=FALSE, $enc=FALSE)
@@ -120,7 +120,7 @@
 			return $offset ? strpos($haystack, $needle, $offset) : strpos($haystack, $needle);
 		}
 	}
-	
+
 	if( ! function_exists('mb_list_encodings') )
 	{
 		function mb_list_encodings()

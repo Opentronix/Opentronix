@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('mobile_iphone/header.php');
-	
+
 ?>
 		<div id="profile">
 			<div id="profile_avatar"><img src="<?= $C->TMP_URL.$D->g_avatar ?>"/></div>
@@ -26,9 +26,9 @@
 			<a href="<?= $C->SITE_URL.$D->g->groupname ?>/show:members" style="width:35%;" class="<?= $D->show=='members'?'onpnav':'' ?>"><b><?= $this->lang('iphone_group_menu_members') ?></b></a>
 			<a href="<?= $C->SITE_URL.$D->g->groupname ?>/show:admins" style="width:30%;" class="<?= $D->show=='admins'?'onpnav':'' ?>"><b><?= $this->lang('iphone_group_menu_admins') ?></b></a>
 		</div>
-		
+
 		<?php if( $D->show == 'updates' ) { ?>
-			
+
 			<div id="postspage" style="border-top:0px;">
 				<div id="posts">
 					<?php if( $D->num_results == 0 ) { ?>
@@ -44,9 +44,9 @@
 				</div>
 				<?php } ?>
 			</div>
-			
+
 		<?php } elseif( $D->show == 'members' || $D->show == 'admins' ) { ?>
-			
+
 			<div id="listpage">
 			<?php if(  $D->num_results == 0 ) { ?>
 				<div class="alert yellow"><?= $this->lang($D->show=='admins'?'iphone_group_no_admins':'iphone_group_no_members', array('#GROUP#'=>$D->g->title)) ?></div>
@@ -78,13 +78,13 @@
 					</div>
 				</div>
 				<?php } ?>
-			<?php } ?>	
+			<?php } ?>
 			</div>
-			
+
 		<?php } ?>
-		
+
 <?php
-	
+
 	$this->load_template('mobile_iphone/footer.php');
-	
+
 ?>

@@ -1,11 +1,10 @@
 <?php
-	
+
 	if( ! isset($C) ) { $C = new stdClass; }
 	include_once(INCPATH.'../../system/conf_embed.php');
 	$VIDSRC	= $C->NEWPOST_EMBEDVIDEO_SOURCES;
-	
-	function create_database($convert_version=FALSE)
-	{
+
+	function create_database($convert_version=FALSE) {
 		global $s, $VIDSRC;
 		$conn	= my_mysql_connect($s['MYSQL_HOST'], $s['MYSQL_USER'], $s['MYSQL_PASS']);
 		$dbs	= my_mysql_select_db($s['MYSQL_DBNAME'], $conn);
@@ -13,9 +12,9 @@
 			return FALSE;
 		}
 		my_mysql_query('SET NAMES utf8', $conn);
-		
+
 		$v	= $convert_version;
-		
+
 		if( $v == '1.4.2' ) {
 			return TRUE;
 		}
@@ -130,10 +129,10 @@
 			my_mysql_query("ALTER TABLE `posts` ADD INDEX (`api_id`) ", $conn);
 			return TRUE;
 		}
-		
+
 		$prefix	= '';
 		if( $convert_version ) {
-			$prefix	= substr(md5(rand().time()),0,rand(5,8)).'__';	
+			$prefix	= substr(md5(rand().time()),0,rand(5,8)).'__';
 		}
 		$res	= TRUE;
 		$res	= $res && my_mysql_query("
@@ -208,7 +207,7 @@
 		", $conn);
 		$res	= $res && my_mysql_query("
 			DROP TABLE IF EXISTS `".$prefix."email_change_requests`;
-		", $conn);		
+		", $conn);
 		$res	= $res && my_mysql_query("
 			CREATE TABLE `".$prefix."email_change_requests` (
 			  `id` INT( 10 ) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -643,7 +642,7 @@
 			  KEY `user_id` (`user_id`,`search_key`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 		", $conn);
-		$res	= $res && my_mysql_query("		
+		$res	= $res && my_mysql_query("
 			DROP TABLE IF EXISTS `".$prefix."settings`;
 		", $conn);
 		$res	= $res && my_mysql_query("
@@ -666,6 +665,7 @@
 			('ATTACH_FILE_DISABLED', '0'),
 			('USERS_EMAIL_CONFIRMATION', '1'),
 			('THEME', 'default'),
+			('CAPTCHA', '1'),
 			('MOBI_DISABLED', '0');
 		", $conn);
 		$res	= $res && my_mysql_query("
@@ -732,7 +732,7 @@
 			  KEY `pass_reset_IDX` (`pass_reset_key`,`pass_reset_valid`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 		", $conn);
-		$res	= $res && my_mysql_query("		
+		$res	= $res && my_mysql_query("
 			DROP TABLE IF EXISTS `".$prefix."users_dashboard_tabs`;
 		", $conn);
 		$res	= $res && my_mysql_query("
@@ -1202,9 +1202,8 @@
 		}
 		return $res;
 	}
-	
-	function database_drop_tables_with_prefix($prefix)
-	{
+
+	function database_drop_tables_with_prefix($prefix) {
 		if( empty($prefix) ) {
 			return FALSE;
 		}
@@ -1222,5 +1221,5 @@
 			}
 		}
 	}
-	
+
 ?>

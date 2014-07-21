@@ -1,17 +1,17 @@
 <?php
-	
+
 	function __autoload($class_name)
 	{
 		global $C;
 		require_once( $C->INCPATH.'classes/class_'.$class_name.'.php' );
 	}
-	
+
 	function my_session_name($domain)
 	{
 		global $C;
 		return $C->RNDKEY.str_replace(array('.','-'), '', $domain);
 	}
-	
+
 	function cookie_domain()
 	{
 		global $C;
@@ -28,7 +28,7 @@
 		}
 		return '.'.$tmp;
 	}
-	
+
 	function userlink($username)
 	{
 		global $C;
@@ -37,7 +37,7 @@
 		}
 		return $C->SITE_URL.$username;
 	}
-	
+
 	function rm()
 	{
 		$files = func_get_args();
@@ -45,12 +45,12 @@
 			if( is_file($filename) && is_writable($filename) )
 				unlink($filename);
 	}
-	
+
 	function is_valid_email($email)
 	{
 		return preg_match('/^[a-zA-Z0-9._%-]+@([a-zA-Z0-9.-]+\.)+[a-zA-Z]{2,4}$/u', $email);
 	}
-	
+
 	function my_copy($source, $dest)
 	{
 		$res	= @copy($source, $dest);
@@ -92,7 +92,7 @@
 		}
 		return FALSE;
 	}
-	
+
 	function do_send_mail($email, $subject, $message, $from=FALSE)
 	{
 		global $C;
@@ -116,7 +116,7 @@
 		$subject	= '=?UTF-8?B?'.base64_encode($subject).'?=';
 		return mail( $email, $subject, $message, $headers );
 	}
-	
+
 	function do_send_mail_html($email, $subject, $message_txt, $message_html, $from=FALSE)
 	{
 		global $C;
@@ -176,7 +176,7 @@
 		}
 		return $result;
 	}
-	
+
 	function generate_password($len=8, $let='abcdefghkmnpqrstuvwxyzABCDEFGHKLMNPRSTUVWXYZ23456789')
 	{
 		$word	= '';
@@ -185,7 +185,7 @@
 		}
 		return $word;
 	}
-	
+
 	function msgbox($title, $text, $closebtn=TRUE, $incss='')
 	{
 		$div_id	= 'tmpid'.rand(0,99999);
@@ -210,7 +210,7 @@
 				</div>';
 		return $html;
 	}
-	
+
 	function okbox($title, $text, $closebtn=TRUE, $incss='')
 	{
 		$div_id	= 'tmpid'.rand(0,99999);
@@ -235,7 +235,7 @@
 				</div>';
 		return $html;
 	}
-	
+
 	function errorbox($title, $text, $closebtn=TRUE, $incss='')
 	{
 		$div_id	= 'tmpid'.rand(0,99999);
@@ -260,7 +260,7 @@
 				</div>';
 		return $html;
 	}
-	
+
 	function show_filesize($bytes)
 	{
 		$kb	= ceil($bytes/1024);
@@ -270,42 +270,42 @@
 		$mb	= round($kb/1024,1);
 		return $mb.'MB';
 	}
-	
+
 	function str_cut($str, $mx)
 	{
 		return mb_strlen($str)>$mx ? mb_substr($str, 0, $mx-1).'..' : $str;
 	}
-	
+
 	function str_cut_link($str, $mx)
 	{
 		return mb_strlen($str)>$mx ? ( mb_substr($str,0,$mx-6).'...'.mb_substr($str,-4) ) : $str;
 	}
-	
+
 	function nowrap($string)
 	{
 		return str_replace(' ', '&nbsp;', $string);
 	}
-	
+
 	function br2nl($string)
 	{
 		return str_replace(array('<br />', '<br/>', '<br>'), "\r\n", $string);
 	}
-	
+
 	function strip_url($url)
 	{
 		$url	= preg_replace('/^(http|https):\/\/(www\.)?/u', '', trim($url));
 		$url	= preg_replace('/\/$/u', '', $url);
 		return trim($url);
 	}
-	
+
 	function my_ucwords($str)
 	{
 		return mb_convert_case($str, MB_CASE_TITLE);
 	}
-	
+
 	function my_ucfirst($str)
 	{
 		return mb_strtoupper(mb_substr($str,0,1)).mb_substr($str,1);
 	}
-	
+
 ?>

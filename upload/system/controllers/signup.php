@@ -1,28 +1,28 @@
 <?php
-	
+
 	if( $this->user->is_logged ) {
 		$this->redirect('home');
 	}
-	
+
 	$this->load_langfile('outside/global.php');
 	$this->load_langfile('outside/signup.php');
 	$this->load_langfile('email/signup.php');
-	
+
 	$D->page_title	= $this->lang('signup_page_title', array('#SITE_TITLE#'=>$C->SITE_TITLE));
-	
+
 	$D->network_members	= $db2->fetch_field('SELECT COUNT(id) FROM users WHERE active=1');
-	
+
 	require_once( $C->INCPATH.'helpers/func_signup.php' );
 	require_once( $C->INCPATH.'helpers/func_images.php' );
 	require_once( $C->INCPATH.'helpers/func_captcha.php' );
 	require_once( $C->INCPATH.'helpers/func_recaptcha.php');
-	
+
 	$D->terms_of_use	= FALSE;
 	if( isset($C->TERMSPAGE_ENABLED,$C->TERMSPAGE_CONTENT) && $C->TERMSPAGE_ENABLED==1 && !empty($C->TERMSPAGE_CONTENT) ) {
 		$D->terms_of_use	= TRUE;
 	}
-	
-	$fbinfo	= FALSE;
+
+	$fbinfo	= FALSE; // Facebook info.
 	if( $this->param('fbinfo') && isset($_SESSION[$this->param('fbinfo')]) ) {
 		$fbinfo	= $_SESSION[$this->param('fbinfo')];
 		$db2->query('SELECT email, password FROM users WHERE facebook_uid<>"" AND facebook_uid="'.$db2->e($fbinfo->uid).'" LIMIT 1');
@@ -46,7 +46,7 @@
 			$fbinfo->proxied_email	= preg_replace('/^apps\s/', 'apps+', $fbinfo->proxied_email);
 		}
 	}
-	$twinfo	= FALSE;
+	$twinfo	= FALSE; // Twitter info.
 	if( $this->param('get')=='twitter' && isset($_SESSION['TWITTER_CONNECTED']) && $_SESSION['TWITTER_CONNECTED'] && $_SESSION['TWITTER_CONNECTED']->id ) {
 		$twinfo	= $_SESSION['TWITTER_CONNECTED'];
 		$twinfo->id	= intval($twinfo->id);
@@ -68,15 +68,14 @@
 			$twinfo->tmp_fictive_mail	= md5(time().rand(0,10000)).'@'.$C->OUTSIDE_DOMAIN;
 		}
 	}
-	
+
 	// If user email confirmation is active and we have an email address in POST.
-	if( $C->USERS_EMAIL_CONFIRMATION && isset($_POST['email']) && !empty($_POST['email']) )
-	{
+	if( $C->USERS_EMAIL_CONFIRMATION && isset($_POST['email']) && !empty($_POST['email']) ) {
 		$D->submit	= TRUE;
 		$D->error	= FALSE;
 		$D->errmsg	= '';
 		$D->errmsg_lngkeys	= array();
-		
+
 		$email	= strtolower(trim($_POST['email']));
 		if( ! is_valid_email($email) ) {
 			$D->error	= TRUE;
@@ -107,8 +106,8 @@
 
 	// if user email confirmation is active and someone came here through the confirmation link
 	// in the email. We'll show her the forms for a new user and password and the captcha.
-	elseif( ($C->USERS_EMAIL_CONFIRMATION && $this->param('regid') && $this->param('regkey')) || !$C->USERS_EMAIL_CONFIRMATION )
-	{
+	elseif( ($C->USERS_EMAIL_CONFIRMATION && $this->param('regid') && $this->param('regkey'))
+			|| !$C->USERS_EMAIL_CONFIRMATION ) {
 		$D->email		= '';
 		$D->fullname	= '';
 		if ( $C->RECAPTCHA_PRIVATE_KEY != '' ){
@@ -122,7 +121,7 @@
 			$D->email	= $fbinfo->proxied_email;
 			$D->fullname	= $fbinfo->name;
 		}
-		
+
 		$invited_code	= '';
 		if( $C->USERS_EMAIL_CONFIRMATION ) {
 			$reg_id	= intval($this->param('regid'));
@@ -141,7 +140,7 @@
 			$D->email		= stripslashes($obj->email);
 			$D->fullname	= stripslashes($obj->fullname);
 		}
-		
+
 		$D->steps	= $C->USERS_EMAIL_CONFIRMATION ? ($D->network_members>0 ? 3 : 2) : ($D->network_members>0 ? 2 : 1);
 		$D->submit	= FALSE;
 		$D->error	= FALSE;
@@ -263,10 +262,11 @@
 				$D->password	= '';
 				$D->password2	= '';
 			}
-			
+
 			// check recaptcha if everything else is fine
-			if( !$D->error ) {
-				$recaptcha_check = recaptcha_check_answer ( 
+			$use_captcha	= $db2->fetch_field('SELECT value FROM settings WHERE word="CAPTCHA" LIMIT 1');
+			if( !$D->error && $use_captcha ) {
+				$recaptcha_check = recaptcha_check_answer (
 					$C->RECAPTCHA_PRIVATE_KEY,
 					$_SERVER["REMOTE_ADDR"],
 					$_POST["recaptcha_challenge_field"],
@@ -283,7 +283,7 @@
 				$D->error	= TRUE;
 				$D->errmsg	= 'signup_err_terms';
 			}
-			
+
 			// if everything was okay. So far.
 			if( !$D->error ) {
 				$tmplang	= $db2->fetch_field('SELECT value FROM settings WHERE word="LANGUAGE" LIMIT 1');
@@ -295,7 +295,7 @@
 				$db1->query('DELETE FROM unconfirmed_registrations WHERE email="'.$db1->e($D->email).'" ');
 				// HASHFAIL
 				$this->user->login($D->email, md5($D->password), FALSE);
-				
+
 				$gravatar_url	= 'http://www.gravatar.com/avatar/'.md5($D->email).'?s='.$C->AVATAR_SIZE.'&d=404';
 				$gravatar_local	= $C->TMP_DIR.'grvtr'.time().rand(0,9999).'.jpg';
 				if( @my_copy($gravatar_url, $gravatar_local) ) {
@@ -310,7 +310,7 @@
 					}
 					rm($gravatar_local);
 				}
-				
+
 				if( $fbinfo && $fbinfo->tmp_valid ) {
 					if( ! empty($fbinfo->about_me) ) {
 						$db2->query('UPDATE users SET about_me="'.$db2->escape($fbinfo->about_me).'" WHERE id="'.$user_id.'" LIMIT 1');
@@ -359,7 +359,7 @@
 						rm($gravatar_local);
 					}
 				}
-				
+
 				$invited_from	= array();
 				$r	= $db2->query('SELECT DISTINCT user_id FROM users_invitations WHERE recp_email="'.$db2->e($D->email).'" LIMIT 1');
 				if( $db2->num_rows($r) > 0 ) {
@@ -393,7 +393,7 @@
 						'network_id'	=> $this->network->id,
 						'user_id'		=> $user_id,
 					);
-					
+
 					$this->load_langfile('inside/notifications.php');
 					$this->load_langfile('email/notifications.php');
 					$r	= $db2->query('SELECT id FROM users WHERE active=1', FALSE);
@@ -416,7 +416,7 @@
 							$this->network->send_notification_email($uid, 'u_edt_profl', $subject, $message_txt, $message_htm);
 						}
 					}
-					
+
 					$this->redirect( $C->SITE_URL.'signup/follow/regid:'.$key);
 				}
 				else {
@@ -427,8 +427,7 @@
 		}
 		$this->load_template('signup-step2.php');
 	}
-	elseif( $C->USERS_EMAIL_CONFIRMATION )
-	{
+	elseif( $C->USERS_EMAIL_CONFIRMATION ) {
 		$D->submit	= FALSE;
 		$D->error	= FALSE;
 		$D->errmsg	= '';
@@ -436,5 +435,5 @@
 		$D->steps	= $D->network_members==0 ? 2 : 3;
 		$this->load_template('signup-step1.php');
 	}
-	
+
 ?>

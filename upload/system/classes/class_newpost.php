@@ -1,8 +1,8 @@
 <?php
-	
+
 	require_once($C->INCPATH.'conf_embed.php');
 	require_once($C->INCPATH.'helpers/func_images.php');
-	
+
 	class newpost
 	{
 		private $network	= FALSE;
@@ -18,7 +18,7 @@
 		private $db1;
 		private $db2;
 		private $cache;
-		
+
 		public function __construct()
 		{
 			global $C;
@@ -37,7 +37,7 @@
 			}
 			$this->id	= FALSE;
 		}
-		
+
 		public function set_user($network_id, $user_id)
 		{
 			$this->network	= FALSE;
@@ -53,14 +53,14 @@
 			$this->user		= $u;
 			return TRUE;
 		}
-		
+
 		public function set_user_advanced($network, $user)
 		{
 			$this->network	= $network;
 			$this->user		= $user;
 			return TRUE;
 		}
-		
+
 		public function load_post($type, $id, $network_id=FALSE, $user_id=FALSE)
 		{
 			if( $network_id && $user_id ) {
@@ -105,7 +105,7 @@
 			}
 			return TRUE;
 		}
-		
+
 		public function set_api_id($api_id)
 		{
 			if( $this->id ) {
@@ -114,7 +114,7 @@
 			$this->api_id	= intval($api_id);
 			return TRUE;
 		}
-		
+
 		public function set_to_user($user_id)
 		{
 			if( $this->id ) {
@@ -133,7 +133,7 @@
 			$this->group	= FALSE;
 			return TRUE;
 		}
-		
+
 		public function set_group_id($group_id)
 		{
 			if( $this->id ) {
@@ -155,7 +155,7 @@
 			$this->to_user	= FALSE;
 			return TRUE;
 		}
-		
+
 		public function set_message($message)
 		{
 			if( empty($message) ) {
@@ -164,7 +164,7 @@
 			global $C;
 			$message	= mb_substr($message, 0, $C->POST_MAX_SYMBOLS);
 			$this->message	= $message;
-			
+
 			$this->mentioned	= array();
 			if( preg_match_all('/\@([a-zA-Z0-9\-_]{3,30})/u', $message, $matches, PREG_PATTERN_ORDER) ) {
 				foreach($matches[1] as $unm) {
@@ -174,7 +174,7 @@
 				}
 			}
 			$this->mentioned	= array_unique($this->mentioned);
-			
+
 			$this->posttags	= array();
 			if( preg_match_all('/\#([א-תÀ-ÿ一-龥а-яa-z0-9\-_]{1,50})/iu', $message, $matches, PREG_PATTERN_ORDER) ) {
 				foreach($matches[1] as $tg) {
@@ -183,7 +183,7 @@
 			}
 			$this->posttags	= count( array_unique($this->posttags) );
 		}
-		
+
 		public function attach_link($link)
 		{
 			if( isset($this->attached['link']) ) {
@@ -200,7 +200,7 @@
 				'hits'	=> 0,
 			);
 		}
-		
+
 		public function attach_image($input, $orig_filename='')
 		{
 			global $C;
@@ -240,13 +240,13 @@
 				'filesize'	=> 0,
 				'hits'	=> 0,
 			);
-			$data	= copy_attachment_image($input, $data); 
+			$data	= copy_attachment_image($input, $data);
 			if( ! $data ) {
 				return FALSE;
 			}
 			return $this->attached['image'] = $data;
 		}
-		
+
 		public function attach_videoembed($video)
 		{
 			global $C;
@@ -300,7 +300,7 @@
 			}
 			return $this->attached['videoembed'] = $data;
 		}
-		
+
 		public function attach_file($source, $filename)
 		{
 			global $C;
@@ -330,11 +330,11 @@
 			$data->filesize	= filesize($C->TMP_DIR.$data->file_original);
 			return $this->attached['file'] = $data;
 		}
-		
+
 		public function attach_richtext($richtext)
 		{
 		}
-		
+
 		public function save()
 		{
 			if( empty($this->message) ) {
@@ -443,7 +443,7 @@
 						$page->load_langfile('email/notifications.php');
 						foreach($notify as $uid) {
 							$this->network->set_dashboard_tabstate($uid, '@me', 1);
-							
+
 							$n	= intval( $this->network->get_user_notif_rules($uid)->ntf_me_if_u_posts_qme );
 							if( $n==1 || $n==3 ) {
 								$lng_txt	= array('#SITE_TITLE#'=>$C->SITE_TITLE, '#USER#'=>'@'.$this->user->username, '#NAME#'=>$this->user->fullname, '#A0#'=>$permalink, '#A1#'=>'', '#A2#'=>'');
@@ -479,7 +479,7 @@
 				else {
 					$db2->query('UPDATE users SET lastpost_date="'.time().'" WHERE id="'.$db_user_id.'" LIMIT 1');
 					$this->network->set_dashboard_tabstate($db_to_user, 'private', 1);
-					
+
 					$n	= intval( $this->network->get_user_notif_rules($this->to_user->id)->ntf_me_if_u_posts_prvmsg );
 					if( $n==1 || $n==3 ) {
 						global $C, $page;
@@ -526,10 +526,10 @@
 					// ...
 				}
 			}
-			
+
 			return $id ? ($id.($is_private?'_private':'_public')) : FALSE;
 		}
-		
+
 		private function attachments_copy_files()
 		{
 			global $C;
@@ -555,7 +555,7 @@
 			}
 			return TRUE;
 		}
-		
+
 		public function get_attached()
 		{
 			return $this->attached;
@@ -565,5 +565,5 @@
 			return $this->attached = $at;
 		}
 	}
-	
+
 ?>

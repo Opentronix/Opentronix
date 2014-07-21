@@ -1,10 +1,10 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 		<div id="invcenter">
-			<h2><?= $this->lang('invite_title') ?></h2>			
+			<h2><?= $this->lang('invite_title') ?></h2>
 			<div class="htabs" style="margin-bottom:6px; margin-top:0px;">
 				<a href="<?= $C->SITE_URL ?>invite"><b><?= $this->lang('os_invite_tab_colleagues') ?></b></a>
 				<a href="<?= $C->SITE_URL ?>invite/parsemail"><b><?= $this->lang('os_invite_tab_parsemail') ?></b></a>
@@ -19,7 +19,7 @@
 			<?php if( $D->error ) { ?>
 			<?= errorbox($this->lang('inv_uplfile_error'), $this->lang($D->errmsg), TRUE, 'margin-bottom:5px;') ?>
 			<?php } ?>
-			
+
 			<div class="greygrad">
 				<div class="greygrad2">
 					<div class="greygrad3" style="padding-bottom:0px;">
@@ -40,7 +40,7 @@
 			</div>
 		</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

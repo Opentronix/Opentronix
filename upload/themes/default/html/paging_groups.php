@@ -1,4 +1,4 @@
-<?php if( $D->num_pages > 1 ) { ?> 
+<?php if( $D->num_pages > 1 ) { ?>
 						<div class="paging" style="clear:both;">
 							<div class="paging2">
 								<span><?= $this->lang('paging_title') ?></span>
@@ -6,7 +6,7 @@
 								<a href="<?= $D->paging_url ?><?= $D->pg-1 ?>" class="pp"></a>
 								<?php } ?>
 								<!-- <span>...</span> -->
-								<?php 
+								<?php
 								if($D->pg <= 2) {
 									$mn	= 1;
 									$mx	= min(5, $D->num_pages);

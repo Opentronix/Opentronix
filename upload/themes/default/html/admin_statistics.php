@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<div id="settings">
 						<div id="settings_left">
@@ -58,7 +58,7 @@
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

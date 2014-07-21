@@ -1,7 +1,7 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 	if( $D->nobody ) { ?>
 						<div id="invcenter">
 							<h2><?= $this->lang('os_grpinv_title', array('#GROUP#'=>$D->g->title)) ?></h2>
@@ -14,8 +14,8 @@
 							</div>
 							<div class="nopostsbottom"><div class="nopostsbottom2"></div></div>
 						</div>
-	
-	
+
+
 <?php } else { ?>
 						<link rel="stylesheet" href="<?= $C->SITE_URL.'themes/'.$C->THEME ?>/css/user_selector.css" type="text/css" />
 						<script type="text/javascript" src="<?= $C->SITE_URL.'themes/'.$C->THEME ?>/js/user_selector.js"></script>
@@ -52,7 +52,7 @@
 							};
 						</script>
 <?php }
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

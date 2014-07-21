@@ -6,5 +6,5 @@
 					&middot;
 					<?= $this->lang($D->g->num_followers==1 ? 'iphone_group_member1' : 'iphone_group_members', array('#NUM#'=>$D->g->num_followers)) ?>
 				</div>
-				<span></span>	
+				<span></span>
 			</a>

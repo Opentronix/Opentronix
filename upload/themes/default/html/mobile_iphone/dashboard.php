@@ -1,9 +1,9 @@
 <?php
-	
+
 	$this->load_template('mobile_iphone/header.php');
-	
+
 ?>
-		<div id="postspage">	
+		<div id="postspage">
 			<div id="dropfilter">
 				<a href="javascript:;" onclick="toggle_dropmenu();" id="fdropper"><b><?= $this->lang('iphone_dbrd_menu_'.$D->show) ?></b></a>
 				<div id="dropmenu" style="display:none;">
@@ -33,7 +33,7 @@
 			<?php } ?>
 		</div>
 <?php
-	
+
 	$this->load_template('mobile_iphone/footer.php');
-	
+
 ?>

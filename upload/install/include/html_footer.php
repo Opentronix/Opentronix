@@ -1,6 +1,6 @@
 <?php
 
-$footer	= 
+$footer	=
 '
 				</div>
 			</div>
@@ -13,7 +13,7 @@ $footer	=
 					<span style="color:#888;">
 						Opentronix is Powered by
 						<a href="http://blogtronix.com" target="_blank" style="color:#666;">Blogtronix</a>
-					</span> 
+					</span>
 				</div>
 			</div>
 		</div>

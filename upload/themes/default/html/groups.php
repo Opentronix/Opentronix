@@ -1,13 +1,13 @@
 <?php
-	
+
 	$this->load_template('header.php');
-	
+
 ?>
 					<div id="invcenter">
 						<h2><?= $this->lang('groups_page_ttl2') ?></h2>
 						<?php if( $this->param('msg')=='deleted' ) { ?>
 						<?= okbox($this->lang('groups_msgbox_deleted_ttl'), $this->lang('groups_msgbox_deleted_txt')) ?>
-						<?php } ?>	
+						<?php } ?>
 						<?php if( $this->user->is_logged ) { ?>
 						<div class="htabs" style="margin-bottom:6px; margin-top:0px;">
 							<?php if( $D->tabnums['my'] == 0 ) { ?>
@@ -27,7 +27,7 @@
 						</div>
 					</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

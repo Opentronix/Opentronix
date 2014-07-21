@@ -1,11 +1,11 @@
 <?php
-		
+
 	$this->load_template('header.php');
-	
-?>	
+
+?>
 		<div id="pagebody" style="margin:0px; border-top:1px solid #fff;">
 			<div>
-				<div id="contacts_left" style="width:100%;">			
+				<div id="contacts_left" style="width:100%;">
 					<div class="ttl">
 						<div class="ttl2"><h3><?= $this->lang('contacts_left_ttl') ?></h3></div>
 					</div>
@@ -18,15 +18,15 @@
 						<div class="greygrad" style="margin-top:5px;">
 							<div class="greygrad2">
 								<div class="greygrad3">
-									<form method="post" action="">	
-										<table id="setform" style="width:100%;" cellspacing="5">			
-											<tr>				
+									<form method="post" action="">
+										<table id="setform" style="width:100%;" cellspacing="5">
+											<tr>
 												<td class="setparam"><?= $this->lang('cnt_frm_fullname') ?></td>
-												<td><input type="text" class="setinp" name="fullname" value="<?= htmlspecialchars($D->fullname) ?>" maxlength="100" /></td>			
-											</tr>			
+												<td><input type="text" class="setinp" name="fullname" value="<?= htmlspecialchars($D->fullname) ?>" maxlength="100" /></td>
+											</tr>
 											<tr>
 												<td class="setparam"><?= $this->lang('cnt_frm_email') ?></td>
-												<td><input type="text" class="setinp" name="email" value="<?= htmlspecialchars($D->email) ?>" maxlength="100" /></td>			
+												<td><input type="text" class="setinp" name="email" value="<?= htmlspecialchars($D->email) ?>" maxlength="100" /></td>
 											</tr>
 											<tr>
 												<td class="setparam" valign="top"><?= $this->lang('cnt_frm_message') ?></td>
@@ -42,10 +42,10 @@
 											</tr>
 											<tr>
 												<td></td>
-												<td><input type="submit" name="sbm" value="<?= $this->lang('cnt_frm_sbm') ?>" style="padding:4px; font-weight:bold;" /></td>			
-											</tr>	
+												<td><input type="submit" name="sbm" value="<?= $this->lang('cnt_frm_sbm') ?>" style="padding:4px; font-weight:bold;" /></td>
+											</tr>
 										</table>
-									</form>		
+									</form>
 								</div>
 							</div>
 						</div>
@@ -54,7 +54,7 @@
 			</div>
 		</div>
 <?php
-	
+
 	$this->load_template('footer.php');
-	
+
 ?>

@@ -1,26 +1,26 @@
 <?php
-	
+
 	$lang = array
 	(
 		'srch_title_posts'	=> 'Posts Search - #SITE_TITLE#',
 		'srch_title_users'	=> 'Members Search - #SITE_TITLE#',
 		'srch_title_groups'	=> 'Groups Search - #SITE_TITLE#',
-		
+
 		'srch_title2_posts'	=> 'Find Posts',
 		'srch_title2_users'	=> 'Find Members',
 		'srch_title2_groups'	=> 'Find Groups',
-		
+
 		'srch_title3_posts'	=> 'Find Posts: #STRING#',
 		'srch_title3_users'	=> 'Find Members: #STRING#',
 		'srch_title3_groups'	=> 'Find Groups: #STRING#',
-		
+
 		'srch_tab_posts'		=> 'Posts',
 		'srch_tab_users'		=> 'Members',
 		'srch_tab_groups'		=> 'Groups',
-		
+
 		'srch_tab_defform_txt'	=> 'Search for',
 		'srch_tab_defform_btn'	=> 'Search',
-		
+
 		'srch_posts_filterbox'	=> 'Filter',
 		'srch_posts_string'	=> 'Search for',
 		'srch_posts_ptype'	=> 'Post Type',
@@ -39,17 +39,17 @@
 		'srch_posts_save_add'	=> 'Save this search',
 		'srch_posts_save_del'	=> 'Remove from saved searches',
 		'srch_posts_save_delc'	=> 'Are you sure?',
-		
+
 		'srch_noresult_posts_ttl'	=> 'No results',
 		'srch_noresult_posts_def'	=> 'There are no posts matching your search criteria.',
 		'srch_noresult_posts_invusr'	=> 'There is no such member #USERNAME#.',
 		'srch_noresult_posts_invgrp'	=> 'There is no such group #GROUP#.',
 		'srch_noresult_posts_invdt'	=> 'Invalid date interval.',
-		
+
 		'srch_noresult_users_ttl'	=> 'No results',
 		'srch_noresult_users_txt'	=> 'There are no members matching your search criteria.',
 		'srch_noresult_groups_ttl'	=> 'No results',
 		'srch_noresult_groups_txt'	=> 'There are no groups matching your search criteria.',
 	);
-	
+
 ?>

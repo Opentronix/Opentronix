@@ -33,6 +33,7 @@ if( isset($_POST['sbm']) ) {
 		$D->errmsg	= 'group_setterr_title_length';
 	}
 	elseif( preg_match('/[^ا-یא-תÀ-ÿ一-龥а-яa-z0-9\-\.\s]/iu', $D->form_title) ) {
+		// Note that a group title must not contain the underscore.
 		$D->error	= TRUE;
 		$D->errmsg	= 'group_setterr_title_chars';
 	}

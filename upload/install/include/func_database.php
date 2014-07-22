@@ -233,6 +233,7 @@
 			  `num_followers` int(10) unsigned NOT NULL default '0',
 			  PRIMARY KEY  (`id`),
 			  UNIQUE KEY `groupname` (`groupname`),
+			  UNIQUE KEY `title` (`title`),
 			  KEY `is_public` (`is_public`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 		", $conn);

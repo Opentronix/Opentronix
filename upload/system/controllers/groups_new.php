@@ -37,7 +37,8 @@ if( isset($_POST['sbm']) ) {
 		$D->errmsg	= 'group_setterr_title_chars';
 	}
 	else {
-		$db2->query('SELECT id FROM groups WHERE (groupname="'.$db2->e($D->form_title).'" OR title="'.$db2->e($D->form_title).'") LIMIT 1');
+		$db2->query('SELECT id FROM groups WHERE (groupname="'.$db2->e($D->form_title).
+			'" OR title="'.$db2->e($D->form_title).'") LIMIT 1');
 		if( $db2->num_rows() > 0 ) {
 			$D->error	= TRUE;
 			$D->errmsg	= 'group_setterr_title_exists';
@@ -54,7 +55,8 @@ if( isset($_POST['sbm']) ) {
 			$D->errmsg	= 'group_setterr_name_chars';
 		}
 		else {
-			$db2->query('SELECT id FROM groups WHERE (groupname="'.$db2->e($D->form_groupname).'" OR title="'.$db2->e($D->form_groupname).'") LIMIT 1');
+			$db2->query('SELECT id FROM groups WHERE (groupname="'.$db2->e($D->form_groupname).
+				'" OR title="'.$db2->e($D->form_groupname).'") LIMIT 1');
 			if( $db2->num_rows() > 0 ) {
 				$D->error	= TRUE;
 				$D->errmsg	= 'group_setterr_name_exists';

@@ -193,15 +193,18 @@ class network
 		$data->followers		= array();
 		$data->follow_users	= array();
 		$data->follow_groups	= array();
-		$r	= $this->db2->query('SELECT who, whom_from_postid FROM users_followed WHERE whom="'.$uid.'" ORDER BY id DESC', FALSE);
+		$r	= $this->db2->query('SELECT who, whom_from_postid FROM users_followed WHERE '.
+			'whom="'.$uid.'" ORDER BY id DESC', FALSE);
 		while($o = $this->db2->fetch_object($r)) {
 			$data->followers[$o->who]	= $o->whom_from_postid;
 		}
-		$r	= $this->db2->query('SELECT whom, whom_from_postid FROM users_followed WHERE who="'.$uid.'" ORDER BY id DESC', FALSE);
+		$r	= $this->db2->query('SELECT whom, whom_from_postid FROM users_followed WHERE '.
+			'who="'.$uid.'" ORDER BY id DESC', FALSE);
 		while($o = $this->db2->fetch_object($r)) {
 			$data->follow_users[$o->whom]	= $o->whom_from_postid;
 		}
-		$r	= $this->db2->query('SELECT group_id, group_from_postid FROM groups_followed WHERE user_id="'.$uid.'" ORDER BY id DESC', FALSE);
+		$r	= $this->db2->query('SELECT group_id, group_from_postid FROM groups_followed WHERE '.
+			'user_id="'.$uid.'" ORDER BY id DESC', FALSE);
 		while($o = $this->db2->fetch_object($r)) {
 			$data->follow_groups[$o->group_id]	= $o->group_from_postid;
 		}

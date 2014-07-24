@@ -15,6 +15,7 @@ else {
 	$tabs	= array('all', 'my');
 	$D->tab	= 'my';
 	if( count($this->network->get_user_follows($this->user->id)->follow_groups) == 0 ) {
+		// user does not follow a group.
 		$tabs	= array('my', 'all');
 		$D->tab	= 'all';
 	}
@@ -56,28 +57,28 @@ $D->pg		= 1;
 $D->groups_html	= '';
 
 $tmp	= array();
-if( $D->tab == 'all' )
-{
+if( $D->tab == 'all' ) {
 	$D->num_results	= $D->tabnums['all'];
 	$D->num_pages	= ceil($D->num_results / $C->PAGING_NUM_GROUPS);
 	$D->pg	= $this->param('pg') ? intval($this->param('pg')) : 1;
 	$D->pg	= min($D->pg, $D->num_pages);
 	$D->pg	= max($D->pg, 1);
 	$from	= ($D->pg - 1) * $C->PAGING_NUM_GROUPS;
-	$db2->query('SELECT id FROM groups WHERE 1 '.$not_in_groups.' ORDER BY title ASC, id ASC LIMIT '.$from.', '.$C->PAGING_NUM_GROUPS);
+	$db2->query('SELECT id FROM groups WHERE 1 '.$not_in_groups.' ORDER BY title ASC, id ASC '.
+		'LIMIT '.$from.', '.$C->PAGING_NUM_GROUPS);
 	while($o = $db2->fetch_object()) {
 		$tmp[]	= $o->id;
 	}
 }
-elseif( $D->tab == 'my' )
-{
+elseif( $D->tab == 'my' ) {
 	$D->num_results	= $D->tabnums['my'];
 	$D->num_pages	= ceil($D->num_results / $C->PAGING_NUM_GROUPS);
 	$D->pg	= $this->param('pg') ? intval($this->param('pg')) : 1;
 	$D->pg	= min($D->pg, $D->num_pages);
 	$D->pg	= max($D->pg, 1);
 	$from	= ($D->pg - 1) * $C->PAGING_NUM_GROUPS;
-	$tmp	= array_keys(array_slice($this->network->get_user_follows($this->user->id)->follow_groups, $from, $C->PAGING_NUM_GROUPS, TRUE));
+	$tmp	= array_keys(array_slice($this->network->get_user_follows($this->user->id)->follow_groups,
+		$from, $C->PAGING_NUM_GROUPS, TRUE));
 }
 
 if( 0 == $D->num_results ) {

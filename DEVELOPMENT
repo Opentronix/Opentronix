@@ -1,0 +1,23 @@
+Opentronix Development Guide
+============================
+
+The source code is hosted as a git repository at
+https://github.com/Opentronix/Opentronix
+
+Coding style
+------------
+Text width
+~~~~~~~~~~
+The text width should not exceed 80 characters. Exceptions to this should be
+used only in rare cases.
+
+Indentation
+~~~~~~~~~~~
+For indentation tabs are used.
+
+Conditionals
+~~~~~~~~~~~~
+The opening curly brace is on the same line as the +if+, the +elseif+ or the
++else+. The closing curly brace is on a separate line. +elseif+ and +else+ are
+also on a separate line.
+

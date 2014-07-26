@@ -30,7 +30,8 @@ $D->g	= & $g;
 $D->i_am_member	= $this->user->if_follow_group($g->id);
 $D->i_am_admin	= FALSE;
 if( $D->i_am_member ) {
-	$D->i_am_admin	= $db->fetch('SELECT id FROM groups_admins WHERE group_id="'.$g->id.'" AND user_id="'.$this->user->id.'" LIMIT 1') ? TRUE : FALSE;
+    $D->i_am_admin	= $db->fetch('SELECT id FROM groups_admins WHERE '.
+        'group_id="'.$g->id.'" AND user_id="'.$this->user->id.'" LIMIT 1') ? TRUE : FALSE;
 }
 if( !$D->i_am_admin && $this->user->is_logged && $this->user->info->is_network_admin==1 ) {
 	$D->i_am_admin	= TRUE;
@@ -174,8 +175,11 @@ if( $D->tab == 'updates' )
 		$q2	= 'SELECT *, "public" AS `type` FROM posts WHERE group_id="'.$g->id.'" ORDER BY id DESC ';
 	}
 	else {
-		$q1	= 'SELECT COUNT(p.id) FROM posts p, posts_attachments a WHERE p.id=a.post_id AND p.group_id="'.$g->id.'" AND a.type="'.$tmp[$D->filter].'" ';
-		$q2	= 'SELECT p.*, "public" AS `type` FROM posts p, posts_attachments a WHERE p.id=a.post_id AND p.group_id="'.$g->id.'" AND a.type="'.$tmp[$D->filter].'" ORDER BY p.id DESC ';
+		$q1	= 'SELECT COUNT(p.id) FROM posts p, posts_attachments a WHERE '.
+			'p.id=a.post_id AND p.group_id="'.$g->id.'" AND a.type="'.$tmp[$D->filter].'" ';
+		$q2	= 'SELECT p.*, "public" AS `type` FROM posts p, posts_attachments a WHERE '.
+			'p.id=a.post_id AND p.group_id="'.$g->id.'" AND a.type="'.$tmp[$D->filter].
+			'" ORDER BY p.id DESC ';
 	}
 	$D->num_results	= $db2->fetch_field($q1);
 	if( 0 == $D->num_results ) {
@@ -287,7 +291,8 @@ elseif( $D->tab == 'members' )
 }
 elseif( $D->tab == 'settings' && $D->i_am_admin )
 {
-	$D->num_rssfeeds	= $db->fetch_field('SELECT COUNT(id) FROM groups_rssfeeds WHERE is_deleted=0 AND group_id="'.$g->id.'" ');
+	$D->num_rssfeeds	= $db->fetch_field('SELECT COUNT(id) FROM groups_rssfeeds WHERE '.
+		'is_deleted=0 AND group_id="'.$g->id.'" ');
 	if( $D->subtab == 'main' ) {
 		$D->page_title	= $this->lang('group_pagetitle_settings', array('#GROUP#'=>htmlspecialchars($g->title), '#SITE_TITLE#'=>$C->SITE_TITLE));
 		$D->submit	= FALSE;

@@ -54,6 +54,7 @@ class network
 		if( ! isset($C->HDR_SHOW_FAVICON) ) { $C->HDR_SHOW_FAVICON = 1; }
 		if( ! isset($C->HDR_CUSTOM_FAVICON) ) { $C->HDR_CUSTOM_FAVICON = ''; }
 		if( ! isset($C->MOBI_DISABLED) ) { $C->MOBI_DISABLED = 0; }
+		if( ! isset($C->CAPTCHA_DISABLED) ) { $C->CAPTCHA_DISABLED = 0; }
 
 		$current_language	= new stdClass;
 		include($C->INCPATH.'languages/'.$C->LANGUAGE.'/language.php');

@@ -264,9 +264,7 @@
 			}
 
 			// check recaptcha if everything else is fine
-			$captcha_disabled	= $db2->fetch_field(
-				'SELECT value FROM settings WHERE word="CAPTCHA_DISABLED" LIMIT 1');
-			if( ! $D->error && ! $captcha_disabled ) {
+			if( ! $D->error && ! $C->CAPTCHA_DISABLED ) {
 				$recaptcha_check = recaptcha_check_answer (
 					$C->RECAPTCHA_PRIVATE_KEY,
 					$_SERVER["REMOTE_ADDR"],

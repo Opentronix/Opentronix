@@ -148,6 +148,10 @@
 	$not_in_groups	= count($not_in_groups)>0 ? ('AND group_id NOT IN('.implode(', ', $not_in_groups).')') : '';
 	$D->post_tags	= $this->network->get_recent_posttags($not_in_groups, 10);
 
+	// Are there any news to display?
+	$r = $db2->fetch_field('SELECT value FROM settings WHERE word="NEWS" LIMIT 1');
+	$D->news = $r == '' ? '' : $r;
+
 	$this->load_template('home.php');
 
 ?>

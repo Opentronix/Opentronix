@@ -57,6 +57,7 @@
 		'dbrd_right_lastonline'		=> 'Last Online',
 		'dbrd_right_savedsearches'	=> 'Saved Searches',
 		'dbrd_right_posttags'		=> 'Recently active tags',
+		'dbrd_right_news'		=> 'News',
 		'dbrd_right_wrongaddress'	=> 'Warning: You are currently using the #COMPANY# network via incorrect web address. The correct network address is:',
 
 		'noposts_dtb_all_ttl'				=> 'Welcome to your dashboard',

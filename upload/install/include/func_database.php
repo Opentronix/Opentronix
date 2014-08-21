@@ -666,6 +666,7 @@
 			('ATTACH_FILE_DISABLED', '0'),
 			('USERS_EMAIL_CONFIRMATION', '1'),
 			('THEME', 'default'),
+			('NEWS', ''),
 			('CAPTCHA_DISABLED', '0'),
 			('MOBI_DISABLED', '0');
 		", $conn);

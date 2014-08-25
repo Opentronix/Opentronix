@@ -77,6 +77,7 @@ $lang = array (
   'admgnrl_frm_emlconfirm_off' => 'Deaktiviert',
   'admgnrl_frm_intro_ttl' => 'Intro Titel:',
   'admgnrl_frm_intro_txt' => 'Intro Text:',
+  'admgnrl_frm_news' => 'Neuigkeiten:',
   'admgnrl_frm_check4update' => 'Automatically check for updates and notify me',
   'admgnrl_frm_sbm' => 'Speichern',
   'admgnrl_error' => 'Fehler',

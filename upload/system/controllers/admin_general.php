@@ -6,6 +6,7 @@ if( !$this->network->id ) {
 if( !$this->user->is_logged ) {
 	$this->redirect('signin');
 }
+
 $db2->query('SELECT 1 FROM users WHERE id="'.$this->user->id.'" AND is_network_admin=1 LIMIT 1');
 if( 0 == $db2->num_rows() ) {
 	$this->redirect('dashboard');
@@ -16,6 +17,7 @@ $this->load_langfile('inside/admin.php');
 
 require_once( $C->INCPATH.'helpers/func_languages.php' );
 
+// Load all settings.
 $s	= new stdClass;
 $db2->query('SELECT word, value FROM settings');
 while($o = $db2->fetch_object()) {
@@ -57,6 +59,7 @@ $D->post_atch_video	= !isset($s->ATTACH_VIDEO_DISABLED) || $s->ATTACH_VIDEO_DISA
 $D->post_atch_file	= !isset($s->ATTACH_FILE_DISABLED) || $s->ATTACH_FILE_DISABLED==0;
 $D->mobi_enabled	= $C->MOBI_DISABLED==0;
 $D->email_confirm	= $s->USERS_EMAIL_CONFIRMATION;
+$D->news		= isset($s->NEWS) ? $s->NEWS : '';
 
 $D->intro_ttl	= isset($C->HOME_INTRO_TTL) ? trim($C->HOME_INTRO_TTL) : '';
 $D->intro_txt	= isset($C->HOME_INTRO_TTL) ? trim($C->HOME_INTRO_TXT) : '';
@@ -129,6 +132,7 @@ if( isset($_POST['sbm']) ) {
 	if( !$D->error ) {
 		$D->intro_ttl	= isset($_POST['intro_ttl']) ? trim($_POST['intro_ttl']) : '';
 		$D->intro_txt	= isset($_POST['intro_txt']) ? trim($_POST['intro_txt']) : '';
+		$D->news	= isset($_POST['news']) ? trim($_POST['news']) : '';
 		if( empty($D->intro_ttl) ) {
 			$D->error	= TRUE;
 			$D->errmsg	= 'admgnrl_err_introttl';
@@ -140,6 +144,7 @@ if( isset($_POST['sbm']) ) {
 		else {
 			$db2->query('REPLACE INTO settings SET word="HOME_INTRO_TTL", value="'.$db2->e($D->intro_ttl).'" ');
 			$db2->query('REPLACE INTO settings SET word="HOME_INTRO_TXT", value="'.$db2->e($D->intro_txt).'" ');
+			$db2->query('REPLACE INTO settings SET word="NEWS", value="'.$db2->e($D->news).'" ');
 		}
 	}
 	$this->network->load_network_settings();

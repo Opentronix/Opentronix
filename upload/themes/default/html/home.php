@@ -100,9 +100,9 @@
 			<h3><?= $this->lang('dbrd_right_news') ?></h3>
 		</div>
 	</div>
-	<div class="taglist" style="margin-bottom:5px;">
+	<div class="loginput" style="margin-bottom:5px;">
 		<p>
-			<?= htmlspecialchars($D->news) ?>
+			<?= $D->news ?>
 		</p>
 	</div>
 	<?php } ?>

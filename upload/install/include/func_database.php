@@ -233,6 +233,7 @@
 			  `num_followers` int(10) unsigned NOT NULL default '0',
 			  PRIMARY KEY  (`id`),
 			  UNIQUE KEY `groupname` (`groupname`),
+			  UNIQUE KEY `title` (`title`),
 			  KEY `is_public` (`is_public`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 		", $conn);
@@ -665,7 +666,8 @@
 			('ATTACH_FILE_DISABLED', '0'),
 			('USERS_EMAIL_CONFIRMATION', '1'),
 			('THEME', 'default'),
-			('CAPTCHA', '1'),
+			('NEWS', ''),
+			('CAPTCHA_DISABLED', '0'),
 			('MOBI_DISABLED', '0');
 		", $conn);
 		$res	= $res && my_mysql_query("

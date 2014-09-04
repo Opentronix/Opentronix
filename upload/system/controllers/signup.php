@@ -152,7 +152,8 @@
 		if( $twinfo && !empty($twinfo->screen_name) ) { $tmp_try_username = trim($twinfo->screen_name); }
 		if( !empty($tmp_try_username) && !preg_match('/[^a-z0-9-_]/i', $tmp_try_username) ) {
 			if( !file_exists($C->INCPATH.'controllers/'.strtolower($tmp_try_username).'.php') && !file_exists($C->INCPATH.'controllers/mobile/'.strtolower($tmp_try_username).'.php') && !file_exists($C->INCPATH.'../'.strtolower($tmp_try_username)) ) {
-				if( !$db2->fetch_field('SELECT id FROM users WHERE username="'.$db2->e($tmp_try_username).'" LIMIT 1') && !$db2->fetch_field('SELECT id FROM groups WHERE groupname="'.$db2->e($tmp_try_username).'" LIMIT 1') ) {
+				if( !$db2->fetch_field('SELECT id FROM users WHERE username="'.$db2->e($tmp_try_username).'" LIMIT 1') &&
+					!$db2->fetch_field('SELECT id FROM groups WHERE groupname="'.$db2->e($tmp_try_username).'" LIMIT 1') ) {
 					$D->username	= $tmp_try_username;
 				}
 			}
@@ -264,8 +265,7 @@
 			}
 
 			// check recaptcha if everything else is fine
-			$use_captcha	= $db2->fetch_field('SELECT value FROM settings WHERE word="CAPTCHA" LIMIT 1');
-			if( !$D->error && $use_captcha ) {
+			if( ! $D->error && ! $C->CAPTCHA_DISABLED ) {
 				$recaptcha_check = recaptcha_check_answer (
 					$C->RECAPTCHA_PRIVATE_KEY,
 					$_SERVER["REMOTE_ADDR"],

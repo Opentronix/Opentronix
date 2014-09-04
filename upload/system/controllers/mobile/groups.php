@@ -64,7 +64,8 @@
 		$D->pg	= min($D->pg, $D->num_pages);
 		$D->pg	= max($D->pg, 1);
 		$from	= ($D->pg - 1) * $C->PAGING_NUM_GROUPS;
-		$db2->query('SELECT id FROM groups WHERE 1 '.$not_in_groups.' ORDER BY title ASC, id ASC LIMIT '.$from.', '.$C->PAGING_NUM_GROUPS);
+		$db2->query('SELECT id FROM groups WHERE 1 '.$not_in_groups.
+			' ORDER BY title ASC, id ASC LIMIT '.$from.', '.$C->PAGING_NUM_GROUPS);
 		while($o = $db2->fetch_object()) {
 			$tmp[]	= $o->id;
 		}

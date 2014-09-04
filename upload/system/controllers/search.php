@@ -150,17 +150,22 @@
 		$not_in_groups	= count($not_in_groups)>0 ? ('AND id NOT IN('.implode(', ', $not_in_groups).')') : '';
 		$gids	= array();
 		$tmp	= $db2->e($D->search_string);
-		$db2->query('SELECT id FROM groups WHERE (groupname="'.$tmp.'" OR title="'.$tmp.'") '.$not_in_groups.' ORDER BY title ASC, num_followers DESC');
+		$db2->query('SELECT id FROM groups WHERE '.
+			'(groupname="'.$tmp.'" OR title="'.$tmp.'") '.$not_in_groups.
+			' ORDER BY title ASC, num_followers DESC');
 		while($o = $db2->fetch_object()) {
 			$gids[]	= intval($o->id);
 		}
 		$tmp	= str_replace(array('%','_'), array('\%','\_'), $db2->e($D->search_string));
-		$db2->query('SELECT id FROM groups WHERE (groupname LIKE "%'.$tmp.'%" OR title LIKE "%'.$tmp.'%") '.$not_in_groups.' ORDER BY title ASC, num_followers DESC');
+		$db2->query('SELECT id FROM groups WHERE '.
+			'(groupname LIKE "%'.$tmp.'%" OR title LIKE "%'.$tmp.'%") '.$not_in_groups.
+			' ORDER BY title ASC, num_followers DESC');
 		while($o = $db2->fetch_object()) {
 			$gids[]	= intval($o->id);
 		}
 		//if( 0 == count($gids) ) {
-			$db2->query('SELECT id FROM groups WHERE about_me LIKE "%'.$tmp.'%" '.$not_in_groups.' ORDER BY title ASC, num_followers DESC');
+			$db2->query('SELECT id FROM groups WHERE about_me LIKE "%'.$tmp.'%" '.$not_in_groups.
+				' ORDER BY title ASC, num_followers DESC');
 			while($o = $db2->fetch_object()) {
 				$gids[]	= intval($o->id);
 			}

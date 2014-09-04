@@ -87,7 +87,10 @@
 		}
 		$not_in_groups	= count($not_in_groups)>0 ? ('AND id NOT IN('.implode(', ', $not_in_groups).')') : '';
 		$w	= $this->db2->escape($word);
-		$r	= $this->db2->query('SELECT id FROM groups WHERE (groupname LIKE "%'.$w.'%" OR title LIKE "%'.$w.'%") '.$not_in_groups.' ORDER BY num_followers DESC, title ASC LIMIT 5');
+		$r	= $this->db2->query('SELECT id FROM groups WHERE '.
+			'(groupname LIKE "%'.$w.'%" OR title LIKE "%'.$w.'%") '.
+			$not_in_groups.
+			' ORDER BY num_followers DESC, title ASC LIMIT 5');
 		$i	= 0;
 		$n	= $this->db2->num_rows();
 		while($obj = $this->db2->fetch_object($r)) {

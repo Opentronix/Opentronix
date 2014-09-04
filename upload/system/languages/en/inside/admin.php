@@ -75,6 +75,7 @@
 		'admgnrl_frm_emlconfirm_off'	=> 'Disabled',
 		'admgnrl_frm_intro_ttl'	=> 'Intro title:',
 		'admgnrl_frm_intro_txt'	=> 'Intro text:',
+		'admgnrl_frm_news'	=> 'News:',
 		'admgnrl_frm_sbm'		=> 'Save',
 		'admgnrl_error'		=> 'Error',
 		'admgnrl_err_comp'	=> 'Please fill in your company\'s name.',

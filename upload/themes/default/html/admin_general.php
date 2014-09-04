@@ -96,6 +96,10 @@
 								</td>
 							</tr>
 							<tr>
+								<td class="setparam" valign="top"><?= $this->lang('admgnrl_frm_news') ?></td>
+								<td><textarea class="setinp" name="news" style="height:100px;"><?= htmlspecialchars($D->news) ?></textarea></td>
+							</tr>
+							<tr>
 								<td></td>
 								<td><input type="submit" name="sbm" value="<?= $this->lang('admgnrl_frm_sbm') ?>" style="padding:4px; font-weight:bold;"/></td>
 							</tr>

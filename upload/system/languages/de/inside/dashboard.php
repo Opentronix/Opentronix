@@ -57,6 +57,7 @@ $lang = array (
   'dbrd_right_lastonline' => 'Im Netzwerk sind online',
   'dbrd_right_savedsearches' => 'Gespeicherte Sucheinträge',
   'dbrd_right_posttags' => 'Kürzlich aktive Tags',
+  'dbrd_right_news' => 'Neuigkeiten',
   'dbrd_right_wrongaddress' => 'Warnung: Du bist zum #COMPANY# Netzwerk über eine falsche Web-Adresse. Die richtige Netz-Adresse lautet:',
   'noposts_dtb_all_ttl' => 'Willkommen auf deiner Hauptseite',
   'noposts_dtb_all_txt' => 'Klick #A1#hier#A2# für deine erste Nachricht.',

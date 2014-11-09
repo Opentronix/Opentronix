@@ -293,7 +293,9 @@
 				return $this->post_message;
 			}
 			$message	= htmlspecialchars($this->post_message);
-			if( FALSE!==strpos($message,'http://') || FALSE!==strpos($message,'http://') || FALSE!==strpos($message,'ftp://') ) {
+			if( FALSE!==strpos($message,'http://') ||
+				FALSE!==strpos($message,'http://') ||
+				FALSE!==strpos($message,'ftp://') ) {
 				$message	= preg_replace('#(^|\s)((http|https|ftp)://\w+[^\s\[\]]+)#ie', 'post::_postparse_build_link("\\2", "\\1")', $message);
 			}
 			if( count($this->post_mentioned) > 0 ) {

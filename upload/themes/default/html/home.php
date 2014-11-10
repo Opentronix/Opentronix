@@ -107,19 +107,6 @@
 	</div>
 	<?php } ?>
 
-	<?php if( $D->news != '' ) { ?>
-	<div class="ttl" style="margin-top:0px; margin-bottom:8px;">
-		<div class="ttl2">
-			<h3><?= $this->lang('dbrd_right_news') ?></h3>
-		</div>
-	</div>
-	<div class="loginput" style="margin-bottom:5px;">
-		<p>
-			<?= $D->news ?>
-		</p>
-	</div>
-	<?php } ?>
-
 </div>
 
 <?php
